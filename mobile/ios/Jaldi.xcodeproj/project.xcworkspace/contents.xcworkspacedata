@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Handy.xcodeproj">
+      location = "self:/Volumes/D/Projects/Handy/jaldi/mobile/ios/Jaldi.xcodeproj">
    </FileRef>
 </Workspace>

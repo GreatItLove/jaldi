@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4C4587881EB4C23500169AC1 /* Handy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Handy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C4587881EB4C23500169AC1 /* Jaldi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jaldi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C45878B1EB4C23500169AC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C4587901EB4C23500169AC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C4587921EB4C23500169AC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -50,7 +50,7 @@
 		4C4587891EB4C23500169AC1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4C4587881EB4C23500169AC1 /* Handy.app */,
+				4C4587881EB4C23500169AC1 /* Jaldi.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,9 +105,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4C4587871EB4C23500169AC1 /* Handy */ = {
+		4C4587871EB4C23500169AC1 /* Jaldi */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4C45879A1EB4C23500169AC1 /* Build configuration list for PBXNativeTarget "Handy" */;
+			buildConfigurationList = 4C45879A1EB4C23500169AC1 /* Build configuration list for PBXNativeTarget "Jaldi" */;
 			buildPhases = (
 				4C4587841EB4C23500169AC1 /* Sources */,
 				4C4587851EB4C23500169AC1 /* Frameworks */,
@@ -117,9 +117,9 @@
 			);
 			dependencies = (
 			);
-			name = Handy;
+			name = Jaldi;
 			productName = Handy;
-			productReference = 4C4587881EB4C23500169AC1 /* Handy.app */;
+			productReference = 4C4587881EB4C23500169AC1 /* Jaldi.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -138,7 +138,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4C4587831EB4C23500169AC1 /* Build configuration list for PBXProject "Handy" */;
+			buildConfigurationList = 4C4587831EB4C23500169AC1 /* Build configuration list for PBXProject "Jaldi" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -151,7 +151,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4C4587871EB4C23500169AC1 /* Handy */,
+				4C4587871EB4C23500169AC1 /* Jaldi */,
 			);
 		};
 /* End PBXProject section */
@@ -325,7 +325,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4C4587831EB4C23500169AC1 /* Build configuration list for PBXProject "Handy" */ = {
+		4C4587831EB4C23500169AC1 /* Build configuration list for PBXProject "Jaldi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4C4587981EB4C23500169AC1 /* Debug */,
@@ -334,7 +334,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4C45879A1EB4C23500169AC1 /* Build configuration list for PBXNativeTarget "Handy" */ = {
+		4C45879A1EB4C23500169AC1 /* Build configuration list for PBXNativeTarget "Jaldi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4C45879B1EB4C23500169AC1 /* Debug */,
