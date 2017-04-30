@@ -7,23 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C0BE88D1EB5E678000C0810 /* HBOnboardingViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0BE88C1EB5E678000C0810 /* HBOnboardingViewControllerViewController.swift */; };
+		4C0BE8901EB5E6D6000C0810 /* JaldiOnboardingInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0BE88F1EB5E6D6000C0810 /* JaldiOnboardingInputView.swift */; };
+		4C0BE8921EB5E76E000C0810 /* JaldiOnboardingDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0BE8911EB5E76E000C0810 /* JaldiOnboardingDefines.swift */; };
+		4C0BE8941EB5EEFA000C0810 /* JaldiValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0BE8931EB5EEFA000C0810 /* JaldiValidator.swift */; };
+		4C0BE8971EB5F7E3000C0810 /* JaldiOnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0BE8961EB5F7E3000C0810 /* JaldiOnboardingModel.swift */; };
 		4C45878C1EB4C23500169AC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C45878B1EB4C23500169AC1 /* AppDelegate.swift */; };
 		4C4587911EB4C23500169AC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C45878F1EB4C23500169AC1 /* Main.storyboard */; };
 		4C4587931EB4C23500169AC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C4587921EB4C23500169AC1 /* Assets.xcassets */; };
 		4C4587961EB4C23500169AC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C4587941EB4C23500169AC1 /* LaunchScreen.storyboard */; };
-		4C4587A01EB4D13500169AC1 /* HBOnboardingViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C45879F1EB4D13500169AC1 /* HBOnboardingViewControllerViewController.swift */; };
 		4CF2AE371EB4E13B00AEF591 /* HBSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2AE361EB4E13B00AEF591 /* HBSignInViewController.swift */; };
 		4CF2AE3B1EB4F16500AEF591 /* HBAppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2AE3A1EB4F16500AEF591 /* HBAppColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C0BE88C1EB5E678000C0810 /* HBOnboardingViewControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBOnboardingViewControllerViewController.swift; sourceTree = "<group>"; };
+		4C0BE88F1EB5E6D6000C0810 /* JaldiOnboardingInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnboardingInputView.swift; sourceTree = "<group>"; };
+		4C0BE8911EB5E76E000C0810 /* JaldiOnboardingDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnboardingDefines.swift; sourceTree = "<group>"; };
+		4C0BE8931EB5EEFA000C0810 /* JaldiValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiValidator.swift; sourceTree = "<group>"; };
+		4C0BE8961EB5F7E3000C0810 /* JaldiOnboardingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnboardingModel.swift; sourceTree = "<group>"; };
 		4C4587881EB4C23500169AC1 /* Jaldi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jaldi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C45878B1EB4C23500169AC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C4587901EB4C23500169AC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C4587921EB4C23500169AC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C4587951EB4C23500169AC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C4587971EB4C23500169AC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4C45879F1EB4D13500169AC1 /* HBOnboardingViewControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBOnboardingViewControllerViewController.swift; sourceTree = "<group>"; };
 		4CF2AE361EB4E13B00AEF591 /* HBSignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBSignInViewController.swift; sourceTree = "<group>"; };
 		4CF2AE3A1EB4F16500AEF591 /* HBAppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBAppColors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -39,10 +47,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C0BE88B1EB5E678000C0810 /* OnboardingViewControllerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4C0BE88C1EB5E678000C0810 /* HBOnboardingViewControllerViewController.swift */,
+				4C0BE88E1EB5E69E000C0810 /* Shared */,
+			);
+			path = OnboardingViewControllerViewController;
+			sourceTree = "<group>";
+		};
+		4C0BE88E1EB5E69E000C0810 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				4C0BE88F1EB5E6D6000C0810 /* JaldiOnboardingInputView.swift */,
+				4C0BE8911EB5E76E000C0810 /* JaldiOnboardingDefines.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		4C0BE8951EB5F16C000C0810 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4C0BE8961EB5F7E3000C0810 /* JaldiOnboardingModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		4C45877F1EB4C23500169AC1 = {
 			isa = PBXGroup;
 			children = (
-				4C45878A1EB4C23500169AC1 /* Handy */,
+				4C45878A1EB4C23500169AC1 /* Jaldi */,
 				4C4587891EB4C23500169AC1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,17 +89,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4C45878A1EB4C23500169AC1 /* Handy */ = {
+		4C45878A1EB4C23500169AC1 /* Jaldi */ = {
 			isa = PBXGroup;
 			children = (
 				4C45878B1EB4C23500169AC1 /* AppDelegate.swift */,
+				4C0BE8951EB5F16C000C0810 /* Models */,
 				4CF2AE381EB4F13A00AEF591 /* Shared */,
 				4C45879E1EB4CD7F00169AC1 /* ViewControllerts */,
 				4C45879D1EB4CD4B00169AC1 /* SstoryboardS */,
 				4C4587921EB4C23500169AC1 /* Assets.xcassets */,
 				4C4587971EB4C23500169AC1 /* Info.plist */,
 			);
-			path = Handy;
+			name = Jaldi;
+			path = ../../../../../../../ios/Jaldi;
 			sourceTree = "<group>";
 		};
 		4C45879D1EB4CD4B00169AC1 /* SstoryboardS */ = {
@@ -80,7 +116,7 @@
 		4C45879E1EB4CD7F00169AC1 /* ViewControllerts */ = {
 			isa = PBXGroup;
 			children = (
-				4C45879F1EB4D13500169AC1 /* HBOnboardingViewControllerViewController.swift */,
+				4C0BE88B1EB5E678000C0810 /* OnboardingViewControllerViewController */,
 				4CF2AE361EB4E13B00AEF591 /* HBSignInViewController.swift */,
 			);
 			path = ViewControllerts;
@@ -98,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				4CF2AE3A1EB4F16500AEF591 /* HBAppColors.swift */,
+				4C0BE8931EB5EEFA000C0810 /* JaldiValidator.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -174,10 +211,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C0BE8901EB5E6D6000C0810 /* JaldiOnboardingInputView.swift in Sources */,
+				4C0BE88D1EB5E678000C0810 /* HBOnboardingViewControllerViewController.swift in Sources */,
+				4C0BE8921EB5E76E000C0810 /* JaldiOnboardingDefines.swift in Sources */,
 				4C45878C1EB4C23500169AC1 /* AppDelegate.swift in Sources */,
 				4CF2AE3B1EB4F16500AEF591 /* HBAppColors.swift in Sources */,
-				4C4587A01EB4D13500169AC1 /* HBOnboardingViewControllerViewController.swift in Sources */,
+				4C0BE8971EB5F7E3000C0810 /* JaldiOnboardingModel.swift in Sources */,
 				4CF2AE371EB4E13B00AEF591 /* HBSignInViewController.swift in Sources */,
+				4C0BE8941EB5EEFA000C0810 /* JaldiValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,7 +343,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Handy/Info.plist;
+				INFOPLIST_FILE = Jaldi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.handy-book.Handy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -314,7 +355,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Handy/Info.plist;
+				INFOPLIST_FILE = Jaldi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.handy-book.Handy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
