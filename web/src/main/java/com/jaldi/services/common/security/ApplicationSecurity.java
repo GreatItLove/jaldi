@@ -8,6 +8,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
@@ -22,9 +23,6 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private CustomAuthenticationProvider customAuthenticationProvider;
-
-	@Autowired
-	private CustomUserDetailsService customUserDetailsService;
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -49,6 +47,11 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 //				.and().rememberMe().tokenRepository(persistentTokenRepository())
 //				.tokenValiditySeconds(31536000)
 				.and().csrf().disable();
+//				.addFilterBefore(new JWTLoginFilter("/loginjwt", authenticationManager()),
+//						UsernamePasswordAuthenticationFilter.class)
+//				// And filter other requests to check the presence of JWT in header
+//				.addFilterBefore(new JWTAuthenticationFilter(),
+//						UsernamePasswordAuthenticationFilter.class);
 	}
 
 	@Override

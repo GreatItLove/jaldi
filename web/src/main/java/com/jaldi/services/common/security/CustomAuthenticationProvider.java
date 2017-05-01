@@ -33,7 +33,7 @@ public class CustomAuthenticationProvider  implements AuthenticationProvider {
         User user = userDao.getByUsernameAndPassword(email, password);
         if (user != null && user.isActive()) {
             List<GrantedAuthority> grantedAuths = new ArrayList<>();
-            grantedAuths.add(new SimpleGrantedAuthority(user.getRole()));
+            grantedAuths.add(new SimpleGrantedAuthority(user.getRole().name()));
             CustomAuthenticationToken auth = new CustomAuthenticationToken(email, password, grantedAuths);
             auth.setUser(user);
             return auth;
