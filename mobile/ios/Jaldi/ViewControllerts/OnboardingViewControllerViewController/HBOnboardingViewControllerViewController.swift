@@ -29,6 +29,7 @@ class HBOnboardingViewControllerViewController: UIViewController {
         self.addNotification()
         self.addRecognizer()
         self.configureInputVievs()
+        self.configureWithActive(state: activeState, animated: false)
     }
     
 
@@ -38,6 +39,11 @@ class HBOnboardingViewControllerViewController: UIViewController {
     }
     //MARK: Actions
     @IBAction func backAction(_ sender: Any) {
+        if self.activeState == .email {
+            self.activeState = .zip
+            zipInputView.becomeActive()
+            self.configureWithActive(state: self.activeState, animated: true)
+        }
     }
     
     @IBAction func signInAction(_ sender: Any) {
@@ -71,9 +77,9 @@ class HBOnboardingViewControllerViewController: UIViewController {
     func keyboardWillShow(_ notification:Notification) {
         let info = (notification as NSNotification).userInfo!
         let animationDuration = (info[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue
+        self.introViewTopConstraint.constant = self.topView.frame.size.height - self.introView.frame.size.height
         UIView.animate(withDuration: animationDuration!, animations: { () -> Void in
-            self.introViewTopConstraint.constant = self.topView.frame.size.height - self.introView.frame.size.height
-            
+             self.view.layoutIfNeeded()
         }, completion: { (finished) -> Void in
             self.introView.isHidden = true
         })
@@ -82,15 +88,13 @@ class HBOnboardingViewControllerViewController: UIViewController {
     func keyboardWillHide(_ notification:Notification) {
         let info = (notification as NSNotification).userInfo!
         let animationDuration = (info[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue
-        
+    
+        self.introViewTopConstraint.constant = 0
         UIView.animate(withDuration: animationDuration!, animations: { () -> Void in
-            self.introViewTopConstraint.constant = 0
+             self.view.layoutIfNeeded()
+
         }, completion: { (finished) -> Void in
-            if self.activeState == .zip {
-             self.introView.isHidden = false
-            }else{
-             self.introView.isHidden = true
-            }
+            self.introView.isHidden = self.activeState == .email
         })
     }
     //MARK: OnBoarding State
@@ -98,6 +102,29 @@ class HBOnboardingViewControllerViewController: UIViewController {
     deinit{
         removeNotification()
     }
+    
+    fileprivate func configureWithActive(state:OnBoardingState , animated:Bool){
+        self.changeViewStatesFor(state: state)
+        if animated{
+            UIView.animate(withDuration: 0.35,
+                           animations: { () -> Void in
+                            self.view.layoutIfNeeded()
+            },completion: { (finished) -> Void in})
+        }
+    }
+    fileprivate func changeViewStatesFor(state:OnBoardingState){
+        switch state {
+        case .zip:
+            backButton.isHidden = true
+            zipInputViewHorizontalCenterConstraint.constant = 0
+            emailInputViewHorizontalCenterConstraint.constant = self.view.frame.size.width
+        case .email:
+            backButton.isHidden = false
+            zipInputViewHorizontalCenterConstraint.constant = -self.view.frame.size.width
+            emailInputViewHorizontalCenterConstraint.constant = 0
+        }
+    }
+
 }
 
 //MARK: JaldiOnboardingInputViewDelegate
@@ -115,6 +142,10 @@ extension HBOnboardingViewControllerViewController: JaldiOnboardingInputViewDele
     }
     
     func onboarding(inputView:JaldiOnboardingInputView, didReturn textField:UITextField, onboardingState:OnBoardingState) {
-        
+        if onboardingState == .zip {
+            self.activeState = .email
+            emailInputView.becomeActive()
+            self.configureWithActive(state: self.activeState, animated: true)
+        }
     }
 }
