@@ -11,6 +11,7 @@
 		4C0BE8901EB5E6D6000C0810 /* JaldiOnboardingInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0BE88F1EB5E6D6000C0810 /* JaldiOnboardingInputView.swift */; };
 		4C0BE8921EB5E76E000C0810 /* JaldiOnboardingDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0BE8911EB5E76E000C0810 /* JaldiOnboardingDefines.swift */; };
 		4C0BE8941EB5EEFA000C0810 /* JaldiValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0BE8931EB5EEFA000C0810 /* JaldiValidator.swift */; };
+		4C2B1A341EB736ED00F63E7D /* JaldiOnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B1A331EB736ED00F63E7D /* JaldiOnboardingModel.swift */; };
 		4C45878C1EB4C23500169AC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C45878B1EB4C23500169AC1 /* AppDelegate.swift */; };
 		4C4587911EB4C23500169AC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C45878F1EB4C23500169AC1 /* Main.storyboard */; };
 		4C4587931EB4C23500169AC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C4587921EB4C23500169AC1 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 		4C0BE88F1EB5E6D6000C0810 /* JaldiOnboardingInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnboardingInputView.swift; sourceTree = "<group>"; };
 		4C0BE8911EB5E76E000C0810 /* JaldiOnboardingDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnboardingDefines.swift; sourceTree = "<group>"; };
 		4C0BE8931EB5EEFA000C0810 /* JaldiValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiValidator.swift; sourceTree = "<group>"; };
+		4C2B1A331EB736ED00F63E7D /* JaldiOnboardingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnboardingModel.swift; sourceTree = "<group>"; };
 		4C4587881EB4C23500169AC1 /* Jaldi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jaldi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C45878B1EB4C23500169AC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C4587901EB4C23500169AC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,6 +65,14 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		4C2B1A321EB736ED00F63E7D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4C2B1A331EB736ED00F63E7D /* JaldiOnboardingModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		4C45877F1EB4C23500169AC1 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				4C45878B1EB4C23500169AC1 /* AppDelegate.swift */,
+				4C2B1A321EB736ED00F63E7D /* Models */,
 				4CF2AE381EB4F13A00AEF591 /* Shared */,
 				4C45879E1EB4CD7F00169AC1 /* ViewControllerts */,
 				4C45879D1EB4CD4B00169AC1 /* SstoryboardS */,
@@ -205,6 +216,7 @@
 				4C0BE8921EB5E76E000C0810 /* JaldiOnboardingDefines.swift in Sources */,
 				4C45878C1EB4C23500169AC1 /* AppDelegate.swift in Sources */,
 				4CF2AE3B1EB4F16500AEF591 /* HBAppColors.swift in Sources */,
+				4C2B1A341EB736ED00F63E7D /* JaldiOnboardingModel.swift in Sources */,
 				4CF2AE371EB4E13B00AEF591 /* HBSignInViewController.swift in Sources */,
 				4C0BE8941EB5EEFA000C0810 /* JaldiValidator.swift in Sources */,
 			);
