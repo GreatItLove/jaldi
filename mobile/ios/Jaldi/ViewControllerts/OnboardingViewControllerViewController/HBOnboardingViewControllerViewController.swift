@@ -47,6 +47,10 @@ class HBOnboardingViewControllerViewController: UIViewController {
     }
     
     @IBAction func signInAction(_ sender: Any) {
+        
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let signInViewController = storyboard.instantiateViewController(withIdentifier: "JaldiSignInViewController") as? JaldiSignInViewController
+        self.present(signInViewController!, animated: true, completion: nil)
     }
     
     //MARK: Configuration
