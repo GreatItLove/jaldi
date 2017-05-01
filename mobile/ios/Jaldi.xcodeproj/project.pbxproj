@@ -12,11 +12,11 @@
 		4C2B1A3E1EB73F8800F63E7D /* JaldiOnboardingDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B1A3A1EB73F8800F63E7D /* JaldiOnboardingDefines.swift */; };
 		4C2B1A3F1EB73F8800F63E7D /* JaldiOnboardingInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B1A3B1EB73F8800F63E7D /* JaldiOnboardingInputView.swift */; };
 		4C2B1A441EB73FD100F63E7D /* HBAppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B1A421EB73FD100F63E7D /* HBAppColors.swift */; };
-		4C2B1A451EB73FD100F63E7D /* JaldiValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B1A431EB73FD100F63E7D /* JaldiValidator.swift */; };
 		4C45878C1EB4C23500169AC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C45878B1EB4C23500169AC1 /* AppDelegate.swift */; };
 		4C4587911EB4C23500169AC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C45878F1EB4C23500169AC1 /* Main.storyboard */; };
 		4C4587931EB4C23500169AC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C4587921EB4C23500169AC1 /* Assets.xcassets */; };
 		4C4587961EB4C23500169AC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C4587941EB4C23500169AC1 /* LaunchScreen.storyboard */; };
+		4C832AF21EB751BB0092A853 /* JaldiValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C832AF11EB751BB0092A853 /* JaldiValidator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,13 +25,13 @@
 		4C2B1A3A1EB73F8800F63E7D /* JaldiOnboardingDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnboardingDefines.swift; sourceTree = "<group>"; };
 		4C2B1A3B1EB73F8800F63E7D /* JaldiOnboardingInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnboardingInputView.swift; sourceTree = "<group>"; };
 		4C2B1A421EB73FD100F63E7D /* HBAppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBAppColors.swift; sourceTree = "<group>"; };
-		4C2B1A431EB73FD100F63E7D /* JaldiValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiValidator.swift; sourceTree = "<group>"; };
 		4C4587881EB4C23500169AC1 /* Jaldi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jaldi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C45878B1EB4C23500169AC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C4587901EB4C23500169AC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C4587921EB4C23500169AC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C4587951EB4C23500169AC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C4587971EB4C23500169AC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C832AF11EB751BB0092A853 /* JaldiValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiValidator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				4C2B1A421EB73FD100F63E7D /* HBAppColors.swift */,
-				4C2B1A431EB73FD100F63E7D /* JaldiValidator.swift */,
+				4C832AF11EB751BB0092A853 /* JaldiValidator.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -205,7 +205,7 @@
 				4C45878C1EB4C23500169AC1 /* AppDelegate.swift in Sources */,
 				4C2B1A3D1EB73F8800F63E7D /* HBOnboardingViewControllerViewController.swift in Sources */,
 				4C2B1A441EB73FD100F63E7D /* HBAppColors.swift in Sources */,
-				4C2B1A451EB73FD100F63E7D /* JaldiValidator.swift in Sources */,
+				4C832AF21EB751BB0092A853 /* JaldiValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
