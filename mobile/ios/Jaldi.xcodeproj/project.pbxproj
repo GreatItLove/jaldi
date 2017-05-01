@@ -115,8 +115,7 @@
 				4C4587921EB4C23500169AC1 /* Assets.xcassets */,
 				4C4587971EB4C23500169AC1 /* Info.plist */,
 			);
-			name = Jaldi;
-			path = ../../../../../../../ios/Jaldi;
+			path = Jaldi;
 			sourceTree = "<group>";
 		};
 		4C45879D1EB4CD4B00169AC1 /* Sstoryboards */ = {
