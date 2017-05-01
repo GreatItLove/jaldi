@@ -17,6 +17,7 @@
 		4C832AFC1EB752240092A853 /* HBOnboardingViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C832AF71EB752240092A853 /* HBOnboardingViewControllerViewController.swift */; };
 		4C832AFD1EB752240092A853 /* JaldiOnboardingDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C832AF91EB752240092A853 /* JaldiOnboardingDefines.swift */; };
 		4C832AFE1EB752240092A853 /* JaldiOnboardingInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C832AFA1EB752240092A853 /* JaldiOnboardingInputView.swift */; };
+		4C832B011EB752B70092A853 /* JaldiOnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C832B001EB752B70092A853 /* JaldiOnboardingModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		4C832AF71EB752240092A853 /* HBOnboardingViewControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBOnboardingViewControllerViewController.swift; sourceTree = "<group>"; };
 		4C832AF91EB752240092A853 /* JaldiOnboardingDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnboardingDefines.swift; sourceTree = "<group>"; };
 		4C832AFA1EB752240092A853 /* JaldiOnboardingInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnboardingInputView.swift; sourceTree = "<group>"; };
+		4C832B001EB752B70092A853 /* JaldiOnboardingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnboardingModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				4C45878B1EB4C23500169AC1 /* AppDelegate.swift */,
+				4C832AFF1EB752B70092A853 /* Models */,
 				4C832AF41EB752240092A853 /* ViewControllerts */,
 				4C2B1A401EB73FD100F63E7D /* Shared */,
 				4C45879D1EB4CD4B00169AC1 /* Sstoryboards */,
@@ -125,6 +128,14 @@
 				4C832AFA1EB752240092A853 /* JaldiOnboardingInputView.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		4C832AFF1EB752B70092A853 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4C832B001EB752B70092A853 /* JaldiOnboardingModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,6 +215,7 @@
 				4C832AFD1EB752240092A853 /* JaldiOnboardingDefines.swift in Sources */,
 				4C832AFE1EB752240092A853 /* JaldiOnboardingInputView.swift in Sources */,
 				4C832AFC1EB752240092A853 /* HBOnboardingViewControllerViewController.swift in Sources */,
+				4C832B011EB752B70092A853 /* JaldiOnboardingModel.swift in Sources */,
 				4C2B1A441EB73FD100F63E7D /* HBAppColors.swift in Sources */,
 				4C832AF21EB751BB0092A853 /* JaldiValidator.swift in Sources */,
 			);
