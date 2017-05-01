@@ -468,6 +468,72 @@
             </objects>
             <point key="canvasLocation" x="694" y="-55"/>
         </scene>
+        <!--Jaldi Not In Your Area View Controller-->
+        <scene sceneID="Zth-nX-rDQ">
+            <objects>
+                <viewController storyboardIdentifier="JaldiNotInYourAreaViewController" id="tHj-iq-8qa" customClass="JaldiNotInYourAreaViewController" customModule="Jaldi" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="N2P-r0-Iuu"/>
+                        <viewControllerLayoutGuide type="bottom" id="OXD-q2-dbN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0RL-c8-wC3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z1o-Vj-ZgO" userLabel="TopView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYa-tH-2MJ">
+                                        <rect key="frame" x="10" y="25" width="30" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="TMo-Ez-05D"/>
+                                            <constraint firstAttribute="width" constant="30" id="bks-vD-uev"/>
+                                        </constraints>
+                                        <state key="normal" image="backward_arrow_light_gray"/>
+                                        <connections>
+                                            <action selector="backAction:" destination="tHj-iq-8qa" eventType="touchUpInside" id="UrD-ZZ-Qj6"/>
+                                            <action selector="backAction:" destination="Ess-Ee-Ez0" eventType="touchUpInside" id="x7R-3J-yXb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="bYa-tH-2MJ" firstAttribute="leading" secondItem="Z1o-Vj-ZgO" secondAttribute="leading" constant="10" id="G8m-R7-K8T"/>
+                                    <constraint firstItem="bYa-tH-2MJ" firstAttribute="centerY" secondItem="Z1o-Vj-ZgO" secondAttribute="centerY" constant="10" id="c6P-o5-07o"/>
+                                    <constraint firstAttribute="height" constant="70" id="p6u-yF-M7c"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vAV-Jv-jie">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" red="0.5452741981" green="0.77085918190000002" blue="0.2392095923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="nW9-ea-RHT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Try Another Zip Code">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="signInAction:" destination="9IG-b9-ZEw" eventType="touchUpInside" id="wTJ-Da-8ko"/>
+                                    <action selector="tryAnotherZipAction:" destination="tHj-iq-8qa" eventType="touchUpInside" id="vDs-vl-CZI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="vAV-Jv-jie" secondAttribute="trailing" id="2ut-eE-A7G"/>
+                            <constraint firstAttribute="bottom" secondItem="vAV-Jv-jie" secondAttribute="bottom" id="8Uf-EU-L1j"/>
+                            <constraint firstAttribute="trailing" secondItem="Z1o-Vj-ZgO" secondAttribute="trailing" id="9IH-gH-9ox"/>
+                            <constraint firstItem="Z1o-Vj-ZgO" firstAttribute="leading" secondItem="0RL-c8-wC3" secondAttribute="leading" id="B4x-tY-Tsm"/>
+                            <constraint firstItem="vAV-Jv-jie" firstAttribute="leading" secondItem="0RL-c8-wC3" secondAttribute="leading" id="GPz-wE-K3P"/>
+                            <constraint firstItem="Z1o-Vj-ZgO" firstAttribute="top" secondItem="0RL-c8-wC3" secondAttribute="top" id="iBG-Kq-yLI"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="423-8Z-TiW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1546" y="-38"/>
+        </scene>
     </scenes>
     <resources>
         <image name="backward_arrow_light_gray" width="22" height="22"/>
