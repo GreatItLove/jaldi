@@ -1,0 +1,13 @@
+<div class="modal-header">
+    <h4 class="modal-title">Crop image for profile</h4>
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">×</button>
+</div>
+<div class="modal-body">
+    <div class="cropArea">
+        <img-crop image="myImage" area-type="square" result-image="myCroppedImage"></img-crop>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+    <button type="button" class="btn btn-primary" ng-click="upload()">Set picture</button>
+</div>

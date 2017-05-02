@@ -1,3 +1,15 @@
 .btn {
     cursor: pointer;
 }
+
+.nav.navbar-nav.last {
+    padding-right: 20px;
+}
+
+.form-control, .daterangepicker .input-mini, .input-group > .ui-select-bootstrap > input.ui-select-search.form-control, .input-group > .ui-select-bootstrap > input.ui-select-search.form-control.direction-up {
+    color: #61646b;
+}
+
+.form-control:focus, .daterangepicker .input-mini:focus, .input-group > .ui-select-bootstrap > input.ui-select-search.form-control:focus {
+    color: #6f727b;
+}

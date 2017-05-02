@@ -22,6 +22,7 @@ public class UserMapper implements RowMapper<User> {
         user.setPhone(rs.getString("phone"));
         user.setRole(User.Role.valueOf(rs.getString("role")));
         user.setType(User.Type.valueOf(rs.getString("type")));
+        user.setProfileImageId(rs.getString("profileImageId"));
         user.setActive(rs.getBoolean("isActive"));
         user.setDeleted(rs.getBoolean("isDeleted"));
         user.setCreationDate(rs.getTimestamp("creationDate"));

@@ -1,0 +1,64 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak],
+.ng-cloak, .x-ng-cloak,
+.ng-hide:not(.ng-hide-animate) {
+    display: none !important;
+}
+
+ng\:form {
+    display: block;
+}
+
+.ajax-loader {
+    margin-left: 50%;
+    position: fixed;
+    top: 300px;
+    z-index: 10000;
+}
+
+.hide {
+    display:none!important
+}
+
+.nav-item-box {
+    padding: 20px!important;
+}
+
+.nav-item-box img {
+    margin-right: 15px!important;
+}
+
+hr.profile-img-divider {
+    margin: 0 !important;
+    border: 1px solid #e0e0e0;
+    border-top: 0;
+    width: 99%;
+}
+
+.password-change-header {
+    margin-top: 50px;
+}
+
+.padding-left-30 {
+    padding-left: 30px;
+}
+
+.cropArea {
+    overflow: hidden;
+    width:500px;
+    height:350px;
+}
+
+.fade.in {
+    opacity: 1;
+}
+
+.modal.in .modal-dialog {
+    -webkit-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+}
+
+.modal-backdrop.in {
+    filter: alpha(opacity=50);
+    opacity: .5;
+}

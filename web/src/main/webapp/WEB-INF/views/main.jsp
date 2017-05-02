@@ -1,22 +1,37 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<sec:authentication var="userId" property="user.id"/>
+<sec:authentication var="userFullName" property="user.name" htmlEscape="false"/>
+<sec:authentication var="profileImageId" property="user.profileImageId" htmlEscape="false"/>
 <!DOCTYPE html>
-<html>
+<html ng-app="jaldi">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>BtcInvest - Sign In</title>
+    <title>Jaldi - Book your local, trusted handyman</title>
     <jsp:include page="common/meta.jsp"/>
 
     <link href="/resources/main/css/font-awesome.min.css" rel="stylesheet">
     <link href="/resources/main/css/simple-line-icons.css" rel="stylesheet">
+    <link href="/resources/main/js/libs/ng-table/ng-table.min.css" rel="stylesheet" type="text/css">
+    <link href="/resources/main/js/libs/img-crop/ng-img-crop.css" rel="stylesheet" type="text/css">
 
     <!-- Main styles for this application -->
     <link href="/resources/main/css/style.css" rel="stylesheet">
 
     <link href="/resources/main/css/override.css" rel="stylesheet">
 
+    <link href="/resources/main/css/jaldi.css" rel="stylesheet">
+
+    <script language="javascript" type="text/javascript">
+        var contextPath = '${contextPath}';
+        var userId = parseInt('${userId}');
+        var userFullName = '${userFullName}';
+        var profileImageId = '${profileImageId}';
+    </script>
 </head>
 <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
 <header class="app-header navbar">
@@ -28,28 +43,46 @@
         </li>
 
     </ul>
+    <ul class="nav navbar-nav ml-auto last">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                <img ng-src="{{utils.getProfilePictureUrl()}}" class="img-avatar">
+                <span class="hidden-md-down" ng-bind="$root.user.userFullName"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" ui-sref="profile"><i class="fa fa-user"></i> Profile</a>
+                <a class="dropdown-item" href ng-click="$root.logout()"><i class="fa fa-lock"></i> Logout</a>
+            </div>
+        </li>
+    </ul>
 </header>
 
 <div class="app-body">
     <div class="sidebar">
         <nav class="sidebar-nav">
-            <form>
-                <div class="form-group p-h mb-0">
-                    <input type="text" class="form-control" aria-describedby="search" placeholder="Search...">
-                </div>
-            </form>
             <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="icon-speedometer"></i> Dashboard <span class="badge badge-info">NEW</span></a>
+                <li class="nav-item nav-item-box">
+                    <img ng-src="{{utils.getProfilePictureUrl()}}" class="pull-left m-r-2 img-avatar border-round" style="width: 54px; height: 54px;">
+                    <div class="font-size-13"><span class="font-weight-light">Welcome, </span><div><strong ng-bind="$root.user.userFullName"></strong></div></div>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" ui-sref="workers" ui-sref-active="active"><i class="icon-user-follow"></i> Workers</a>
+                </li>
+                <li class="nav-item nav-dropdown" ng-class="{'open':$state.is('profile')}">
+                    <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-settings"></i> Settings</a>
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a class="nav-link" ui-sref="profile" ui-sref-active="active"><i class="icon-user"></i> Profile</a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </div>
 
     <!-- Main content -->
     <main class="main">
-        <div class="container-fluid pt-2">
+        <div class="container-fluid pt-2" ui-view>
 
 
         </div>
@@ -70,6 +103,24 @@
 <script src="/resources/main/js/libs/pace.min.js"></script>
 
 <script src="/resources/main/js/libs/iqapp.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.6.3/angular-sanitize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-resource/1.6.3/angular-resource.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-mask/1.8.7/mask.min.js"></script>
+<script src="/resources/main/js/libs/ui-bootstrap-tpls-2.5.0.min.js"></script>
+<script src="/resources/main/js/libs/ng-table/ng-table.min.js"></script>
+<script src="/resources/main/js/libs/img-crop/ng-img-crop.js"></script>
+
+<script src="/resources/main/app/app.js"></script>
+<script src="/resources/main/app/common/utils.js"></script>
+<script src="/resources/main/app/common/directives.js"></script>
+<script src="/resources/main/app/common/filters.js"></script>
+<script src="/resources/main/app/common/common-controller.js"></script>
+<script src="/resources/main/app/common/common-service.js"></script>
+<script src="/resources/main/app/workers/workers.js"></script>
+<script src="/resources/main/app/profile/profile.js"></script>
 
 </body>
 </html>

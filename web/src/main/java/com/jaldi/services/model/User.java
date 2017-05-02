@@ -28,6 +28,7 @@ public class User {
     private String password;
     private Role role;
     private Type type;
+    private String profileImageId;
     private boolean active;
     private boolean deleted;
     private Date creationDate;
@@ -86,6 +87,14 @@ public class User {
 
     public void setType(Type type) {
         this.type = type;
+    }
+
+    public String getProfileImageId() {
+        return profileImageId;
+    }
+
+    public void setProfileImageId(String profileImageId) {
+        this.profileImageId = profileImageId;
     }
 
     public boolean isActive() {

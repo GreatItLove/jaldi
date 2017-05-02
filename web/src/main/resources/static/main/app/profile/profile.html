@@ -1,0 +1,71 @@
+<div class="header">
+    <h4>Profile</h4>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-block">
+                <div class="col-lg-5">
+                    <div ng-repeat="alert in alerts" class="alert" ng-class="{'alert-info': alert.type == 'info', 'alert-danger': alert.type == 'error'}">
+                        <button type="button" ng-click="closeMe($index)" class="close" >×</button>
+                        <span ng-bind="alert.msg"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <form action="" class="col-md-8 col-lg-9 padding-left-30">
+                        <fieldset class="form-group">
+                            <label>Name</label>
+                            <input type="text" name="name" class="form-control" id="name" ng-model="userData.name">
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <label>Email</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope-o"></i>
+                                </span>
+                                <input type="text" name="email" class="form-control" id="email" ng-model="userData.email" readonly>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <label>Phone number</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-phone"></i>
+                                </span>
+                                <input type="text" class="form-control" id="phone" ng-model="userData.phone" ui-mask="(999) 9999-9999">
+                            </div>
+                            <small class="text-muted">ex. (974) 9999-9999</small>
+                        </fieldset>
+                        <button type="button" ng-click="updateProfile()" class="btn btn-md btn-primary">Update profile</button>
+
+                        <h5 class="password-change-header">Change password</h5>
+
+                        <fieldset class="form-group">
+                            <label>Old password</label>
+                            <input type="password" name="password" class="form-control" id="password" ng-model="pass.oldPassword">
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <label>New password</label>
+                            <input type="password" name="passwordNew" class="form-control" id="passwordNew" ng-model="pass.newPassword">
+                        </fieldset>
+                        <button type="button" ng-click="changePassword()" class="btn btn-md btn-primary">Change password</button>
+                    </form>
+                    <!-- Avatar -->
+                    <div class="col-md-4 col-lg-3">
+                        <div class="card bg-transparent">
+                            <div class="card-block text-center">
+                                <img ng-src="{{utils.getProfilePictureUrl()}}" class="" style="max-width: 100%;">
+                            </div>
+                            <hr class="profile-img-divider">
+                            <div class="card-block text-center">
+                                <label title="Upload image file" for="inputImage" class="btn btn-primary">
+                                    <input type="file" accept="image/*" name="file" id="inputImage" class="hide">
+                                    Change
+                                </label>
+                                <div class="m-t-2 text-muted font-size-12">JPG, GIF or PNG. Max size of 1MB</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

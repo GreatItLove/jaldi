@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>BtcInvest - Sign In</title>
+    <title>Jaldi - Sign In</title>
     <jsp:include page="common/meta.jsp"/>
 
     <link href="/resources/main/css/font-awesome.min.css" rel="stylesheet">
@@ -50,10 +50,10 @@
                             </div>
                             <div class="row">
                                 <div class="col-6">
-                                    <button type="button" class="btn btn-primary px-2">Login</button>
+                                    <button type="submit" class="btn btn-primary px-2">Login</button>
                                 </div>
                                 <div class="col-6 text-right">
-                                    <button type="submit" class="btn btn-link px-0">Forgot password?</button>
+                                    <button type="button" class="btn btn-link px-0">Forgot password?</button>
                                 </div>
                             </div>
                         </form>

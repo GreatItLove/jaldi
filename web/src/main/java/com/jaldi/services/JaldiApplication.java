@@ -14,7 +14,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"it.ozimov.springboot", "com.jaldi.services.controller", "com.jaldi.services.common", "com.jaldi.services.dao"})
+@ComponentScan(basePackages = {"it.ozimov.springboot", "com.jaldi.services.controller", "com.jaldi.services.rest", "com.jaldi.services.common", "com.jaldi.services.dao"})
 public class JaldiApplication extends SpringBootServletInitializer {
 
 	@Override
