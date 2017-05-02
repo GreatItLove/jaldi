@@ -534,6 +534,50 @@
             </objects>
             <point key="canvasLocation" x="1546" y="-38"/>
         </scene>
+        <!--Jaldi Home View Controller-->
+        <scene sceneID="FP7-0h-Dr8">
+            <objects>
+                <viewController storyboardIdentifier="JaldiHomeViewController" id="y63-1N-TZg" customClass="JaldiHomeViewController" customModule="Jaldi" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ey9-nL-45e"/>
+                        <viewControllerLayoutGuide type="bottom" id="upL-2y-0QE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Oua-7b-GlK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wQd-9z-KC2">
+                                <rect key="frame" x="25" y="83.5" width="325" height="500"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cCk-AA-Xo2">
+                                        <rect key="frame" x="8" y="50" width="309" height="418"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="309" id="GXk-eC-Tfb"/>
+                                            <constraint firstAttribute="height" constant="418" id="e2X-oy-iyq"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="500" id="044-Vk-Ze5"/>
+                                    <constraint firstAttribute="width" constant="325" id="1La-bm-udw"/>
+                                    <constraint firstItem="cCk-AA-Xo2" firstAttribute="centerX" secondItem="wQd-9z-KC2" secondAttribute="centerX" id="QhU-EH-7Ea"/>
+                                    <constraint firstItem="cCk-AA-Xo2" firstAttribute="top" secondItem="wQd-9z-KC2" secondAttribute="top" constant="50" id="qZx-sm-t5U"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wQd-9z-KC2" firstAttribute="centerX" secondItem="Oua-7b-GlK" secondAttribute="centerX" id="Fko-nA-iey"/>
+                            <constraint firstItem="wQd-9z-KC2" firstAttribute="centerY" secondItem="Oua-7b-GlK" secondAttribute="centerY" id="gx0-Ya-xs2"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m2c-ZV-gwX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="133.59999999999999" y="589.65517241379314"/>
+        </scene>
     </scenes>
     <resources>
         <image name="backward_arrow_light_gray" width="22" height="22"/>
