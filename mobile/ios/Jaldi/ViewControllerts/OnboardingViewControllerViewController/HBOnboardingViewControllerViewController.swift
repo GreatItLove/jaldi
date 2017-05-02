@@ -47,7 +47,6 @@ class HBOnboardingViewControllerViewController: UIViewController {
     }
     
     @IBAction func signInAction(_ sender: Any) {
-        
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let signInViewController = storyboard.instantiateViewController(withIdentifier: "JaldiSignInViewController") as? JaldiSignInViewController
         self.present(signInViewController!, animated: true, completion: nil)
@@ -146,10 +145,24 @@ extension HBOnboardingViewControllerViewController: JaldiOnboardingInputViewDele
     }
     
     func onboarding(inputView:JaldiOnboardingInputView, didReturn textField:UITextField, onboardingState:OnBoardingState) {
-        if onboardingState == .zip {
+        switch onboardingState {
+        case .zip:
             self.activeState = .email
             emailInputView.becomeActive()
             self.configureWithActive(state: self.activeState, animated: true)
+        case .email:
+            self.emailInputView.resignActive()
+            self.moveToNextScreen()
+        }
+    }
+    fileprivate func moveToNextScreen() {
+        if onboardingModel.canLoginAsGuest() {
+            UserProfile.currentProfile.loginAsGuest(guest: onboardingModel)
+        }else {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let notInYourAreaViewController = storyboard.instantiateViewController(withIdentifier: "JaldiNotInYourAreaViewController") as? JaldiNotInYourAreaViewController
+            notInYourAreaViewController?.guest = self.onboardingModel
+            self.navigationController?.pushViewController(notInYourAreaViewController!, animated: true)
         }
     }
 }

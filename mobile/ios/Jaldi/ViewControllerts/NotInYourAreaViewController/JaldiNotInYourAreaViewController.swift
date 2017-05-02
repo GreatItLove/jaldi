@@ -11,15 +11,15 @@ import UIKit
 class JaldiNotInYourAreaViewController: UIViewController {
 
     @IBOutlet weak var zipCodeLabel: UILabel!
-    var onboardingModel: JaldiOnboardingModel?
+    var guest: JaldiOnboardingModel?
     override func viewDidLoad() {
         super.viewDidLoad()
-       self.configureWith(onboardingModel: onboardingModel)
+       self.configureWith(guest: guest)
         // Do any additional setup after loading the view.
     }
     //MARK: Configurations
-    private func configureWith(onboardingModel: JaldiOnboardingModel?) {
-        guard let onboarding = onboardingModel, let zip = onboarding.zip else {
+    private func configureWith(guest: JaldiOnboardingModel?) {
+        guard let guestUser = guest, let zip = guestUser.zip else {
             zipCodeLabel.text = "Unknown ZIP Code"
             return
         }

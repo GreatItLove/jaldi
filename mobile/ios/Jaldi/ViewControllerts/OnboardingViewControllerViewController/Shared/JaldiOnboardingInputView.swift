@@ -42,6 +42,7 @@ class JaldiOnboardingInputView: UIView {
         self.state = onBoardingState
         self.delegate = onboardingInputViewDelegat
         self.configureOnboardingTextFieldWith(onBoardingModel:onBoardingModel, onBoardingState:onBoardingState)
+        self.configureTitle(onBoardingState: onBoardingState)
         self.configureNextButtonStateWith(onBoardingModel: onBoardingModel, onBoardingState: onBoardingState)
     }
     
@@ -61,6 +62,15 @@ class JaldiOnboardingInputView: UIView {
             onboardingTextField.text = onBoardingModel.zip
         case .email:
             onboardingTextField.text = onBoardingModel.email
+            
+        }
+    }
+    fileprivate func  configureTitle(onBoardingState:OnBoardingState) {
+        switch onBoardingState {
+        case .zip:
+            inputViewTitleLabel.text = "Where are you located?"
+        case .email:
+            inputViewTitleLabel.text = "What's your email?"
             
         }
     }
@@ -109,7 +119,7 @@ extension JaldiOnboardingInputView: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        delegate?.onboarding(inputView: self, didBeginEditing: textField, onboardingState:self.state)
+        delegate?.onboarding(inputView: self, textFieldDidEndEditing: textField, onboardingState:self.state)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

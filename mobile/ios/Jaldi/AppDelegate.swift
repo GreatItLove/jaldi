@@ -17,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-//        self.autoLogin()
+        self.registerNotofications()
+        self.autoLogin()
         return true
     }
 
@@ -43,6 +44,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-   
+    //NARK: Root View Controller
+    private func autoLogin() {
+        let guest =  UserProfile.currentProfile.currentGuestUser()
+        if guest.canLoginAsGuest(){
+            self.setHomeViewController()
+        }else{
+            self.setGuestViewController()
+        }
+    }
+    private func setHomeViewController() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let onboardingViewControllerViewController = storyboard.instantiateViewController(withIdentifier: "JaldiHomeViewController") as? JaldiHomeViewController
+        let homeNavController  = UINavigationController(rootViewController: onboardingViewControllerViewController!)
+        homeNavController.isNavigationBarHidden = true
+        
+        self.window?.rootViewController = homeNavController
+    }
+    private func setGuestViewController() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let onboardingViewControllerViewController = storyboard.instantiateViewController(withIdentifier: "HBOnboardingViewControllerViewController") as? HBOnboardingViewControllerViewController
+        self.loginNaveController  = UINavigationController(rootViewController: onboardingViewControllerViewController!)
+        self.loginNaveController?.isNavigationBarHidden = true
+        
+        self.window?.rootViewController = self.loginNaveController
+        
+    }
+    
+    //MARK: Notification
+    private func registerNotofications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.loginNotification(_:)), name: NSNotification.Name(rawValue: AppNotifications.loginNotificationName), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.logoutNotification(_:)), name: NSNotification.Name(rawValue: AppNotifications.logoutNotificationName), object: nil)
+    }
+    func loginNotification(_ notification: Notification) {
+        self.setHomeViewController()
+    }
+    
+    func logoutNotification(_ notification: Notification) {
+        self.setGuestViewController()
+    }
+
 }
 
