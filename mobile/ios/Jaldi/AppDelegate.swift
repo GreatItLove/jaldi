@@ -16,7 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var loginNaveController: UINavigationController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        UserProfile.currentProfile.logoutProfile()
+        
         self.registerNotofications()
         self.autoLogin()
         return true
@@ -77,6 +78,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func registerNotofications() {
         NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.loginNotification(_:)), name: NSNotification.Name(rawValue: AppNotifications.loginNotificationName), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.logoutNotification(_:)), name: NSNotification.Name(rawValue: AppNotifications.logoutNotificationName), object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.zipCodeIsChangedNotification(_:)), name: NSNotification.Name(rawValue: AppNotifications.zipCodeIsChangedNotificationName), object: nil)
+        
+        
     }
     func loginNotification(_ notification: Notification) {
         self.setHomeViewController()
@@ -84,6 +88,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func logoutNotification(_ notification: Notification) {
         self.setGuestViewController()
+    }
+    func zipCodeIsChangedNotification(_ notification: Notification) {
+        self.setHomeViewController()
     }
 
 }

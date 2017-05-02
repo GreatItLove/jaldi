@@ -44,7 +44,7 @@ class JaldiSignInViewController: UIViewController {
     }
     //MARK: GestureRecognizer
     private func addRecognizer(){
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(HBOnboardingViewControllerViewController.handleTap(gestureRecognizer:)))
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(JaldiSignInViewController.handleTap(gestureRecognizer:)))
         view.addGestureRecognizer(gestureRecognizer)
     }
     func handleTap(gestureRecognizer: UIGestureRecognizer) {

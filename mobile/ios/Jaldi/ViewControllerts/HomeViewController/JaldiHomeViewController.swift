@@ -54,6 +54,9 @@ class JaldiHomeViewController: UIViewController {
 
     }
     @IBAction func changeZipAction(_ sender: Any) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
+        let signInViewController = storyboard.instantiateViewController(withIdentifier: "JaldiChangeZipCodeController") as? JaldiChangeZipCodeController
+        self.present(signInViewController!, animated: true, completion: nil)
     }
    
     

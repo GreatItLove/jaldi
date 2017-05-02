@@ -11,6 +11,8 @@ import UIKit
 class JaldiNotInYourAreaViewController: UIViewController {
 
     @IBOutlet weak var zipCodeLabel: UILabel!
+    @IBOutlet weak var backButton: UIButton!
+    var presentedFromCangeZipScreen:Bool = false
     var guest: JaldiOnboardingModel?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +21,7 @@ class JaldiNotInYourAreaViewController: UIViewController {
     }
     //MARK: Configurations
     private func configureWith(guest: JaldiOnboardingModel?) {
+        backButton.isHidden = presentedFromCangeZipScreen
         guard let guestUser = guest, let zip = guestUser.zip else {
             zipCodeLabel.text = "Unknown ZIP Code"
             return
@@ -30,6 +33,14 @@ class JaldiNotInYourAreaViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func tryAnotherZipAction(_ sender: Any) {
-        print("tryAnotherZipAction")
+        if presentedFromCangeZipScreen {
+          self.dismiss(animated: true, completion: nil)
+        }else{
+            let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
+            let changeZipCodeController = storyboard.instantiateViewController(withIdentifier: "JaldiChangeZipCodeController") as? JaldiChangeZipCodeController
+            changeZipCodeController?.presentedFromNotInYourAreaScreen = true
+            self.present(changeZipCodeController!, animated: true, completion: nil)
+
+        }
     }
 }
