@@ -63,7 +63,6 @@ class JaldiHomeViewController: UIViewController {
         self.present(signInViewController!, animated: true, completion: nil)
     }
    
-    
 }
 
 extension JaldiHomeViewController: UICollectionViewDelegate,UICollectionViewDataSource{
@@ -114,7 +113,7 @@ extension JaldiHomeViewController: UICollectionViewDelegate,UICollectionViewData
     }
     
     fileprivate func navigateToElectrician() {
-        print("Navigate to Electrician")
+        self.showOnBoradingListViewFor(category: .electrician)
     }
     
     fileprivate func navigateToMason() {
@@ -126,11 +125,20 @@ extension JaldiHomeViewController: UICollectionViewDelegate,UICollectionViewData
     }
     
     fileprivate func navigateToPlumber() {
-        print("Navigate to Plumber")
+        self.showOnBoradingListViewFor(category: .plumber)
     }
     
     fileprivate func navigateToAcTechnical() {
         print("Navigate to Technical")
     }
+    fileprivate func showOnBoradingListViewFor(category:HomeCategory) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let onBoradingListViewController = storyboard.instantiateViewController(withIdentifier: "JaldiOnBoradingListViewController") as? JaldiOnBoradingListViewController
+        onBoradingListViewController?.homeCategory = category
+        self.navigationController?.pushViewController(onBoradingListViewController!, animated: true)
+       
+    }
+    
+    
 
 }
