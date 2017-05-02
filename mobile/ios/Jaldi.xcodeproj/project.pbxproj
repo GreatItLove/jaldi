@@ -21,6 +21,7 @@
 		4C832B0B1EB775DD0092A853 /* JaldiNotInYourAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C832B0A1EB775DD0092A853 /* JaldiNotInYourAreaViewController.swift */; };
 		4CED68541EB870A5001A7CC5 /* JaldiAppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED68531EB870A5001A7CC5 /* JaldiAppConstants.swift */; };
 		4CED68561EB871BF001A7CC5 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED68551EB871BF001A7CC5 /* UserProfile.swift */; };
+		4CED68591EB8802E001A7CC5 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CED68571EB8802E001A7CC5 /* Login.storyboard */; };
 		C65CB5071EB857F000DE65B7 /* JaldiHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65CB5061EB857F000DE65B7 /* JaldiHomeViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		4C832B0A1EB775DD0092A853 /* JaldiNotInYourAreaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiNotInYourAreaViewController.swift; sourceTree = "<group>"; };
 		4CED68531EB870A5001A7CC5 /* JaldiAppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiAppConstants.swift; sourceTree = "<group>"; };
 		4CED68551EB871BF001A7CC5 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		4CED68581EB8802E001A7CC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		C65CB5061EB857F000DE65B7 /* JaldiHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JaldiHomeViewController.swift; path = HomeViewController/JaldiHomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				4C45878F1EB4C23500169AC1 /* Main.storyboard */,
+				4CED68571EB8802E001A7CC5 /* Login.storyboard */,
 				4C4587941EB4C23500169AC1 /* LaunchScreen.storyboard */,
 			);
 			name = Sstoryboards;
@@ -233,6 +236,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CED68591EB8802E001A7CC5 /* Login.storyboard in Resources */,
 				4C4587961EB4C23500169AC1 /* LaunchScreen.storyboard in Resources */,
 				4C4587931EB4C23500169AC1 /* Assets.xcassets in Resources */,
 				4C4587911EB4C23500169AC1 /* Main.storyboard in Resources */,
@@ -278,6 +282,14 @@
 				4C4587951EB4C23500169AC1 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4CED68571EB8802E001A7CC5 /* Login.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CED68581EB8802E001A7CC5 /* Base */,
+			);
+			name = Login.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

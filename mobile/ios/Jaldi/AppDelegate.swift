@@ -63,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = homeNavController
     }
     private func setGuestViewController() {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
         
         let onboardingViewControllerViewController = storyboard.instantiateViewController(withIdentifier: "HBOnboardingViewControllerViewController") as? HBOnboardingViewControllerViewController
         self.loginNaveController  = UINavigationController(rootViewController: onboardingViewControllerViewController!)

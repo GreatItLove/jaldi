@@ -47,7 +47,7 @@ class HBOnboardingViewControllerViewController: UIViewController {
     }
     
     @IBAction func signInAction(_ sender: Any) {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
         let signInViewController = storyboard.instantiateViewController(withIdentifier: "JaldiSignInViewController") as? JaldiSignInViewController
         self.present(signInViewController!, animated: true, completion: nil)
     }
@@ -159,7 +159,7 @@ extension HBOnboardingViewControllerViewController: JaldiOnboardingInputViewDele
         if onboardingModel.canLoginAsGuest() {
             UserProfile.currentProfile.loginAsGuest(guest: onboardingModel)
         }else {
-            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
             let notInYourAreaViewController = storyboard.instantiateViewController(withIdentifier: "JaldiNotInYourAreaViewController") as? JaldiNotInYourAreaViewController
             notInYourAreaViewController?.guest = self.onboardingModel
             self.navigationController?.pushViewController(notInYourAreaViewController!, animated: true)
