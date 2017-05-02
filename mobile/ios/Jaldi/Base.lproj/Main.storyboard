@@ -180,9 +180,90 @@
             </objects>
             <point key="canvasLocation" x="157.59999999999999" y="168.6656671664168"/>
         </scene>
+        <!--Jaldi Announcement View Controller-->
+        <scene sceneID="dVU-qs-pbC">
+            <objects>
+                <viewController storyboardIdentifier="JaldiAnnouncementViewController" id="c5d-Ny-l7w" customClass="JaldiAnnouncementViewController" customModule="Jaldi" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Umq-O6-dWN"/>
+                        <viewControllerLayoutGuide type="bottom" id="QaV-fh-vgv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="U02-kR-K4P">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIF-UU-amn" userLabel="Top View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJV-ja-sh1">
+                                        <rect key="frame" x="10" y="25" width="30" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="qnq-lE-4l0"/>
+                                            <constraint firstAttribute="height" constant="40" id="uLV-7m-Pbj"/>
+                                        </constraints>
+                                        <state key="normal" image="close_button_light_gray"/>
+                                        <connections>
+                                            <action selector="closeAction:" destination="c5d-Ny-l7w" eventType="touchUpInside" id="wVC-pH-foQ"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Announcements" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4y-xm-mCZ">
+                                        <rect key="frame" x="50" y="35" width="275" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="c4y-xm-mCZ" firstAttribute="centerY" secondItem="uJV-ja-sh1" secondAttribute="centerY" id="IU3-zj-pLg"/>
+                                    <constraint firstAttribute="trailing" secondItem="c4y-xm-mCZ" secondAttribute="trailing" constant="50" id="QlS-pr-gdg"/>
+                                    <constraint firstItem="uJV-ja-sh1" firstAttribute="leading" secondItem="LIF-UU-amn" secondAttribute="leading" constant="10" id="U0q-QV-UW3"/>
+                                    <constraint firstItem="uJV-ja-sh1" firstAttribute="centerY" secondItem="LIF-UU-amn" secondAttribute="centerY" constant="10" id="WV2-A7-OkG"/>
+                                    <constraint firstItem="c4y-xm-mCZ" firstAttribute="leading" secondItem="LIF-UU-amn" secondAttribute="leading" constant="50" id="eus-In-W2d"/>
+                                    <constraint firstAttribute="height" constant="70" id="vht-f5-GMv"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="n1v-Ke-RdI">
+                                <rect key="frame" x="117.5" y="270" width="140" height="127.5"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mega_phone_colored" translatesAutoresizingMaskIntoConstraints="NO" id="Rso-l6-Bzd">
+                                        <rect key="frame" x="45" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="68g-Pq-K6t"/>
+                                            <constraint firstAttribute="width" constant="50" id="YQd-3A-KOJ"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don't have any announcements yet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vba-Qq-UEk">
+                                        <rect key="frame" x="0.0" y="70" width="140" height="57.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="140" id="209-gg-iI8"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90971422199999996" green="0.90986675019999996" blue="0.90969407560000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="LIF-UU-amn" firstAttribute="top" secondItem="U02-kR-K4P" secondAttribute="top" id="3Qu-BY-rT7"/>
+                            <constraint firstItem="n1v-Ke-RdI" firstAttribute="centerX" secondItem="U02-kR-K4P" secondAttribute="centerX" id="Dbe-8S-mYO"/>
+                            <constraint firstItem="n1v-Ke-RdI" firstAttribute="centerY" secondItem="U02-kR-K4P" secondAttribute="centerY" id="V6p-a6-hcJ"/>
+                            <constraint firstItem="LIF-UU-amn" firstAttribute="leading" secondItem="U02-kR-K4P" secondAttribute="leading" id="d0i-QY-CrP"/>
+                            <constraint firstAttribute="trailing" secondItem="LIF-UU-amn" secondAttribute="trailing" id="ui3-sw-UmU"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9iY-yz-dbD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="909.60000000000002" y="170.46476761619192"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="close_button_light_gray" width="22" height="22"/>
         <image name="icon-electrician-details" width="50" height="50"/>
+        <image name="mega_phone_colored" width="50" height="50"/>
         <image name="mega_phone_icon" width="22" height="22"/>
     </resources>
 </document>

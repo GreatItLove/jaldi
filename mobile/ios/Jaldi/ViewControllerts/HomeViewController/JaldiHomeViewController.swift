@@ -46,6 +46,10 @@ class JaldiHomeViewController: UIViewController {
 
     //MARK: Actions
     @IBAction func announcementAction(_ sender: Any) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let signInViewController = storyboard.instantiateViewController(withIdentifier: "JaldiAnnouncementViewController") as? JaldiAnnouncementViewController
+        self.present(signInViewController!, animated: true, completion: nil)
+        
     }
     @IBAction func signInAction(_ sender: Any) {
         let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
