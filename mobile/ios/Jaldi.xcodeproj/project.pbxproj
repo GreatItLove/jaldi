@@ -22,6 +22,8 @@
 		4CED68541EB870A5001A7CC5 /* JaldiAppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED68531EB870A5001A7CC5 /* JaldiAppConstants.swift */; };
 		4CED68561EB871BF001A7CC5 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED68551EB871BF001A7CC5 /* UserProfile.swift */; };
 		4CED68591EB8802E001A7CC5 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CED68571EB8802E001A7CC5 /* Login.storyboard */; };
+		4CED685C1EB89594001A7CC5 /* JaldiHomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED685B1EB89594001A7CC5 /* JaldiHomeCollectionViewCell.swift */; };
+		4CED68601EB8A9AC001A7CC5 /* HomeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED685F1EB8A9AC001A7CC5 /* HomeCategory.swift */; };
 		C65CB5071EB857F000DE65B7 /* JaldiHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65CB5061EB857F000DE65B7 /* JaldiHomeViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +45,8 @@
 		4CED68531EB870A5001A7CC5 /* JaldiAppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiAppConstants.swift; sourceTree = "<group>"; };
 		4CED68551EB871BF001A7CC5 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		4CED68581EB8802E001A7CC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
+		4CED685B1EB89594001A7CC5 /* JaldiHomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiHomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		4CED685F1EB8A9AC001A7CC5 /* HomeCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCategory.swift; sourceTree = "<group>"; };
 		C65CB5061EB857F000DE65B7 /* JaldiHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JaldiHomeViewController.swift; path = HomeViewController/JaldiHomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,10 +173,21 @@
 			path = NotInYourAreaViewController;
 			sourceTree = "<group>";
 		};
+		4CED685A1EB8956B001A7CC5 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				4CED685B1EB89594001A7CC5 /* JaldiHomeCollectionViewCell.swift */,
+				4CED685F1EB8A9AC001A7CC5 /* HomeCategory.swift */,
+			);
+			name = Shared;
+			path = HomeViewController/Shared;
+			sourceTree = "<group>";
+		};
 		C65CB5081EB857FA00DE65B7 /* HomeViewController */ = {
 			isa = PBXGroup;
 			children = (
 				C65CB5061EB857F000DE65B7 /* JaldiHomeViewController.swift */,
+				4CED685A1EB8956B001A7CC5 /* Shared */,
 			);
 			name = HomeViewController;
 			sourceTree = "<group>";
@@ -261,6 +276,8 @@
 				4CED68561EB871BF001A7CC5 /* UserProfile.swift in Sources */,
 				4C832B081EB760730092A853 /* JaldiSignInViewController.swift in Sources */,
 				4C2B1A441EB73FD100F63E7D /* HBAppColors.swift in Sources */,
+				4CED685C1EB89594001A7CC5 /* JaldiHomeCollectionViewCell.swift in Sources */,
+				4CED68601EB8A9AC001A7CC5 /* HomeCategory.swift in Sources */,
 				4C832AF21EB751BB0092A853 /* JaldiValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -25,11 +25,11 @@ class UserProfile {
     }
     var guestZip:String? {
         get {
-            return UserDefaults.standard.object(forKey: guestEmailUserDefaultKey) as? String
+            return UserDefaults.standard.object(forKey: guestZipUserDefaultKey) as? String
         }
         set{
             let userDefaults  = UserDefaults.standard
-            userDefaults.setValue(newValue, forKey: guestEmailUserDefaultKey)
+            userDefaults.setValue(newValue, forKey: guestZipUserDefaultKey)
             userDefaults.synchronize()
         }
     }
