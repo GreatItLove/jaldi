@@ -58,45 +58,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Jaldi/ViewControllerts/OnboardingViewControllerViewController/HBOnboardingViewControllerViewController.swift"
-            timestampString = "515501549.600238"
+            timestampString = "515506343.154352"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "deinit"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Jaldi/ViewControllerts/OnboardingViewControllerViewController/HBOnboardingViewControllerViewController.swift"
+            timestampString = "515506343.154352"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "105"
             endingLineNumber = "105"
-            landmarkName = "deinit"
+            landmarkName = "keyboardWillHide(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Jaldi.HBOnboardingViewControllerViewController.keyboardWillHide (Foundation.Notification) -&gt; ()"
-                  moduleName = "Jaldi"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mnatskarakhanyan/Desktop/WorkSpace/Applicatations/Jaldi/jaldi/mobile/ios/Jaldi/ViewControllerts/OnboardingViewControllerViewController/HBOnboardingViewControllerViewController.swift"
-                  timestampString = "515501570.467211"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "105"
-                  endingLineNumber = "105"
-                  offsetFromSymbolStart = "672">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Jaldi.HBOnboardingViewControllerViewController.(keyboardWillHide (Foundation.Notification) -&gt; ()).(closure #1)"
-                  moduleName = "Jaldi"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mnatskarakhanyan/Desktop/WorkSpace/Applicatations/Jaldi/jaldi/mobile/ios/Jaldi/ViewControllerts/OnboardingViewControllerViewController/HBOnboardingViewControllerViewController.swift"
-                  timestampString = "515501570.472376"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "106"
-                  endingLineNumber = "106"
-                  offsetFromSymbolStart = "19">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Jaldi/ViewControllerts/OnboardingViewControllerViewController/HBOnboardingViewControllerViewController.swift"
+            timestampString = "515503249.549784"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "keyboardWillShow(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

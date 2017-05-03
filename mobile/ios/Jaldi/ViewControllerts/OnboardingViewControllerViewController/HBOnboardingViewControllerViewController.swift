@@ -80,25 +80,27 @@ class HBOnboardingViewControllerViewController: UIViewController {
     func keyboardWillShow(_ notification:Notification) {
         let info = (notification as NSNotification).userInfo!
         let animationDuration = (info[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue
+
         self.introViewTopConstraint.constant = self.topView.frame.size.height - self.introView.frame.size.height
-        UIView.animate(withDuration: animationDuration!, animations: { () -> Void in
-             self.view.layoutIfNeeded()
-        }, completion: { (finished) -> Void in
-            self.introView.isHidden = true
-        })
+        UIView.transition(with: introView!, duration: animationDuration!,
+                          options: [.transitionCrossDissolve], animations: {
+                            self.view.layoutIfNeeded()
+                            self.introView.isHidden = true
+        }, completion: nil)
     }
     
     func keyboardWillHide(_ notification:Notification) {
         let info = (notification as NSNotification).userInfo!
         let animationDuration = (info[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue
     
+        
         self.introViewTopConstraint.constant = 0
-        UIView.animate(withDuration: animationDuration!, animations: { () -> Void in
-             self.view.layoutIfNeeded()
+        UIView.transition(with: introView!, duration: animationDuration!,
+                          options: [.curveEaseOut, .transitionCrossDissolve], animations: {
+                            self.view.layoutIfNeeded()
+                            self.introView.isHidden = self.activeState == .email
+        }, completion: nil)
 
-        }, completion: { (finished) -> Void in
-            self.introView.isHidden = self.activeState == .email
-        })
     }
     //MARK: OnBoarding State
     
