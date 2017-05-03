@@ -69,9 +69,12 @@ class JaldiOnboardingInputView: UIView {
         switch onBoardingState {
         case .zip:
             inputViewTitleLabel.text = "Where are you located?"
+            
+            onboardingTextField.keyboardType = .default
         case .email:
             inputViewTitleLabel.text = "What's your email?"
             
+            onboardingTextField.keyboardType = .emailAddress
         }
     }
     
