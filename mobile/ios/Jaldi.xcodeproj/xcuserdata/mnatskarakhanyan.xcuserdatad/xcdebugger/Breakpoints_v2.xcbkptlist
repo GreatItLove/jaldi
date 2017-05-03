@@ -51,5 +51,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Jaldi/ViewControllerts/OnboardingViewControllerViewController/HBOnboardingViewControllerViewController.swift"
+            timestampString = "515501549.600238"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "deinit"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Jaldi.HBOnboardingViewControllerViewController.keyboardWillHide (Foundation.Notification) -&gt; ()"
+                  moduleName = "Jaldi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mnatskarakhanyan/Desktop/WorkSpace/Applicatations/Jaldi/jaldi/mobile/ios/Jaldi/ViewControllerts/OnboardingViewControllerViewController/HBOnboardingViewControllerViewController.swift"
+                  timestampString = "515501570.467211"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "672">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Jaldi.HBOnboardingViewControllerViewController.(keyboardWillHide (Foundation.Notification) -&gt; ()).(closure #1)"
+                  moduleName = "Jaldi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mnatskarakhanyan/Desktop/WorkSpace/Applicatations/Jaldi/jaldi/mobile/ios/Jaldi/ViewControllerts/OnboardingViewControllerViewController/HBOnboardingViewControllerViewController.swift"
+                  timestampString = "515501570.472376"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "19">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
