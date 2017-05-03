@@ -95,6 +95,10 @@
     <a href="//jaldi.pro">Jaldi</a> © 2017. All rights reserved.
 </footer>
 
+<div ng-show="$root.showAjaxLoader" class="ajax-loader ng-cloak" loading>
+    <i class="fa fa-circle-o-notch fa-spin fa-3x"></i>
+</div>
+
 <!-- Bootstrap and necessary plugins -->
 <script src="/resources/main/js/libs/jquery.min.js"></script>
 <script src="/resources/main/js/libs/tether.min.js"></script>

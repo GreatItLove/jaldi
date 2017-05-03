@@ -42,9 +42,12 @@ hr.profile-img-divider {
     padding-left: 30px;
 }
 
+.padding-bottom-30 {
+    padding-bottom: 30px;
+}
+
 .cropArea {
     overflow: hidden;
-    width:500px;
     height:350px;
 }
 

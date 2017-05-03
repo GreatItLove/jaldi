@@ -12,7 +12,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <form action="" class="col-md-8 col-lg-9 padding-left-30">
+                    <form action="" class="col-md-8 col-lg-9 padding-left-30 padding-bottom-30">
                         <fieldset class="form-group">
                             <label>Name</label>
                             <input type="text" name="name" class="form-control" id="name" ng-model="userData.name">
@@ -34,7 +34,7 @@
                             </div>
                             <small class="text-muted">ex. (974) 9999-9999</small>
                         </fieldset>
-                        <button type="button" ng-click="updateProfile()" class="btn btn-md btn-primary">Update profile</button>
+                        <button type="button" ng-click="updateProfile()" class="btn btn-md btn-primary" loading-disabled>Update profile</button>
 
                         <h5 class="password-change-header">Change password</h5>
 
@@ -46,7 +46,7 @@
                             <label>New password</label>
                             <input type="password" name="passwordNew" class="form-control" id="passwordNew" ng-model="pass.newPassword">
                         </fieldset>
-                        <button type="button" ng-click="changePassword()" class="btn btn-md btn-primary">Change password</button>
+                        <button type="button" ng-click="changePassword()" class="btn btn-md btn-primary" loading-disabled>Change password</button>
                     </form>
                     <!-- Avatar -->
                     <div class="col-md-4 col-lg-3">
