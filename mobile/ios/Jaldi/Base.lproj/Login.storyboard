@@ -22,6 +22,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_bg_image" translatesAutoresizingMaskIntoConstraints="NO" id="JsY-kr-o6c">
+                                <rect key="frame" x="-0.5" y="-0.5" width="375" height="667"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MKQ-Cj-UiR">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                 <subviews>
@@ -286,19 +289,23 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="OCC-ye-GWN" firstAttribute="top" secondItem="Aeq-1n-1j2" secondAttribute="bottom" id="3b3-7s-0pl"/>
                             <constraint firstItem="Aeq-1n-1j2" firstAttribute="height" secondItem="YSl-0J-Caf" secondAttribute="height" multiplier="1/2" id="4bC-Y1-lFW"/>
+                            <constraint firstItem="JsY-kr-o6c" firstAttribute="height" secondItem="YSl-0J-Caf" secondAttribute="height" id="4dQ-Vt-WZy"/>
                             <constraint firstItem="OCC-ye-GWN" firstAttribute="height" secondItem="YSl-0J-Caf" secondAttribute="height" multiplier="1/2" id="5ra-sv-DMd"/>
+                            <constraint firstItem="JsY-kr-o6c" firstAttribute="centerX" secondItem="YSl-0J-Caf" secondAttribute="centerX" id="8Q3-A2-s4d"/>
                             <constraint firstItem="OCC-ye-GWN" firstAttribute="width" secondItem="Aeq-1n-1j2" secondAttribute="width" id="Cfc-MY-VFU"/>
                             <constraint firstAttribute="trailing" secondItem="MKQ-Cj-UiR" secondAttribute="trailing" id="Dne-xl-wSK"/>
+                            <constraint firstItem="JsY-kr-o6c" firstAttribute="width" secondItem="YSl-0J-Caf" secondAttribute="width" id="JDb-3G-AgJ"/>
                             <constraint firstItem="REN-5Y-4Tg" firstAttribute="centerX" secondItem="MKQ-Cj-UiR" secondAttribute="centerX" id="V0u-Cb-ARI"/>
                             <constraint firstItem="MKQ-Cj-UiR" firstAttribute="leading" secondItem="YSl-0J-Caf" secondAttribute="leading" id="VEM-Rq-Wx2"/>
                             <constraint firstItem="REN-5Y-4Tg" firstAttribute="top" secondItem="MKQ-Cj-UiR" secondAttribute="bottom" id="WJy-yK-Dwu"/>
                             <constraint firstItem="MKQ-Cj-UiR" firstAttribute="top" secondItem="YSl-0J-Caf" secondAttribute="top" id="Yrj-Vm-WP9"/>
                             <constraint firstItem="Aeq-1n-1j2" firstAttribute="width" secondItem="YSl-0J-Caf" secondAttribute="width" id="c6o-C0-02g"/>
                             <constraint firstItem="Aeq-1n-1j2" firstAttribute="centerX" secondItem="YSl-0J-Caf" secondAttribute="centerX" id="ed7-KC-3k3"/>
+                            <constraint firstItem="JsY-kr-o6c" firstAttribute="centerY" secondItem="YSl-0J-Caf" secondAttribute="centerY" id="iR2-yN-l8V"/>
                             <constraint firstItem="Aeq-1n-1j2" firstAttribute="top" secondItem="YSl-0J-Caf" secondAttribute="top" id="l95-dD-7s3"/>
                             <constraint firstItem="OCC-ye-GWN" firstAttribute="leading" secondItem="Aeq-1n-1j2" secondAttribute="leading" id="o3E-eX-N5q"/>
                         </constraints>
@@ -701,6 +708,7 @@
         <image name="close_button_light_gray" width="22" height="22"/>
         <image name="extra_wide_fb_signup_button" width="296" height="48"/>
         <image name="hb_logo_blue" width="114" height="112"/>
+        <image name="map_bg_image" width="250" height="162"/>
         <image name="not_in_area_image" width="190" height="192"/>
         <image name="white-tip" width="31" height="16"/>
     </resources>

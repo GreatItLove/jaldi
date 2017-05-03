@@ -87,8 +87,8 @@ class HBOnboardingViewControllerViewController: UIViewController {
         }, completion: { (finished) -> Void in
                     })
         let duration = animationDuration! / 3
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2 * duration, execute: {
-            UIView.transition(with: self.introView!, duration: duration,
+        DispatchQueue.main.asyncAfter(deadline: .now() +  2 * duration, execute: {
+            UIView.transition(with: self.introView!, duration:  duration,
                               options: [.curveEaseIn, .transitionCrossDissolve], animations: {
                                 self.introView.isHidden = true
             }, completion: {(finished) -> Void in })
@@ -100,17 +100,14 @@ class HBOnboardingViewControllerViewController: UIViewController {
         let info = (notification as NSNotification).userInfo!
         let animationDuration = (info[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue
     
-        
+        self.introView.isHidden = self.activeState == .email
         self.introViewTopConstraint.constant = 0
         UIView.animate(withDuration: animationDuration!, animations: { () -> Void in
             self.view.layoutIfNeeded()
         }, completion: { (finished) -> Void in
 //            self.introView.isHidden = true
         })
-        UIView.transition(with: introView!, duration: animationDuration!,
-                          options: [.curveEaseOut, .transitionCrossDissolve], animations: {
-                             self.introView.isHidden = self.activeState == .email
-        }, completion: nil)
+
     }
     //MARK: OnBoarding State
     
