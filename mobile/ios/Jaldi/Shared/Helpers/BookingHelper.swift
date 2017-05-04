@@ -26,7 +26,7 @@ struct BookingHelper {
             return "Got it! Tell us about the job"
         }
         private func bookingDetailsItmesFor(service:JaldiService) -> [BookingDetailsItem] {
-            return [BookingDetailsItem]()
+            return BookingDetailsItemHelper.bookingItemsFor(service:service)
         }
     }
     
@@ -38,6 +38,8 @@ struct BookingHelper {
             switch service {
             case .lightFixtures:
                 return helper.lightFixturesItems()
+            case .homeCleaning:
+                return helper.homeCleaningItems()
             default:
                return helper.bookingDetailsDefaultItems()
             }
@@ -53,7 +55,7 @@ struct BookingHelper {
             let changeBulbsProperties  = (0...10).map { "\($0)" }
             let changeBulbs = BookingDetailsItem(title: changeBulbsTitle, desc: nil, bookingProperties: changeBulbsProperties)
             
-            let installNewLightTitle  = "Change bulbs"
+            let installNewLightTitle  = "Install new lights"
             let installNewLightProperties  = (0...10).map { "\($0)" }
             let installNewLight = BookingDetailsItem(title: installNewLightTitle, desc: nil, bookingProperties: installNewLightProperties)
             
@@ -68,6 +70,18 @@ struct BookingHelper {
             let fixtures = BookingDetailsItem(title: fixturesTitle, desc: fixturesDesc, bookingProperties: fixturesProperties)
             
             return [changeBulbs,installNewLight,laader,fixtures]
+        }
+        
+        private func homeCleaningItems() -> [BookingDetailsItem] {
+            let bedroomsTitle  = "Bedrooms"
+            let bedroomsProperties  = (0...10).map { "\($0)" }
+            let bedrooms = BookingDetailsItem(title: bedroomsTitle, desc: nil, bookingProperties: bedroomsProperties)
+            
+            let bathroomsTitle  = "Bathrooms"
+            let bathroomsProperties  = (0...10).map { "\($0)" }
+            let bathrooms = BookingDetailsItem(title: bathroomsTitle, desc: nil, bookingProperties: bathroomsProperties)
+        
+            return [bedrooms,bathrooms]
         }
     }
     

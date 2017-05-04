@@ -93,52 +93,59 @@ extension JaldiHomeViewController: UICollectionViewDelegate,UICollectionViewData
     //MARK: navigate to Carpenter, Electrician, Mason, Painter, Plumber, Ac Technical
     fileprivate func navigateTo(category:HomeCategory) {
         switch category {
-        case .carpenter:
-            self.navigateToCarpenter()
+        case .homeCleaning:
+            self.navigateToHomeCleaning()
+        case .handyMan:
+            self.navigateHandyMan()
         case .electrician:
             self.navigateToElectrician()
-        case .mason:
-            self.navigateToMason()
         case .painter:
             self.navigateToPainter()
         case .plumber:
             self.navigateToPlumber()
-        case .acTechnical:
-            self.navigateToAcTechnical()
+       
         }
     }
 
-    fileprivate func navigateToCarpenter() {
-        print("Navigate to Carpenter")
+    fileprivate func navigateToHomeCleaning() {
+       self.showBookingDetailsViewController(category: .homeCleaning)
     }
     
     fileprivate func navigateToElectrician() {
         self.showOnBoradingListViewFor(category: .electrician)
     }
     
-    fileprivate func navigateToMason() {
-        print("Navigate to Mason")
+    fileprivate func navigateHandyMan() {
+        self.showOnBoradingListViewFor(category: .handyMan)
     }
     
     fileprivate func navigateToPainter() {
-        print("Navigate to Painter")
+        self.showBookingDetailsViewController(category: .painter)
     }
     
     fileprivate func navigateToPlumber() {
         self.showOnBoradingListViewFor(category: .plumber)
     }
     
-    fileprivate func navigateToAcTechnical() {
-        print("Navigate to Technical")
-    }
+   
     fileprivate func showOnBoradingListViewFor(category:HomeCategory) {
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let onBoradingListViewController = storyboard.instantiateViewController(withIdentifier: "JaldiOnBoradingListViewController") as? JaldiOnBoradingListViewController
         onBoradingListViewController?.homeCategory = category
         self.navigationController?.pushViewController(onBoradingListViewController!, animated: true)
-       
     }
     
-    
+    fileprivate func showBookingDetailsViewController(category:HomeCategory) {
+        guard let service =  JaldiServiceHeleper.serviceFor(category: category) else {
+            return
+        }
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        if let bookingDetailsViewController = storyboard.instantiateViewController(withIdentifier: "JaldiBookingDetailsViewController") as? JaldiBookingDetailsViewController{
+            bookingDetailsViewController.bookingObject = BookingHelper.bookingObjectFor(service: service)
+            let navController = UINavigationController(rootViewController: bookingDetailsViewController)
+            navController.isNavigationBarHidden = true
+            self.present(navController, animated: true, completion: nil)
+        }
+    }
 
 }

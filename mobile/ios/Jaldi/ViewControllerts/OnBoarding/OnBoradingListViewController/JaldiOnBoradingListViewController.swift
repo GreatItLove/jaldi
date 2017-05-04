@@ -76,7 +76,23 @@ extension JaldiOnBoradingListViewController: UITableViewDelegate,UITableViewData
         }
         return cell!;
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       let service = services[indexPath.row]
+        self.showBookingDetailsViewController(service: service)
+    }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 115
     }
+    
+    fileprivate func showBookingDetailsViewController(service:JaldiService) {
+        
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        if let bookingDetailsViewController = storyboard.instantiateViewController(withIdentifier: "JaldiBookingDetailsViewController") as? JaldiBookingDetailsViewController{
+            bookingDetailsViewController.bookingObject = BookingHelper.bookingObjectFor(service: service)
+            let navController = UINavigationController(rootViewController: bookingDetailsViewController)
+            navController.isNavigationBarHidden = true
+            self.present(navController, animated: true, completion: nil)
+        }
+    }
+
 }
