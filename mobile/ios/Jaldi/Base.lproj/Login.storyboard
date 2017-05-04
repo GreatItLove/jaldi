@@ -316,6 +316,7 @@
                         <outlet property="emailInputViewHorizontalCenterConstraint" destination="93K-pS-2q8" id="mOM-Pc-Ker"/>
                         <outlet property="introView" destination="Aeq-1n-1j2" id="fXk-Ep-k9t"/>
                         <outlet property="introViewTopConstraint" destination="l95-dD-7s3" id="GeH-eR-umD"/>
+                        <outlet property="titleLabel" destination="gsq-40-nk7" id="7Ku-9Y-8w3"/>
                         <outlet property="topView" destination="MKQ-Cj-UiR" id="cY7-jq-no4"/>
                         <outlet property="zipInputView" destination="KUt-7P-Fa1" id="iH7-vt-T57"/>
                         <outlet property="zipInputViewHorizontalCenterConstraint" destination="ega-nW-YQf" id="tI2-kJ-Cne"/>
@@ -708,7 +709,7 @@
         <image name="close_button_light_gray" width="22" height="22"/>
         <image name="extra_wide_fb_signup_button" width="296" height="48"/>
         <image name="hb_logo_blue" width="114" height="112"/>
-        <image name="map_bg_image" width="250" height="162"/>
+        <image name="map_bg_image" width="162" height="250"/>
         <image name="not_in_area_image" width="190" height="192"/>
         <image name="white-tip" width="31" height="16"/>
     </resources>

@@ -11,6 +11,7 @@ import UIKit
 class HBOnboardingViewControllerViewController: UIViewController {
     
     @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var titleLabel: UIView!
     @IBOutlet weak var introView: UIView!
     @IBOutlet weak var backButton: UIButton!
     
@@ -91,8 +92,9 @@ class HBOnboardingViewControllerViewController: UIViewController {
             UIView.transition(with: self.introView!, duration:  duration,
                               options: [.curveEaseIn, .transitionCrossDissolve], animations: {
                                 self.introView.isHidden = true
-            }, completion: {(finished) -> Void in })
+            }, completion: {(finished) -> Void in
 
+            })
         })
     }
     
