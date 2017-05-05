@@ -11,7 +11,7 @@ struct BookingHelper {
    
     static func bookingObjectFor(service:JaldiService) -> BookingObject {
         let bookingDetails = BookingDetailsHelper.bookingDetailsFor(service: service)
-        return BookingObject(service: service, bookingDetails: bookingDetails)
+        return BookingObject(service: service, bookingDetails: bookingDetails, bookingScreens: [BookingScreen.details,BookingScreen.desc,BookingScreen.time])
     }
     //MARK: BookingDetailsHelper Helper
     struct BookingDetailsHelper {
@@ -23,7 +23,13 @@ struct BookingHelper {
         }
         
         private func bookingDetailsTitleFor(service:JaldiService) -> String {
-            return "Got it! Tell us about the job"
+            switch service {
+            case .homeCleaning:
+                return "Tell us about your place"
+            default:
+                return "Got it! Tell us about the job"
+            }
+            
         }
         private func bookingDetailsItmesFor(service:JaldiService) -> [BookingDetailsItem] {
             return BookingDetailsItemHelper.bookingItemsFor(service:service)

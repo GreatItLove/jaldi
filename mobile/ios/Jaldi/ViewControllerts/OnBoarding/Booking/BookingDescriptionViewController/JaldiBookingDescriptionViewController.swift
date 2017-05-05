@@ -8,28 +8,41 @@
 
 import UIKit
 
-class JaldiBookingDescriptionViewController: UIViewController {
+class JaldiBookingDescriptionViewController: UIViewController,BookingNavigation {
 
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var theTableView: UITableView!
     @IBOutlet weak var changeButtonBottomConstraint: NSLayoutConstraint!
     var bookingObject:BookingObject?
+    var curretScreen: BookingScreen = BookingScreen.desc
     var selectedTextView: UITextView?
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
-        configureProgress()
+        configureBookingProgress()
+        addRecognizer()
+        addNotification()
     }
     //MARK: Confifuration
     private func configureTableView() -> Void {
         theTableView.rowHeight = 115
     }
-    private func configureProgress() -> Void {
-        progressView.setProgress(2/4, animated: true)
-    }
+   
     //MARK: Actions
     @IBAction func backAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    @IBAction func nextAction(_ sender: Any) {
+        self.selectedTextView?.resignFirstResponder()
+        self.showNextScreen()
+    }
+    
+    private func showNextScreen() {
+        if !self.isLastScreen() {
+            if let nextViewController = self.nextScreen() {
+                self.navigationController?.pushViewController(nextViewController, animated: true)
+            }
+        }
     }
     //MARK: GestureRecognizer
     private func addRecognizer(){
@@ -106,7 +119,6 @@ extension JaldiBookingDescriptionViewController: UITableViewDelegate,UITableView
         return cell
     }
     
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
         
         let simpleTableIdentifier = "JaldiBookingDetailsHeaderCellDescription"
@@ -124,6 +136,7 @@ extension JaldiBookingDescriptionViewController: JaldiBookingDescriptionTableCel
                             didBeginEditing textView:UITextView) {
         selectedTextView = textView
     }
+    
     func bookingDescription(cell:JaldiBookingDescriptionTableCell,
                             didEndEditing textView:UITextView){
         bookingObject?.description = textView.text

@@ -11,9 +11,12 @@ class BookingObject {
     let service: JaldiService
     let bookingDetails: BookingDetails
     var description: String?
-    init(service:JaldiService, bookingDetails:BookingDetails) {
+    var bookingTime: Date?
+    let bookingScreens: [BookingScreen]
+    init(service:JaldiService, bookingDetails:BookingDetails,bookingScreens:[BookingScreen]) {
         self.service = service
         self.bookingDetails = bookingDetails
+        self.bookingScreens = bookingScreens
     }
 }
 
@@ -45,3 +48,10 @@ class BookingDetailsItem {
         return self.bookingProperties[self.sellectedIndex] !=  BookingHelper.BookingDetailsItemHelper.noTitle
     }
  }
+
+enum BookingScreen: Int {
+    // handyMan
+    case details
+    case desc
+    case time
+}

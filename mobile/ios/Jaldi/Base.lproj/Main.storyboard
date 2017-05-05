@@ -748,6 +748,9 @@
                                 <state key="normal" title="Next">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="nextAction:" destination="yhY-gF-fXy" eventType="touchUpInside" id="i1H-2e-G9A"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -773,6 +776,116 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="id9-44-yPV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1961" y="884"/>
+        </scene>
+        <!--Jaldi Booking Time Picker View Controller-->
+        <scene sceneID="lsG-h5-wEk">
+            <objects>
+                <viewController storyboardIdentifier="JaldiBookingTimePickerViewController" id="E7Y-di-4GZ" customClass="JaldiBookingTimePickerViewController" customModule="Jaldi" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rte-sP-fBZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="UJp-bg-OHQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HJy-e4-z3p">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HoH-9C-5mz" userLabel="Top View">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLW-eU-VnQ">
+                                        <rect key="frame" x="10" y="25" width="30" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="wTF-GT-tgc"/>
+                                            <constraint firstAttribute="height" constant="40" id="zZx-3f-FNl"/>
+                                        </constraints>
+                                        <state key="normal" image="backward_arrow_light_gray"/>
+                                        <connections>
+                                            <action selector="backAction:" destination="E7Y-di-4GZ" eventType="touchUpInside" id="VAT-eV-6f1"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgu-Xs-xJd">
+                                        <rect key="frame" x="50" y="35.333333333333336" width="314" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.10000000149011612" translatesAutoresizingMaskIntoConstraints="NO" id="xOI-ff-J8f">
+                                        <rect key="frame" x="0.0" y="68" width="414" height="2"/>
+                                        <color key="tintColor" red="0.23137254900000001" green="0.67450980390000004" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </progressView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="xOI-ff-J8f" secondAttribute="bottom" id="AdC-uD-XMj"/>
+                                    <constraint firstAttribute="trailing" secondItem="lgu-Xs-xJd" secondAttribute="trailing" constant="50" id="O0V-1T-h2e"/>
+                                    <constraint firstItem="xOI-ff-J8f" firstAttribute="leading" secondItem="HoH-9C-5mz" secondAttribute="leading" id="PwB-jh-O5y"/>
+                                    <constraint firstAttribute="height" constant="70" id="WMK-MF-FfN"/>
+                                    <constraint firstItem="lgu-Xs-xJd" firstAttribute="centerY" secondItem="sLW-eU-VnQ" secondAttribute="centerY" id="Yhg-xg-0gM"/>
+                                    <constraint firstItem="sLW-eU-VnQ" firstAttribute="leading" secondItem="HoH-9C-5mz" secondAttribute="leading" constant="10" id="da6-IW-lrg"/>
+                                    <constraint firstItem="sLW-eU-VnQ" firstAttribute="centerY" secondItem="HoH-9C-5mz" secondAttribute="centerY" constant="10" id="gwt-CF-L0Q"/>
+                                    <constraint firstItem="lgu-Xs-xJd" firstAttribute="leading" secondItem="HoH-9C-5mz" secondAttribute="leading" constant="50" id="ibU-pt-R2G"/>
+                                    <constraint firstAttribute="trailing" secondItem="xOI-ff-J8f" secondAttribute="trailing" id="jpG-Zp-PJv"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abm-ab-mQu">
+                                <rect key="frame" x="0.0" y="70" width="414" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="BQv-93-4g5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="rRb-S1-aq2">
+                                <rect key="frame" x="0.0" y="120" width="414" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="oqx-k6-2IC"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="515664127.87247002">
+                                    <!--2017-05-05 08:02:07 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USu-QE-HfN">
+                                <rect key="frame" x="0.0" y="686" width="414" height="50"/>
+                                <color key="backgroundColor" red="0.5452741981" green="0.77085918190000002" blue="0.2392095923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="F8n-3q-TbC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextAction:" destination="E7Y-di-4GZ" eventType="touchUpInside" id="bTr-Oh-EgM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90971422199999996" green="0.90986675019999996" blue="0.90969407560000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="rRb-S1-aq2" firstAttribute="top" secondItem="abm-ab-mQu" secondAttribute="bottom" id="0Na-nt-l7C"/>
+                            <constraint firstAttribute="trailing" secondItem="HoH-9C-5mz" secondAttribute="trailing" id="2bJ-Af-B2n"/>
+                            <constraint firstItem="HoH-9C-5mz" firstAttribute="leading" secondItem="HJy-e4-z3p" secondAttribute="leading" id="3Yt-FW-p8O"/>
+                            <constraint firstItem="abm-ab-mQu" firstAttribute="top" secondItem="HoH-9C-5mz" secondAttribute="bottom" id="6do-ZR-Dcx"/>
+                            <constraint firstAttribute="bottom" secondItem="USu-QE-HfN" secondAttribute="bottom" id="MvE-Yq-FXY"/>
+                            <constraint firstItem="USu-QE-HfN" firstAttribute="leading" secondItem="HJy-e4-z3p" secondAttribute="leading" id="MxO-Hf-NJu"/>
+                            <constraint firstItem="rRb-S1-aq2" firstAttribute="width" secondItem="HJy-e4-z3p" secondAttribute="width" id="e2Y-jL-42L"/>
+                            <constraint firstItem="abm-ab-mQu" firstAttribute="trailing" secondItem="HoH-9C-5mz" secondAttribute="trailing" id="en2-El-xxp"/>
+                            <constraint firstItem="HoH-9C-5mz" firstAttribute="top" secondItem="HJy-e4-z3p" secondAttribute="top" id="hYu-m3-GK8"/>
+                            <constraint firstItem="rRb-S1-aq2" firstAttribute="centerX" secondItem="HJy-e4-z3p" secondAttribute="centerX" id="o8h-cF-fFw"/>
+                            <constraint firstAttribute="trailing" secondItem="USu-QE-HfN" secondAttribute="trailing" id="vB0-g6-yez"/>
+                            <constraint firstItem="abm-ab-mQu" firstAttribute="leading" secondItem="HoH-9C-5mz" secondAttribute="leading" id="wwv-tg-Hrj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bookingTimeTitleLabel" destination="abm-ab-mQu" id="nV0-Tl-koQ"/>
+                        <outlet property="dateTimePicker" destination="rRb-S1-aq2" id="UFq-Ku-3mV"/>
+                        <outlet property="progressView" destination="xOI-ff-J8f" id="jnG-qc-cm6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uVq-Dn-xj5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2700" y="883.69565217391312"/>
         </scene>
     </scenes>
     <resources>

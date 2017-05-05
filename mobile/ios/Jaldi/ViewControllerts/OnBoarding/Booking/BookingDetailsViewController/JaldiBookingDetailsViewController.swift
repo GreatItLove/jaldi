@@ -8,24 +8,23 @@
 
 import UIKit
 
-class JaldiBookingDetailsViewController: UIViewController {
+class JaldiBookingDetailsViewController: UIViewController,BookingNavigation {
 
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var theTableView: UITableView!
     var bookingObject:BookingObject?
+    var curretScreen: BookingScreen = BookingScreen.details
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureTableView()
-        configureProgress()
+        configureBookingProgress()
     }
     //MARK: Confifuration
     private func configureTableView() -> Void {
         theTableView.estimatedRowHeight = 115
         theTableView.rowHeight = UITableViewAutomaticDimension
     }
-    private func configureProgress() -> Void {
-       progressView.setProgress(1/4, animated: false)
-    }
+
     //MARK: Actions
     @IBAction func closeAction(_ sender: Any) {
         self.dismiss(animated: true) {
@@ -36,11 +35,11 @@ class JaldiBookingDetailsViewController: UIViewController {
     }
     
     private func showNextScreen() {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let onBoradingListViewController = storyboard.instantiateViewController(withIdentifier: "JaldiBookingDescriptionViewController") as? JaldiBookingDescriptionViewController
-        onBoradingListViewController?.bookingObject = bookingObject
-        self.navigationController?.pushViewController(onBoradingListViewController!, animated: true)
-        
+        if !self.isLastScreen() {
+            if let nextViewController = self.nextScreen() {
+                self.navigationController?.pushViewController(nextViewController, animated: true)
+            }
+        }
     }
     
 }
@@ -88,3 +87,9 @@ extension JaldiBookingDetailsViewController:JaldiBookingDetailsTableViewCellDele
 //       self.theTableView.reloadData()
     }
 }
+
+//extension JaldiBookingDetailsViewController:BookingNavigation {
+//    
+//}
+
+
