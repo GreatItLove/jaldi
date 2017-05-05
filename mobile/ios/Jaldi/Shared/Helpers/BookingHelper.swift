@@ -9,9 +9,11 @@
 import Foundation
 struct BookingHelper {
    
+    static let defaultTitle = "Got it! Tell us about the job"
+    static let timeDefaultTitle = "When would you like us to come?"
     static func bookingObjectFor(service:JaldiService) -> BookingObject {
         let bookingDetails = BookingDetailsHelper.bookingDetailsFor(service: service)
-        return BookingObject(service: service, bookingDetails: bookingDetails, bookingScreens: [BookingScreen.details,BookingScreen.desc,BookingScreen.time])
+        return BookingObject(service: service, bookingDetails: bookingDetails, bookingScreens: [BookingScreen.details,BookingScreen.desc,BookingScreen.time,BookingScreen.contactInfo])
     }
     //MARK: BookingDetailsHelper Helper
     struct BookingDetailsHelper {
@@ -27,7 +29,7 @@ struct BookingHelper {
             case .homeCleaning:
                 return "Tell us about your place"
             default:
-                return "Got it! Tell us about the job"
+                return BookingHelper.defaultTitle
             }
             
         }

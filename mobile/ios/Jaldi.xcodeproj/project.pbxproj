@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4C25C7BC1EBC677A00092203 /* JaldiBookingTimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C25C7BB1EBC677A00092203 /* JaldiBookingTimePickerViewController.swift */; };
 		4C25C7BF1EBC747E00092203 /* BookingNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C25C7BE1EBC747E00092203 /* BookingNavigation.swift */; };
+		4C25C7C21EBC9D8400092203 /* JaldiBookingContactInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C25C7C11EBC9D8400092203 /* JaldiBookingContactInfoViewController.swift */; };
 		4C2B1A441EB73FD100F63E7D /* HBAppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B1A421EB73FD100F63E7D /* HBAppColors.swift */; };
 		4C2DA9F71EB9D1A3002FCAD5 /* AKPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2DA9F61EB9D1A3002FCAD5 /* AKPickerView.swift */; };
 		4C2DAA081EB9D450002FCAD5 /* JaldiOnBoradingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2DAA031EB9D450002FCAD5 /* JaldiOnBoradingListViewController.swift */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		4C25C7BB1EBC677A00092203 /* JaldiBookingTimePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingTimePickerViewController.swift; sourceTree = "<group>"; };
 		4C25C7BE1EBC747E00092203 /* BookingNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingNavigation.swift; sourceTree = "<group>"; };
+		4C25C7C11EBC9D8400092203 /* JaldiBookingContactInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingContactInfoViewController.swift; sourceTree = "<group>"; };
 		4C2B1A421EB73FD100F63E7D /* HBAppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBAppColors.swift; sourceTree = "<group>"; };
 		4C2DA9F61EB9D1A3002FCAD5 /* AKPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKPickerView.swift; sourceTree = "<group>"; };
 		4C2DAA031EB9D450002FCAD5 /* JaldiOnBoradingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnBoradingListViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,25 @@
 				4C25C7BE1EBC747E00092203 /* BookingNavigation.swift */,
 			);
 			path = BookingNavigation;
+			sourceTree = "<group>";
+		};
+		4C25C7C01EBC9D5F00092203 /* BookingContactInfoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4C25C7C11EBC9D8400092203 /* JaldiBookingContactInfoViewController.swift */,
+			);
+			path = BookingContactInfoViewController;
+			sourceTree = "<group>";
+		};
+		4C25C7C31EBC9FBB00092203 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4C4998FE1EBB21020034819B /* BookingDetailsViewController */,
+				4C4999061EBB61C50034819B /* BookingDescriptionViewController */,
+				4C25C7BA1EBC650F00092203 /* BookingTimePickerViewController */,
+				4C25C7C01EBC9D5F00092203 /* BookingContactInfoViewController */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		4C2B1A401EB73FD100F63E7D /* Shared */ = {
@@ -224,9 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				4C25C7BD1EBC744100092203 /* BookingNavigation */,
-				4C4998FE1EBB21020034819B /* BookingDetailsViewController */,
-				4C4999061EBB61C50034819B /* BookingDescriptionViewController */,
-				4C25C7BA1EBC650F00092203 /* BookingTimePickerViewController */,
+				4C25C7C31EBC9FBB00092203 /* Controllers */,
 			);
 			path = Booking;
 			sourceTree = "<group>";
@@ -444,6 +463,7 @@
 				4C4999001EBB214E0034819B /* JaldiBookingDetailsViewController.swift in Sources */,
 				4C832AFD1EB752240092A853 /* JaldiOnboardingDefines.swift in Sources */,
 				4C4998FC1EBB11280034819B /* BookingHelper.swift in Sources */,
+				4C25C7C21EBC9D8400092203 /* JaldiBookingContactInfoViewController.swift in Sources */,
 				4C832B0B1EB775DD0092A853 /* JaldiNotInYourAreaViewController.swift in Sources */,
 				4C832AFE1EB752240092A853 /* JaldiOnboardingInputView.swift in Sources */,
 				C65CB5071EB857F000DE65B7 /* JaldiHomeViewController.swift in Sources */,
@@ -597,8 +617,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Jaldi/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.handy-book.Handy";
+				PRODUCT_BUNDLE_IDENTIFIER = pro.jaldi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -609,8 +630,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Jaldi/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.handy-book.Handy";
+				PRODUCT_BUNDLE_IDENTIFIER = pro.jaldi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

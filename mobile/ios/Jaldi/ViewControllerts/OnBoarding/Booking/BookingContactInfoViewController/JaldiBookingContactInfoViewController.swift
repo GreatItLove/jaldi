@@ -1,33 +1,28 @@
 //
-//  JaldiBookingDescriptionViewController.swift
+//  JaldiBookingContactInfoViewController.swift
 //  Jaldi
 //
-//  Created by Grigori Jlavyan on 5/4/17.
+//  Created by Grigori Jlavyan on 5/5/17.
 //  Copyright © 2017 Handybook. All rights reserved.
 //
 
 import UIKit
 
-class JaldiBookingDescriptionViewController: UIViewController,BookingNavigation {
+class JaldiBookingContactInfoViewController: UIViewController,BookingNavigation {
 
     @IBOutlet weak var progressView: UIProgressView!
-    @IBOutlet weak var theTableView: UITableView!
     @IBOutlet weak var changeButtonBottomConstraint: NSLayoutConstraint!
     var bookingObject:BookingObject?
-    var curretScreen: BookingScreen = BookingScreen.desc
+    var curretScreen: BookingScreen = BookingScreen.contactInfo
     var selectedTextView: UITextView?
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTableView()
         configureBookingProgress()
-        addRecognizer()
         addNotification()
     }
     //MARK: Confifuration
-    private func configureTableView() -> Void {
-        theTableView.rowHeight = 115
-    }
    
+    
     //MARK: Actions
     @IBAction func backAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -43,14 +38,6 @@ class JaldiBookingDescriptionViewController: UIViewController,BookingNavigation 
                 self.navigationController?.pushViewController(nextViewController, animated: true)
             }
         }
-    }
-    //MARK: GestureRecognizer
-    private func addRecognizer(){
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(JaldiBookingDescriptionViewController.handleTap(gestureRecognizer:)))
-        view.addGestureRecognizer(gestureRecognizer)
-    }
-    func handleTap(gestureRecognizer: UIGestureRecognizer) {
-        self.selectedTextView?.resignFirstResponder()
     }
     
     //MARK: Notification
@@ -94,52 +81,5 @@ class JaldiBookingDescriptionViewController: UIViewController,BookingNavigation 
     deinit{
         removeNotification()
     }
-
+    
 }
-
-// MARK: UITableView
-extension JaldiBookingDescriptionViewController: UITableViewDelegate,UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int{
-        return (bookingObject != nil  ? 1: 0)
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
-        let simpleTableIdentifier = "JaldiBookingDescriptionTableCell"
-        let cell:JaldiBookingDescriptionTableCell = tableView.dequeueReusableCell(withIdentifier: simpleTableIdentifier, for: indexPath) as! JaldiBookingDescriptionTableCell
-        if let bookingObject = bookingObject {
-          cell.configureWith(bookingObject: bookingObject)
-            cell.delegate = self
-        }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
-        
-        let simpleTableIdentifier = "JaldiBookingDetailsHeaderCellDescription"
-        let cell:JaldiBookingDetailsHeaderCell! = tableView.dequeueReusableCell(withIdentifier: simpleTableIdentifier) as? JaldiBookingDetailsHeaderCell
-        cell.configureWith(title: BookingHelper.defaultTitle)
-        return cell;
-    }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
-    }
-}
-extension JaldiBookingDescriptionViewController: JaldiBookingDescriptionTableCellDelegate {
-
-    func bookingDescription(cell:JaldiBookingDescriptionTableCell,
-                            didBeginEditing textView:UITextView) {
-        selectedTextView = textView
-    }
-    
-    func bookingDescription(cell:JaldiBookingDescriptionTableCell,
-                            didEndEditing textView:UITextView){
-        bookingObject?.description = textView.text
-    }
-}
-

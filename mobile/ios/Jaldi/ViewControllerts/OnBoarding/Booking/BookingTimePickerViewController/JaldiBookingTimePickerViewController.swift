@@ -24,10 +24,11 @@ class JaldiBookingTimePickerViewController: UIViewController,BookingNavigation {
     }
     //MARK: Confifuration
     private func configureTitleLabel() {
-        bookingTimeTitleLabel.text = bookingObject?.bookingDetails.title
+        bookingTimeTitleLabel.text = BookingHelper.timeDefaultTitle
     }
    
     private func configureDateTimePicker() {
+        dateTimePicker.backgroundColor = UIColor.white
         if let bookingDate = bookingObject?.bookingTime {
             dateTimePicker.date = bookingDate
         }else{

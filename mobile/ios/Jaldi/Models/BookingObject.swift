@@ -13,6 +13,8 @@ class BookingObject {
     var description: String?
     var bookingTime: Date?
     let bookingScreens: [BookingScreen]
+    var contactInfo: BookingContactInfo?
+    
     init(service:JaldiService, bookingDetails:BookingDetails,bookingScreens:[BookingScreen]) {
         self.service = service
         self.bookingDetails = bookingDetails
@@ -49,9 +51,17 @@ class BookingDetailsItem {
     }
  }
 
+class BookingContactInfo {
+    var fullName: String?
+    var streetAddress: String?
+    var apt: String?
+    var phone: String?
+}
+
 enum BookingScreen: Int {
     // handyMan
     case details
     case desc
     case time
+    case contactInfo
 }
