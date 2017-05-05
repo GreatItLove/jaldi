@@ -10,25 +10,57 @@ import UIKit
 
 class JaldiBookingContactInfoViewController: UIViewController,BookingNavigation {
 
-    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var fullNameTextField: UITextField!
+    @IBOutlet weak var streetTextField: UITextField!
+    @IBOutlet weak var aptTextField: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField!
+    
+    @IBOutlet weak var bookingDatePriceView: JaldiBookingDatePriceView!
+    
+    
     @IBOutlet weak var changeButtonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var progressView: UIProgressView!
     var bookingObject:BookingObject?
     var curretScreen: BookingScreen = BookingScreen.contactInfo
-    var selectedTextView: UITextView?
     override func viewDidLoad() {
         super.viewDidLoad()
         configureBookingProgress()
         addNotification()
+        configureContactInfo()
+        configureContactInfoTextFields()
+        
     }
     //MARK: Confifuration
-   
+    private func configureContactInfo() {
+        guard let booking = bookingObject else {
+            return
+        }
+        if booking.contactInfo == nil {
+            booking.contactInfo = BookingContactInfo()
+        }
+        bookingDatePriceView.configureWith(bookingObject: booking)
+        
+    }
+    private func configureContactInfoTextFields() {
+        fullNameTextField.text = bookingObject?.contactInfo?.fullName
+        streetTextField.text = bookingObject?.contactInfo?.streetAddress
+        aptTextField.text = bookingObject?.contactInfo?.apt
+        phoneTextField.text = bookingObject?.contactInfo?.phone
+    }
+    private func updateBookingObjectFromScreen() {
+        bookingObject?.contactInfo?.fullName = fullNameTextField.text
+        bookingObject?.contactInfo?.streetAddress = streetTextField.text
+        bookingObject?.contactInfo?.apt = aptTextField.text
+        bookingObject?.contactInfo?.phone = phoneTextField.text
+    }
     
     //MARK: Actions
     @IBAction func backAction(_ sender: Any) {
+        self.updateBookingObjectFromScreen()
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func nextAction(_ sender: Any) {
-        self.selectedTextView?.resignFirstResponder()
+        self.updateBookingObjectFromScreen()
         self.showNextScreen()
     }
     
@@ -81,5 +113,18 @@ class JaldiBookingContactInfoViewController: UIViewController,BookingNavigation 
     deinit{
         removeNotification()
     }
+}
+
+//MARK: UITextFieldDelegate
+extension JaldiBookingContactInfoViewController: UITextFieldDelegate {
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        let newValue = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
+//        self.checkValidationAndChangeStateIfNededFor(newValue: newValue)
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return false
+    }
 }

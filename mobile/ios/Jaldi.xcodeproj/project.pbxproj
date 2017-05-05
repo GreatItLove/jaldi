@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4C25C7BC1EBC677A00092203 /* JaldiBookingTimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C25C7BB1EBC677A00092203 /* JaldiBookingTimePickerViewController.swift */; };
-		4C25C7BF1EBC747E00092203 /* BookingNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C25C7BE1EBC747E00092203 /* BookingNavigation.swift */; };
 		4C25C7C21EBC9D8400092203 /* JaldiBookingContactInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C25C7C11EBC9D8400092203 /* JaldiBookingContactInfoViewController.swift */; };
 		4C2B1A441EB73FD100F63E7D /* HBAppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B1A421EB73FD100F63E7D /* HBAppColors.swift */; };
 		4C2DA9F71EB9D1A3002FCAD5 /* AKPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2DA9F61EB9D1A3002FCAD5 /* AKPickerView.swift */; };
@@ -33,6 +32,9 @@
 		4C832B011EB752B70092A853 /* JaldiOnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C832B001EB752B70092A853 /* JaldiOnboardingModel.swift */; };
 		4C832B081EB760730092A853 /* JaldiSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C832B071EB760730092A853 /* JaldiSignInViewController.swift */; };
 		4C832B0B1EB775DD0092A853 /* JaldiNotInYourAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C832B0A1EB775DD0092A853 /* JaldiNotInYourAreaViewController.swift */; };
+		4CCBD3AD1EBCB598009D5408 /* BookingNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCBD3AC1EBCB598009D5408 /* BookingNavigation.swift */; };
+		4CCBD3B01EBCB5F9009D5408 /* JaldiBookingDatePriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCBD3AF1EBCB5F9009D5408 /* JaldiBookingDatePriceView.swift */; };
+		4CCBD3B31EBCBF10009D5408 /* Date+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCBD3B21EBCBF10009D5408 /* Date+Helper.swift */; };
 		4CED68541EB870A5001A7CC5 /* JaldiAppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED68531EB870A5001A7CC5 /* JaldiAppConstants.swift */; };
 		4CED68561EB871BF001A7CC5 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED68551EB871BF001A7CC5 /* UserProfile.swift */; };
 		4CED68591EB8802E001A7CC5 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CED68571EB8802E001A7CC5 /* Login.storyboard */; };
@@ -46,7 +48,6 @@
 
 /* Begin PBXFileReference section */
 		4C25C7BB1EBC677A00092203 /* JaldiBookingTimePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingTimePickerViewController.swift; sourceTree = "<group>"; };
-		4C25C7BE1EBC747E00092203 /* BookingNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingNavigation.swift; sourceTree = "<group>"; };
 		4C25C7C11EBC9D8400092203 /* JaldiBookingContactInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingContactInfoViewController.swift; sourceTree = "<group>"; };
 		4C2B1A421EB73FD100F63E7D /* HBAppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBAppColors.swift; sourceTree = "<group>"; };
 		4C2DA9F61EB9D1A3002FCAD5 /* AKPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKPickerView.swift; sourceTree = "<group>"; };
@@ -73,6 +74,9 @@
 		4C832B001EB752B70092A853 /* JaldiOnboardingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnboardingModel.swift; sourceTree = "<group>"; };
 		4C832B071EB760730092A853 /* JaldiSignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiSignInViewController.swift; sourceTree = "<group>"; };
 		4C832B0A1EB775DD0092A853 /* JaldiNotInYourAreaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiNotInYourAreaViewController.swift; sourceTree = "<group>"; };
+		4CCBD3AC1EBCB598009D5408 /* BookingNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingNavigation.swift; sourceTree = "<group>"; };
+		4CCBD3AF1EBCB5F9009D5408 /* JaldiBookingDatePriceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingDatePriceView.swift; sourceTree = "<group>"; };
+		4CCBD3B21EBCBF10009D5408 /* Date+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Helper.swift"; sourceTree = "<group>"; };
 		4CED68531EB870A5001A7CC5 /* JaldiAppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiAppConstants.swift; sourceTree = "<group>"; };
 		4CED68551EB871BF001A7CC5 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		4CED68581EB8802E001A7CC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
@@ -103,14 +107,6 @@
 			path = BookingTimePickerViewController;
 			sourceTree = "<group>";
 		};
-		4C25C7BD1EBC744100092203 /* BookingNavigation */ = {
-			isa = PBXGroup;
-			children = (
-				4C25C7BE1EBC747E00092203 /* BookingNavigation.swift */,
-			);
-			path = BookingNavigation;
-			sourceTree = "<group>";
-		};
 		4C25C7C01EBC9D5F00092203 /* BookingContactInfoViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +129,7 @@
 		4C2B1A401EB73FD100F63E7D /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				4CCBD3B11EBCBEE2009D5408 /* Extensions */,
 				4C4998F81EBB109B0034819B /* Helpers */,
 				4C2DA9F51EB9D178002FCAD5 /* Components */,
 				4C2B1A411EB73FD100F63E7D /* Constants */,
@@ -244,7 +241,7 @@
 		4C4998FD1EBB21020034819B /* Booking */ = {
 			isa = PBXGroup;
 			children = (
-				4C25C7BD1EBC744100092203 /* BookingNavigation */,
+				4CCBD3AA1EBCB598009D5408 /* Shared */,
 				4C25C7C31EBC9FBB00092203 /* Controllers */,
 			);
 			path = Booking;
@@ -341,6 +338,39 @@
 				4C832B0A1EB775DD0092A853 /* JaldiNotInYourAreaViewController.swift */,
 			);
 			path = NotInYourAreaViewController;
+			sourceTree = "<group>";
+		};
+		4CCBD3AA1EBCB598009D5408 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				4CCBD3AE1EBCB5CA009D5408 /* Views */,
+				4CCBD3AB1EBCB598009D5408 /* BookingNavigation */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		4CCBD3AB1EBCB598009D5408 /* BookingNavigation */ = {
+			isa = PBXGroup;
+			children = (
+				4CCBD3AC1EBCB598009D5408 /* BookingNavigation.swift */,
+			);
+			path = BookingNavigation;
+			sourceTree = "<group>";
+		};
+		4CCBD3AE1EBCB5CA009D5408 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4CCBD3AF1EBCB5F9009D5408 /* JaldiBookingDatePriceView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4CCBD3B11EBCBEE2009D5408 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4CCBD3B21EBCBF10009D5408 /* Date+Helper.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		4CED685A1EB8956B001A7CC5 /* Shared */ = {
@@ -458,7 +488,6 @@
 				4CED68711EB90CED001A7CC5 /* JaldiService.swift in Sources */,
 				4C2DAA091EB9D450002FCAD5 /* JaldiOnBoradingListViewCell.swift in Sources */,
 				4C2DAA0A1EB9D450002FCAD5 /* JaldiOnBoradingListViewHeaderCell.swift in Sources */,
-				4C25C7BF1EBC747E00092203 /* BookingNavigation.swift in Sources */,
 				4C4999031EBB25590034819B /* JaldiBookingDetailsTableViewCell.swift in Sources */,
 				4C4999001EBB214E0034819B /* JaldiBookingDetailsViewController.swift in Sources */,
 				4C832AFD1EB752240092A853 /* JaldiOnboardingDefines.swift in Sources */,
@@ -468,10 +497,12 @@
 				4C832AFE1EB752240092A853 /* JaldiOnboardingInputView.swift in Sources */,
 				C65CB5071EB857F000DE65B7 /* JaldiHomeViewController.swift in Sources */,
 				4C832AFC1EB752240092A853 /* HBOnboardingViewControllerViewController.swift in Sources */,
+				4CCBD3AD1EBCB598009D5408 /* BookingNavigation.swift in Sources */,
 				4CED68541EB870A5001A7CC5 /* JaldiAppConstants.swift in Sources */,
 				4CED68631EB8BEC6001A7CC5 /* JaldiChangeZipCodeController.swift in Sources */,
 				4C832B011EB752B70092A853 /* JaldiOnboardingModel.swift in Sources */,
 				4CED68561EB871BF001A7CC5 /* UserProfile.swift in Sources */,
+				4CCBD3B01EBCB5F9009D5408 /* JaldiBookingDatePriceView.swift in Sources */,
 				4C4998FA1EBB109B0034819B /* JaldiValidator.swift in Sources */,
 				4C832B081EB760730092A853 /* JaldiSignInViewController.swift in Sources */,
 				4C4998F71EBB0E100034819B /* BookingObject.swift in Sources */,
@@ -481,6 +512,7 @@
 				4C49990B1EBB65210034819B /* JaldiBookingDescriptionTableCell.swift in Sources */,
 				4CED68601EB8A9AC001A7CC5 /* HomeCategory.swift in Sources */,
 				4CED68661EB8D172001A7CC5 /* JaldiAnnouncementViewController.swift in Sources */,
+				4CCBD3B31EBCBF10009D5408 /* Date+Helper.swift in Sources */,
 				4C4999051EBB3D990034819B /* JaldiBookingDetailsHeaderCell.swift in Sources */,
 				4C4999081EBB61EB0034819B /* JaldiBookingDescriptionViewController.swift in Sources */,
 				4C2DA9F71EB9D1A3002FCAD5 /* AKPickerView.swift in Sources */,

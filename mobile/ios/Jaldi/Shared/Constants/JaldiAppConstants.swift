@@ -7,6 +7,8 @@
 //
 
 import Foundation
+
+
 struct AppNotifications {
     static let loginNotificationName = "JALDI_APP_LOGIN_NOTIFICATION"
     static let logoutNotificationName = "JALDI_APP_LOG_OUT_NOTIFICATION"
@@ -26,4 +28,8 @@ struct AvailableZipCodes {
     static func zipCodeIsAvailable(zipCode:String) -> Bool {
      return zipCodes.contains(zipCode)
     }
+}
+struct AppDateFormats {
+    static let weekFormat = "EEEE, MMM d"
+    static let timeFormat = "HH:mm a"
 }

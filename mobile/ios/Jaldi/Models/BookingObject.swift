@@ -14,11 +14,16 @@ class BookingObject {
     var bookingTime: Date?
     let bookingScreens: [BookingScreen]
     var contactInfo: BookingContactInfo?
+    var bookingPrice: BookingPrice?
+    
     
     init(service:JaldiService, bookingDetails:BookingDetails,bookingScreens:[BookingScreen]) {
         self.service = service
         self.bookingDetails = bookingDetails
         self.bookingScreens = bookingScreens
+        bookingPrice = BookingPrice()
+        bookingPrice?.price = 90
+        bookingPrice?.discount = 52
     }
 }
 
@@ -56,6 +61,17 @@ class BookingContactInfo {
     var streetAddress: String?
     var apt: String?
     var phone: String?
+}
+class BookingPrice {
+    var price: Float = 0
+    var discount: Float = 0
+    
+    var originalPrice: Float {
+        get {
+            if discount == 0 {return price}
+            return price * discount / 100
+        }
+    }
 }
 
 enum BookingScreen: Int {
