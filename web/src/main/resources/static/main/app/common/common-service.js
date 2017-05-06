@@ -13,4 +13,11 @@ angular.module('jaldi.services')
             url:    '/rest/profile/updateProfilePicture'
         }
     });
+})
+.factory("Worker", function ($resource) {
+    return $resource("/rest/worker/:id", {id: "@id"}, {
+        update: {
+            method: 'PUT'
+        }
+    });
 });

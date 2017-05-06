@@ -7,10 +7,17 @@ import com.jaldi.services.model.request.UpdateProfileRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -90,5 +97,28 @@ public class UserDaoImpl {
         namedParameters.put("newPassword", request.getNewPassword());
         int count = namedJdbc.update("update `user` set `password` = password(:newPassword) where `id` = :id AND `password` = password(:oldPassword);", namedParameters);
         return count > 0;
+    }
+
+    public User create(User user) {
+        String sql = "INSERT INTO `user`(`email`, `name`, `phone`, `password`, `role`, `type`, `isActive`) VALUES (?, ?, ?, password(?), ?, ?, ?);";
+        KeyHolder holder = new GeneratedKeyHolder();
+        jdbcTemplate.update(new PreparedStatementCreator() {
+
+            @Override
+            public PreparedStatement createPreparedStatement(Connection connection)
+                    throws SQLException {
+                PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+                ps.setString(1, user.getEmail());
+                ps.setString(2, user.getName());
+                ps.setString(3, user.getPhone());
+                ps.setString(4, user.getPassword());
+                ps.setString(5, user.getRole().name());
+                ps.setString(6, user.getType().name());
+                ps.setBoolean(7, user.isActive());
+                return ps;
+            }
+        }, holder);
+        user.setId(holder.getKey().longValue());
+        return user;
     }
 }

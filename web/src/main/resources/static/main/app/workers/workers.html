@@ -1,3 +1,42 @@
-<div class="page-header">
-    <h1>Workers</h1>
+<div class="header">
+    <h4>Workers</h4>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-block">
+                <div class="card-title">
+                    <button type="button" class="btn btn-primary" ng-click="addEditWorker()">Add worker</button>
+                    <button type="button" ng-show="selectedItem" class="btn btn-warning" ng-click="addEditWorker(selectedItem)">Edit worker</button>
+                    <button type="button" ng-show="selectedItem" class="btn btn-danger" ng-click="deleteWorker(selectedItem)">Delete</button>
+                </div>
+                <div loading-container="tableParams.settings().$loading" class="table-overflow table-primary">
+                    <table ng-table="tableParams" show-filter="false" class="table table-striped table-bordered table-hover">
+                        <tbody>
+                        <tr ng-repeat="item in $data" ng-click="selectItem(item.user.id)" ng-class="{'table-info': item.user.id == selectedItem}">
+                            <td data-title="'Name'" sortable="'user.name'" class="text-center">
+                                <strong>
+                                    <span ng-bind="item.user.name"></span>
+                                </strong>
+                            </td>
+                            <td data-title="'Email'" sortable="'user.email'" class="text-center">
+                                <span ng-bind="item.user.email"></span>
+                            </td>
+                            <td data-title="'Phone'" sortable="'user.phone'" class="text-center">
+                                <span ng-bind="item.user.phone"></span>
+                            </td>
+                            <td data-title="'Status'" sortable="'user.active'" class="text-center">
+                                <span ng-show="item.user.active" class="badge badge-success">Active</span>
+                                <span ng-show="!item.user.active" class="badge badge-default">Inactive</span>
+                            </td>
+                        </tr>
+                        <tr ng-show="(tableParams.settings().total == 0) && !showAjaxLoader">
+                            <td class="no-result-body text-center" colspan="2">There are no any workers yet.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
