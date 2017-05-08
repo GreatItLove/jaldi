@@ -306,6 +306,7 @@ public class AKPickerView: UIView, UICollectionViewDataSource, UICollectionViewD
 		return layout
 	}
 
+   fileprivate var border: BorderedView?
 	// MARK: - Functions
 	// MARK: View Lifecycle
 	/**
@@ -313,6 +314,7 @@ public class AKPickerView: UIView, UICollectionViewDataSource, UICollectionViewD
 	*/
 	fileprivate func initialize() {
 		self.collectionView?.removeFromSuperview()
+        self.removeBorder()
 		self.collectionView = UICollectionView(frame: self.bounds, collectionViewLayout: self.collectionViewLayout)
 		self.collectionView.showsHorizontalScrollIndicator = false
 		self.collectionView.backgroundColor = UIColor.clear
@@ -322,14 +324,53 @@ public class AKPickerView: UIView, UICollectionViewDataSource, UICollectionViewD
 		self.collectionView.register(
 			AKCollectionViewCell.self,
 			forCellWithReuseIdentifier: NSStringFromClass(AKCollectionViewCell.self))
+       
+        
+//        self.collectionView.addSubview(border)
 		self.addSubview(self.collectionView)
+      
 
 		self.intercepter = AKPickerViewDelegateIntercepter(pickerView: self, delegate: self.delegate)
 		self.collectionView.delegate = self.intercepter
 
 		self.maskDisabled = self.maskDisabled == nil ? false : self.maskDisabled
+   
+
 	}
 
+    private func addBorder() {
+        if self.border != nil {return}
+        var maxCellSize:CGSize = CGSize(width: 0, height: 0)
+        if let numberOfItems = self.dataSource?.numberOfItemsInPickerView(self) {
+            for i in 0 ..< numberOfItems {
+                let indexPath = IndexPath(item: i, section: 0)
+                
+                let cellSize = self.collectionView(
+                    self.collectionView,
+                    layout: self.collectionView.collectionViewLayout,
+                    sizeForItemAt: indexPath)
+                if cellSize.width > maxCellSize.width {
+                    maxCellSize = cellSize
+                }
+            }
+        }
+        let size = self.sizeForString("1")
+        var frame  = CGRect(x: 0, y: 0, width: 50, height: max(size.width, size.height) + 20)
+        frame.size.width = maxCellSize.width
+        frame.size.height =  min((frame.size.width), (frame.size.height))
+        frame.origin.x = (self.bounds.size.width - (frame.size.width))/2
+        frame.origin.y = (self.bounds.size.height - (frame.size.height))/2
+        self.border  = BorderedView(frame:frame)
+        self.addSubview(self.border!)
+        self.border?.isUserInteractionEnabled = false
+
+    }
+    
+    private func removeBorder() {
+        self.border?.removeFromSuperview()
+        self.border = nil
+    }
+    
 	public init() {
 		super.init(frame: CGRect.zero)
 		self.initialize()
@@ -358,6 +399,11 @@ public class AKPickerView: UIView, UICollectionViewDataSource, UICollectionViewD
 			self.scrollToItem(self.selectedItem, animated: false)
 		}
 		self.collectionView.layer.mask?.frame = self.collectionView.bounds
+        if border == nil {
+         self.addBorder()
+        }
+        
+//        border?.center = CGPoint(x: 100, y: 20)
 	}
 
 	open override var intrinsicContentSize : CGSize {
@@ -605,3 +651,23 @@ public class AKPickerView: UIView, UICollectionViewDataSource, UICollectionViewD
 
 }
 
+fileprivate class BorderedView: UIView {
+    override init(frame: CGRect) {
+       super.init(frame: frame)
+        self.configureBorderWith(frame: frame)
+    }
+   override var frame: CGRect {
+        didSet {
+         self.configureBorderWith(frame: frame)
+        }
+    }
+    fileprivate func configureBorderWith(frame: CGRect){
+        self.backgroundColor = UIColor.clear
+        self.layer.borderWidth = 1.5
+        self.layer.cornerRadius = frame.size.height/2
+        self.layer.borderColor = AppColors.BlueColor.cgColor
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}

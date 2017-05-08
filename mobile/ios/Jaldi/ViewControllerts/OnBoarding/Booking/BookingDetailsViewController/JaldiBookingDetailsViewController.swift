@@ -22,7 +22,7 @@ class JaldiBookingDetailsViewController: UIViewController,BookingNavigation {
     //MARK: Confifuration
     private func configureTableView() -> Void {
         theTableView.estimatedRowHeight = 115
-        theTableView.rowHeight = UITableViewAutomaticDimension
+//        theTableView.rowHeight = UITableViewAutomaticDimension
     }
 
     //MARK: Actions
@@ -52,39 +52,56 @@ extension JaldiBookingDetailsViewController: UITableViewDelegate,UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bookingObject?.bookingDetails.detailItems.count ?? 0
+        if let count = bookingObject?.bookingDetails.detailItems.count{
+        return  count + 1
+        }
+        return    0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
+        if indexPath.row == 0 {
+            let simpleTableIdentifier = "JaldiBookingDetailsHeaderCell"
+            let cell:JaldiBookingDetailsHeaderCell! = tableView.dequeueReusableCell(withIdentifier: simpleTableIdentifier) as? JaldiBookingDetailsHeaderCell
+            cell.configureWith(title: bookingObject?.bookingDetails.title)
+            cell.backgroundColor = UIColor.clear
+            return cell;
+
+        }
         let simpleTableIdentifier = "JaldiBookingDetailsTableViewCell"
         let cell:JaldiBookingDetailsTableViewCell = tableView.dequeueReusableCell(withIdentifier: simpleTableIdentifier, for: indexPath) as! JaldiBookingDetailsTableViewCell
         if let bookingDetailsItems = bookingObject?.bookingDetails.detailItems{
-          cell.configureWith(detailItem: bookingDetailsItems[indexPath.row], isLastCell: (indexPath.row == (bookingDetailsItems.count - 1)))
+          cell.configureWith(detailItem: bookingDetailsItems[indexPath.row - 1 ], isLastCell: (indexPath.row == (bookingDetailsItems.count )))
           cell.delegate = self
         }
         return cell
     }
     
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
-        
-        let simpleTableIdentifier = "JaldiBookingDetailsHeaderCell"
-        let cell:JaldiBookingDetailsHeaderCell! = tableView.dequeueReusableCell(withIdentifier: simpleTableIdentifier) as? JaldiBookingDetailsHeaderCell
-       cell.configureWith(title: bookingObject?.bookingDetails.title)
-        return cell;
-    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
+//        
+//        let simpleTableIdentifier = "JaldiBookingDetailsHeaderCell"
+//        let cell:JaldiBookingDetailsHeaderCell! = tableView.dequeueReusableCell(withIdentifier: simpleTableIdentifier) as? JaldiBookingDetailsHeaderCell
+//       cell.configureWith(title: bookingObject?.bookingDetails.title)
+//        return cell;
+//    }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return 1
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
+        if indexPath.row == 0 {
+            return 50
+        }
+
+        return  UITableViewAutomaticDimension
     }
 
 }
 extension JaldiBookingDetailsViewController:JaldiBookingDetailsTableViewCellDelegate {
     func detailsItem(cell:JaldiBookingDetailsTableViewCell, didChangeSelected index:Int){
-        
+//        self.theTableView.reloadData()
         guard let indexPath = theTableView.indexPath(for: cell) else {return}
         self.theTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.fade)
-//       self.theTableView.reloadData()
     }
 }
 

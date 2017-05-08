@@ -12,7 +12,6 @@ enum JaldiService: Int {
     // Parent Services
     case homeCleaning
     
-  
     // handyMan
     case acRepair
     case furnitureAssembly
