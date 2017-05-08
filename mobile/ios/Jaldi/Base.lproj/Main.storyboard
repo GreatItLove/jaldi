@@ -316,7 +316,7 @@
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="JaldiBookingDetailsTableViewCell" rowHeight="160" id="ncD-m2-4iV" customClass="JaldiBookingDetailsTableViewCell" customModule="Jaldi" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55" width="414" height="160"/>
+                                        <rect key="frame" x="0.0" y="56" width="414" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ncD-m2-4iV" id="R8i-rk-oy2">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="160"/>
@@ -396,7 +396,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="JaldiBookingDetailsHeaderCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="JaldiBookingDetailsHeaderCell" id="d8E-Y1-TCF" customClass="JaldiBookingDetailsHeaderCell" customModule="Jaldi" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="215" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="216" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d8E-Y1-TCF" id="CR1-VX-7Hm">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -521,7 +521,7 @@
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="JaldiOnBoradingListViewHeaderCell" rowHeight="115" id="dws-wX-BAA" customClass="JaldiOnBoradingListViewHeaderCell" customModule="Jaldi" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55" width="414" height="115"/>
+                                        <rect key="frame" x="0.0" y="56" width="414" height="115"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dws-wX-BAA" id="x3D-e3-50o">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="115"/>
@@ -564,7 +564,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="JaldiOnBoradingListViewCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="JaldiOnBoradingListViewCell" rowHeight="90" id="38g-dd-OL0" customClass="JaldiOnBoradingListViewCell" customModule="Jaldi" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="170" width="414" height="90"/>
+                                        <rect key="frame" x="0.0" y="171" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="38g-dd-OL0" id="ePR-Fb-qEz">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
@@ -692,7 +692,7 @@
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="JaldiBookingDetailsHeaderCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="JaldiBookingDetailsHeaderCellDescription" id="E87-jF-cv5" customClass="JaldiBookingDetailsHeaderCell" customModule="Jaldi" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E87-jF-cv5" id="I5e-7H-TVi">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -719,7 +719,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="JaldiBookingDescriptionTableCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="JaldiBookingDescriptionTableCell" rowHeight="150" id="rqh-Cm-fvp" customClass="JaldiBookingDescriptionTableCell" customModule="Jaldi" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="99" width="414" height="150"/>
+                                        <rect key="frame" x="0.0" y="100" width="414" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rqh-Cm-fvp" id="Z4R-Om-6hD">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>

@@ -89,24 +89,13 @@ extension JaldiBookingDetailsViewController: UITableViewDelegate,UITableViewData
         return 1
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-        if indexPath.row == 0 {
-            return 50
-        }
-
-        return  UITableViewAutomaticDimension
+        return  indexPath.row == 0 ? 50: UITableViewAutomaticDimension
     }
 
 }
 extension JaldiBookingDetailsViewController:JaldiBookingDetailsTableViewCellDelegate {
     func detailsItem(cell:JaldiBookingDetailsTableViewCell, didChangeSelected index:Int){
-//        self.theTableView.reloadData()
         guard let indexPath = theTableView.indexPath(for: cell) else {return}
         self.theTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.fade)
     }
 }
-
-//extension JaldiBookingDetailsViewController:BookingNavigation {
-//    
-//}
-
-

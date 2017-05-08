@@ -10,6 +10,13 @@ import UIKit
 
 class JaldiBookingContactInfoViewController: UIViewController,BookingNavigation {
 
+    private struct ContactInfoPlaceholder {
+        static let fullName = "Full Name"
+        static let street = "Street Address"
+        static let apt = "Apt #"
+        static let phone = "Phone"
+    }
+
     @IBOutlet weak var fullNameTextField: UITextField!
     @IBOutlet weak var streetTextField: UITextField!
     @IBOutlet weak var aptTextField: UITextField!
@@ -60,16 +67,67 @@ class JaldiBookingContactInfoViewController: UIViewController,BookingNavigation 
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func nextAction(_ sender: Any) {
+        
         self.updateBookingObjectFromScreen()
-        self.showNextScreen()
+        if self.checkRequiredFields() {
+           self.showNextScreen()
+        }
     }
-    
+
     private func showNextScreen() {
         if !self.isLastScreen() {
             if let nextViewController = self.nextScreen() {
                 self.navigationController?.pushViewController(nextViewController, animated: true)
             }
         }
+    }
+    //MARK: Validation
+    private func checkRequiredFields() -> Bool {
+        let isValidFullName = self.isValidFullName()
+        let isValidStreet = self.isValidStreet()
+        let isValidPhone = self.isValidPhone()
+        
+        return isValidFullName && isValidStreet && isValidPhone
+    }
+    
+    private func isValidFullName() -> Bool {
+        var isValid = false
+        if let fullName = bookingObject?.contactInfo?.fullName{
+            isValid = fullName.characters.count > 0 && (fullName.range(of: " ") != nil)
+        }
+        if !isValid{
+            let str = NSAttributedString(string: ContactInfoPlaceholder.fullName, attributes: [NSForegroundColorAttributeName:UIColor.red])
+            fullNameTextField.attributedPlaceholder = str
+            fullNameTextField.textColor = UIColor.red
+        }
+        return isValid
+    }
+    private func isValidStreet() -> Bool {
+        var isValid = false
+        if let streetAddress = bookingObject?.contactInfo?.streetAddress{
+         isValid =  streetAddress.characters.count > 0
+        }
+        if !isValid{
+            let str = NSAttributedString(string: ContactInfoPlaceholder.street, attributes: [NSForegroundColorAttributeName:UIColor.red])
+            streetTextField.attributedPlaceholder = str
+            streetTextField.textColor = UIColor.red
+        }
+        return isValid
+    }
+    private func isValidPhone() -> Bool {
+        var isValid = false
+        if let phone = bookingObject?.contactInfo?.phone{
+            let text = phone as NSString
+            let  strippedNumber =  text.replacingOccurrences(of: "[^0-9,+]", with: "", options: NSString.CompareOptions.regularExpression, range: NSMakeRange(0, text.length)) as NSString
+            isValid = strippedNumber.length == 10
+        }
+       
+        if !isValid{
+            let str = NSAttributedString(string: ContactInfoPlaceholder.phone, attributes: [NSForegroundColorAttributeName:UIColor.red])
+            phoneTextField.attributedPlaceholder = str
+            phoneTextField.textColor = UIColor.red
+        }
+        return isValid
     }
     
     //MARK: Notification
@@ -119,12 +177,45 @@ class JaldiBookingContactInfoViewController: UIViewController,BookingNavigation 
 extension JaldiBookingContactInfoViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        let newValue = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
-//        self.checkValidationAndChangeStateIfNededFor(newValue: newValue)
+        textField.textColor = UIColor.darkText
+        if textField == phoneTextField {
+            
+            if ((textField.text?.characters.count)! > 12 && string.characters.count > 0) {
+                return false
+            }
+            if string.characters.count == 0 {
+                return true
+            }
+            if JaldiValidator.isNumeric(inputString: string){
+                let newValue = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
+               textField.text = self.correct(phoneNumber: newValue)
+            }
+             return false
+        }
         return true
     }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return false
     }
+
+    private func correct(phoneNumber:String) -> String {
+        var result:NSString = ""
+        let text  = phoneNumber as NSString
+        let  strippedNumber =  text.replacingOccurrences(of: "[^0-9,+]", with: "", options: NSString.CompareOptions.regularExpression, range: NSMakeRange(0, text.length)) as NSString
+        for location in 0..<strippedNumber.length {
+            let  character = strippedNumber.character(at: location) as  unichar
+            switch location {
+            case 0:
+                result = result.appendingFormat("(%C", character)
+            case 2:
+                result = result.appendingFormat("%C)", character)
+            case 6:
+                result = result.appendingFormat("-%C", character)
+            default:
+                result = result.appendingFormat("%C", character)
+            }
+        }
+        return result as String
+    }
+    
 }
