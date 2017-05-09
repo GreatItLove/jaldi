@@ -25,6 +25,9 @@ angular.module('jaldi.utils', [])
         },
         scrollToTop: function () {
             $("html, body").animate({scrollTop: 0}, "slow");
+        },
+        isAdmin: function () {
+            return typeof(isAdmin) === 'function' && isAdmin();
         }
     };
     return utils;

@@ -8,7 +8,7 @@
                 <div class="card-title">
                     <button type="button" class="btn btn-primary" ng-click="addEditWorker()">Add worker</button>
                     <button type="button" ng-show="selectedItem" class="btn btn-warning" ng-click="addEditWorker(selectedItem)">Edit worker</button>
-                    <button type="button" ng-show="selectedItem" class="btn btn-danger" ng-click="deleteWorker(selectedItem)">Delete</button>
+                    <button ng-if="utils.isAdmin()" type="button" ng-show="selectedItem" class="btn btn-danger" ng-click="deleteWorker(selectedItem)">Delete</button>
                 </div>
                 <div loading-container="tableParams.settings().$loading" class="table-overflow table-primary">
                     <table ng-table="tableParams" show-filter="false" class="table table-striped table-bordered table-hover">
@@ -24,6 +24,15 @@
                             </td>
                             <td data-title="'Phone'" sortable="'user.phone'" class="text-center">
                                 <span ng-bind="item.user.phone"></span>
+                            </td>
+                            <td data-title="'Specialization'" class="text-center specialization-icons">
+                                <img ng-if="item.cleaner" title="Cleaner" src="/resources/main/img/spec/cleaner.png"/>
+                                <img ng-if="item.carpenter" title="Carpenter" src="/resources/main/img/spec/carpenter.png"/>
+                                <img ng-if="item.electrician" title="Electrician" src="/resources/main/img/spec/electrician.png"/>
+                                <img ng-if="item.acTechnical" title="AC Technical" src="/resources/main/img/spec/acTechnical.png"/>
+                                <img ng-if="item.mason" title="Mason" src="/resources/main/img/spec/mason.png"/>
+                                <img ng-if="item.painter" title="Painter" src="/resources/main/img/spec/painter.png"/>
+                                <img ng-if="item.plumber" title="Plumber" src="/resources/main/img/spec/plumber.png"/>
                             </td>
                             <td data-title="'Status'" sortable="'user.active'" class="text-center">
                                 <span ng-show="item.user.active" class="badge badge-success">Active</span>

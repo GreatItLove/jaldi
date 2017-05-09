@@ -70,3 +70,11 @@ hr.profile-img-divider {
     margin-left:20px;
     margin-right:20px;
 }
+
+.specialization-icons {
+
+}
+
+.specialization-icons > img {
+    height: 24px;
+}

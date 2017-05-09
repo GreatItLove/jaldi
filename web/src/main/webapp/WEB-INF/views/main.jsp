@@ -31,6 +31,11 @@
         var userId = parseInt('${userId}');
         var userFullName = '${userFullName}';
         var profileImageId = '${profileImageId}';
+        <sec:authorize access="hasAuthority('ADMIN')">
+        var isAdmin = function(){
+            return true;
+        };
+        </sec:authorize>
     </script>
 </head>
 <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
