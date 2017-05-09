@@ -77,14 +77,6 @@ extension JaldiBookingDetailsViewController: UITableViewDelegate,UITableViewData
         return cell
     }
     
-    
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
-//        
-//        let simpleTableIdentifier = "JaldiBookingDetailsHeaderCell"
-//        let cell:JaldiBookingDetailsHeaderCell! = tableView.dequeueReusableCell(withIdentifier: simpleTableIdentifier) as? JaldiBookingDetailsHeaderCell
-//       cell.configureWith(title: bookingObject?.bookingDetails.title)
-//        return cell;
-//    }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 1
     }
