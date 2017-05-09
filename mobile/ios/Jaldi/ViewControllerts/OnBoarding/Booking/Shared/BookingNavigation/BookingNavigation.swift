@@ -69,28 +69,28 @@ extension BookingNavigation{
     }
     
     private func getBookingDescriptionViewController() -> UIViewController? {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard: UIStoryboard = UIStoryboard(name: "Booking", bundle: nil)
         let bookingDescriptionViewController = storyboard.instantiateViewController(withIdentifier: "JaldiBookingDescriptionViewController") as? JaldiBookingDescriptionViewController
         bookingDescriptionViewController?.bookingObject = bookingObject
         return bookingDescriptionViewController
     }
     
     private func getBookingTimePickerViewController() -> UIViewController? {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard: UIStoryboard = UIStoryboard(name: "Booking", bundle: nil)
         let bookingTimePickerViewController = storyboard.instantiateViewController(withIdentifier: "JaldiBookingTimePickerViewController") as? JaldiBookingTimePickerViewController
         bookingTimePickerViewController?.bookingObject = bookingObject
         return bookingTimePickerViewController
     }
     
     private func getBookingDetailsViewController() -> UIViewController?  {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard: UIStoryboard = UIStoryboard(name: "Booking", bundle: nil)
         let bookingDetailsViewController = storyboard.instantiateViewController(withIdentifier: "JaldiBookingDetailsViewController") as? JaldiBookingDetailsViewController
         bookingDetailsViewController?.bookingObject = bookingObject
         return bookingDetailsViewController
     }
     
     private func getBookingContactInfoViewController() -> UIViewController?  {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard: UIStoryboard = UIStoryboard(name: "Booking", bundle: nil)
         let bookingContactInfoViewController = storyboard.instantiateViewController(withIdentifier: "JaldiBookingContactInfoViewController") as? JaldiBookingContactInfoViewController
         bookingContactInfoViewController?.bookingObject = bookingObject
         return bookingContactInfoViewController

@@ -26,6 +26,8 @@
 		4C4999051EBB3D990034819B /* JaldiBookingDetailsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4999041EBB3D990034819B /* JaldiBookingDetailsHeaderCell.swift */; };
 		4C4999081EBB61EB0034819B /* JaldiBookingDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4999071EBB61EB0034819B /* JaldiBookingDescriptionViewController.swift */; };
 		4C49990B1EBB65210034819B /* JaldiBookingDescriptionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49990A1EBB65210034819B /* JaldiBookingDescriptionTableCell.swift */; };
+		4C4A63F81EC1B20000EE2C12 /* JaldiBookingPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A63F71EC1B20000EE2C12 /* JaldiBookingPaymentViewController.swift */; };
+		4C4A63FB1EC1B35B00EE2C12 /* Booking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C4A63F91EC1B35B00EE2C12 /* Booking.storyboard */; };
 		4C832AFC1EB752240092A853 /* HBOnboardingViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C832AF71EB752240092A853 /* HBOnboardingViewControllerViewController.swift */; };
 		4C832AFD1EB752240092A853 /* JaldiOnboardingDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C832AF91EB752240092A853 /* JaldiOnboardingDefines.swift */; };
 		4C832AFE1EB752240092A853 /* JaldiOnboardingInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C832AFA1EB752240092A853 /* JaldiOnboardingInputView.swift */; };
@@ -68,6 +70,8 @@
 		4C4999041EBB3D990034819B /* JaldiBookingDetailsHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingDetailsHeaderCell.swift; sourceTree = "<group>"; };
 		4C4999071EBB61EB0034819B /* JaldiBookingDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingDescriptionViewController.swift; sourceTree = "<group>"; };
 		4C49990A1EBB65210034819B /* JaldiBookingDescriptionTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingDescriptionTableCell.swift; sourceTree = "<group>"; };
+		4C4A63F71EC1B20000EE2C12 /* JaldiBookingPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingPaymentViewController.swift; sourceTree = "<group>"; };
+		4C4A63FA1EC1B35B00EE2C12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Booking.storyboard; sourceTree = "<group>"; };
 		4C832AF71EB752240092A853 /* HBOnboardingViewControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBOnboardingViewControllerViewController.swift; sourceTree = "<group>"; };
 		4C832AF91EB752240092A853 /* JaldiOnboardingDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnboardingDefines.swift; sourceTree = "<group>"; };
 		4C832AFA1EB752240092A853 /* JaldiOnboardingInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnboardingInputView.swift; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 				4C4999061EBB61C50034819B /* BookingDescriptionViewController */,
 				4C25C7BA1EBC650F00092203 /* BookingTimePickerViewController */,
 				4C25C7C01EBC9D5F00092203 /* BookingContactInfoViewController */,
+				4C4A63F61EC1B18C00EE2C12 /* BookingPaymentViewController */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -223,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				4C45878F1EB4C23500169AC1 /* Main.storyboard */,
+				4C4A63F91EC1B35B00EE2C12 /* Booking.storyboard */,
 				4CED68571EB8802E001A7CC5 /* Login.storyboard */,
 				4C4587941EB4C23500169AC1 /* LaunchScreen.storyboard */,
 			);
@@ -280,6 +286,14 @@
 				4C49990A1EBB65210034819B /* JaldiBookingDescriptionTableCell.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		4C4A63F61EC1B18C00EE2C12 /* BookingPaymentViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4C4A63F71EC1B20000EE2C12 /* JaldiBookingPaymentViewController.swift */,
+			);
+			path = BookingPaymentViewController;
 			sourceTree = "<group>";
 		};
 		4C832AF41EB752240092A853 /* ViewControllerts */ = {
@@ -470,6 +484,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CED68591EB8802E001A7CC5 /* Login.storyboard in Resources */,
+				4C4A63FB1EC1B35B00EE2C12 /* Booking.storyboard in Resources */,
 				4C4587961EB4C23500169AC1 /* LaunchScreen.storyboard in Resources */,
 				4C4587931EB4C23500169AC1 /* Assets.xcassets in Resources */,
 				4C4587911EB4C23500169AC1 /* Main.storyboard in Resources */,
@@ -513,6 +528,7 @@
 				4CED68601EB8A9AC001A7CC5 /* HomeCategory.swift in Sources */,
 				4CED68661EB8D172001A7CC5 /* JaldiAnnouncementViewController.swift in Sources */,
 				4CCBD3B31EBCBF10009D5408 /* Date+Helper.swift in Sources */,
+				4C4A63F81EC1B20000EE2C12 /* JaldiBookingPaymentViewController.swift in Sources */,
 				4C4999051EBB3D990034819B /* JaldiBookingDetailsHeaderCell.swift in Sources */,
 				4C4999081EBB61EB0034819B /* JaldiBookingDescriptionViewController.swift in Sources */,
 				4C2DA9F71EB9D1A3002FCAD5 /* AKPickerView.swift in Sources */,
@@ -536,6 +552,14 @@
 				4C4587951EB4C23500169AC1 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4C4A63F91EC1B35B00EE2C12 /* Booking.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C4A63FA1EC1B35B00EE2C12 /* Base */,
+			);
+			name = Booking.storyboard;
 			sourceTree = "<group>";
 		};
 		4CED68571EB8802E001A7CC5 /* Login.storyboard */ = {

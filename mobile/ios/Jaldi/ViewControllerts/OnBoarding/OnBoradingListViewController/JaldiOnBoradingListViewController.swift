@@ -86,7 +86,7 @@ extension JaldiOnBoradingListViewController: UITableViewDelegate,UITableViewData
     
     fileprivate func showBookingDetailsViewController(service:JaldiService) {
         
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard: UIStoryboard = UIStoryboard(name: "Booking", bundle: nil)
         if let bookingDetailsViewController = storyboard.instantiateViewController(withIdentifier: "JaldiBookingDetailsViewController") as? JaldiBookingDetailsViewController{
             bookingDetailsViewController.bookingObject = BookingHelper.bookingObjectFor(service: service)
             let navController = UINavigationController(rootViewController: bookingDetailsViewController)

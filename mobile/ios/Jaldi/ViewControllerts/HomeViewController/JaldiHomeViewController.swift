@@ -139,7 +139,7 @@ extension JaldiHomeViewController: UICollectionViewDelegate,UICollectionViewData
         guard let service =  JaldiServiceHeleper.serviceFor(category: category) else {
             return
         }
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard: UIStoryboard = UIStoryboard(name: "Booking", bundle: nil)
         if let bookingDetailsViewController = storyboard.instantiateViewController(withIdentifier: "JaldiBookingDetailsViewController") as? JaldiBookingDetailsViewController{
             bookingDetailsViewController.bookingObject = BookingHelper.bookingObjectFor(service: service)
             let navController = UINavigationController(rootViewController: bookingDetailsViewController)
