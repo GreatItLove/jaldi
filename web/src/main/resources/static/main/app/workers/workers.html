@@ -6,14 +6,24 @@
         <div class="card">
             <div class="card-block">
                 <div class="card-title">
-                    <button type="button" class="btn btn-primary" ng-click="addEditWorker()">Add worker</button>
-                    <button type="button" ng-show="selectedItem" class="btn btn-warning" ng-click="addEditWorker(selectedItem)">Edit worker</button>
-                    <button ng-if="utils.isAdmin()" type="button" ng-show="selectedItem" class="btn btn-danger" ng-click="deleteWorker(selectedItem)">Delete</button>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-primary" ng-click="addEditWorker()">Add worker</button>
+                            <button type="button" ng-show="selectedItem" class="btn btn-warning" ng-click="addEditWorker(selectedItem)">Edit worker</button>
+                            <button ng-if="utils.isAdmin()" type="button" ng-show="selectedItem" class="btn btn-danger" ng-click="deleteWorker(selectedItem)">Delete</button>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row data-table-search">
+                                <label class="col-md-2 data-table-search-label pull-right">Search:</label>
+                                <input ng-model="filterInput" class="col-md-10 form-control pull-right" type="text">
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div loading-container="tableParams.settings().$loading" class="table-overflow table-primary">
                     <table ng-table="tableParams" show-filter="false" class="table table-striped table-bordered table-hover">
                         <tbody>
-                        <tr ng-repeat="item in $data" ng-click="selectItem(item.user.id)" ng-class="{'table-info': item.user.id == selectedItem}">
+                        <tr ng-repeat="item in $data | filter : filterInput" ng-click="selectItem(item.user.id)" ng-class="{'table-info': item.user.id == selectedItem}">
                             <td data-title="'Name'" sortable="'user.name'" class="text-center">
                                 <strong>
                                     <span ng-bind="item.user.name"></span>

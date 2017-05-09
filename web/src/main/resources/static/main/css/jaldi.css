@@ -78,3 +78,13 @@ hr.profile-img-divider {
 .specialization-icons > img {
     height: 24px;
 }
+
+.data-table-search-label {
+    line-height: 35px;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.data-table-search {
+    padding: 0 15px;
+}
