@@ -28,6 +28,7 @@
 		4C49990B1EBB65210034819B /* JaldiBookingDescriptionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49990A1EBB65210034819B /* JaldiBookingDescriptionTableCell.swift */; };
 		4C4A63F81EC1B20000EE2C12 /* JaldiBookingPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A63F71EC1B20000EE2C12 /* JaldiBookingPaymentViewController.swift */; };
 		4C4A63FB1EC1B35B00EE2C12 /* Booking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C4A63F91EC1B35B00EE2C12 /* Booking.storyboard */; };
+		4C4A63FF1EC1BC5C00EE2C12 /* JaldiBookingPaymentCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A63FE1EC1BC5C00EE2C12 /* JaldiBookingPaymentCardCell.swift */; };
 		4C832AFC1EB752240092A853 /* HBOnboardingViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C832AF71EB752240092A853 /* HBOnboardingViewControllerViewController.swift */; };
 		4C832AFD1EB752240092A853 /* JaldiOnboardingDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C832AF91EB752240092A853 /* JaldiOnboardingDefines.swift */; };
 		4C832AFE1EB752240092A853 /* JaldiOnboardingInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C832AFA1EB752240092A853 /* JaldiOnboardingInputView.swift */; };
@@ -72,6 +73,7 @@
 		4C49990A1EBB65210034819B /* JaldiBookingDescriptionTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingDescriptionTableCell.swift; sourceTree = "<group>"; };
 		4C4A63F71EC1B20000EE2C12 /* JaldiBookingPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingPaymentViewController.swift; sourceTree = "<group>"; };
 		4C4A63FA1EC1B35B00EE2C12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Booking.storyboard; sourceTree = "<group>"; };
+		4C4A63FE1EC1BC5C00EE2C12 /* JaldiBookingPaymentCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingPaymentCardCell.swift; sourceTree = "<group>"; };
 		4C832AF71EB752240092A853 /* HBOnboardingViewControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBOnboardingViewControllerViewController.swift; sourceTree = "<group>"; };
 		4C832AF91EB752240092A853 /* JaldiOnboardingDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnboardingDefines.swift; sourceTree = "<group>"; };
 		4C832AFA1EB752240092A853 /* JaldiOnboardingInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnboardingInputView.swift; sourceTree = "<group>"; };
@@ -292,8 +294,25 @@
 			isa = PBXGroup;
 			children = (
 				4C4A63F71EC1B20000EE2C12 /* JaldiBookingPaymentViewController.swift */,
+				4C4A63FC1EC1BC2400EE2C12 /* Shared */,
 			);
 			path = BookingPaymentViewController;
+			sourceTree = "<group>";
+		};
+		4C4A63FC1EC1BC2400EE2C12 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				4C4A63FD1EC1BC2400EE2C12 /* Cells */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		4C4A63FD1EC1BC2400EE2C12 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4C4A63FE1EC1BC5C00EE2C12 /* JaldiBookingPaymentCardCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		4C832AF41EB752240092A853 /* ViewControllerts */ = {
@@ -511,6 +530,7 @@
 				4C832B0B1EB775DD0092A853 /* JaldiNotInYourAreaViewController.swift in Sources */,
 				4C832AFE1EB752240092A853 /* JaldiOnboardingInputView.swift in Sources */,
 				C65CB5071EB857F000DE65B7 /* JaldiHomeViewController.swift in Sources */,
+				4C4A63FF1EC1BC5C00EE2C12 /* JaldiBookingPaymentCardCell.swift in Sources */,
 				4C832AFC1EB752240092A853 /* HBOnboardingViewControllerViewController.swift in Sources */,
 				4CCBD3AD1EBCB598009D5408 /* BookingNavigation.swift in Sources */,
 				4CED68541EB870A5001A7CC5 /* JaldiAppConstants.swift in Sources */,

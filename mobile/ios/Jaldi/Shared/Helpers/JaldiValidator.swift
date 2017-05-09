@@ -21,5 +21,31 @@ struct JaldiValidator {
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: inputString)
     }
+    
+    static func isValid(cardNumber:String) -> Bool {
+        return cardNumber.characters.count > 0
+    }
+    static func isValid(cvc:String) -> Bool {
+        return cvc.characters.count == 4 && self.isNumeric(inputString: cvc)
+    }
+    static func isValid(cardDate:String) -> Bool {
+       let components =  cardDate.components(separatedBy: "/")
+        if components.count != 2 {
+          return false
+        }
+        let month = components[0]
+        let year = components[1]
+        if month.characters.count != 2 || year.characters.count != 2 {
+           return false
+        }
+        if !isNumeric(inputString: month) || !isNumeric(inputString: year) {
+           return false
+        }
+        
+        if let monthInt = Int(month) {
+          return (monthInt >= 0 && monthInt <= 12)
+        }
+        return false
+    }
 
 }

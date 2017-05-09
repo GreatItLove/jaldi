@@ -15,7 +15,7 @@ class BookingObject {
     let bookingScreens: [BookingScreen]
     var contactInfo: BookingContactInfo?
     var bookingPrice: BookingPrice?
-    
+    var cardInfo: CardInfo?
     
     init(service:JaldiService, bookingDetails:BookingDetails,bookingScreens:[BookingScreen]) {
         self.service = service
@@ -74,10 +74,17 @@ class BookingPrice {
     }
 }
 
+class CardInfo {
+    var cardNumber: String?
+    var cardDate: String?
+    var cvc: String?
+    var promoCode: String?
+}
 enum BookingScreen: Int {
     // handyMan
     case details
     case desc
     case time
     case contactInfo
+    case payment
 }

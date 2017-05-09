@@ -29,6 +29,21 @@ struct AvailableZipCodes {
      return zipCodes.contains(zipCode)
     }
 }
+struct AvailablePromoCodes {
+    static let promoCodes = ["1001",
+                           "1002",
+                           "1003",
+                           "1004",
+                           "1005",
+                           "1006",
+                           "1007",
+                           "1008",
+                           "1009",
+                           "1010"]
+    static func promoCodeIsAvailable(promoCode:String) -> Bool {
+        return promoCodes.contains(promoCode)
+    }
+}
 struct AppDateFormats {
     static let weekFormat = "EEEE, MMM d"
     static let timeFormat = "HH:mm a"

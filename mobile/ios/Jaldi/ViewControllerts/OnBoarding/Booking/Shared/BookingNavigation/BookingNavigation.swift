@@ -64,6 +64,8 @@ extension BookingNavigation{
             return self.getBookingTimePickerViewController()
         case .contactInfo:
             return self.getBookingContactInfoViewController()
+        case .payment:
+            return self.getBookingPaymentViewController()
             
         }
     }
@@ -95,6 +97,14 @@ extension BookingNavigation{
         bookingContactInfoViewController?.bookingObject = bookingObject
         return bookingContactInfoViewController
     }
+    
+    private func getBookingPaymentViewController() -> UIViewController?  {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Booking", bundle: nil)
+        let bookingPaymentViewController = storyboard.instantiateViewController(withIdentifier: "JaldiBookingPaymentViewController") as? JaldiBookingPaymentViewController
+        bookingPaymentViewController?.bookingObject = bookingObject
+        return bookingPaymentViewController
+    }
+
 
     
 }
