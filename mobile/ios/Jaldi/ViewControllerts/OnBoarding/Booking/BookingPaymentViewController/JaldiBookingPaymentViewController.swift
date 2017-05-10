@@ -9,6 +9,16 @@
 import UIKit
 
 class JaldiBookingPaymentViewController: UIViewController ,BookingNavigation {
+    fileprivate enum PaymentCellType: Int {
+        case card
+        case details
+        case termOfUse
+        static let allSections:[PaymentCellType] = [PaymentCellType.card,
+                                                    PaymentCellType.details,
+                                                    PaymentCellType.termOfUse
+                                                    ]
+    }
+    
     
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var theTableView: UITableView!
@@ -16,6 +26,8 @@ class JaldiBookingPaymentViewController: UIViewController ,BookingNavigation {
     var bookingObject:BookingObject?
     var curretScreen: BookingScreen = BookingScreen.payment
     var selectedTextField: UITextField?
+    fileprivate var showPaymentsDetails = false
+    fileprivate let sections = PaymentCellType.allSections
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
@@ -34,7 +46,7 @@ class JaldiBookingPaymentViewController: UIViewController ,BookingNavigation {
         }
     }
     private func configureTableView() -> Void {
-        theTableView.rowHeight = 115
+        theTableView.estimatedRowHeight = 125
     }
     
     //MARK: Actions
@@ -173,7 +185,7 @@ class JaldiBookingPaymentViewController: UIViewController ,BookingNavigation {
 extension JaldiBookingPaymentViewController: UITableViewDelegate,UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int{
-        return (bookingObject != nil  ? 1: 0)
+        return (bookingObject != nil  ? sections.count: 0)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -181,6 +193,30 @@ extension JaldiBookingPaymentViewController: UITableViewDelegate,UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        guard let cellType  = PaymentCellType(rawValue: indexPath.section) else {
+          return self.tableView(tableView, paymentCardCellForRowAt: indexPath)
+        }
+        switch cellType {
+        case PaymentCellType.card:
+            return self.tableView(tableView, paymentCardCellForRowAt: indexPath)
+        case PaymentCellType.details:
+            return self.tableView(tableView, paymentDetailsCellForRowAt: indexPath)
+        case PaymentCellType.termOfUse:
+            return self.tableView(tableView, paymentTermOfUseCellForRowAt: indexPath)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return  0.1
+//        return  section == 0 ? 0.1 : 10
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+         return  indexPath.section == 0 ? 152: UITableViewAutomaticDimension
+    }
+    
+    // MARK: Cell Helper
+    private func tableView(_ tableView: UITableView, paymentCardCellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let simpleTableIdentifier = "JaldiBookingPaymentCardCell"
         let cell:JaldiBookingPaymentCardCell = tableView.dequeueReusableCell(withIdentifier: simpleTableIdentifier, for: indexPath) as! JaldiBookingPaymentCardCell
@@ -191,16 +227,23 @@ extension JaldiBookingPaymentViewController: UITableViewDelegate,UITableViewData
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0.1
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 152
+    private func tableView(_ tableView: UITableView, paymentDetailsCellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let simpleTableIdentifier = "JaldiBookingPaymentDetailsCell"
+        let cell:JaldiBookingPaymentDetailsCell = tableView.dequeueReusableCell(withIdentifier: simpleTableIdentifier, for: indexPath) as! JaldiBookingPaymentDetailsCell
+        if let bookingObject = bookingObject {
+            cell.configureWith(bookingObject: bookingObject, showPaymentDetails: showPaymentsDetails)
+            cell.delegate = self
         }
-        return 44
+        return cell
     }
-    
+    private func tableView(_ tableView: UITableView, paymentTermOfUseCellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let simpleTableIdentifier = "JaldiBookingPaymentTermOfUseCell"
+        let cell:JaldiBookingPaymentTermOfUseCell = tableView.dequeueReusableCell(withIdentifier: simpleTableIdentifier, for: indexPath) as! JaldiBookingPaymentTermOfUseCell
+        cell.delegate = self
+        return cell
+    }
 }
 
 extension JaldiBookingPaymentViewController: JaldiBookingPaymentCardCellDelegate {
@@ -244,5 +287,21 @@ extension JaldiBookingPaymentViewController: JaldiBookingPaymentCardCellDelegate
             }
             completion(promoCodeIsAvailable)
         }
+    }
+}
+
+extension JaldiBookingPaymentViewController: JaldiBookingPaymentDetailsCellDelegate {
+
+    func paymentDetails(didShowPaymentDetailsFor cell: JaldiBookingPaymentDetailsCell) {
+      self.showPaymentsDetails = true
+        guard let indexPath = theTableView.indexPath(for: cell) else {return}
+        self.theTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+    }
+}
+
+extension JaldiBookingPaymentViewController: JaldiBookingPaymentTermOfUseCellDelegate {
+    
+   func termOfUseDidSelect(cell: JaldiBookingPaymentTermOfUseCell){
+    UIApplication.shared.openURL(URL(string: "http://www.google.com")!)
     }
 }

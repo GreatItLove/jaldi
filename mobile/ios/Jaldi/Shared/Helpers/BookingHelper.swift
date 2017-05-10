@@ -13,7 +13,9 @@ struct BookingHelper {
     static let timeDefaultTitle = "When would you like us to come?"
     static func bookingObjectFor(service:JaldiService) -> BookingObject {
         let bookingDetails = BookingDetailsHelper.bookingDetailsFor(service: service)
-        return BookingObject(service: service, bookingDetails: bookingDetails, bookingScreens: [BookingScreen.details,BookingScreen.time,BookingScreen.contactInfo,BookingScreen.payment])
+        return BookingObject(service: service, bookingDetails: bookingDetails, bookingScreens: [BookingScreen.details,BookingScreen.payment])
+
+//        return BookingObject(service: service, bookingDetails: bookingDetails, bookingScreens: [BookingScreen.details,BookingScreen.time,BookingScreen.contactInfo,BookingScreen.payment])
     }
     //MARK: BookingDetailsHelper Helper
     struct BookingDetailsHelper {

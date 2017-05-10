@@ -22,8 +22,9 @@ class BookingObject {
         self.bookingDetails = bookingDetails
         self.bookingScreens = bookingScreens
         bookingPrice = BookingPrice()
-        bookingPrice?.price = 90
-        bookingPrice?.discount = 52
+        bookingPrice?.serivcePrice = 87
+        bookingPrice?.fee = 3
+        bookingPrice?.coupon = 43.5
     }
 }
 
@@ -63,13 +64,18 @@ class BookingContactInfo {
     var phone: String?
 }
 class BookingPrice {
-    var price: Float = 0
-    var discount: Float = 0
+    var price: Float {
+        get {
+            return serivcePrice + fee
+        }
+    }
+    var serivcePrice: Float = 0
+    var coupon: Float = 0
+    var fee: Float = 0
     
     var originalPrice: Float {
         get {
-            if discount == 0 {return price}
-            return price * discount / 100
+            return serivcePrice - coupon + fee
         }
     }
 }

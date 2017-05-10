@@ -23,7 +23,7 @@ class JaldiBookingDatePriceView: UIView {
         let time  = dateTime.dateStringWith(format: AppDateFormats.timeFormat)
         timeAndDurationLabel.text = "\(time) (2 hours)"
         if let bookingPrice = bookingObject.bookingPrice {
-            if bookingPrice.discount == 0{
+            if bookingPrice.coupon == 0{
                 priceLabel.isHidden = true
             }else{
             priceLabel.isHidden = false

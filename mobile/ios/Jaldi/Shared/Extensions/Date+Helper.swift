@@ -2,7 +2,7 @@
 //  Date+Helper.swift
 //  Jaldi
 //
-//  Created by Mnats Karakhanyan on 5/5/17.
+//  Created by Grigori Jlavyan on 5/5/17.
 //  Copyright © 2017 Handybook. All rights reserved.
 //
 
