@@ -10,8 +10,8 @@ import UIKit
 
 
 struct Circle {
-    static let width = 55
-    static let height = 55
+    static let width = 50
+    static let height = 50
 }
 
 /**
@@ -689,7 +689,7 @@ fileprivate class BorderedView: UIView {
     }
     fileprivate func configureBorderWith(frame: CGRect){
         self.backgroundColor = UIColor.clear
-        self.layer.borderWidth = 1.5
+        self.layer.borderWidth = 1.7
         self.layer.cornerRadius = frame.size.height/2
         self.layer.borderColor = AppColors.BlueColor.cgColor
     }

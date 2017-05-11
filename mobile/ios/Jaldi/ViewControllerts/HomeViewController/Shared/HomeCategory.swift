@@ -39,7 +39,7 @@ struct HomeCategoryHeleper {
 //        static let mason = "Mason"
 //        static let acTechnical = "Ac Technical"
         static let electrician = "Don't shock yourself"
-        static let painter = "Color you world"
+        static let painter = "Color your world"
         static let plumber = "No more leaks"
         static let homeCleaning = "Keeping it tify"
         static let handyMan = "Fix or assemble"
