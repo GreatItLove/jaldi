@@ -4,48 +4,41 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <title>BtcInvest - Sign In</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>404 - Page Not Found</title>
     <jsp:include page="../common/meta.jsp"/>
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin" rel="stylesheet" type="text/css">
-    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="/resources/main/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/resources/main/css/simple-line-icons.css" rel="stylesheet">
 
-    <link href="/resources/main/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="/resources/main/css/pixeladmin-dark.min.css" rel="stylesheet" type="text/css">
-    <link href="/resources/main/css/widgets.min.css" rel="stylesheet" type="text/css">
+    <!-- Main styles for this application -->
+    <link href="/resources/main/css/style.css" rel="stylesheet">
 
-    <!-- Theme -->
-    <link href="/resources/main/css/themes/clean.min.css" rel="stylesheet" type="text/css">
-
-    <link href="/resources/main/css/error-page.css" rel="stylesheet" type="text/css">
+    <link href="/resources/main/css/override.css" rel="stylesheet">
 
 </head>
-<body>
-<div class="page-404-bg bg-primary"></div>
-<div class="page-404-header bg-white">
-    <a class="px-demo-brand px-demo-brand-lg" href="/">
-        <img src="/resources/main/img/logo-full-white.png" height="40">
-    </a>
-</div>
-<h1 class="page-404-error-code"><strong>404</strong></h1>
-<h2 class="page-404-subheader">OOPS!</h2>
-<h3 class="page-404-text">
-    SOMETHING WENT WRONG, OR THAT PAGE DOESN'T EXIST... YET
-</h3>
-<form class="page-404-form" action="">
-    <div class="text-xs-center m-t-2 font-weight-bold font-size-14 text-white">
-        <a href="/" class="text-white"><u>Back to home</u></a>
+<body class="app flex-row align-items-center">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="clearfix">
+                <h1 class="float-left display-3 mr-2">404</h1>
+                <h4 class="pt-1">Oops! You're lost.</h4>
+                <p class="text-muted">The page you are looking for was not found.</p>
+            </div>
+            <div class="text-center">
+                <a href="/" class=""><u>Back to home</u></a>
+            </div>
+        </div>
     </div>
-</form>
-
-<jsp:useBean id="random" class="java.util.Random" scope="application" />
-<c:set var="bgName" value="${random.nextInt(11) + 1}"></c:set>
-<div class="px-responsive-bg">
-    <div class="px-responsive-bg-overlay" style="background: rgb(0, 0, 0); opacity: 0.2;"></div>
-    <img alt="" src="/resources/main/img/bgs/${bgName}.jpg" style="width: 100%; height: 958px; top: -94px; left: 0px;">
 </div>
+
+<!-- Bootstrap and necessary plugins -->
+<script src="/resources/main/js/libs/jquery.min.js"></script>
+<script src="/resources/main/js/libs/tether.min.js"></script>
+<script src="/resources/main/js/libs/bootstrap.min.js"></script>
+
+
 </body>
 </html>

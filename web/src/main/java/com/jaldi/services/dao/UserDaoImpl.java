@@ -121,4 +121,11 @@ public class UserDaoImpl {
         user.setId(holder.getKey().longValue());
         return user;
     }
+
+    public boolean checkEmail(String email) {
+        String sql = "SELECT count(*) FROM `user` WHERE `email` = ?;";
+        int count = jdbcTemplate.queryForObject(
+                sql, new Object[] { email }, Integer.class);
+        return count > 0;
+    }
 }

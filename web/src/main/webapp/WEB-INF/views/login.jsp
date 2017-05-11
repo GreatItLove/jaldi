@@ -41,7 +41,7 @@
                             <div class="input-group mb-1">
                                     <span class="input-group-addon"><i class="icon-user"></i>
                                     </span>
-                                <input type="text" name="username" class="form-control" placeholder="Username">
+                                <input type="text" name="username" class="form-control" placeholder="Email">
                             </div>
                             <div class="input-group mb-2">
                                     <span class="input-group-addon"><i class="icon-lock"></i>
@@ -62,9 +62,9 @@
                 <div class="card card-inverse card-primary py-3 hidden-md-down" style="width:44%">
                     <div class="card-block text-center">
                         <div>
-                            <h2>Sign up</h2>
-                            <p>New to Jaldi?</p>
-                            <button type="button" class="btn btn-primary active mt-1">Register Now!</button>
+                            <h2>New to Jaldi?</h2>
+                            <p>Sign up</p>
+                            <a href="/signup" class="btn btn-primary active mt-1">Register Now!</a>
                         </div>
                     </div>
                 </div>

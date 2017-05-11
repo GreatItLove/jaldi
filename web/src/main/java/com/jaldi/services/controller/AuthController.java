@@ -1,10 +1,13 @@
 package com.jaldi.services.controller;
 
+import com.jaldi.services.common.MailSenderService;
 import com.jaldi.services.dao.UserDaoImpl;
+import com.jaldi.services.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,7 +23,7 @@ public class AuthController {
     private UserDaoImpl userDao;
 
     @Autowired
-    private MessageSource messageSource;
+    private MailSenderService mailSender;
 
     @GetMapping("/login")
     public ModelAndView login(
@@ -45,6 +48,27 @@ public class AuthController {
     @GetMapping("/signup")
     public String signup() {
         return "signup";
+    }
+
+    @PostMapping("/signup")
+    public ModelAndView signup(@ModelAttribute User user) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("signup");
+        modelAndView.addObject("user", user);
+        boolean emailExists = userDao.checkEmail(user.getEmail());
+        if(emailExists) {
+            modelAndView.addObject("emailExist", "User with specified email already exists.");
+        }
+        if(!emailExists) {
+            user.setType(User.Type.CUSTOMER);
+            user.setRole(User.Role.USER);
+            user.setActive(true);
+            user.setPhone(user.getPhone().replaceAll("[^0-9]",""));
+            userDao.create(user);
+            mailSender.sendWelcomeEmail(user);
+            modelAndView.addObject("createdSuccessfully", "Registration complete. You will be redirected to the login page.");
+        }
+        return modelAndView;
     }
 
     @GetMapping("/forgot")
