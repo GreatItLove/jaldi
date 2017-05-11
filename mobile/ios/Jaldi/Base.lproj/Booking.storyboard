@@ -66,10 +66,10 @@
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="JaldiBookingDetailsTableViewCell" rowHeight="160" id="ncD-m2-4iV" customClass="JaldiBookingDetailsTableViewCell" customModule="Jaldi" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55" width="375" height="160"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ncD-m2-4iV" id="R8i-rk-oy2">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="161"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8PH-Jo-FDY">
@@ -146,7 +146,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="JaldiBookingDetailsHeaderCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="JaldiBookingDetailsHeaderCell" id="d8E-Y1-TCF" customClass="JaldiBookingDetailsHeaderCell" customModule="Jaldi" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="215" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="215.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d8E-Y1-TCF" id="CR1-VX-7Hm">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -272,7 +272,7 @@
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="JaldiBookingDetailsHeaderCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="JaldiBookingDetailsHeaderCellDescription" id="E87-jF-cv5" customClass="JaldiBookingDetailsHeaderCell" customModule="Jaldi" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E87-jF-cv5" id="I5e-7H-TVi">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -299,10 +299,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="JaldiBookingDescriptionTableCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="JaldiBookingDescriptionTableCell" rowHeight="150" id="rqh-Cm-fvp" customClass="JaldiBookingDescriptionTableCell" customModule="Jaldi" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="99" width="375" height="150"/>
+                                        <rect key="frame" x="0.0" y="99.5" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rqh-Cm-fvp" id="Z4R-Om-6hD">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="151"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="puv-ha-gqS">
@@ -828,7 +828,7 @@
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="JaldiBookingPaymentTermOfUseCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="JaldiBookingPaymentTermOfUseCell" rowHeight="90" id="eUA-sT-2iv" customClass="JaldiBookingPaymentTermOfUseCell" customModule="Jaldi" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55" width="375" height="90"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eUA-sT-2iv" id="5Td-L7-MPv">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
@@ -870,7 +870,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="JaldiBookingPaymentMethodCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="JaldiBookingPaymentMethodCell" id="JvN-tN-ISX" customClass="JaldiBookingPaymentMethodCell" customModule="Jaldi" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="145" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="145.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JvN-tN-ISX" id="uHf-Rl-3Co">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -909,7 +909,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="JaldiBookingPaymentDetailsCell" rowHeight="400" id="q8j-XR-cvM" customClass="JaldiBookingPaymentDetailsCell" customModule="Jaldi" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="189" width="375" height="400"/>
+                                        <rect key="frame" x="0.0" y="189.5" width="375" height="400"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q8j-XR-cvM" id="Zh9-8H-PuO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
@@ -1243,7 +1243,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="JaldiBookingPaymentCardCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="JaldiBookingPaymentCardCell" rowHeight="152" id="PC8-FH-PVe" customClass="JaldiBookingPaymentCardCell" customModule="Jaldi" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="589" width="375" height="153"/>
+                                        <rect key="frame" x="0.0" y="589.5" width="375" height="152"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PC8-FH-PVe" id="04w-9S-6aF">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="152"/>
