@@ -8,9 +8,14 @@
 
 import UIKit
 
+
+struct Circle {
+    static let width = 55
+    static let height = 55
+}
+
 /**
 Styles of AKPickerView.
-
 - Wheel: Style with 3D appearance like UIPickerView.
 - Flat:  Flat style.
 */
@@ -162,7 +167,7 @@ private class AKCollectionViewLayout: UICollectionViewFlowLayout {
 				return attributes;
 			}
 		}
-
+        
 		return nil
 	}
 
@@ -174,7 +179,7 @@ private class AKCollectionViewLayout: UICollectionViewFlowLayout {
 			var attributes = [AnyObject]()
 			if self.collectionView!.numberOfSections > 0 {
 				for i in 0 ..< self.collectionView!.numberOfItems(inSection: 0) {
-					let indexPath = IndexPath(item: i, section: 0)
+                    let indexPath = IndexPath(item: i, section: 0)
 					attributes.append(self.layoutAttributesForItem(at: indexPath)!)
 				}
 			}
@@ -309,6 +314,12 @@ public class AKPickerView: UIView, UICollectionViewDataSource, UICollectionViewD
    fileprivate var border: BorderedView?
 	// MARK: - Functions
 	// MARK: View Lifecycle
+   
+    
+    fileprivate var useStaticBorder: Bool = true
+    
+    
+    
 	/**
 	Private. Initializes picker view's subviews and friends.
 	*/
@@ -363,7 +374,18 @@ public class AKPickerView: UIView, UICollectionViewDataSource, UICollectionViewD
         self.border  = BorderedView(frame:frame)
         self.addSubview(self.border!)
         self.border?.isUserInteractionEnabled = false
-
+    }
+    
+    private func addStaticBorder() {
+        if self.border != nil {return}
+        var frame  = CGRect(x: 0, y: 0, width: 0, height: 0)
+        frame.size.width = CGFloat(Circle.width)
+        frame.size.height =  CGFloat(Circle.height)
+        frame.origin.x = (self.bounds.size.width - (frame.size.width) )/2 + 4
+        frame.origin.y = (self.bounds.size.height - (frame.size.height))/2
+        self.border  = BorderedView(frame:frame)
+        self.addSubview(self.border!)
+        self.border?.isUserInteractionEnabled = false
     }
     
     private func removeBorder() {
@@ -400,7 +422,11 @@ public class AKPickerView: UIView, UICollectionViewDataSource, UICollectionViewD
 		}
 		self.collectionView.layer.mask?.frame = self.collectionView.bounds
         if border == nil {
-         self.addBorder()
+            if self.useStaticBorder {
+                self.addStaticBorder()
+            } else {
+                self.addBorder()
+            }
         }
         
 //        border?.center = CGPoint(x: 100, y: 20)

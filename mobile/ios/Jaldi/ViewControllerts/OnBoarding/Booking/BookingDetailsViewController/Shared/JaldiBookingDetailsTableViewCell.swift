@@ -55,8 +55,9 @@ class JaldiBookingDetailsTableViewCell: UITableViewCell {
         self.pickerView.delegate = self
         self.pickerView.dataSource = self
         
-        self.pickerView.font = UIFont(name: "HelveticaNeue-Light", size: 15)!
-        self.pickerView.highlightedFont = UIFont(name: "HelveticaNeue", size: 15)!
+        
+        self.pickerView.font = UIFont(name: "HelveticaNeue-Light", size: 21)!
+        self.pickerView.highlightedFont = UIFont(name: "HelveticaNeue", size: 21)!
         self.pickerView.pickerViewStyle = .wheel
         self.pickerView.maskDisabled = false
         self.pickerView.reloadData()
@@ -81,12 +82,13 @@ extension JaldiBookingDetailsTableViewCell: AKPickerViewDataSource, AKPickerView
     }
 
     func pickerView(_ pickerView: AKPickerView, titleForItem item: Int) -> String {
-        return self.detailItem?.bookingProperties[item] ?? ""
+        return ("  " + (self.detailItem?.bookingProperties[item])! + "   ")
     }
     
     func pickerView(_ pickerView: AKPickerView, imageForItem item: Int) -> UIImage {
         return UIImage(named: "")!
     }
+    
     func pickerView(_ pickerView: AKPickerView, marginForItem item: Int) -> CGSize{
         if let proparty =  self.detailItem?.bookingProperties[item]{
           let size = self.sizeForString(proparty as NSString)
@@ -113,8 +115,8 @@ extension JaldiBookingDetailsTableViewCell: AKPickerViewDataSource, AKPickerView
         let size =  string.size(attributes: [NSFontAttributeName: self.pickerView.font])
         let highlightedSize = string.size(attributes: [NSFontAttributeName: self.pickerView.highlightedFont])
         return CGSize(
-            width: ceil(max(size.width, highlightedSize.width)),
-            height: ceil(max(size.height, highlightedSize.height)))
+            width: (ceil(max(size.width, highlightedSize.width))),
+            height: (ceil(max(size.height, highlightedSize.height))))
     }
 
 }
