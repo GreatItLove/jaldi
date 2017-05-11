@@ -51,8 +51,8 @@
                                 <div class="page-signin-icon text-muted"><i class="ion-asterisk"></i></div>
                                 <input type="password" name="password2" autocomplete="off" required minlength="8" class="page-signin-form-control form-control" placeholder="Repeat password">
                                 <c:if test="${ not empty doesntMatch }">
-                                    <div class="form-message has-danger">
-                                        <span>${doesntMatch}</span>
+                                    <div class="has-danger">
+                                        <span class="form-control-feedback">${doesntMatch}</span>
                                     </div>
                                 </c:if>
                             </fieldset>
