@@ -47,11 +47,13 @@
                                 <div class="page-signin-icon text-muted"><i class="ion-asterisk"></i></div>
                                 <input type="password" name="password" autocomplete="off" required minlength="8" class="page-signin-form-control form-control" placeholder="Password">
                             </fieldset>
-                            <fieldset class="page-signin-form-group form-group form-group-lg form-message-dark ${not empty doesntMatch ? 'has-error' : ''}">
+                            <fieldset class="page-signin-form-group form-group form-group-lg form-message-dark ${not empty doesntMatch ? 'has-danger' : ''}">
                                 <div class="page-signin-icon text-muted"><i class="ion-asterisk"></i></div>
                                 <input type="password" name="password2" autocomplete="off" required minlength="8" class="page-signin-form-control form-control" placeholder="Repeat password">
                                 <c:if test="${ not empty doesntMatch }">
-                                    <div id="validation-message-dark-error" class="form-message validation-error">${doesntMatch}</div>
+                                    <div class="form-message has-danger">
+                                        <span>${doesntMatch}</span>
+                                    </div>
                                 </c:if>
                             </fieldset>
                             <button type="submit" class="btn btn-block btn-lg btn-primary m-t-3">Change password</button>

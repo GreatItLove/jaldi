@@ -116,7 +116,7 @@
                             </div>
                             <div class="mb-1 has-danger">
                                 <c:if test="${ not empty emailExist }">
-                                    <div id="validation-message-dark-error" class="error form-control-feedback">${emailExist}</div>
+                                    <div class="error form-control-feedback">${emailExist}</div>
                                 </c:if>
                             </div>
 
