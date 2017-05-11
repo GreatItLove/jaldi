@@ -64,7 +64,7 @@ public class UserDaoImpl {
         try {
             String sql = "SELECT `id`, `email`, `name`, `phone`, `password`, `role`, `type`, `profileImageId`, `isActive`, `isDeleted`, `creationDate` FROM `user` WHERE `email` = ?;";
             User user = jdbcTemplate.queryForObject(
-                    sql, new UserMapper(), username, username);
+                    sql, new UserMapper(), username);
             return user;
         } catch (EmptyResultDataAccessException e) {
             return null;
