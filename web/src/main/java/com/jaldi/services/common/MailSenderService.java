@@ -49,4 +49,23 @@ public class MailSenderService {
             e.printStackTrace();
         }
     }
+
+    public void sendResetPasswordEmail(User toUser, String url){
+        try {
+            final Email email = DefaultEmail.builder()
+                    .from(new InternetAddress(noreplyAddress, noreplyFrom))
+                    .to(Lists.newArrayList(new InternetAddress(toUser.getEmail(), toUser.getName())))
+                    .subject("Password changing confirmation")
+                    .body("")
+                    .encoding("UTF-8").build();
+            final Map<String, Object> params = new HashMap<>();
+            params.put("name", toUser.getName());
+            params.put("url", url);
+            emailService.send(email, "email/reset_password.ftl", params);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (CannotSendEmailException e) {
+            e.printStackTrace();
+        }
+    }
 }

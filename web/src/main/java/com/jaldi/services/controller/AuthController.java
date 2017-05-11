@@ -1,15 +1,22 @@
 package com.jaldi.services.controller;
 
 import com.jaldi.services.common.MailSenderService;
+import com.jaldi.services.dao.TokenDaoImpl;
 import com.jaldi.services.dao.UserDaoImpl;
+import com.jaldi.services.model.Token;
 import com.jaldi.services.model.User;
+import com.jaldi.services.model.request.ResetPassword;
+import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.UUID;
 
 /**
  * Created by: Sedrak Dalaloyan
@@ -21,6 +28,9 @@ public class AuthController {
 
     @Autowired
     private UserDaoImpl userDao;
+
+    @Autowired
+    private TokenDaoImpl tokenDao;
 
     @Autowired
     private MailSenderService mailSender;
@@ -74,6 +84,53 @@ public class AuthController {
     @GetMapping("/forgot")
     public String forgot() {
         return "forgot";
+    }
+
+    @PostMapping("/forgot")
+    public ModelAndView resetPassword(@ModelAttribute User user) {
+        ModelAndView model = new ModelAndView();
+        User innerUser = userDao.loadUserByUsername(user.getEmail());
+        if(innerUser != null) {
+            Token token = new Token();
+            token.setToken(UUID.randomUUID().toString());
+            token.setUserId(innerUser.getId());
+            token.setType(Token.Type.RESET_PASSWORD);
+            tokenDao.create(token);
+            mailSender.sendResetPasswordEmail(innerUser, "reset-password/" + token.getToken());
+        }
+        model.addObject("msg", "We'll send you instructions for resetting your password.");
+        model.setViewName("forgot");
+        return model;
+    }
+
+    @GetMapping("/reset-password/{token}")
+    public ModelAndView resetPassword(@PathVariable("token") String tokenStr) {
+        if(tokenDao.getToken(tokenStr, Token.Type.RESET_PASSWORD) == null) {
+            return new ModelAndView("redirect:/404");
+        }
+        ModelAndView model = new ModelAndView();
+        model.addObject("token", tokenStr);
+        model.setViewName("reset-password");
+        return model;
+    }
+
+    @PostMapping("/reset-password")
+    public ModelAndView updatePassword(@ModelAttribute ResetPassword resetPassword, HttpServletRequest request) {
+        ModelAndView model = new ModelAndView();
+        model.addObject("token", resetPassword.getToken());
+        if(!resetPassword.getPassword().equals(resetPassword.getPassword2())) {
+            model.addObject("doesntMatch", "Password does not match!");
+        } else {
+            Token token = tokenDao.getToken(resetPassword.getToken(), Token.Type.RESET_PASSWORD);
+            User user = new User();
+            user.setId(token.getUserId());
+            user.setPassword(resetPassword.getPassword());
+            userDao.updateUserPassword(user);
+            tokenDao.removeToken(token.getId());
+            model.addObject("successfullyChanged", "Your password has been successfully updated. You will be redirected to the login page.");
+        }
+        model.setViewName("reset-password");
+        return model;
     }
 
 }

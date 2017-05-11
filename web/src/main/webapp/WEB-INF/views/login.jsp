@@ -53,7 +53,7 @@
                                     <button type="submit" class="btn btn-primary px-2">Login</button>
                                 </div>
                                 <div class="col-6 text-right">
-                                    <button type="button" class="btn btn-link px-0">Forgot password?</button>
+                                    <a href="/forgot" class="btn btn-link px-0">Forgot password?</a>
                                 </div>
                             </div>
                         </form>

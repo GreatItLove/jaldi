@@ -128,4 +128,9 @@ public class UserDaoImpl {
                 sql, new Object[] { email }, Integer.class);
         return count > 0;
     }
+
+    public void updateUserPassword(User user) {
+        jdbcTemplate.update("UPDATE user set `password` = password(?) WHERE `id` = ?;",
+                user.getPassword(), user.getId());
+    }
 }
