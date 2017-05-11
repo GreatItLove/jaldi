@@ -43,6 +43,7 @@ class JaldiBookingPaymentDetailsCell: UITableViewCell {
         peyamentDetailsActionableView.isHidden = showPaymentDetails
         peyamentDetailsStackView.isHidden = !showPaymentDetails
         self.configurePaymentDetailsFor(bookingObject: bookingObject)
+        self.totalPriceView.isHidden = !showPaymentDetails
         self.totalPriceView.configureWith(bookingObject: bookingObject)
     }
     

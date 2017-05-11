@@ -21,7 +21,7 @@ class JaldiPaymentTotalPriceView: UIView {
             originalPriceLabel.text = "$\(originalPriceIntValue)"
             let cents = Int((originalPrice - Float(originalPriceIntValue))*100)
             originalPriceCentsLabel.text = "$\(cents)"
-            
+            print("Total price \(self.frame.size)")
         }
     }
 

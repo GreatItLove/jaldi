@@ -10,10 +10,12 @@ import UIKit
 
 class JaldiBookingPaymentViewController: UIViewController ,BookingNavigation {
     fileprivate enum PaymentCellType: Int {
+        case payentMethod
         case card
         case details
         case termOfUse
-        static let allSections:[PaymentCellType] = [PaymentCellType.card,
+        static let allSections:[PaymentCellType] = [PaymentCellType.payentMethod,
+                                                    PaymentCellType.card,
                                                     PaymentCellType.details,
                                                     PaymentCellType.termOfUse
                                                     ]
@@ -198,6 +200,9 @@ extension JaldiBookingPaymentViewController: UITableViewDelegate,UITableViewData
           return self.tableView(tableView, paymentCardCellForRowAt: indexPath)
         }
         switch cellType {
+            
+        case PaymentCellType.payentMethod:
+            return self.tableView(tableView, paymentMethodCellForRowAt: indexPath)
         case PaymentCellType.card:
             return self.tableView(tableView, paymentCardCellForRowAt: indexPath)
         case PaymentCellType.details:
@@ -212,7 +217,19 @@ extension JaldiBookingPaymentViewController: UITableViewDelegate,UITableViewData
 //        return  section == 0 ? 0.1 : 10
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-         return  indexPath.section == 0 ? 152: UITableViewAutomaticDimension
+        guard let cellType  = PaymentCellType(rawValue: indexPath.section) else {
+            return 0
+        }
+        switch cellType {
+        case PaymentCellType.payentMethod:
+            return 50
+        case PaymentCellType.card:
+            return 152
+        case PaymentCellType.details:
+            return UITableViewAutomaticDimension
+        case PaymentCellType.termOfUse:
+            return UITableViewAutomaticDimension
+        }
     }
     
     // MARK: Cell Helper
@@ -244,6 +261,16 @@ extension JaldiBookingPaymentViewController: UITableViewDelegate,UITableViewData
         cell.delegate = self
         return cell
     }
+    
+    private func tableView(_ tableView: UITableView, paymentMethodCellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let simpleTableIdentifier = "JaldiBookingPaymentMethodCell"
+        let cell:JaldiBookingPaymentMethodCell = tableView.dequeueReusableCell(withIdentifier: simpleTableIdentifier, for: indexPath) as! JaldiBookingPaymentMethodCell
+      
+        return cell
+    }
+    
+    
 }
 
 extension JaldiBookingPaymentViewController: JaldiBookingPaymentCardCellDelegate {
