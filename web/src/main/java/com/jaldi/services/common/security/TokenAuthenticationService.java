@@ -1,43 +1,61 @@
 package com.jaldi.services.common.security;
 
+import com.jaldi.services.dao.UserDaoImpl;
+import com.jaldi.services.model.User;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.stereotype.Component;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+@Component
 class TokenAuthenticationService {
-  static final long EXPIRATIONTIME = 864_000_000_00L; // 10 days
+
+  static final long EXPIRATION_TIME = 864_000_000_00L; // 1000 days
   static final String SECRET = "0_JaldiSecret_0";
   static final String TOKEN_PREFIX = "Bearer";
   static final String HEADER_STRING = "Authorization";
 
-  static void addAuthentication(HttpServletResponse res, String username) {
+  @Autowired
+  private UserDaoImpl userDao;
+
+  public void addAuthentication(HttpServletResponse res, String username) {
     String JWT = Jwts.builder()
         .setSubject(username)
-        .setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME))
+        .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
         .signWith(SignatureAlgorithm.HS512, SECRET)
         .compact();
     res.addHeader(HEADER_STRING, TOKEN_PREFIX + " " + JWT);
   }
 
-  static Authentication getAuthentication(HttpServletRequest request) {
-    String token = request.getHeader(HEADER_STRING);
+  public Authentication getAuthentication(String token) {
     if (token != null) {
       // parse the token.
-      String user = Jwts.parser()
-          .setSigningKey(SECRET)
-          .parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
-          .getBody()
-          .getSubject();
-
-      return user != null ?
-          new UsernamePasswordAuthenticationToken(user, null, Collections.emptyList()) :
-          null;
+      try {
+        String username = Jwts.parser()
+                .setSigningKey(SECRET)
+                .parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
+                .getBody()
+                .getSubject();
+        User user = userDao.loadUserByUsername(username);
+        if (user != null && user.isActive() && !user.isDeleted()) {
+          List<GrantedAuthority> grantedAuths = new ArrayList<>();
+          grantedAuths.add(new SimpleGrantedAuthority(user.getRole().name()));
+          CustomAuthenticationToken auth = new CustomAuthenticationToken(username, null, grantedAuths);
+          auth.setUser(user);
+          return auth;
+        }
+      } catch (MalformedJwtException e) {
+        e.printStackTrace();
+      }
     }
     return null;
   }

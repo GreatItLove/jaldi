@@ -14,7 +14,7 @@ angular.module('jaldi.controllers')
                 templateUrl: './resources/main/app/profile/profile.html',
                 controller: 'profileController'
             });
-        $urlRouterProvider.otherwise('/workers');
+        $urlRouterProvider.otherwise(isAdmin || isOperator ? '/workers' : 'profile');
     }
 ])
 .controller('mainController', [

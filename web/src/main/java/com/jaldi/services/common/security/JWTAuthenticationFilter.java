@@ -1,7 +1,7 @@
 package com.jaldi.services.common.security;
 
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
 import org.springframework.web.filter.GenericFilterBean;
 
 import javax.servlet.FilterChain;
@@ -13,16 +13,24 @@ import java.io.IOException;
 
 public class JWTAuthenticationFilter extends GenericFilterBean {
 
+  private TokenAuthenticationService tokenAuthenticationService;
+
+  public JWTAuthenticationFilter(TokenAuthenticationService tokenAuthenticationService) {
+    this.tokenAuthenticationService = tokenAuthenticationService;
+  }
+
   @Override
   public void doFilter(ServletRequest request,
              ServletResponse response,
              FilterChain filterChain)
       throws IOException, ServletException {
-    Authentication authentication = TokenAuthenticationService
-        .getAuthentication((HttpServletRequest)request);
-
-    SecurityContextHolder.getContext()
-        .setAuthentication(authentication);
+    HttpServletRequest httpRequest = (HttpServletRequest) request;
+    String token = httpRequest.getHeader(TokenAuthenticationService.HEADER_STRING);
+    if(token != null && !token.isEmpty()) {
+      PreAuthenticatedAuthenticationToken authentication = new PreAuthenticatedAuthenticationToken(token, null);
+      SecurityContextHolder.getContext()
+              .setAuthentication(authentication);
+    }
     filterChain.doFilter(request,response);
   }
 }

@@ -31,10 +31,13 @@
         var userId = parseInt('${userId}');
         var userFullName = '${userFullName}';
         var profileImageId = '${profileImageId}';
+        var isAdmin = false;
+        var isOperator = false;
         <sec:authorize access="hasAuthority('ADMIN')">
-        var isAdmin = function(){
-            return true;
-        };
+            isAdmin = true;
+        </sec:authorize>
+        <sec:authorize access="hasAuthority('OPERATOR')">
+            isOperator = true;
         </sec:authorize>
     </script>
 </head>
@@ -70,7 +73,7 @@
                     <img ng-src="{{utils.getProfilePictureUrl()}}" class="pull-left m-r-2 img-avatar border-round" style="width: 54px; height: 54px;">
                     <div class="font-size-13"><span class="font-weight-light">Welcome, </span><div><strong ng-bind="$root.user.userFullName"></strong></div></div>
                 </li>
-                <li class="nav-item">
+                <li ng-if="utils.isOperator() || utils.isAdmin()" class="nav-item">
                     <a class="nav-link" ui-sref="workers" ui-sref-active="active"><i class="icon-user-follow"></i> Workers</a>
                 </li>
                 <li class="nav-item nav-dropdown" ng-class="{'open':$state.is('profile')}">

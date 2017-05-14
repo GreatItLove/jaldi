@@ -28,6 +28,12 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private CustomAuthenticationProvider customAuthenticationProvider;
 
+	@Autowired
+	private JwtAuthenticationProvider jwtAuthenticationProvider;
+
+	@Autowired
+	private TokenAuthenticationService tokenAuthenticationService;
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.exceptionHandling().authenticationEntryPoint(ajaxAuthenticationEntryPoint());
@@ -35,6 +41,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 				.antMatchers("/resources/**").permitAll()
 				.antMatchers("/heartbeat").permitAll()
 				.antMatchers("/getFile").permitAll()
+				.antMatchers("/loginjwt").permitAll()
 				.antMatchers("/", "/coming-soon", "/404", "/500", "/signup", "/forgot", "/reset-password/**").permitAll()
 				.anyRequest()
 				.authenticated()
@@ -50,25 +57,18 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 				.logout().permitAll()
 //				.and().rememberMe().tokenRepository(persistentTokenRepository())
 //				.tokenValiditySeconds(31536000)
-				.and().csrf().disable();
-//				.addFilterBefore(new JWTLoginFilter("/loginjwt", authenticationManager()),
-//						UsernamePasswordAuthenticationFilter.class)
+				.and().csrf().disable()
+				.addFilterBefore(new JWTLoginFilter("/loginjwt", authenticationManager(), tokenAuthenticationService),
+					UsernamePasswordAuthenticationFilter.class)
+				.addFilterBefore(new JWTAuthenticationFilter(tokenAuthenticationService),
+					UsernamePasswordAuthenticationFilter.class);
 //				// And filter other requests to check the presence of JWT in header
-//				.addFilterBefore(new JWTAuthenticationFilter(),
-//						UsernamePasswordAuthenticationFilter.class);
 	}
 
 	@Override
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.userDetailsService(customUserDetailsService);
-		auth.authenticationProvider(customAuthenticationProvider);
-	}
-
-	@Bean
-	public PersistentTokenRepository persistentTokenRepository() {
-		JdbcTokenRepositoryImpl db = new JdbcTokenRepositoryImpl();
-		db.setDataSource(dataSource);
-		return db;
+		auth.authenticationProvider(customAuthenticationProvider)
+				.authenticationProvider(jwtAuthenticationProvider);
 	}
 
 	@Bean
