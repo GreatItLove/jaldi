@@ -60,7 +60,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 				.and().csrf().disable()
 				.addFilterBefore(new JWTLoginFilter("/loginjwt", authenticationManager(), tokenAuthenticationService),
 					UsernamePasswordAuthenticationFilter.class)
-				.addFilterBefore(new JWTAuthenticationFilter(tokenAuthenticationService),
+				.addFilterBefore(new JWTAuthenticationFilter(),
 					UsernamePasswordAuthenticationFilter.class);
 //				// And filter other requests to check the presence of JWT in header
 	}
