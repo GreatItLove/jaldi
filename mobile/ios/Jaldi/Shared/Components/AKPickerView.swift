@@ -691,7 +691,7 @@ fileprivate class BorderedView: UIView {
         self.backgroundColor = UIColor.clear
         self.layer.borderWidth = 1.7
         self.layer.cornerRadius = frame.size.height/2
-        self.layer.borderColor = AppColors.BlueColor.cgColor
+        self.layer.borderColor = AppColors.GreenColor.cgColor
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

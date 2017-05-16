@@ -138,7 +138,6 @@ class HBOnboardingViewControllerViewController: UIViewController {
             emailInputViewHorizontalCenterConstraint.constant = 0
         }
     }
-
 }
 
 //MARK: JaldiOnboardingInputViewDelegate
@@ -175,5 +174,20 @@ extension HBOnboardingViewControllerViewController: JaldiOnboardingInputViewDele
             notInYourAreaViewController?.guest = self.onboardingModel
             self.navigationController?.pushViewController(notInYourAreaViewController!, animated: true)
         }
+    }
+    
+    func onboardingDidPressInputButton(inputView:JaldiOnboardingInputView, onboardingState:OnBoardingState) {
+        if onboardingState != .zip {return}
+        let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
+        let placePicker = storyboard.instantiateViewController(withIdentifier: "JaldiPlacePicker") as? JaldiPlacePicker
+        placePicker?.delegate = self
+        self.navigationController?.pushViewController(placePicker!, animated: true)
+    }
+}
+
+extension HBOnboardingViewControllerViewController: JaldiPlacePickerDelegate {
+    func placePicker(JaldiPlacePicker:JaldiPlacePicker, didSelect address:String) {
+        onboardingModel.zip = address
+    zipInputView?.configureWith(onBoardingModel: onboardingModel, onBoardingState: .zip, onboardingInputViewDelegat: self)
     }
 }

@@ -12,4 +12,5 @@ struct AppColors {
     static let GreenColor = UIColor(red: 139/256.0, green: 197/256.0, blue: 61/256.0, alpha: 1)
     static let GrayColor = UIColor(red: 232/256.0, green: 232/256.0, blue: 232/256.0, alpha: 1)//E8E8E8
     static let BlueColor = UIColor(red: 47/256.0, green: 205/256.0, blue: 237/256.0, alpha: 1)//E8E8E8
+    static let AppBgGreenColor = UIColor(red: 226/256.0, green: 239/256.0, blue: 222/256.0, alpha: 1)//E2EFDE
 }

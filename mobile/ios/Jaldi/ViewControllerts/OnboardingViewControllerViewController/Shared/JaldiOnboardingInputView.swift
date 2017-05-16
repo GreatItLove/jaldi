@@ -11,6 +11,7 @@ protocol JaldiOnboardingInputViewDelegate: class {
     func onboarding(inputView:JaldiOnboardingInputView, didBeginEditing textField:UITextField, onboardingState:OnBoardingState)
     func onboarding(inputView:JaldiOnboardingInputView, textFieldDidEndEditing textField:UITextField, onboardingState:OnBoardingState)
     func onboarding(inputView:JaldiOnboardingInputView, didReturn textField:UITextField, onboardingState:OnBoardingState)
+    func onboardingDidPressInputButton(inputView:JaldiOnboardingInputView, onboardingState:OnBoardingState)
 }
 class JaldiOnboardingInputView: UIView {
     
@@ -52,6 +53,11 @@ class JaldiOnboardingInputView: UIView {
         if canReturn {
             delegate?.onboarding(inputView: self, didReturn: onboardingTextField, onboardingState: self.state)
         }
+    }
+    
+    @IBAction func inputAction(_ sender: Any) {
+        delegate?.onboardingDidPressInputButton(inputView: self, onboardingState: self.state)
+       
     }
   
     fileprivate func  configureOnboardingTextFieldWith(onBoardingModel:JaldiOnboardingModel,
@@ -107,7 +113,7 @@ class JaldiOnboardingInputView: UIView {
         }
         switch state {
         case .zip:
-           return inputString.characters.count >= 3
+           return true//inputString.characters.count >= 3
         case .email:
             return JaldiValidator.isValidEmail(inputString:inputString)
         }

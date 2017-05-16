@@ -7,18 +7,22 @@
 //
 
 import UIKit
-
+import CoreLocation
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var homeViewController: JaldiHomeViewController?
     var loginNaveController: UINavigationController?
+    var locationManager: CLLocationManager?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-//        UserProfile.currentProfile.logoutProfile()
+        UserProfile.currentProfile.logoutProfile()
         self.registerNotofications()
         self.autoLogin()
+        locationManager = CLLocationManager()
+        locationManager?.requestWhenInUseAuthorization()
+
         return true
     }
 

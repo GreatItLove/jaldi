@@ -35,6 +35,7 @@
 		4C4A63FB1EC1B35B00EE2C12 /* Booking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C4A63F91EC1B35B00EE2C12 /* Booking.storyboard */; };
 		4C4A63FF1EC1BC5C00EE2C12 /* JaldiBookingPaymentCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A63FE1EC1BC5C00EE2C12 /* JaldiBookingPaymentCardCell.swift */; };
 		4C4E00901EC4833600B5E465 /* JaldiBookingPaymentMethodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4E008F1EC4833600B5E465 /* JaldiBookingPaymentMethodCell.swift */; };
+		4C53C6851ECB30240022AFDB /* JaldiPlacePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C53C6841ECB30240022AFDB /* JaldiPlacePicker.swift */; };
 		4C832AFC1EB752240092A853 /* HBOnboardingViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C832AF71EB752240092A853 /* HBOnboardingViewControllerViewController.swift */; };
 		4C832AFD1EB752240092A853 /* JaldiOnboardingDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C832AF91EB752240092A853 /* JaldiOnboardingDefines.swift */; };
 		4C832AFE1EB752240092A853 /* JaldiOnboardingInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C832AFA1EB752240092A853 /* JaldiOnboardingInputView.swift */; };
@@ -86,6 +87,7 @@
 		4C4A63FA1EC1B35B00EE2C12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Booking.storyboard; sourceTree = "<group>"; };
 		4C4A63FE1EC1BC5C00EE2C12 /* JaldiBookingPaymentCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingPaymentCardCell.swift; sourceTree = "<group>"; };
 		4C4E008F1EC4833600B5E465 /* JaldiBookingPaymentMethodCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingPaymentMethodCell.swift; sourceTree = "<group>"; };
+		4C53C6841ECB30240022AFDB /* JaldiPlacePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiPlacePicker.swift; sourceTree = "<group>"; };
 		4C832AF71EB752240092A853 /* HBOnboardingViewControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBOnboardingViewControllerViewController.swift; sourceTree = "<group>"; };
 		4C832AF91EB752240092A853 /* JaldiOnboardingDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnboardingDefines.swift; sourceTree = "<group>"; };
 		4C832AFA1EB752240092A853 /* JaldiOnboardingInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnboardingInputView.swift; sourceTree = "<group>"; };
@@ -349,9 +351,18 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		4C53C6831ECB30000022AFDB /* PlacePicker */ = {
+			isa = PBXGroup;
+			children = (
+				4C53C6841ECB30240022AFDB /* JaldiPlacePicker.swift */,
+			);
+			path = PlacePicker;
+			sourceTree = "<group>";
+		};
 		4C832AF41EB752240092A853 /* ViewControllerts */ = {
 			isa = PBXGroup;
 			children = (
+				4C53C6831ECB30000022AFDB /* PlacePicker */,
 				4C2DAA011EB9D450002FCAD5 /* OnBoarding */,
 				C65CB5081EB857FA00DE65B7 /* HomeViewController */,
 				4CED68641EB8D155001A7CC5 /* AnnouncementViewController */,
@@ -563,6 +574,7 @@
 				4C4998FC1EBB11280034819B /* BookingHelper.swift in Sources */,
 				4C25C7C21EBC9D8400092203 /* JaldiBookingContactInfoViewController.swift in Sources */,
 				4C832B0B1EB775DD0092A853 /* JaldiNotInYourAreaViewController.swift in Sources */,
+				4C53C6851ECB30240022AFDB /* JaldiPlacePicker.swift in Sources */,
 				4C832AFE1EB752240092A853 /* JaldiOnboardingInputView.swift in Sources */,
 				C65CB5071EB857F000DE65B7 /* JaldiHomeViewController.swift in Sources */,
 				4C4E00901EC4833600B5E465 /* JaldiBookingPaymentMethodCell.swift in Sources */,
@@ -732,11 +744,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Jaldi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = pro.jaldi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -745,11 +760,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Jaldi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = pro.jaldi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

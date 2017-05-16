@@ -13,7 +13,7 @@ enum OnBoardingState: Int {
 }
 
 struct OnBoardingPlaceholderText {
-    static let zip = "Zip Code"
+    static let zip = "Address"
     static let email = "Email"
     static  func onBoardingPlaceholderTextFor(onBoardingState:OnBoardingState)->String{
         switch onBoardingState {

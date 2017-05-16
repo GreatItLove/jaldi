@@ -62,7 +62,7 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="nWq-Rz-zf4">
                                 <rect key="frame" x="0.0" y="70" width="375" height="547"/>
-                                <color key="backgroundColor" red="0.90971422199999996" green="0.90986675019999996" blue="0.90969407560000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.88627450980392153" green="0.93725490196078431" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="JaldiBookingDetailsTableViewCell" rowHeight="160" id="ncD-m2-4iV" customClass="JaldiBookingDetailsTableViewCell" customModule="Jaldi" customModuleProvider="target">
@@ -193,7 +193,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.88627450980392153" green="0.93725490196078431" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="d3s-Us-hIj" firstAttribute="leading" secondItem="Kmv-oz-bW2" secondAttribute="leading" id="2xF-DA-Wvj"/>
                             <constraint firstItem="d3s-Us-hIj" firstAttribute="top" secondItem="Kmv-oz-bW2" secondAttribute="top" id="HRg-g3-r7t"/>
@@ -268,7 +268,7 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="sm5-xH-sd7">
                                 <rect key="frame" x="0.0" y="70" width="375" height="547"/>
-                                <color key="backgroundColor" red="0.90971422199999996" green="0.90986675019999996" blue="0.90969407560000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.88627450980392153" green="0.93725490196078431" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="JaldiBookingDetailsHeaderCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="JaldiBookingDetailsHeaderCellDescription" id="E87-jF-cv5" customClass="JaldiBookingDetailsHeaderCell" customModule="Jaldi" customModuleProvider="target">
@@ -458,7 +458,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.90971422199999996" green="0.90986675019999996" blue="0.90969407560000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.88627450980392153" green="0.93725490196078431" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="rRb-S1-aq2" firstAttribute="top" secondItem="abm-ab-mQu" secondAttribute="bottom" id="0Na-nt-l7C"/>
                             <constraint firstAttribute="trailing" secondItem="HoH-9C-5mz" secondAttribute="trailing" id="2bJ-Af-B2n"/>
@@ -739,7 +739,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.90971422199999996" green="0.90986675019999996" blue="0.90969407560000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.88627450980392153" green="0.93725490196078431" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="bXF-Ul-JaE" secondAttribute="trailing" id="6Nf-pf-cSb"/>
                             <constraint firstItem="0d9-KV-8uG" firstAttribute="top" secondItem="bXF-Ul-JaE" secondAttribute="bottom" id="DVV-GI-neA"/>
@@ -828,7 +828,7 @@
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="JaldiBookingPaymentTermOfUseCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="JaldiBookingPaymentTermOfUseCell" rowHeight="90" id="eUA-sT-2iv" customClass="JaldiBookingPaymentTermOfUseCell" customModule="Jaldi" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="90"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eUA-sT-2iv" id="5Td-L7-MPv">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
@@ -870,7 +870,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="JaldiBookingPaymentMethodCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="JaldiBookingPaymentMethodCell" id="JvN-tN-ISX" customClass="JaldiBookingPaymentMethodCell" customModule="Jaldi" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="145.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="146" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JvN-tN-ISX" id="uHf-Rl-3Co">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -909,7 +909,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="JaldiBookingPaymentDetailsCell" rowHeight="400" id="q8j-XR-cvM" customClass="JaldiBookingPaymentDetailsCell" customModule="Jaldi" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="189.5" width="375" height="400"/>
+                                        <rect key="frame" x="0.0" y="190" width="375" height="400"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q8j-XR-cvM" id="Zh9-8H-PuO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
@@ -1243,7 +1243,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="JaldiBookingPaymentCardCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="JaldiBookingPaymentCardCell" rowHeight="152" id="PC8-FH-PVe" customClass="JaldiBookingPaymentCardCell" customModule="Jaldi" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="589.5" width="375" height="152"/>
+                                        <rect key="frame" x="0.0" y="590" width="375" height="152"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PC8-FH-PVe" id="04w-9S-6aF">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="152"/>
@@ -1417,7 +1417,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.88627450980392153" green="0.93725490196078431" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="mSl-hR-rwY" firstAttribute="leading" secondItem="zPj-aX-Mik" secondAttribute="leading" id="2iv-eo-1Z8"/>
                             <constraint firstItem="HNp-yt-zaO" firstAttribute="top" secondItem="r0B-2o-Gpd" secondAttribute="bottom" id="3gT-zN-shJ"/>
