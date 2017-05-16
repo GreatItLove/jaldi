@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var locationManager: CLLocationManager?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        UserProfile.currentProfile.logoutProfile()
+//        UserProfile.currentProfile.logoutProfile()
         self.registerNotofications()
         self.autoLogin()
         locationManager = CLLocationManager()
