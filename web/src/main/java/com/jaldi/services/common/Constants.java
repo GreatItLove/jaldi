@@ -11,4 +11,6 @@ public class Constants {
 
     public static final Locale DEFAULT_LOCALE = Locale.US;
 
+    public static final String COMMON_DATE_TIME_FORMAT = "dd/MM/yyyy HH:mm";
+
 }

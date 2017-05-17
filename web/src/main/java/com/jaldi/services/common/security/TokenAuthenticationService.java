@@ -13,8 +13,11 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Component
 class TokenAuthenticationService {
@@ -27,9 +30,14 @@ class TokenAuthenticationService {
   @Autowired
   private UserDaoImpl userDao;
 
-  public void addAuthentication(HttpServletResponse res, String username) {
-    String JWT = Jwts.builder()
-        .setSubject(username)
+  public void addAuthentication(HttpServletResponse res, Authentication auth) {
+      Map<String, Object> map = new HashMap();
+      List<GrantedAuthority> authorities = (List<GrantedAuthority>) auth.getAuthorities();
+      map.put("sub", auth.getName());
+      map.put("role", authorities.get(0).getAuthority());
+      String JWT = Jwts.builder()
+        .setSubject(auth.getName())
+        .setClaims(map)
         .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
         .signWith(SignatureAlgorithm.HS512, SECRET)
         .compact();
