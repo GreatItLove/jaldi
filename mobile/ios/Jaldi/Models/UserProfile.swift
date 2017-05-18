@@ -9,6 +9,7 @@
 import Foundation
 class UserProfile {
     let guestEmailUserDefaultKey = "guestEmailUserDefaultKey"
+    let guestPasswordUserDefaultKey = "guestPasswordUserDefaultKey"
     let guestZipUserDefaultKey = "guestZipUserDefaultKey"
 
     static let currentProfile = UserProfile()
@@ -23,6 +24,17 @@ class UserProfile {
             userDefaults.synchronize()
         }
     }
+    var guestPassword:String? {
+        get {
+            return UserDefaults.standard.object(forKey: guestPasswordUserDefaultKey) as? String
+        }
+        set{
+            let userDefaults  = UserDefaults.standard
+            userDefaults.setValue(newValue, forKey: guestPasswordUserDefaultKey)
+            userDefaults.synchronize()
+        }
+    }
+    
     var guestZip:String? {
         get {
             return UserDefaults.standard.object(forKey: guestZipUserDefaultKey) as? String
@@ -33,21 +45,23 @@ class UserProfile {
             userDefaults.synchronize()
         }
     }
-    func currentGuestUser() -> JaldiOnboardingModel {
-        let guest = JaldiOnboardingModel()
+    func currentGuestUser() -> JaldiUser {
+        let guest = JaldiUser()
         guest.email = self.guestEmail
+        guest.password = self.guestPassword
         guest.zip = self.guestZip
         return guest
     }
-    func loginAsGuest(guest:JaldiOnboardingModel) {
-      self.guestZip = guest.zip
+    func loginAsGuest(guest:JaldiUser) {
+      self.guestPassword = guest.password
       self.guestEmail = guest.email
+      self.guestZip = guest.zip
       NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppNotifications.loginNotificationName), object: nil)
     }
     
     func logoutProfile(){
         self.guestEmail = nil
-        self.guestZip = ""
+        self.guestPassword = ""
     }
     private init(){
     }

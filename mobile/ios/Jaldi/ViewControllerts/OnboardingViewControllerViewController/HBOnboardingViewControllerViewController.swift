@@ -15,15 +15,27 @@ class HBOnboardingViewControllerViewController: UIViewController {
     @IBOutlet weak var introView: UIView!
     @IBOutlet weak var backButton: UIButton!
     
-    @IBOutlet weak var zipInputView: JaldiOnboardingInputView!
+    
     @IBOutlet weak var emailInputView: JaldiOnboardingInputView!
+    @IBOutlet weak var phoneInputView: JaldiOnboardingInputView!
+    @IBOutlet weak var confirmationCodeInputView: JaldiOnboardingInputView!
+    @IBOutlet weak var passwordInputView: JaldiOnboardingInputView!
     
     @IBOutlet weak var introViewTopConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var zipInputViewHorizontalCenterConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var emailInputViewHorizontalCenterConstraint: NSLayoutConstraint!
-    fileprivate var activeState: OnBoardingState = .zip
-    fileprivate var onboardingModel: JaldiOnboardingModel = JaldiOnboardingModel()
+    @IBOutlet weak var phoneInputViewHorizontalCenterConstraint: NSLayoutConstraint!
+    @IBOutlet weak var confirmationCodeInputViewHorizontalCenterConstraint: NSLayoutConstraint!
+    @IBOutlet weak var passwordInputViewHorizontalCenterConstraint: NSLayoutConstraint!
+    
+    fileprivate let allStates: [OnBoardingState] = [OnBoardingState.phone,
+                                                   OnBoardingState.confirmationCode,
+                                                   OnBoardingState.email,
+                                                   OnBoardingState.password]
+
+    fileprivate var activeState: OnBoardingState = .phone
+    fileprivate var currentUser: JaldiUser = JaldiUser()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,13 +50,20 @@ class HBOnboardingViewControllerViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    //MARK: Actions
+    //MARK: Actionsq
     @IBAction func backAction(_ sender: Any) {
-        if self.activeState == .email {
-            self.activeState = .zip
-            zipInputView.becomeActive()
-            self.configureWithActive(state: self.activeState, animated: true)
+        guard let indexForState = self.indexOf(state: activeState),  indexForState > 0 else {
+            return
         }
+        self.activeState = allStates[(indexForState - 1)]
+        let inputView = self.inputViewFor(state: self.activeState)
+        inputView?.becomeActive()
+        self.configureWithActive(state: self.activeState, animated: true)
+//        if self.activeState == .email {
+//            self.activeState = .phone
+//            phoneInputView.becomeActive()
+//            
+//        }
     }
     
     @IBAction func signInAction(_ sender: Any) {
@@ -55,8 +74,11 @@ class HBOnboardingViewControllerViewController: UIViewController {
     
     //MARK: Configuration
     private func configureInputVievs() {
-      zipInputView?.configureWith(onBoardingModel: onboardingModel, onBoardingState: .zip, onboardingInputViewDelegat: self)
-      emailInputView?.configureWith(onBoardingModel: onboardingModel, onBoardingState: .email, onboardingInputViewDelegat: self)
+        phoneInputView?.configureWith(user: currentUser, onBoardingState: .phone, onboardingInputViewDelegat: self)
+        confirmationCodeInputView?.configureWith(user: currentUser, onBoardingState: .confirmationCode, onboardingInputViewDelegat: self)
+        emailInputView?.configureWith(user: currentUser, onBoardingState: .email, onboardingInputViewDelegat: self)
+        passwordInputView?.configureWith(user: currentUser, onBoardingState: .password, onboardingInputViewDelegat: self)
+      
     }
     
     //MARK: GestureRecognizer
@@ -65,7 +87,7 @@ class HBOnboardingViewControllerViewController: UIViewController {
         view.addGestureRecognizer(gestureRecognizer)
     }
     func handleTap(gestureRecognizer: UIGestureRecognizer) {
-       zipInputView?.resignActive()
+       phoneInputView?.resignActive()
     }
 
     //MARK: Notification
@@ -102,7 +124,7 @@ class HBOnboardingViewControllerViewController: UIViewController {
         let info = (notification as NSNotification).userInfo!
         let animationDuration = (info[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue
     
-        self.introView.isHidden = self.activeState == .email
+        self.introView.isHidden = self.activeState != .phone
         self.introViewTopConstraint.constant = 0
         UIView.animate(withDuration: animationDuration!, animations: { () -> Void in
             self.view.layoutIfNeeded()
@@ -127,15 +149,54 @@ class HBOnboardingViewControllerViewController: UIViewController {
         }
     }
     fileprivate func changeViewStatesFor(state:OnBoardingState){
+        self.configureCenterConstraintsFor(state: state)
+        backButton.isHidden = state == .phone
+    }
+    fileprivate func indexOf(state:OnBoardingState) -> Int?{
+        return allStates.index(of: state)
+    }
+    
+    fileprivate func configureCenterConstraintsFor(state:OnBoardingState) {
+        guard let indexForState = self.indexOf(state: state) else {
+            return
+        }
+        for (indx, st ) in allStates.enumerated() {
+            let horizontalCenterConstraint = self.horizontalCenterConstraint(state: st)
+            let indexdistance = indx - indexForState
+            switch indexdistance  {
+            case _ where indexdistance < 0:
+                horizontalCenterConstraint?.constant = -self.view.frame.size.width
+            case _ where indexdistance == 0:
+                horizontalCenterConstraint?.constant =  0
+            default:
+                horizontalCenterConstraint?.constant = self.view.frame.size.width
+            }
+        }
+    }
+    
+    
+    fileprivate func inputViewFor(state:OnBoardingState) -> JaldiOnboardingInputView? {
         switch state {
-        case .zip:
-            backButton.isHidden = true
-            zipInputViewHorizontalCenterConstraint.constant = 0
-            emailInputViewHorizontalCenterConstraint.constant = self.view.frame.size.width
+        case .phone:
+            return self.phoneInputView
         case .email:
-            backButton.isHidden = false
-            zipInputViewHorizontalCenterConstraint.constant = -self.view.frame.size.width
-            emailInputViewHorizontalCenterConstraint.constant = 0
+            return self.emailInputView
+        case .confirmationCode:
+            return self.confirmationCodeInputView
+        case .password:
+            return self.phoneInputView
+        }
+    }
+    fileprivate func horizontalCenterConstraint(state:OnBoardingState) -> NSLayoutConstraint? {
+        switch state {
+        case .phone:
+            return phoneInputViewHorizontalCenterConstraint
+        case .email:
+            return self.emailInputViewHorizontalCenterConstraint
+        case .confirmationCode:
+            return self.confirmationCodeInputViewHorizontalCenterConstraint
+        case .password:
+            return self.passwordInputViewHorizontalCenterConstraint
         }
     }
 }
@@ -147,47 +208,52 @@ extension HBOnboardingViewControllerViewController: JaldiOnboardingInputViewDele
     
     func onboarding(inputView:JaldiOnboardingInputView, textFieldDidEndEditing textField:UITextField, onboardingState:OnBoardingState) {
         switch onboardingState {
-        case .zip:
-            onboardingModel.zip = textField.text
+        case .phone:
+            currentUser.phone = textField.text
+        case .confirmationCode:
+            currentUser.confirmationCode = textField.text
         case .email:
-            onboardingModel.email = textField.text
+            currentUser.email = textField.text
+        case .password:
+            currentUser.password = textField.text
        }
     }
     
     func onboarding(inputView:JaldiOnboardingInputView, didReturn textField:UITextField, onboardingState:OnBoardingState) {
         switch onboardingState {
-        case .zip:
+        case .phone:
+            self.activeState = .confirmationCode
+            confirmationCodeInputView.becomeActive()
+            self.configureWithActive(state: self.activeState, animated: true)
+        case .confirmationCode:
             self.activeState = .email
             emailInputView.becomeActive()
             self.configureWithActive(state: self.activeState, animated: true)
         case .email:
-            self.emailInputView.resignActive()
+            self.activeState = .password
+            passwordInputView.becomeActive()
+            self.configureWithActive(state: self.activeState, animated: true)
+        case .password:
+            self.passwordInputView.resignActive()
             self.moveToNextScreen()
         }
     }
     fileprivate func moveToNextScreen() {
-        if onboardingModel.canLoginAsGuest() {
-            UserProfile.currentProfile.loginAsGuest(guest: onboardingModel)
+        if currentUser.canLoginAsGuest() {
+            UserProfile.currentProfile.loginAsGuest(guest: currentUser)
         }else {
             let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
             let notInYourAreaViewController = storyboard.instantiateViewController(withIdentifier: "JaldiNotInYourAreaViewController") as? JaldiNotInYourAreaViewController
-            notInYourAreaViewController?.guest = self.onboardingModel
+            notInYourAreaViewController?.guest = self.currentUser
             self.navigationController?.pushViewController(notInYourAreaViewController!, animated: true)
         }
     }
     
-    func onboardingDidPressInputButton(inputView:JaldiOnboardingInputView, onboardingState:OnBoardingState) {
-        if onboardingState != .zip {return}
-        let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
-        let placePicker = storyboard.instantiateViewController(withIdentifier: "JaldiPlacePicker") as? JaldiPlacePicker
-        placePicker?.delegate = self
-        self.navigationController?.pushViewController(placePicker!, animated: true)
-    }
 }
 
 extension HBOnboardingViewControllerViewController: JaldiPlacePickerDelegate {
     func placePicker(JaldiPlacePicker:JaldiPlacePicker, didSelect address:String) {
-        onboardingModel.zip = address
-    zipInputView?.configureWith(onBoardingModel: onboardingModel, onBoardingState: .zip, onboardingInputViewDelegat: self)
+        currentUser.address = address
+//    zipInputView?.configureWith(user: currentUser, onBoardingState: .zip, onboardingInputViewDelegat: self)
     }
 }

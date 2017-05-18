@@ -13,14 +13,14 @@ class JaldiNotInYourAreaViewController: UIViewController {
     @IBOutlet weak var zipCodeLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
     var presentedFromCangeZipScreen:Bool = false
-    var guest: JaldiOnboardingModel?
+    var guest: JaldiUser?
     override func viewDidLoad() {
         super.viewDidLoad()
        self.configureWith(guest: guest)
         // Do any additional setup after loading the view.
     }
     //MARK: Configurations
-    private func configureWith(guest: JaldiOnboardingModel?) {
+    private func configureWith(guest: JaldiUser?) {
         backButton.isHidden = presentedFromCangeZipScreen
         guard let guestUser = guest, let zip = guestUser.zip else {
             zipCodeLabel.text = "Unknown ZIP Code"

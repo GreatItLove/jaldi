@@ -11,7 +11,7 @@ protocol JaldiOnboardingInputViewDelegate: class {
     func onboarding(inputView:JaldiOnboardingInputView, didBeginEditing textField:UITextField, onboardingState:OnBoardingState)
     func onboarding(inputView:JaldiOnboardingInputView, textFieldDidEndEditing textField:UITextField, onboardingState:OnBoardingState)
     func onboarding(inputView:JaldiOnboardingInputView, didReturn textField:UITextField, onboardingState:OnBoardingState)
-    func onboardingDidPressInputButton(inputView:JaldiOnboardingInputView, onboardingState:OnBoardingState)
+    
 }
 class JaldiOnboardingInputView: UIView {
     
@@ -19,12 +19,11 @@ class JaldiOnboardingInputView: UIView {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var onboardingTextField: UITextField!
     
-    fileprivate var state: OnBoardingState = .zip
+    fileprivate var state: OnBoardingState = .phone
     fileprivate weak var delegate: JaldiOnboardingInputViewDelegate!
     fileprivate var enabledToReturn: Bool = false {
         didSet {
             if enabledToReturn {
-            
             }
         }
     }
@@ -36,15 +35,15 @@ class JaldiOnboardingInputView: UIView {
         onboardingTextField.becomeFirstResponder()
     }
     //MARK: Configuration
-    func configureWith(onBoardingModel:JaldiOnboardingModel,
+    func configureWith(user:JaldiUser,
                        onBoardingState:OnBoardingState ,
                        onboardingInputViewDelegat:JaldiOnboardingInputViewDelegate) {
         
         self.state = onBoardingState
         self.delegate = onboardingInputViewDelegat
-        self.configureOnboardingTextFieldWith(onBoardingModel:onBoardingModel, onBoardingState:onBoardingState)
+        self.configureOnboardingTextFieldWith(user:user, onBoardingState:onBoardingState)
         self.configureTitle(onBoardingState: onBoardingState)
-        self.configureNextButtonStateWith(onBoardingModel: onBoardingModel, onBoardingState: onBoardingState)
+        self.configureNextButtonStateWith(user: user, onBoardingState: onBoardingState)
     }
     
     //MARK: Actions
@@ -55,43 +54,45 @@ class JaldiOnboardingInputView: UIView {
         }
     }
     
-    @IBAction func inputAction(_ sender: Any) {
-        delegate?.onboardingDidPressInputButton(inputView: self, onboardingState: self.state)
-       
-    }
-  
-    fileprivate func  configureOnboardingTextFieldWith(onBoardingModel:JaldiOnboardingModel,
+    fileprivate func  configureOnboardingTextFieldWith(user:JaldiUser,
                                                        onBoardingState:OnBoardingState) {
         onboardingTextField.placeholder = OnBoardingPlaceholderText.onBoardingPlaceholderTextFor(onBoardingState: onBoardingState)
         switch onBoardingState {
-        case .zip:
-            onboardingTextField.text = onBoardingModel.zip
+        case .phone:
+            onboardingTextField.text = user.phone
+            onboardingTextField.keyboardType = .numberPad
+            onboardingTextField.isSecureTextEntry = false
+        case .confirmationCode:
+            onboardingTextField.text = user.confirmationCode
+            onboardingTextField.keyboardType = .default
+            onboardingTextField.isSecureTextEntry = false
+        case .password:
+            onboardingTextField.text = user.password
+            onboardingTextField.keyboardType = .default
+            onboardingTextField.isSecureTextEntry = true
         case .email:
-            onboardingTextField.text = onBoardingModel.email
-            
+            onboardingTextField.text = user.email
+            onboardingTextField.keyboardType = .emailAddress
+            onboardingTextField.isSecureTextEntry = false
+        
         }
     }
     fileprivate func  configureTitle(onBoardingState:OnBoardingState) {
-        switch onBoardingState {
-        case .zip:
-            inputViewTitleLabel.text = "Where are you located?"
-            
-            onboardingTextField.keyboardType = .default
-        case .email:
-            inputViewTitleLabel.text = "What's your email?"
-            
-            onboardingTextField.keyboardType = .emailAddress
-        }
+        inputViewTitleLabel.text = OnBoardingStateTitle.onBoardingStateTitleFor(onBoardingState: onBoardingState)
     }
     
-    fileprivate func  configureNextButtonStateWith(onBoardingModel:JaldiOnboardingModel,
+    fileprivate func  configureNextButtonStateWith(user:JaldiUser,
                                                    onBoardingState:OnBoardingState) {
         var enabled = false
         switch onBoardingState {
-        case .zip:
-           enabled =  self.isValid(inputString: onBoardingModel.zip )
+        case .phone:
+           enabled =  self.isValid(inputString: user.phone )
+        case .confirmationCode:
+            enabled =  self.isValid(inputString: user.confirmationCode )
+        case .password:
+            enabled =  self.isValid(inputString: user.password )
         case .email:
-            enabled =  self.isValid(inputString: onBoardingModel.email)
+            enabled =  self.isValid(inputString: user.email)
         }
         self.setNextButtonState(enabled: enabled)
     }
@@ -112,8 +113,12 @@ class JaldiOnboardingInputView: UIView {
             return false
         }
         switch state {
-        case .zip:
-           return true//inputString.characters.count >= 3
+        case .phone:
+            return true
+        case .confirmationCode:
+            return true
+        case .password:
+            return true
         case .email:
             return JaldiValidator.isValidEmail(inputString:inputString)
         }
