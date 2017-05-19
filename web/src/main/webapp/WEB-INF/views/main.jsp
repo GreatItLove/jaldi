@@ -74,6 +74,9 @@
                     <div class="font-size-13"><span class="font-weight-light">Welcome, </span><div><strong ng-bind="$root.user.userFullName"></strong></div></div>
                 </li>
                 <li ng-if="utils.isOperator() || utils.isAdmin()" class="nav-item">
+                    <a class="nav-link" ui-sref="orders" ui-sref-active="active"><i class="icon-calendar"></i> Orders</a>
+                </li>
+                <li ng-if="utils.isOperator() || utils.isAdmin()" class="nav-item">
                     <a class="nav-link" ui-sref="workers" ui-sref-active="active"><i class="icon-user-follow"></i> Workers</a>
                 </li>
                 <li class="nav-item nav-dropdown" ng-class="{'open':$state.is('profile')}">
@@ -91,10 +94,7 @@
     <!-- Main content -->
     <main class="main">
         <div class="container-fluid pt-2" ui-view>
-
-
         </div>
-        <!-- /.conainer-fluid -->
     </main>
 
 </div>
@@ -133,6 +133,7 @@
 <script src="/resources/main/app/common/common-service.js"></script>
 <script src="/resources/main/app/workers/workers.js"></script>
 <script src="/resources/main/app/profile/profile.js"></script>
+<script src="/resources/main/app/orders/orders.js"></script>
 
 </body>
 </html>

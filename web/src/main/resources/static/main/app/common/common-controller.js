@@ -4,6 +4,11 @@ angular.module('jaldi.controllers')
     function($stateProvider, $urlRouterProvider) {
         // $locationProvider.html5Mode(true);
         $stateProvider
+            .state('orders', {
+                url: '/orders',
+                templateUrl: './resources/main/app/orders/orders.html',
+                controller: 'ordersController'
+            })
             .state('workers', {
                 url: '/workers',
                 templateUrl: './resources/main/app/workers/workers.html',
@@ -14,7 +19,7 @@ angular.module('jaldi.controllers')
                 templateUrl: './resources/main/app/profile/profile.html',
                 controller: 'profileController'
             });
-        $urlRouterProvider.otherwise(isAdmin || isOperator ? '/workers' : 'profile');
+        $urlRouterProvider.otherwise(isAdmin || isOperator ? 'orders' : 'profile');
     }
 ])
 .controller('mainController', [

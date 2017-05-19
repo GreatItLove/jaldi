@@ -48,7 +48,13 @@ var jaldi = angular
             profileImageId: profileImageId
         },
         dictionaries: {
-
+            orderStatuses: [{
+                name: 'CREATED', label: 'Created'
+            }, {
+                name: 'CANCELED', label: 'Canceled'
+            },  {
+                name: '', label: 'All'
+            }]
         },
 
         server: {

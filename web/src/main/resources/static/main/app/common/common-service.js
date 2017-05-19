@@ -20,4 +20,11 @@ angular.module('jaldi.services')
             method: 'PUT'
         }
     });
+})
+.factory("Order", function ($resource) {
+    return $resource("/rest/order/:id", {id: "@id"}, {
+        update: {
+            method: 'PUT'
+        }
+    });
 });

@@ -24,7 +24,8 @@ public class Order {
     }
 
     public enum Status {
-        CREATED
+        CREATED,
+        CANCELED
     }
 
     public enum PaymentType {

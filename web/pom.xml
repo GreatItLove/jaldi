@@ -94,6 +94,12 @@
 			<groupId>com.sun.mail</groupId>
 			<artifactId>javax.mail</artifactId>
 		</dependency>
+		<!--Amazon SNS-->
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-sns</artifactId>
+			<version>1.11.129</version>
+		</dependency>
 		<!--Dev tools-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
