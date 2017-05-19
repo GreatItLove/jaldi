@@ -60,7 +60,7 @@ class JaldiOnboardingInputView: UIView {
         switch onBoardingState {
         case .phone:
             onboardingTextField.text = user.phone
-            onboardingTextField.keyboardType = .numberPad
+            onboardingTextField.keyboardType = .phonePad
             onboardingTextField.isSecureTextEntry = false
         case .confirmationCode:
             onboardingTextField.text = user.confirmationCode
