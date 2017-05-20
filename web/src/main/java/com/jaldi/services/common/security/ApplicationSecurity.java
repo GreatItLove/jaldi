@@ -43,6 +43,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 				.antMatchers("/getFile").permitAll()
 				.antMatchers("/loginjwt").permitAll()
 				.antMatchers("/", "/coming-soon", "/404", "/500", "/signup", "/forgot", "/reset-password/**").permitAll()
+				.antMatchers("/rest/mobile/sendVerification", "/rest/mobile/register").permitAll()
 				.anyRequest()
 				.authenticated()
 				.and()
