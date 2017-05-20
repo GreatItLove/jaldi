@@ -41,7 +41,7 @@ class JaldiChangeZipCodeController: UIViewController {
         }else{
             let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
             let notInYourAreaViewController = storyboard.instantiateViewController(withIdentifier: "JaldiNotInYourAreaViewController") as? JaldiNotInYourAreaViewController
-            let guest = JaldiUser()
+            let guest = JaldiUser.emptyUser()
             guest.email = UserProfile.currentProfile.guestEmail
             guest.zip = zipTextField.text
             notInYourAreaViewController?.guest = guest

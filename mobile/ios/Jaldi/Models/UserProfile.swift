@@ -46,7 +46,7 @@ class UserProfile {
         }
     }
     func currentGuestUser() -> JaldiUser {
-        let guest = JaldiUser()
+        let guest = JaldiUser.emptyUser()
         guest.email = self.guestEmail
         guest.password = self.guestPassword
         guest.zip = self.guestZip
@@ -60,6 +60,8 @@ class UserProfile {
     }
     
     func logoutProfile(){
+        var env = Environment.defaultEnvironment()
+        env.autToken = nil
         self.guestEmail = nil
         self.guestPassword = ""
     }

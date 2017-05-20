@@ -18,24 +18,31 @@ class HBOnboardingViewControllerViewController: UIViewController {
     
     @IBOutlet weak var emailInputView: JaldiOnboardingInputView!
     @IBOutlet weak var phoneInputView: JaldiOnboardingInputView!
+    @IBOutlet weak var nameInputView: JaldiOnboardingInputView!
     @IBOutlet weak var confirmationCodeInputView: JaldiOnboardingInputView!
     @IBOutlet weak var passwordInputView: JaldiOnboardingInputView!
+    @IBOutlet weak var confirmPasswordInputView: JaldiOnboardingInputView!
     
     @IBOutlet weak var introViewTopConstraint: NSLayoutConstraint!
     
     
     @IBOutlet weak var emailInputViewHorizontalCenterConstraint: NSLayoutConstraint!
     @IBOutlet weak var phoneInputViewHorizontalCenterConstraint: NSLayoutConstraint!
+    @IBOutlet weak var nameInputViewHorizontalCenterConstraint: NSLayoutConstraint!
     @IBOutlet weak var confirmationCodeInputViewHorizontalCenterConstraint: NSLayoutConstraint!
     @IBOutlet weak var passwordInputViewHorizontalCenterConstraint: NSLayoutConstraint!
+    @IBOutlet weak var confirmPasswordInputViewHorizontalCenterConstraint: NSLayoutConstraint!
     
     fileprivate let allStates: [OnBoardingState] = [OnBoardingState.phone,
                                                    OnBoardingState.confirmationCode,
+                                                   OnBoardingState.name,
                                                    OnBoardingState.email,
-                                                   OnBoardingState.password]
+                                                   OnBoardingState.password,
+                                                   OnBoardingState.confirmPassword]
 
     fileprivate var activeState: OnBoardingState = .phone
-    fileprivate var currentUser: JaldiUser = JaldiUser()
+    fileprivate var registrationModel: JaldiRegistration = JaldiRegistration()
+    private var isKeyboardShown = false
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,13 +50,23 @@ class HBOnboardingViewControllerViewController: UIViewController {
         self.addRecognizer()
         self.configureInputVievs()
         self.configureWithActive(state: activeState, animated: false)
+        
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if self.activeState == .phone && isKeyboardShown == false {
+         introView.isHidden = false
+        }else{
+          self.inputViewFor(state: self.activeState)?.becomeActive()
+        }
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     //MARK: Actionsq
     @IBAction func backAction(_ sender: Any) {
         guard let indexForState = self.indexOf(state: activeState),  indexForState > 0 else {
@@ -59,14 +76,10 @@ class HBOnboardingViewControllerViewController: UIViewController {
         let inputView = self.inputViewFor(state: self.activeState)
         inputView?.becomeActive()
         self.configureWithActive(state: self.activeState, animated: true)
-//        if self.activeState == .email {
-//            self.activeState = .phone
-//            phoneInputView.becomeActive()
-//            
-//        }
     }
     
     @IBAction func signInAction(_ sender: Any) {
+        self.inputViewFor(state: self.activeState)?.resignActive()
         let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
         let signInViewController = storyboard.instantiateViewController(withIdentifier: "JaldiSignInViewController") as? JaldiSignInViewController
         self.present(signInViewController!, animated: true, completion: nil)
@@ -74,11 +87,10 @@ class HBOnboardingViewControllerViewController: UIViewController {
     
     //MARK: Configuration
     private func configureInputVievs() {
-        phoneInputView?.configureWith(user: currentUser, onBoardingState: .phone, onboardingInputViewDelegat: self)
-        confirmationCodeInputView?.configureWith(user: currentUser, onBoardingState: .confirmationCode, onboardingInputViewDelegat: self)
-        emailInputView?.configureWith(user: currentUser, onBoardingState: .email, onboardingInputViewDelegat: self)
-        passwordInputView?.configureWith(user: currentUser, onBoardingState: .password, onboardingInputViewDelegat: self)
-      
+        for state in allStates{
+            let inputView = self.inputViewFor(state: state)
+            inputView?.configureWith(user: registrationModel, onBoardingState: state, onboardingInputViewDelegat: self)
+        }
     }
     
     //MARK: GestureRecognizer
@@ -101,6 +113,7 @@ class HBOnboardingViewControllerViewController: UIViewController {
     }
     
     func keyboardWillShow(_ notification:Notification) {
+        isKeyboardShown = true
         let info = (notification as NSNotification).userInfo!
         let animationDuration = (info[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue
 
@@ -121,6 +134,7 @@ class HBOnboardingViewControllerViewController: UIViewController {
     }
     
     func keyboardWillHide(_ notification:Notification) {
+        isKeyboardShown = false
         let info = (notification as NSNotification).userInfo!
         let animationDuration = (info[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue
     
@@ -155,6 +169,13 @@ class HBOnboardingViewControllerViewController: UIViewController {
     fileprivate func indexOf(state:OnBoardingState) -> Int?{
         return allStates.index(of: state)
     }
+    fileprivate func nextStateFor(state:OnBoardingState) -> OnBoardingState?{
+        guard let index =  self.indexOf(state: state), index < allStates.count - 1 else {
+            return nil
+        }
+        return allStates[(index + 1)]
+    }
+
     
     fileprivate func configureCenterConstraintsFor(state:OnBoardingState) {
         guard let indexForState = self.indexOf(state: state) else {
@@ -184,7 +205,11 @@ class HBOnboardingViewControllerViewController: UIViewController {
         case .confirmationCode:
             return self.confirmationCodeInputView
         case .password:
-            return self.phoneInputView
+            return self.passwordInputView
+        case .name:
+            return self.nameInputView
+        case .confirmPassword:
+            return self.confirmPasswordInputView
         }
     }
     fileprivate func horizontalCenterConstraint(state:OnBoardingState) -> NSLayoutConstraint? {
@@ -197,6 +222,10 @@ class HBOnboardingViewControllerViewController: UIViewController {
             return self.confirmationCodeInputViewHorizontalCenterConstraint
         case .password:
             return self.passwordInputViewHorizontalCenterConstraint
+        case .name:
+            return self.nameInputViewHorizontalCenterConstraint
+        case .confirmPassword:
+            return self.confirmPasswordInputViewHorizontalCenterConstraint
         }
     }
 }
@@ -207,53 +236,124 @@ extension HBOnboardingViewControllerViewController: JaldiOnboardingInputViewDele
     }
     
     func onboarding(inputView:JaldiOnboardingInputView, textFieldDidEndEditing textField:UITextField, onboardingState:OnBoardingState) {
-        switch onboardingState {
-        case .phone:
-            currentUser.phone = textField.text
-        case .confirmationCode:
-            currentUser.confirmationCode = textField.text
-        case .email:
-            currentUser.email = textField.text
-        case .password:
-            currentUser.password = textField.text
-       }
+    
+      self.changeRegitrationDetailsFor(textField: textField, onboardingState: onboardingState)
     }
     
     func onboarding(inputView:JaldiOnboardingInputView, didReturn textField:UITextField, onboardingState:OnBoardingState) {
+        self.changeRegitrationDetailsFor(textField: textField, onboardingState: onboardingState)
         switch onboardingState {
         case .phone:
-            self.activeState = .confirmationCode
-            confirmationCodeInputView.becomeActive()
-            self.configureWithActive(state: self.activeState, animated: true)
+            self.verifyPhoneAndMoveToNextScreen()
         case .confirmationCode:
-            self.activeState = .email
-            emailInputView.becomeActive()
-            self.configureWithActive(state: self.activeState, animated: true)
+            self.verifyConfirmationCodeAndMoveToNextScreen()
+        case .name:
+            self.moveToNextStateFor(state: onboardingState)
         case .email:
-            self.activeState = .password
-            passwordInputView.becomeActive()
-            self.configureWithActive(state: self.activeState, animated: true)
+           self.moveToNextStateFor(state: onboardingState)
         case .password:
-            self.passwordInputView.resignActive()
-            self.moveToNextScreen()
+           self.moveToNextStateFor(state: onboardingState)
+        case .confirmPassword:
+           self.moveToNextStateFor(state: onboardingState)
         }
     }
-    fileprivate func moveToNextScreen() {
-        if currentUser.canLoginAsGuest() {
-            UserProfile.currentProfile.loginAsGuest(guest: currentUser)
-        }else {
-            let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
-            let notInYourAreaViewController = storyboard.instantiateViewController(withIdentifier: "JaldiNotInYourAreaViewController") as? JaldiNotInYourAreaViewController
-            notInYourAreaViewController?.guest = self.currentUser
-            self.navigationController?.pushViewController(notInYourAreaViewController!, animated: true)
+    private func changeRegitrationDetailsFor(textField:UITextField, onboardingState:OnBoardingState) {
+        switch onboardingState {
+        case .phone:
+            registrationModel.phone = textField.text
+        case .confirmationCode:
+            registrationModel.confirmationCode = textField.text
+        case .email:
+            registrationModel.email = textField.text
+        case .password:
+            registrationModel.password = textField.text
+        case .name:
+            registrationModel.name = textField.text
+        case .confirmPassword:
+            registrationModel.confirmPassword = textField.text
+        }
+    }
+    fileprivate func registerUser() {
+       
+        self.showHudWithMsg(message: nil)
+        let task  = JaldiRegistrationTask(registrationModel: registrationModel)
+        task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: { [weak self] (value) in
+            guard let user  = value else{
+                return
+            }
+             self?.hideHud()
+            UserProfile.currentProfile.loginAsGuest(guest: user)
+            self?.moveToNextStateFor(state: .phone)
+           
+        }) {[weak self] (error, _) in
+            self?.hideHud()
+            if let error = error {
+                if case NetworkErrors.networkMessage(error_: _, message: let message) = error {
+                    self?.showAlertWith(title: "Error", message: message)
+                }
+            }
+            print(error ?? "Error")
+        }
+    }
+    
+    //MARK: Helper
+    private func verifyPhoneAndMoveToNextScreen() {
+        if registrationModel.isPhoneNumberVerified {
+          self.moveToNextStateFor(state: .phone)
+            return
+        }
+        guard let phone  = registrationModel.recipient else{
+         return
+        }
+        self.showHudWithMsg(message: nil)
+        let task  = JaldiSendVerificationTask(recipient: phone)
+        task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: { [weak self] (value) in
+            guard let mobileVerification  = value else{
+                return
+            }
+            self?.registrationModel.mobileVerification = mobileVerification
+            self?.moveToNextStateFor(state: .phone)
+            self?.hideHud()
+            
+        }) {[weak self] (error, _) in
+            self?.hideHud()
+            if let error = error {
+                if case NetworkErrors.networkMessage(error_: _, message: let message) = error {
+                    self?.showAlertWith(title: "Error", message: message)
+                }
+            }
+        print(error ?? "Error")
+        }
+    }
+    private func verifyConfirmationCodeAndMoveToNextScreen() {
+        if registrationModel.isConfirmationCodeValid {
+            self.moveToNextStateFor(state: .confirmationCode)
+        }else{
+        self.showAlertWith(title: "Error", message: "Wrong Verification code")
+        }
+}
+    
+    
+    private func moveToNextStateFor(state:OnBoardingState) {
+        
+        guard let index =  self.indexOf(state: state),index < allStates.count else {
+            return
+        }
+        let isLastState = index == allStates.count - 1
+        if isLastState {
+            if registrationModel.isPasswordConfirmationValid {
+                self.registerUser()
+            }else{
+                self.showAlertWith(title: nil, message: "Password confirmation must match Password")
+            }
+        }else{
+            let nextState  = allStates[index + 1]
+            self.activeState = nextState
+            let imputView  = self.inputViewFor(state: nextState)
+            imputView?.becomeActive()
+            self.configureWithActive(state: nextState, animated: true)
         }
     }
     
 }
 
-extension HBOnboardingViewControllerViewController: JaldiPlacePickerDelegate {
-    func placePicker(JaldiPlacePicker:JaldiPlacePicker, didSelect address:String) {
-        currentUser.address = address
-//    zipInputView?.configureWith(user: currentUser, onBoardingState: .zip, onboardingInputViewDelegat: self)
-    }
-}

@@ -1,0 +1,6 @@
+framework module Pods_Jaldi {
+  umbrella header "Pods-Jaldi-umbrella.h"
+
+  export *
+  module * { export * }
+}

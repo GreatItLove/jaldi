@@ -35,7 +35,7 @@ class JaldiOnboardingInputView: UIView {
         onboardingTextField.becomeFirstResponder()
     }
     //MARK: Configuration
-    func configureWith(user:JaldiUser,
+    func configureWith(user:JaldiRegistration,
                        onBoardingState:OnBoardingState ,
                        onboardingInputViewDelegat:JaldiOnboardingInputViewDelegate) {
         
@@ -54,7 +54,7 @@ class JaldiOnboardingInputView: UIView {
         }
     }
     
-    fileprivate func  configureOnboardingTextFieldWith(user:JaldiUser,
+    fileprivate func  configureOnboardingTextFieldWith(user:JaldiRegistration,
                                                        onBoardingState:OnBoardingState) {
         onboardingTextField.placeholder = OnBoardingPlaceholderText.onBoardingPlaceholderTextFor(onBoardingState: onBoardingState)
         switch onBoardingState {
@@ -70,9 +70,17 @@ class JaldiOnboardingInputView: UIView {
             onboardingTextField.text = user.password
             onboardingTextField.keyboardType = .default
             onboardingTextField.isSecureTextEntry = true
+        case .confirmPassword:
+            onboardingTextField.text = user.confirmPassword
+            onboardingTextField.keyboardType = .default
+            onboardingTextField.isSecureTextEntry = true
         case .email:
             onboardingTextField.text = user.email
             onboardingTextField.keyboardType = .emailAddress
+            onboardingTextField.isSecureTextEntry = false
+        case .name:
+            onboardingTextField.text = user.name
+            onboardingTextField.keyboardType = .default
             onboardingTextField.isSecureTextEntry = false
         
         }
@@ -81,7 +89,7 @@ class JaldiOnboardingInputView: UIView {
         inputViewTitleLabel.text = OnBoardingStateTitle.onBoardingStateTitleFor(onBoardingState: onBoardingState)
     }
     
-    fileprivate func  configureNextButtonStateWith(user:JaldiUser,
+    fileprivate func  configureNextButtonStateWith(user:JaldiRegistration,
                                                    onBoardingState:OnBoardingState) {
         var enabled = false
         switch onBoardingState {
@@ -93,6 +101,10 @@ class JaldiOnboardingInputView: UIView {
             enabled =  self.isValid(inputString: user.password )
         case .email:
             enabled =  self.isValid(inputString: user.email)
+        case .confirmPassword:
+            enabled =  self.isValid(inputString: user.confirmPassword)
+        case .name:
+            enabled =  self.isValid(inputString: user.name)
         }
         self.setNextButtonState(enabled: enabled)
     }
@@ -114,16 +126,19 @@ class JaldiOnboardingInputView: UIView {
         }
         switch state {
         case .phone:
-            return true
+            return JaldiValidator.isValid(phone: inputString)
         case .confirmationCode:
             return true
         case .password:
+            return true
+        case .confirmPassword:
+            return true
+        case .name:
             return true
         case .email:
             return JaldiValidator.isValidEmail(inputString:inputString)
         }
     }
-   
 }
 //MARK: UITextFieldDelegate
 extension JaldiOnboardingInputView: UITextFieldDelegate {
@@ -137,6 +152,22 @@ extension JaldiOnboardingInputView: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if state == .phone {
+            if ((textField.text?.characters.count)! > 12 && string.characters.count > 0) {
+                return false
+            }
+            if string.characters.count == 0 {
+                let newValue = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
+                self.checkValidationAndChangeStateIfNededFor(newValue: newValue)
+                return true
+            }
+            if JaldiValidator.isNumeric(inputString: string){
+                let newValue = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
+                textField.text = JaldiValidator.correct(phoneNumber: newValue)
+                self.checkValidationAndChangeStateIfNededFor(newValue: textField.text!)
+            }
+            return false
+        }
         let newValue = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
         self.checkValidationAndChangeStateIfNededFor(newValue: newValue)
       return true
