@@ -4,7 +4,7 @@
 
 $(function() {
   var BASIC_OFFSET  = $('a[name="home"]')[0].offsetTop;
-  var SCROLL_OFFSET = -50;
+  var SCROLL_OFFSET = -30;
 
   $('body').on('click', '.scroll-to', function(e) {
     e.preventDefault();
@@ -56,7 +56,7 @@ $(function() {
 
 $(function() {
   $('#landing-hero').pxResponsiveBg({
-    backgroundImage:    'resources/landing/img/tools_2x.png',
+    backgroundImage:    'resources/landing/img/pipe-connecting.jpg',
     backgroundPosition: 'center bottom',
     overlay:            '<div class="bg-primary darken"><div style="background:rgba(0,0,0,1.25);position:absolute;top:0;right:0;bottom:0;left:0;"></div></div>',
     overlayOpacity:     0.5

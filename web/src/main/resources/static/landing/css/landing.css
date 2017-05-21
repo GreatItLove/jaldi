@@ -3,7 +3,10 @@
 * Common styles
 */
 
-.landing-section { padding: 80px 0; }
+.landing-section {
+  padding: 60px 0 0 0;
+  background: white;
+}
 
 .container {
   width: auto !important;
@@ -96,9 +99,9 @@ img.lazyloaded { opacity: 1; }
   .px-navbar:not(.sticky) .navbar-collapse,
   .px-navbar:not(.sticky) .navbar-header,
   .px-navbar:not(.sticky) a {
-    color: #3d4a5d !important;
-    background: white;
-  }
+    color: white !important;
+    background-color: rgba(0, 0, 0, 0.0);
+}
 
   /* Sticky navbar */
 
@@ -525,10 +528,21 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Circular","Helvetica",sans-serif;
 }
 
-.service-item {
-  border: solid 1px #449f7f;
-  cursor: pointer;
+.jaldi-title {
+  color: #00447D;
+  text-transform: uppercase;
+}
+
+.hwa-item {
   padding: 20px;
+}
+
+.service-item {
+
+}
+
+.service-item h3 {
+  margin-top: 25px;
 }
 
 .grow {
@@ -540,9 +554,110 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .grow:hover {
-  -webkit-transform:scale(1.2);
-  -moz-transform:scale(1.2);
-  -ms-transform:scale(1.2);
-  -o-transform:scale(1.2);
-  transform:scale(1.2);
+  -webkit-transform:scale(1.1);
+  -moz-transform:scale(1.1);
+  -ms-transform:scale(1.1);
+  -o-transform:scale(1.1);
+  transform:scale(1.1);
+}
+
+.torn-paper-bg {
+  background-color: #ededed !important;
+  /*border-top: 30px solid transparent;*/
+  border-style: solid;
+  border-width: 25px 0px 0px;
+  -moz-border-image: url(../img/torn-paper.png) 25 0 repeat;
+  -webkit-border-image: url(../img/torn-paper.png) 25 0 repeat;
+  -o-border-image: url(../img/torn-paper.png) 25 0 repeat;
+  border-image: url(../img/torn-paper.png) 25 0 repeat;
+
+}
+
+.icon-large-font {
+  font-size: 45px;
+  color: white;
+}
+
+.primary-button {
+  border-radius: 8px;
+  background-color: rgb(253, 206, 8);
+  color: #00447d;
+}
+
+.default-button {
+  border-radius: 8px;
+  background-color: #00447d;
+  color: white;
+}
+
+.primary-button:hover,
+.primary-button:active,
+.primary-button:focus {
+  color: #00447d;
+  background-color: #FDBE07 !important;
+}
+
+
+.default-button:hover,
+.default-button:active,
+.default-button:focus {
+  background-color: #03247d !important;
+  color: white;
+}
+
+.service-item .icon-circle {
+  font-size: 55px;
+}
+
+.icon-circle {
+  text-align: center;
+  padding: 5px;
+  margin: auto;
+  border-radius: 50%;
+  background-color: rgb(0, 68, 125);
+  width: 96px;
+  height: 96px;
+}
+
+.handyman:hover {
+  background-color: #f8723f;
+}
+
+.electrician:hover {
+  background-color: #ffb600;
+}
+
+.painter:hover {
+  background-color: #993158;
+}
+
+.plumber:hover {
+  background-color: #43b1d1;
+}
+.plumber:hover {
+  background-color: #43b1d1;
+}
+.cleaning:hover {
+  background-color: #73d161;
+}
+
+.iphone {
+  background-image: url("../img/iphone.png");
+  height: 600px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: right;
+}
+
+.boot-steps {
+  color: #4e78ad;
+  font-size: 45px;
+}
+
+.book-steps-title {
+  height: 150px;
+  padding: 25px 0;
+  font-size: 25px;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
 }

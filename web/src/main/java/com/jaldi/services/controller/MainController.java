@@ -17,6 +17,13 @@ public class MainController {
         return model;
     }
 
+    @GetMapping("/landing")
+    public ModelAndView landing(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("landing-new");
+        return model;
+    }
+
     @GetMapping("/portal")
     public String portal() {
         return "main";
