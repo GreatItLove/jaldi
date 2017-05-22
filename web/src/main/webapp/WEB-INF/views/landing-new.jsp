@@ -196,21 +196,21 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-3 text-center">
                         <img src="/resources/landing/img/book-steps/Step 1 icon.png" height="150">
                     </div>
                     <div class="col-md-9 book-steps-title">You book a convenient worker in our application.</div>
                 </div>
                 <div class="row">
                     <div class="col-md-1"></div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 text-center">
                         <img src="/resources/landing/img/book-steps/Step 2 icon.png" height="150">
                     </div>
                     <div class="col-md-8 book-steps-title">Our worker comes in, surveys the job, briefs you about the details.</div>
                 </div>
                 <div class="row">
                     <div class="col-md-2"></div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 text-center">
                         <img src="/resources/landing/img/book-steps/Step 3 icon.png" height="150">
                     </div>
                     <div class="col-md-7 book-steps-title">You hire the worker and get the wheels rolling.</div>
