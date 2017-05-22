@@ -26,17 +26,45 @@ class JaldiSignInViewController: UIViewController {
         }
     }
     
-    @IBAction func signInWithFaceBookAction(_ sender: Any) {
-        print("signInWithFaceBookAction")
-    }
-    
     @IBAction func signInAction(_ sender: Any) {
-        print("signInAction")
+        guard let userName = emailTextField.text, let password = passwordTextField.text  else {
+            return
+        }
+        
+        let task  = JaldiLoginTask(user: userName, password: password)
+        task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: { (value) in
+            let user  = JaldiUser.emptyUser()
+            user.email = userName
+            user.password = password
+//            UserProfile.currentProfile.loginAsGuest(guest: user)
+        }) { (error, _) in
+            print(error ?? "Error")
+        }
     }
 
     @IBAction func forgotPasswordAction(_ sender: Any) {
-        print("forgotPasswordAction")
+        self.handleForgotPassword()
+//        self.getProfile()
+//        self.sendVerification()
     }
+    private func handleForgotPassword() {
+        let task  = JaldiForgotTask(email: "sedrak.dalaloyan@yandex.ru")
+        task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: { (value) in
+            
+        }) { (error, _) in
+            print(error ?? "Error")
+        }
+    }
+    
+    private func getProfile() {
+        let task  = JaldGetProfileTask()
+        task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: { (value) in
+            
+        }) { (error, _) in
+            print(error ?? "Error")
+        }
+    }
+    
     //MARK: Configurations
     private func configureTextFields() {
       emailTextField.placeholder = "Email"

@@ -37,14 +37,30 @@
 		4C4E00901EC4833600B5E465 /* JaldiBookingPaymentMethodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4E008F1EC4833600B5E465 /* JaldiBookingPaymentMethodCell.swift */; };
 		4C53C6851ECB30240022AFDB /* JaldiPlacePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C53C6841ECB30240022AFDB /* JaldiPlacePicker.swift */; };
 		4C53D6741ECC981E00A4A634 /* JaldiUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C53D6731ECC981E00A4A634 /* JaldiUser.swift */; };
-		4C832AFC1EB752240092A853 /* HBOnboardingViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C832AF71EB752240092A853 /* HBOnboardingViewControllerViewController.swift */; };
-		4C832AFD1EB752240092A853 /* JaldiOnboardingDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C832AF91EB752240092A853 /* JaldiOnboardingDefines.swift */; };
-		4C832AFE1EB752240092A853 /* JaldiOnboardingInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C832AFA1EB752240092A853 /* JaldiOnboardingInputView.swift */; };
+		4C55BB341ECEEA18003F6241 /* JaldiOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C55BB331ECEEA18003F6241 /* JaldiOperation.swift */; };
+		4C55BB371ECEECC9003F6241 /* JaldiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C55BB361ECEECC9003F6241 /* JaldiResponse.swift */; };
+		4C55BB3C1ECF1252003F6241 /* JaldiLoginTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C55BB3B1ECF1252003F6241 /* JaldiLoginTask.swift */; };
+		4C55BB3E1ECF12B5003F6241 /* JaldiForgotTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C55BB3D1ECF12B5003F6241 /* JaldiForgotTask.swift */; };
+		4C55BB401ECF1D06003F6241 /* JaldGetProfileTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C55BB3F1ECF1D06003F6241 /* JaldGetProfileTask.swift */; };
+		4C55BB421ECF2BA9003F6241 /* JaldRegistrationTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C55BB411ECF2BA9003F6241 /* JaldRegistrationTask.swift */; };
+		4C55BB441ECF3C03003F6241 /* JaldiSendVerificationTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C55BB431ECF3C03003F6241 /* JaldiSendVerificationTask.swift */; };
+		4C55BB461ECF3D42003F6241 /* MobileVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C55BB451ECF3D42003F6241 /* MobileVerification.swift */; };
+		4C7454D71ED2D28B00F02267 /* JaldiRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7454D31ED2D28B00F02267 /* JaldiRegistrationViewController.swift */; };
+		4C7454D81ED2D28B00F02267 /* JaldiOnboardingInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7454D51ED2D28B00F02267 /* JaldiOnboardingInputView.swift */; };
+		4C7454D91ED2D28B00F02267 /* JaldiRegistrationDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7454D61ED2D28B00F02267 /* JaldiRegistrationDefines.swift */; };
+		4C7FFA9B1ECDB17700C95E71 /* JaldiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7FFA991ECDB17700C95E71 /* JaldiRequest.swift */; };
+		4C7FFA9C1ECDB17700C95E71 /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7FFA9A1ECDB17700C95E71 /* UserRequest.swift */; };
+		4C7FFA9F1ECDB23E00C95E71 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7FFA9E1ECDB23E00C95E71 /* Dispatcher.swift */; };
+		4C7FFAA21ECDB29100C95E71 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7FFAA11ECDB29100C95E71 /* Environment.swift */; };
+		4C7FFAA41ECDB64100C95E71 /* NetworkDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7FFAA31ECDB64100C95E71 /* NetworkDispatcher.swift */; };
 		4C832B081EB760730092A853 /* JaldiSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C832B071EB760730092A853 /* JaldiSignInViewController.swift */; };
 		4C832B0B1EB775DD0092A853 /* JaldiNotInYourAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C832B0A1EB775DD0092A853 /* JaldiNotInYourAreaViewController.swift */; };
+		4CCBC0611ED030AA00716749 /* JaldiRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCBC0601ED030AA00716749 /* JaldiRegistration.swift */; };
+		4CCBC0681ED0674C00716749 /* Date+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCBC0651ED0674C00716749 /* Date+Helper.swift */; };
+		4CCBC0691ED0674C00716749 /* UIViewController+ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCBC0671ED0674C00716749 /* UIViewController+ProgressHUD.swift */; };
+		4CCBC06B1ED0676A00716749 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCBC06A1ED0676A00716749 /* UIViewController+Alert.swift */; };
 		4CCBD3AD1EBCB598009D5408 /* BookingNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCBD3AC1EBCB598009D5408 /* BookingNavigation.swift */; };
 		4CCBD3B01EBCB5F9009D5408 /* JaldiBookingDatePriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCBD3AF1EBCB5F9009D5408 /* JaldiBookingDatePriceView.swift */; };
-		4CCBD3B31EBCBF10009D5408 /* Date+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCBD3B21EBCBF10009D5408 /* Date+Helper.swift */; };
 		4CED68541EB870A5001A7CC5 /* JaldiAppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED68531EB870A5001A7CC5 /* JaldiAppConstants.swift */; };
 		4CED68561EB871BF001A7CC5 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED68551EB871BF001A7CC5 /* UserProfile.swift */; };
 		4CED68591EB8802E001A7CC5 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CED68571EB8802E001A7CC5 /* Login.storyboard */; };
@@ -54,9 +70,11 @@
 		4CED68661EB8D172001A7CC5 /* JaldiAnnouncementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED68651EB8D172001A7CC5 /* JaldiAnnouncementViewController.swift */; };
 		4CED68711EB90CED001A7CC5 /* JaldiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED68701EB90CED001A7CC5 /* JaldiService.swift */; };
 		C65CB5071EB857F000DE65B7 /* JaldiHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65CB5061EB857F000DE65B7 /* JaldiHomeViewController.swift */; };
+		E1A6EAA1DA024FCE2C8B0771 /* Pods_Jaldi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B89C32A91F1F6B3635F9B7C3 /* Pods_Jaldi.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4ACCDF1DD65D3B4B33983253 /* Pods-Jaldi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jaldi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jaldi/Pods-Jaldi.debug.xcconfig"; sourceTree = "<group>"; };
 		4C25C7BB1EBC677A00092203 /* JaldiBookingTimePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingTimePickerViewController.swift; sourceTree = "<group>"; };
 		4C25C7C11EBC9D8400092203 /* JaldiBookingContactInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingContactInfoViewController.swift; sourceTree = "<group>"; };
 		4C2B1A421EB73FD100F63E7D /* HBAppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBAppColors.swift; sourceTree = "<group>"; };
@@ -89,14 +107,30 @@
 		4C4E008F1EC4833600B5E465 /* JaldiBookingPaymentMethodCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingPaymentMethodCell.swift; sourceTree = "<group>"; };
 		4C53C6841ECB30240022AFDB /* JaldiPlacePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiPlacePicker.swift; sourceTree = "<group>"; };
 		4C53D6731ECC981E00A4A634 /* JaldiUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiUser.swift; sourceTree = "<group>"; };
-		4C832AF71EB752240092A853 /* HBOnboardingViewControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBOnboardingViewControllerViewController.swift; sourceTree = "<group>"; };
-		4C832AF91EB752240092A853 /* JaldiOnboardingDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnboardingDefines.swift; sourceTree = "<group>"; };
-		4C832AFA1EB752240092A853 /* JaldiOnboardingInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnboardingInputView.swift; sourceTree = "<group>"; };
+		4C55BB331ECEEA18003F6241 /* JaldiOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOperation.swift; sourceTree = "<group>"; };
+		4C55BB361ECEECC9003F6241 /* JaldiResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiResponse.swift; sourceTree = "<group>"; };
+		4C55BB3B1ECF1252003F6241 /* JaldiLoginTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiLoginTask.swift; sourceTree = "<group>"; };
+		4C55BB3D1ECF12B5003F6241 /* JaldiForgotTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiForgotTask.swift; sourceTree = "<group>"; };
+		4C55BB3F1ECF1D06003F6241 /* JaldGetProfileTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldGetProfileTask.swift; sourceTree = "<group>"; };
+		4C55BB411ECF2BA9003F6241 /* JaldRegistrationTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldRegistrationTask.swift; sourceTree = "<group>"; };
+		4C55BB431ECF3C03003F6241 /* JaldiSendVerificationTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiSendVerificationTask.swift; sourceTree = "<group>"; };
+		4C55BB451ECF3D42003F6241 /* MobileVerification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileVerification.swift; sourceTree = "<group>"; };
+		4C7454D31ED2D28B00F02267 /* JaldiRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiRegistrationViewController.swift; sourceTree = "<group>"; };
+		4C7454D51ED2D28B00F02267 /* JaldiOnboardingInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnboardingInputView.swift; sourceTree = "<group>"; };
+		4C7454D61ED2D28B00F02267 /* JaldiRegistrationDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiRegistrationDefines.swift; sourceTree = "<group>"; };
+		4C7FFA991ECDB17700C95E71 /* JaldiRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiRequest.swift; sourceTree = "<group>"; };
+		4C7FFA9A1ECDB17700C95E71 /* UserRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
+		4C7FFA9E1ECDB23E00C95E71 /* Dispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
+		4C7FFAA11ECDB29100C95E71 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		4C7FFAA31ECDB64100C95E71 /* NetworkDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDispatcher.swift; sourceTree = "<group>"; };
 		4C832B071EB760730092A853 /* JaldiSignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiSignInViewController.swift; sourceTree = "<group>"; };
 		4C832B0A1EB775DD0092A853 /* JaldiNotInYourAreaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiNotInYourAreaViewController.swift; sourceTree = "<group>"; };
+		4CCBC0601ED030AA00716749 /* JaldiRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiRegistration.swift; sourceTree = "<group>"; };
+		4CCBC0651ED0674C00716749 /* Date+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Helper.swift"; sourceTree = "<group>"; };
+		4CCBC0671ED0674C00716749 /* UIViewController+ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ProgressHUD.swift"; sourceTree = "<group>"; };
+		4CCBC06A1ED0676A00716749 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		4CCBD3AC1EBCB598009D5408 /* BookingNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingNavigation.swift; sourceTree = "<group>"; };
 		4CCBD3AF1EBCB5F9009D5408 /* JaldiBookingDatePriceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingDatePriceView.swift; sourceTree = "<group>"; };
-		4CCBD3B21EBCBF10009D5408 /* Date+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Helper.swift"; sourceTree = "<group>"; };
 		4CED68531EB870A5001A7CC5 /* JaldiAppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiAppConstants.swift; sourceTree = "<group>"; };
 		4CED68551EB871BF001A7CC5 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		4CED68581EB8802E001A7CC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
@@ -105,7 +139,9 @@
 		4CED68621EB8BEC6001A7CC5 /* JaldiChangeZipCodeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiChangeZipCodeController.swift; sourceTree = "<group>"; };
 		4CED68651EB8D172001A7CC5 /* JaldiAnnouncementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiAnnouncementViewController.swift; sourceTree = "<group>"; };
 		4CED68701EB90CED001A7CC5 /* JaldiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiService.swift; sourceTree = "<group>"; };
+		B89C32A91F1F6B3635F9B7C3 /* Pods_Jaldi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jaldi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C65CB5061EB857F000DE65B7 /* JaldiHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JaldiHomeViewController.swift; path = HomeViewController/JaldiHomeViewController.swift; sourceTree = "<group>"; };
+		EE115EA4FE9D8A8EB071EBDF /* Pods-Jaldi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jaldi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Jaldi/Pods-Jaldi.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1A6EAA1DA024FCE2C8B0771 /* Pods_Jaldi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,6 +272,8 @@
 			children = (
 				4C45878A1EB4C23500169AC1 /* Jaldi */,
 				4C4587891EB4C23500169AC1 /* Products */,
+				62DE40D5985912B039E2FC1A /* Pods */,
+				D18D4EEB6B66676FD2AA5C0D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -360,16 +399,95 @@
 			path = PlacePicker;
 			sourceTree = "<group>";
 		};
+		4C55BB321ECEEA0A003F6241 /* Operation */ = {
+			isa = PBXGroup;
+			children = (
+				4C55BB331ECEEA18003F6241 /* JaldiOperation.swift */,
+				4C55BB3A1ECF1252003F6241 /* UserTasks */,
+			);
+			path = Operation;
+			sourceTree = "<group>";
+		};
+		4C55BB351ECEECBB003F6241 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				4C55BB361ECEECC9003F6241 /* JaldiResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		4C55BB3A1ECF1252003F6241 /* UserTasks */ = {
+			isa = PBXGroup;
+			children = (
+				4C55BB3B1ECF1252003F6241 /* JaldiLoginTask.swift */,
+				4C55BB3D1ECF12B5003F6241 /* JaldiForgotTask.swift */,
+				4C55BB3F1ECF1D06003F6241 /* JaldGetProfileTask.swift */,
+				4C55BB411ECF2BA9003F6241 /* JaldRegistrationTask.swift */,
+				4C55BB431ECF3C03003F6241 /* JaldiSendVerificationTask.swift */,
+			);
+			path = UserTasks;
+			sourceTree = "<group>";
+		};
+		4C7454D21ED2D28B00F02267 /* RegistrationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4C7454D31ED2D28B00F02267 /* JaldiRegistrationViewController.swift */,
+				4C7454D41ED2D28B00F02267 /* Shared */,
+			);
+			path = RegistrationViewController;
+			sourceTree = "<group>";
+		};
+		4C7454D41ED2D28B00F02267 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				4C7454D51ED2D28B00F02267 /* JaldiOnboardingInputView.swift */,
+				4C7454D61ED2D28B00F02267 /* JaldiRegistrationDefines.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		4C7FFA931ECD9D4D00C95E71 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				4C7FFA981ECDB17700C95E71 /* Request */,
+				4C55BB321ECEEA0A003F6241 /* Operation */,
+				4C55BB351ECEECBB003F6241 /* Response */,
+				4C7FFAA01ECDB28900C95E71 /* Environment */,
+				4C7FFA9D1ECDB23500C95E71 /* Dispatcher */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		4C7FFA981ECDB17700C95E71 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				4C7FFA991ECDB17700C95E71 /* JaldiRequest.swift */,
+				4C7FFA9A1ECDB17700C95E71 /* UserRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		4C7FFA9D1ECDB23500C95E71 /* Dispatcher */ = {
+			isa = PBXGroup;
+			children = (
+				4C7FFA9E1ECDB23E00C95E71 /* Dispatcher.swift */,
+				4C7FFAA31ECDB64100C95E71 /* NetworkDispatcher.swift */,
+			);
+			path = Dispatcher;
+			sourceTree = "<group>";
+		};
+		4C7FFAA01ECDB28900C95E71 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				4C7FFAA11ECDB29100C95E71 /* Environment.swift */,
+			);
+			path = Environment;
 			sourceTree = "<group>";
 		};
 		4C832AF41EB752240092A853 /* ViewControllerts */ = {
 			isa = PBXGroup;
 			children = (
+				4C7454D21ED2D28B00F02267 /* RegistrationViewController */,
 				4C53C6831ECB30000022AFDB /* PlacePicker */,
 				4C2DAA011EB9D450002FCAD5 /* OnBoarding */,
 				C65CB5081EB857FA00DE65B7 /* HomeViewController */,
@@ -377,33 +495,16 @@
 				4CED68611EB8BE97001A7CC5 /* ChangeZipCodeController */,
 				4C832B091EB775C80092A853 /* NotInYourAreaViewController */,
 				4C832B041EB7601F0092A853 /* SignInViewController */,
-				4C832AF61EB752240092A853 /* OnboardingViewControllerViewController */,
 			);
 			path = ViewControllerts;
-			sourceTree = "<group>";
-		};
-		4C832AF61EB752240092A853 /* OnboardingViewControllerViewController */ = {
-			isa = PBXGroup;
-			children = (
-				4C832AF71EB752240092A853 /* HBOnboardingViewControllerViewController.swift */,
-				4C832AF81EB752240092A853 /* Shared */,
-			);
-			path = OnboardingViewControllerViewController;
-			sourceTree = "<group>";
-		};
-		4C832AF81EB752240092A853 /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				4C832AF91EB752240092A853 /* JaldiOnboardingDefines.swift */,
-				4C832AFA1EB752240092A853 /* JaldiOnboardingInputView.swift */,
-			);
-			path = Shared;
 			sourceTree = "<group>";
 		};
 		4C832AFF1EB752B70092A853 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				4C53D6731ECC981E00A4A634 /* JaldiUser.swift */,
+				4CCBC0601ED030AA00716749 /* JaldiRegistration.swift */,
+				4C55BB451ECF3D42003F6241 /* MobileVerification.swift */,
 				4CED68551EB871BF001A7CC5 /* UserProfile.swift */,
 				4C4998F61EBB0E100034819B /* BookingObject.swift */,
 			);
@@ -424,6 +525,23 @@
 				4C832B0A1EB775DD0092A853 /* JaldiNotInYourAreaViewController.swift */,
 			);
 			path = NotInYourAreaViewController;
+			sourceTree = "<group>";
+		};
+		4CCBC0641ED0674C00716749 /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				4CCBC0651ED0674C00716749 /* Date+Helper.swift */,
+			);
+			path = Date;
+			sourceTree = "<group>";
+		};
+		4CCBC0661ED0674C00716749 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4CCBC0671ED0674C00716749 /* UIViewController+ProgressHUD.swift */,
+				4CCBC06A1ED0676A00716749 /* UIViewController+Alert.swift */,
+			);
+			path = UIViewController;
 			sourceTree = "<group>";
 		};
 		4CCBD3AA1EBCB598009D5408 /* Shared */ = {
@@ -454,7 +572,8 @@
 		4CCBD3B11EBCBEE2009D5408 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				4CCBD3B21EBCBF10009D5408 /* Date+Helper.swift */,
+				4CCBC0641ED0674C00716749 /* Date */,
+				4CCBC0661ED0674C00716749 /* UIViewController */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -487,6 +606,15 @@
 			path = JaldiAnnouncementViewController;
 			sourceTree = "<group>";
 		};
+		62DE40D5985912B039E2FC1A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4ACCDF1DD65D3B4B33983253 /* Pods-Jaldi.debug.xcconfig */,
+				EE115EA4FE9D8A8EB071EBDF /* Pods-Jaldi.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		C65CB5081EB857FA00DE65B7 /* HomeViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -496,6 +624,14 @@
 			name = HomeViewController;
 			sourceTree = "<group>";
 		};
+		D18D4EEB6B66676FD2AA5C0D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B89C32A91F1F6B3635F9B7C3 /* Pods_Jaldi.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -503,9 +639,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C45879A1EB4C23500169AC1 /* Build configuration list for PBXNativeTarget "Jaldi" */;
 			buildPhases = (
+				0E6FD70A33A889277D6D9B27 /* [CP] Check Pods Manifest.lock */,
 				4C4587841EB4C23500169AC1 /* Sources */,
 				4C4587851EB4C23500169AC1 /* Frameworks */,
 				4C4587861EB4C23500169AC1 /* Resources */,
+				29C76E52B5E15D3EDA1D3619 /* [CP] Embed Pods Frameworks */,
+				F4A4F9BD6B1A2A78FB0191E0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -565,53 +704,117 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0E6FD70A33A889277D6D9B27 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		29C76E52B5E15D3EDA1D3619 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Jaldi/Pods-Jaldi-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4A4F9BD6B1A2A78FB0191E0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Jaldi/Pods-Jaldi-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4C4587841EB4C23500169AC1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CCBC0691ED0674C00716749 /* UIViewController+ProgressHUD.swift in Sources */,
 				4C25C7BC1EBC677A00092203 /* JaldiBookingTimePickerViewController.swift in Sources */,
 				4C45878C1EB4C23500169AC1 /* AppDelegate.swift in Sources */,
+				4C55BB441ECF3C03003F6241 /* JaldiSendVerificationTask.swift in Sources */,
 				4CED68711EB90CED001A7CC5 /* JaldiService.swift in Sources */,
 				4C2DAA091EB9D450002FCAD5 /* JaldiOnBoradingListViewCell.swift in Sources */,
 				4C2DAA0A1EB9D450002FCAD5 /* JaldiOnBoradingListViewHeaderCell.swift in Sources */,
 				4C42BFE41EC3471F0098B186 /* JaldiPaymentPriceDetailsView.swift in Sources */,
 				4C4999031EBB25590034819B /* JaldiBookingDetailsTableViewCell.swift in Sources */,
+				4C55BB3C1ECF1252003F6241 /* JaldiLoginTask.swift in Sources */,
 				4C4999001EBB214E0034819B /* JaldiBookingDetailsViewController.swift in Sources */,
-				4C832AFD1EB752240092A853 /* JaldiOnboardingDefines.swift in Sources */,
 				4C4998FC1EBB11280034819B /* BookingHelper.swift in Sources */,
 				4C25C7C21EBC9D8400092203 /* JaldiBookingContactInfoViewController.swift in Sources */,
 				4C832B0B1EB775DD0092A853 /* JaldiNotInYourAreaViewController.swift in Sources */,
 				4C53C6851ECB30240022AFDB /* JaldiPlacePicker.swift in Sources */,
-				4C832AFE1EB752240092A853 /* JaldiOnboardingInputView.swift in Sources */,
+				4C7FFAA21ECDB29100C95E71 /* Environment.swift in Sources */,
 				C65CB5071EB857F000DE65B7 /* JaldiHomeViewController.swift in Sources */,
 				4C53D6741ECC981E00A4A634 /* JaldiUser.swift in Sources */,
+				4C7FFAA41ECDB64100C95E71 /* NetworkDispatcher.swift in Sources */,
 				4C4E00901EC4833600B5E465 /* JaldiBookingPaymentMethodCell.swift in Sources */,
 				4C42BFE81EC35B860098B186 /* JaldiPaymentTotalPriceView.swift in Sources */,
 				4C4A63FF1EC1BC5C00EE2C12 /* JaldiBookingPaymentCardCell.swift in Sources */,
-				4C832AFC1EB752240092A853 /* HBOnboardingViewControllerViewController.swift in Sources */,
+				4C7FFA9B1ECDB17700C95E71 /* JaldiRequest.swift in Sources */,
+				4C55BB3E1ECF12B5003F6241 /* JaldiForgotTask.swift in Sources */,
 				4CCBD3AD1EBCB598009D5408 /* BookingNavigation.swift in Sources */,
 				4CED68541EB870A5001A7CC5 /* JaldiAppConstants.swift in Sources */,
 				4CED68631EB8BEC6001A7CC5 /* JaldiChangeZipCodeController.swift in Sources */,
+				4C7FFA9C1ECDB17700C95E71 /* UserRequest.swift in Sources */,
 				4CED68561EB871BF001A7CC5 /* UserProfile.swift in Sources */,
 				4CCBD3B01EBCB5F9009D5408 /* JaldiBookingDatePriceView.swift in Sources */,
 				4C4998FA1EBB109B0034819B /* JaldiValidator.swift in Sources */,
 				4C42BFDE1EC2F8F00098B186 /* JaldiBookingPaymentTermOfUseCell.swift in Sources */,
+				4C7454D91ED2D28B00F02267 /* JaldiRegistrationDefines.swift in Sources */,
+				4C7FFA9F1ECDB23E00C95E71 /* Dispatcher.swift in Sources */,
+				4C55BB401ECF1D06003F6241 /* JaldGetProfileTask.swift in Sources */,
 				4C832B081EB760730092A853 /* JaldiSignInViewController.swift in Sources */,
 				4C4998F71EBB0E100034819B /* BookingObject.swift in Sources */,
 				4C2DAA081EB9D450002FCAD5 /* JaldiOnBoradingListViewController.swift in Sources */,
 				4C2B1A441EB73FD100F63E7D /* HBAppColors.swift in Sources */,
+				4C55BB341ECEEA18003F6241 /* JaldiOperation.swift in Sources */,
+				4CCBC0611ED030AA00716749 /* JaldiRegistration.swift in Sources */,
 				4CED685C1EB89594001A7CC5 /* JaldiHomeCollectionViewCell.swift in Sources */,
 				4C49990B1EBB65210034819B /* JaldiBookingDescriptionTableCell.swift in Sources */,
 				4CED68601EB8A9AC001A7CC5 /* HomeCategory.swift in Sources */,
+				4C55BB371ECEECC9003F6241 /* JaldiResponse.swift in Sources */,
 				4CED68661EB8D172001A7CC5 /* JaldiAnnouncementViewController.swift in Sources */,
-				4CCBD3B31EBCBF10009D5408 /* Date+Helper.swift in Sources */,
+				4C7454D81ED2D28B00F02267 /* JaldiOnboardingInputView.swift in Sources */,
+				4C55BB461ECF3D42003F6241 /* MobileVerification.swift in Sources */,
+				4C7454D71ED2D28B00F02267 /* JaldiRegistrationViewController.swift in Sources */,
+				4CCBC06B1ED0676A00716749 /* UIViewController+Alert.swift in Sources */,
 				4C4A63F81EC1B20000EE2C12 /* JaldiBookingPaymentViewController.swift in Sources */,
 				4C42BFE11EC30B320098B186 /* JaldiBookingPaymentDetailsCell.swift in Sources */,
 				4C4999051EBB3D990034819B /* JaldiBookingDetailsHeaderCell.swift in Sources */,
 				4C4999081EBB61EB0034819B /* JaldiBookingDescriptionViewController.swift in Sources */,
 				4C42BFE61EC358740098B186 /* JaldiPaymentDatePriceView.swift in Sources */,
+				4CCBC0681ED0674C00716749 /* Date+Helper.swift in Sources */,
 				4C2DA9F71EB9D1A3002FCAD5 /* AKPickerView.swift in Sources */,
+				4C55BB421ECF2BA9003F6241 /* JaldRegistrationTask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,6 +953,7 @@
 		};
 		4C45879B1EB4C23500169AC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4ACCDF1DD65D3B4B33983253 /* Pods-Jaldi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "";
@@ -766,6 +970,7 @@
 		};
 		4C45879C1EB4C23500169AC1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE115EA4FE9D8A8EB071EBDF /* Pods-Jaldi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "";

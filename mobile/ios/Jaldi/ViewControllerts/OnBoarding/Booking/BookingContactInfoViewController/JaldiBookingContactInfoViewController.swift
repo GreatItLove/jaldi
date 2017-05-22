@@ -188,7 +188,7 @@ extension JaldiBookingContactInfoViewController: UITextFieldDelegate {
             }
             if JaldiValidator.isNumeric(inputString: string){
                 let newValue = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
-               textField.text = self.correct(phoneNumber: newValue)
+               textField.text = JaldiValidator.correct(phoneNumber: newValue)
             }
              return false
         }
@@ -198,24 +198,5 @@ extension JaldiBookingContactInfoViewController: UITextFieldDelegate {
         return false
     }
 
-    private func correct(phoneNumber:String) -> String {
-        var result:NSString = ""
-        let text  = phoneNumber as NSString
-        let  strippedNumber =  text.replacingOccurrences(of: "[^0-9,+]", with: "", options: NSString.CompareOptions.regularExpression, range: NSMakeRange(0, text.length)) as NSString
-        for location in 0..<strippedNumber.length {
-            let  character = strippedNumber.character(at: location) as  unichar
-            switch location {
-            case 0:
-                result = result.appendingFormat("(%C", character)
-            case 2:
-                result = result.appendingFormat("%C)", character)
-            case 6:
-                result = result.appendingFormat("-%C", character)
-            default:
-                result = result.appendingFormat("%C", character)
-            }
-        }
-        return result as String
-    }
-    
+       
 }

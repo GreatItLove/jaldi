@@ -47,5 +47,34 @@ struct JaldiValidator {
         }
         return false
     }
+    static func isValid(phone:String) -> Bool {
+        var isValid = false
+            let text = phone as NSString
+            let  strippedNumber =  text.replacingOccurrences(of: "[^0-9,+]", with: "", options: NSString.CompareOptions.regularExpression, range: NSMakeRange(0, text.length)) as NSString
+            isValid = (strippedNumber.length == 10 || strippedNumber.length == 11)
+        return isValid
+        }
+    
+    //MARK:HELPER
+    static func correct(phoneNumber:String) -> String {
+        var result:NSString = ""
+        let text  = phoneNumber as NSString
+        let  strippedNumber =  text.replacingOccurrences(of: "[^0-9,+]", with: "", options: NSString.CompareOptions.regularExpression, range: NSMakeRange(0, text.length)) as NSString
+        for location in 0..<strippedNumber.length {
+            let  character = strippedNumber.character(at: location) as  unichar
+            switch location {
+            case 0:
+                result = result.appendingFormat("(%C", character)
+            case 2:
+                result = result.appendingFormat("%C)", character)
+            case 6:
+                result = result.appendingFormat("-%C", character)
+            default:
+                result = result.appendingFormat("%C", character)
+            }
+        }
+        return result as String
+    }
+
 
 }
