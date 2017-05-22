@@ -8,10 +8,9 @@
 
 import UIKit
 protocol JaldiOnboardingInputViewDelegate: class {
-    func onboarding(inputView:JaldiOnboardingInputView, didBeginEditing textField:UITextField, onboardingState:OnBoardingState)
-    func onboarding(inputView:JaldiOnboardingInputView, textFieldDidEndEditing textField:UITextField, onboardingState:OnBoardingState)
-    func onboarding(inputView:JaldiOnboardingInputView, didReturn textField:UITextField, onboardingState:OnBoardingState)
-    
+    func onboarding(inputView:JaldiOnboardingInputView, didBeginEditing textField:UITextField, registrationState:RegistrationState)
+    func onboarding(inputView:JaldiOnboardingInputView, textFieldDidEndEditing textField:UITextField, registrationState:RegistrationState)
+    func onboarding(inputView:JaldiOnboardingInputView, didReturn textField:UITextField, registrationState:RegistrationState)
 }
 class JaldiOnboardingInputView: UIView {
     
@@ -19,7 +18,7 @@ class JaldiOnboardingInputView: UIView {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var onboardingTextField: UITextField!
     
-    fileprivate var state: OnBoardingState = .phone
+    fileprivate var state: RegistrationState = .phone
     fileprivate weak var delegate: JaldiOnboardingInputViewDelegate!
     fileprivate var enabledToReturn: Bool = false {
         didSet {
@@ -36,28 +35,28 @@ class JaldiOnboardingInputView: UIView {
     }
     //MARK: Configuration
     func configureWith(user:JaldiRegistration,
-                       onBoardingState:OnBoardingState ,
+                       registrationState:RegistrationState ,
                        onboardingInputViewDelegat:JaldiOnboardingInputViewDelegate) {
         
-        self.state = onBoardingState
+        self.state = registrationState
         self.delegate = onboardingInputViewDelegat
-        self.configureOnboardingTextFieldWith(user:user, onBoardingState:onBoardingState)
-        self.configureTitle(onBoardingState: onBoardingState)
-        self.configureNextButtonStateWith(user: user, onBoardingState: onBoardingState)
+        self.configureOnboardingTextFieldWith(user:user, registrationState:registrationState)
+        self.configureTitle(registrationState: registrationState)
+        self.configureNextButtonStateWith(user: user, registrationState: registrationState)
     }
     
     //MARK: Actions
     @IBAction func nextAction(_ sender: Any) {
         let canReturn  = self.isValid(inputString: onboardingTextField.text)
         if canReturn {
-            delegate?.onboarding(inputView: self, didReturn: onboardingTextField, onboardingState: self.state)
+            delegate?.onboarding(inputView: self, didReturn: onboardingTextField, registrationState: self.state)
         }
     }
     
     fileprivate func  configureOnboardingTextFieldWith(user:JaldiRegistration,
-                                                       onBoardingState:OnBoardingState) {
-        onboardingTextField.placeholder = OnBoardingPlaceholderText.onBoardingPlaceholderTextFor(onBoardingState: onBoardingState)
-        switch onBoardingState {
+                                                       registrationState:RegistrationState) {
+        onboardingTextField.placeholder = RegistrationPlaceholderText.registrationPlaceholderTextFor(registrationState: registrationState)
+        switch registrationState {
         case .phone:
             onboardingTextField.text = user.phone
             onboardingTextField.keyboardType = .phonePad
@@ -85,14 +84,14 @@ class JaldiOnboardingInputView: UIView {
         
         }
     }
-    fileprivate func  configureTitle(onBoardingState:OnBoardingState) {
-        inputViewTitleLabel.text = OnBoardingStateTitle.onBoardingStateTitleFor(onBoardingState: onBoardingState)
+    fileprivate func  configureTitle(registrationState:RegistrationState) {
+        inputViewTitleLabel.text = RegistrationStateTitle.registrationStateTitleFor(registrationState: registrationState)
     }
     
     fileprivate func  configureNextButtonStateWith(user:JaldiRegistration,
-                                                   onBoardingState:OnBoardingState) {
+                                                   registrationState:RegistrationState) {
         var enabled = false
-        switch onBoardingState {
+        switch registrationState {
         case .phone:
            enabled =  self.isValid(inputString: user.phone )
         case .confirmationCode:
@@ -144,11 +143,11 @@ class JaldiOnboardingInputView: UIView {
 extension JaldiOnboardingInputView: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-      delegate?.onboarding(inputView: self, didBeginEditing:textField, onboardingState:self.state )
+      delegate?.onboarding(inputView: self, didBeginEditing:textField, registrationState:self.state )
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        delegate?.onboarding(inputView: self, textFieldDidEndEditing: textField, onboardingState:self.state)
+        delegate?.onboarding(inputView: self, textFieldDidEndEditing: textField, registrationState:self.state)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -176,7 +175,7 @@ extension JaldiOnboardingInputView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let canReturn  = self.isValid(inputString: textField.text)
         if canReturn {
-         delegate?.onboarding(inputView: self, didReturn: textField, onboardingState: self.state)
+         delegate?.onboarding(inputView: self, didReturn: textField, registrationState: self.state)
          return true
         }
       return false

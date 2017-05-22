@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Onboarding View Controller View Controller-->
+        <!--Jaldi Registration View Controller-->
         <scene sceneID="v0v-cJ-uou">
             <objects>
-                <viewController storyboardIdentifier="HBOnboardingViewControllerViewController" id="Ess-Ee-Ez0" customClass="HBOnboardingViewControllerViewController" customModule="Jaldi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JaldiRegistrationViewController" id="Ess-Ee-Ez0" customClass="JaldiRegistrationViewController" customModule="Jaldi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8HZ-rn-Mq8"/>
                         <viewControllerLayoutGuide type="bottom" id="Orw-q9-Sb5"/>

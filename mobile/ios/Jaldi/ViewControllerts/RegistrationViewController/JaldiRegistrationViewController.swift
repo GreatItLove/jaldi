@@ -1,5 +1,5 @@
 //
-//  HBOnboardingViewControllerViewController.swift
+//  JaldiRegistrationViewController.swift
 //  Handy
 //
 //  Created by Grigori Jlavyan on 4/29/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HBOnboardingViewControllerViewController: UIViewController {
+class JaldiRegistrationViewController: UIViewController {
     
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var titleLabel: UIView!
@@ -33,14 +33,14 @@ class HBOnboardingViewControllerViewController: UIViewController {
     @IBOutlet weak var passwordInputViewHorizontalCenterConstraint: NSLayoutConstraint!
     @IBOutlet weak var confirmPasswordInputViewHorizontalCenterConstraint: NSLayoutConstraint!
     
-    fileprivate let allStates: [OnBoardingState] = [OnBoardingState.phone,
-                                                   OnBoardingState.confirmationCode,
-                                                   OnBoardingState.name,
-                                                   OnBoardingState.email,
-                                                   OnBoardingState.password,
-                                                   OnBoardingState.confirmPassword]
+    fileprivate let allStates: [RegistrationState] = [RegistrationState.phone,
+                                                   RegistrationState.confirmationCode,
+                                                   RegistrationState.name,
+                                                   RegistrationState.email,
+                                                   RegistrationState.password,
+                                                   RegistrationState.confirmPassword]
 
-    fileprivate var activeState: OnBoardingState = .phone
+    fileprivate var activeState: RegistrationState = .phone
     fileprivate var registrationModel: JaldiRegistration = JaldiRegistration()
     private var isKeyboardShown = false
     override func viewDidLoad() {
@@ -89,13 +89,13 @@ class HBOnboardingViewControllerViewController: UIViewController {
     private func configureInputVievs() {
         for state in allStates{
             let inputView = self.inputViewFor(state: state)
-            inputView?.configureWith(user: registrationModel, onBoardingState: state, onboardingInputViewDelegat: self)
+            inputView?.configureWith(user: registrationModel, registrationState: state, onboardingInputViewDelegat: self)
         }
     }
     
     //MARK: GestureRecognizer
     private func addRecognizer(){
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(HBOnboardingViewControllerViewController.handleTap(gestureRecognizer:)))
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(JaldiRegistrationViewController.handleTap(gestureRecognizer:)))
         view.addGestureRecognizer(gestureRecognizer)
     }
     func handleTap(gestureRecognizer: UIGestureRecognizer) {
@@ -104,8 +104,8 @@ class HBOnboardingViewControllerViewController: UIViewController {
 
     //MARK: Notification
     private func addNotification(){
-        NotificationCenter.default.addObserver(self, selector: #selector(HBOnboardingViewControllerViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(HBOnboardingViewControllerViewController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(JaldiRegistrationViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(JaldiRegistrationViewController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     private func removeNotification(){
@@ -153,7 +153,7 @@ class HBOnboardingViewControllerViewController: UIViewController {
         removeNotification()
     }
     
-    fileprivate func configureWithActive(state:OnBoardingState , animated:Bool){
+    fileprivate func configureWithActive(state:RegistrationState , animated:Bool){
         self.changeViewStatesFor(state: state)
         if animated{
             UIView.animate(withDuration: 0.35,
@@ -162,14 +162,14 @@ class HBOnboardingViewControllerViewController: UIViewController {
             },completion: { (finished) -> Void in})
         }
     }
-    fileprivate func changeViewStatesFor(state:OnBoardingState){
+    fileprivate func changeViewStatesFor(state:RegistrationState){
         self.configureCenterConstraintsFor(state: state)
         backButton.isHidden = state == .phone
     }
-    fileprivate func indexOf(state:OnBoardingState) -> Int?{
+    fileprivate func indexOf(state:RegistrationState) -> Int?{
         return allStates.index(of: state)
     }
-    fileprivate func nextStateFor(state:OnBoardingState) -> OnBoardingState?{
+    fileprivate func nextStateFor(state:RegistrationState) -> RegistrationState?{
         guard let index =  self.indexOf(state: state), index < allStates.count - 1 else {
             return nil
         }
@@ -177,7 +177,7 @@ class HBOnboardingViewControllerViewController: UIViewController {
     }
 
     
-    fileprivate func configureCenterConstraintsFor(state:OnBoardingState) {
+    fileprivate func configureCenterConstraintsFor(state:RegistrationState) {
         guard let indexForState = self.indexOf(state: state) else {
             return
         }
@@ -196,7 +196,7 @@ class HBOnboardingViewControllerViewController: UIViewController {
     }
     
     
-    fileprivate func inputViewFor(state:OnBoardingState) -> JaldiOnboardingInputView? {
+    fileprivate func inputViewFor(state:RegistrationState) -> JaldiOnboardingInputView? {
         switch state {
         case .phone:
             return self.phoneInputView
@@ -212,7 +212,7 @@ class HBOnboardingViewControllerViewController: UIViewController {
             return self.confirmPasswordInputView
         }
     }
-    fileprivate func horizontalCenterConstraint(state:OnBoardingState) -> NSLayoutConstraint? {
+    fileprivate func horizontalCenterConstraint(state:RegistrationState) -> NSLayoutConstraint? {
         switch state {
         case .phone:
             return phoneInputViewHorizontalCenterConstraint
@@ -231,34 +231,34 @@ class HBOnboardingViewControllerViewController: UIViewController {
 }
 
 //MARK: JaldiOnboardingInputViewDelegate
-extension HBOnboardingViewControllerViewController: JaldiOnboardingInputViewDelegate{
-    func onboarding(inputView:JaldiOnboardingInputView, didBeginEditing textField:UITextField, onboardingState:OnBoardingState) {
+extension JaldiRegistrationViewController: JaldiOnboardingInputViewDelegate{
+    func onboarding(inputView:JaldiOnboardingInputView, didBeginEditing textField:UITextField, registrationState:RegistrationState) {
     }
     
-    func onboarding(inputView:JaldiOnboardingInputView, textFieldDidEndEditing textField:UITextField, onboardingState:OnBoardingState) {
+    func onboarding(inputView:JaldiOnboardingInputView, textFieldDidEndEditing textField:UITextField, registrationState:RegistrationState) {
     
-      self.changeRegitrationDetailsFor(textField: textField, onboardingState: onboardingState)
+      self.changeRegitrationDetailsFor(textField: textField, registrationState: registrationState)
     }
     
-    func onboarding(inputView:JaldiOnboardingInputView, didReturn textField:UITextField, onboardingState:OnBoardingState) {
-        self.changeRegitrationDetailsFor(textField: textField, onboardingState: onboardingState)
-        switch onboardingState {
+    func onboarding(inputView:JaldiOnboardingInputView, didReturn textField:UITextField, registrationState:RegistrationState) {
+        self.changeRegitrationDetailsFor(textField: textField, registrationState: registrationState)
+        switch registrationState {
         case .phone:
             self.verifyPhoneAndMoveToNextScreen()
         case .confirmationCode:
             self.verifyConfirmationCodeAndMoveToNextScreen()
         case .name:
-            self.moveToNextStateFor(state: onboardingState)
+            self.moveToNextStateFor(state: registrationState)
         case .email:
-           self.moveToNextStateFor(state: onboardingState)
+           self.moveToNextStateFor(state: registrationState)
         case .password:
-           self.moveToNextStateFor(state: onboardingState)
+           self.moveToNextStateFor(state: registrationState)
         case .confirmPassword:
-           self.moveToNextStateFor(state: onboardingState)
+           self.moveToNextStateFor(state: registrationState)
         }
     }
-    private func changeRegitrationDetailsFor(textField:UITextField, onboardingState:OnBoardingState) {
-        switch onboardingState {
+    private func changeRegitrationDetailsFor(textField:UITextField, registrationState:RegistrationState) {
+        switch registrationState {
         case .phone:
             registrationModel.phone = textField.text
         case .confirmationCode:
@@ -334,7 +334,7 @@ extension HBOnboardingViewControllerViewController: JaldiOnboardingInputViewDele
 }
     
     
-    private func moveToNextStateFor(state:OnBoardingState) {
+    private func moveToNextStateFor(state:RegistrationState) {
         
         guard let index =  self.indexOf(state: state),index < allStates.count else {
             return

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-enum OnBoardingState: Int {
+enum RegistrationState: Int {
     case phone
     case name
     case confirmationCode
@@ -16,7 +16,7 @@ enum OnBoardingState: Int {
     case confirmPassword
 }
 
-struct OnBoardingPlaceholderText {
+struct RegistrationPlaceholderText {
     static let phone = "Phone"
     static let confirmationCode = "Confirmation Code"
     static let password = "Password"
@@ -24,46 +24,46 @@ struct OnBoardingPlaceholderText {
     static let name = "Name"
     static let confirmPassword = "Confirm Password"
     
-    static  func onBoardingPlaceholderTextFor(onBoardingState:OnBoardingState)->String{
-        switch onBoardingState {
+    static  func registrationPlaceholderTextFor(registrationState:RegistrationState)->String{
+        switch registrationState {
         case .phone:
-            return OnBoardingPlaceholderText.phone
+            return RegistrationPlaceholderText.phone
         case .confirmationCode:
-            return OnBoardingPlaceholderText.confirmationCode
+            return RegistrationPlaceholderText.confirmationCode
         case .email:
-            return OnBoardingPlaceholderText.email
+            return RegistrationPlaceholderText.email
         case .password:
-            return OnBoardingPlaceholderText.password
+            return RegistrationPlaceholderText.password
         case .name:
-            return OnBoardingPlaceholderText.name
+            return RegistrationPlaceholderText.name
         case .confirmPassword:
-            return OnBoardingPlaceholderText.confirmPassword
+            return RegistrationPlaceholderText.confirmPassword
 
         }
     }
 }
 
-struct OnBoardingStateTitle {
+struct RegistrationStateTitle {
     static let phone = "What's your phone?"
     static let name = "What's your name?"
     static let confirmationCode = "Confirmation Code"
     static let password = "What's your password?"
     static let confirmPassword = "Confirm your password?"
     static let email = "What's your email?"
-    static  func onBoardingStateTitleFor(onBoardingState:OnBoardingState)->String{
-        switch onBoardingState {
+    static  func registrationStateTitleFor(registrationState:RegistrationState)->String{
+        switch registrationState {
         case .phone:
-            return OnBoardingStateTitle.phone
+            return RegistrationStateTitle.phone
         case .confirmationCode:
-            return OnBoardingStateTitle.confirmationCode
+            return RegistrationStateTitle.confirmationCode
         case .email:
-            return OnBoardingStateTitle.email
+            return RegistrationStateTitle.email
         case .password:
-            return OnBoardingStateTitle.password
+            return RegistrationStateTitle.password
         case .name:
-            return OnBoardingStateTitle.name
+            return RegistrationStateTitle.name
         case .confirmPassword:
-            return OnBoardingStateTitle.confirmPassword
+            return RegistrationStateTitle.confirmPassword
         }
     }
 }
