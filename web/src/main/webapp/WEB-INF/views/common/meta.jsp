@@ -12,5 +12,5 @@
 <meta name="twitter:site" content="" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="">
-<link href="/main/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
-<link href="/main/img/black-fav.png" rel="apple-touch-icon">
+<link href="/resources/main/img/j-favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/resources/main/img/jaldi-logo-blue-bg.png" rel="apple-touch-icon">

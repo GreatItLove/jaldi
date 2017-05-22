@@ -9,8 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <title>Jaldi - Book your local, trusted handyman</title>
     <jsp:include page="common/meta.jsp"/>
-
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="/resources/landing/fonts/linearicons/style.css" rel="stylesheet" type="text/css">
     <link href="/resources/landing/fonts/jaldi/jaldi-icons.css" rel="stylesheet" type="text/css">
@@ -45,7 +44,7 @@
                 <li><a href="#about-us" class="scroll-to">ABOUT US</a></li>
                 <li><a href="#features" class="scroll-to">SERVICES</a></li>
                 <li><a href="#book" class="scroll-to">HOW TO BOOK</a></li>
-                <li><a href="#faq" class="scroll-to">FAQ</a></li>
+                <li><a href="#projects" class="scroll-to">OUR WORKS</a></li>
                 <sec:authorize access="isAuthenticated()">
                     <li><a href="/portal">MEMBER AREA</a></li>
                 </sec:authorize>
@@ -95,7 +94,7 @@
         <h2 class="landing-subheading text-xs-center text-muted"></h2>
 
         <div class="row">
-            <div class="col-xs-3 col-md-4">
+            <div class="col-md-4">
                 <div class="hwa-item">
                     <img class="icon" src="resources/landing/img/who-we-are/ic_team.svg" />
                     <%--<i class="icon bg-primary lnr lnr-users"></i>--%>
@@ -181,7 +180,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -207,100 +205,93 @@
                     <div class="col-md-3">
                         <img src="/resources/landing/img/book-steps/Step 2 icon.png" height="150">
                     </div>
-                    <div class="col-md-8 book-steps-title">You book a convenient worker in our application.</div>
+                    <div class="col-md-8 book-steps-title">Our worker comes in, surveys the job, briefs you about the details.</div>
                 </div>
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-3">
                         <img src="/resources/landing/img/book-steps/Step 3 icon.png" height="150">
                     </div>
-                    <div class="col-md-7 book-steps-title">You book a convenient worker in our application.</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <img class="pull-right" src="/resources/landing/img/app-store.png" height="60">
-                    </div>
+                    <div class="col-md-7 book-steps-title">You hire the worker and get the wheels rolling.</div>
                 </div>
             </div>
             <div class="col-md-4 iphone">
             </div>
-        </div>
-    </div>
-</div>
-
-<!--Numbers section-->
-<a class="position-relative" name="about-us"></a>
-<div class="landing-section bg-primary p-y-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 col-md-3 margin-b-30 text-center">
-                <h3 class="text-default counter-title">Total Users</h3>
-                <i class="fa fa-users fa-5x" aria-hidden="true"></i>
-                <h1 class="counter">${totalUsers}</h1>
-            </div><!--col-->
-            <div class="col-sm-6 col-md-3 margin-b-30 text-center">
-                <h3 class="text-default counter-title">Total Investments</h3>
-                <i class="fa fa-rocket fa-5x" aria-hidden="true"></i>
-                <h1 class="counter">${totalBtcInvested}</h1>
-            </div><!--col-->
-            <div class="col-sm-6 col-md-3 margin-b-30 text-center">
-                <h3 class="text-default counter-title">Total Withdrawals</h3>
-                <i class="fa fa-money fa-5x" aria-hidden="true"></i>
-                <h1 class="counter">${totalBtcWithdrawal}</h1>
-            </div><!--col-->
-            <div class="col-sm-6 col-md-3 margin-b-30 text-center">
-                <h3 class="text-default counter-title">Days Online</h3>
-                <i class="fa fa-calendar fa-5x" aria-hidden="true"></i>
-                <h1 class="counter">${daysOnline}</h1>
-            </div><!--col-->
-
-        </div><!--row-->
-    </div><!--container-->
-</div>
-<!--Numbers section end-->
-
-<div class="landing-section">
-    <div class="container">
-        <h1 class="landing-heading text-xs-center">About Us</h1>
-
-        <p class="landing-subheading text-muted">BTC INVEST LTD based in United Kingdom in March of 2017. The company is focusing on generating profits exclusively from the Crypto-Currency trading.
-            BTC INVEST LTD is most profitable investment company which generating highly profitable return.</p>
-        <p class="landing-subheading text-muted">Our mission is to provide the most profitable, safest investment platform to our investors.</p>
-        <hr/>
-        <div class="row">
-            <div class="col-md-8">
-                <h2>Our Location</h2>
-
-            </div>
-            <div class="col-md-4">
-                <h3> <strong>Contact Info</strong></h3>
-                <p><strong>Company Headquarters:</strong></p>
-                <p>BTC INVEST LTD.<br>24 Handel St Bloomsbury<br>London<br>United Kingdom WC1N</p>
-                <p>
-                    <a href="mailto:contact@btcinvest.org?Subject=Help%20needed"
-                       class="display-block text-nowrap">
-                        <i class="fa fa-envelope"></i>&nbsp;&nbsp;contact@btcinvest.org
-                    </a>
-                </p><br>
-                <h3>Follow Us</h3>
-                <a href="https://www.facebook.com/btclnvest" target="_blank" class="btn btn-primary btn-outline"><i class="fa fa-facebook"></i></a>
-                &nbsp;&nbsp;&nbsp;
-                <a href="https://twitter.com/btclnvest" target="_blank" class="btn btn-primary btn-outline"><i class="fa fa-twitter"></i></a>
-                &nbsp;&nbsp;&nbsp;
-                <a href="https://plus.google.com/u/0/113185163378767733527" target="_blank" class="btn btn-primary btn-outline"><i class="fa fa-google"></i></a>
+            <div class="col-md-12 text-center">
+                <a href=""><img class="" src="/resources/landing/img/app-store.png" height="60"></a>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Social buttons -->
-<div class="landing-section bg-white darker b-t-1 m-y-4">
-    <div class="container text-xs-center">
-        <h1 class="landing-heading">Ready To Book Now?</h1>
-        <a href="#" class="btn btn-rounded btn-xl btn-primary m-x-1">Book a Cleaning</a>
-        <a href="#features" class="btn btn-primary btn-xl btn-outline btn-rounded m-x-1 scroll-to">
-            See All Services
-        </a>
+<a class="position-relative" name="projects"></a>
+<div class="landing-section" style="margin-bottom: 40px;">
+    <div class="container">
+        <h1 class="landing-heading text-xs-center jaldi-title">OUR WORKS</h1>
+        <h2 class="landing-subheading text-xs-center text-muted" style="margin-bottom: 20px;">In a very short time thousands of projects successfully completed through Jaldi pros.</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <img src="/resources/landing/img/projects/our-works.png">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<a class="position-relative" name="our-staff"></a>
+<div id="our-staff" class="landing-section">
+    <div class="">
+        <h1 class="landing-heading text-xs-center jaldi-title">OUR STAFF</h1>
+
+        <div class="row">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-2">
+                <div class="staff-item">
+                    <div class="">
+                        <img class="icon" src="resources/landing/img/staff/labor_img.png" />
+                    </div>
+                    <h1>1442</h1>
+                    <h3>Skilled Labors</h3>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="staff-item">
+                    <div class="">
+                        <img class="icon" src="resources/landing/img/staff/plumber_img.png" />
+                    </div>
+                    <h1>472</h1>
+                    <h3>Plumbers</h3>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="staff-item">
+                    <div class="">
+                        <img class="icon" src="resources/landing/img/staff/electrican_img.png" />
+                    </div>
+                    <h1>833</h1>
+                    <h3>Electricians</h3>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="staff-item">
+                    <div class="">
+                        <img class="icon" src="resources/landing/img/staff/carpenter_img.png" />
+                    </div>
+                    <h1>662</h1>
+                    <h3>Carpenters</h3>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="staff-item">
+                    <div class="">
+                        <img class="icon" src="resources/landing/img/staff/painter_img.png" />
+                    </div>
+                    <h1>57</h1>
+                    <h3>Painters</h3>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -313,28 +304,16 @@
             <div class="col-sm-3">
                 <h5 class="m-t-0 m-b-1">QUICK LINKS</h5>
                 <div style="line-height: 1.7;">
-                    <a href="#">About</a><br>
-                    <a href="#">Home</a><br>
-                    <a href="#">Blog</a><br>
-                    <a href="#">Support Center</a><br>
-                    <a href="#">Contact</a><br>
-                    <a href="#">Terms</a><br>
-                    <a href="#">Privacy</a>
-                </div>
-            </div>
-
-            <!-- spacer -->
-            <div class="m-t-4 visible-xs"></div>
-
-            <div class="col-sm-3">
-                <h5 class="m-t-0 m-b-1">CATEGORIES</h5>
-                <div style="line-height: 1.7;">
-                    <a href="#">Business</a><br>
-                    <a href="#">Fashion</a><br>
-                    <a href="#">Featured</a><br>
-                    <a href="#">Food for thought</a><br>
-                    <a href="#">Gaming</a><br>
-                    <a href="#">Music</a><br>
+                    <div><a href="#about-us" class="scroll-to">About</a></div>
+                    <div><a href="#features" class="scroll-to">Services</a></div>
+                    <div><a href="#book" class="scroll-to">How to book</a></div>
+                    <div><a href="#projects" class="scroll-to">Our works</a></div>
+                    <sec:authorize access="isAuthenticated()">
+                        <div><a href="/portal">Member area</a></div>
+                    </sec:authorize>
+                    <sec:authorize access="isAnonymous()">
+                        <div><a href="/login">Login</a></div>
+                    </sec:authorize>
                 </div>
             </div>
 
@@ -342,17 +321,28 @@
             <div class="m-t-4 visible-xs"></div>
 
             <div class="col-sm-6">
-                <h5 class="m-t-0 m-b-1">POPULAR SERVICES</h5>
+                <h5 class="m-t-0 m-b-1">KEEP IN TOUCH</h5>
                 <p>
-                    <a href="#">Lorem ipsum dolor sit amet, consectetur</a>
+                    <a target="_blank" href="https://www.google.com/maps?daddr=West+Bay,+P.O.+box+19573,+Zone+61,+Street+831,+Building+262,+Doha,+Qatar">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;West Bay, P.O. box 19573, Zone 61, Street 831, Building 262, Doha, Qatar </a>
                 </p>
                 <p>
-                    <a href="#">Lorem ipsum dolor sit amet, consectetur</a>
+                    <a href="tel:555-555-5555"><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;+974 4483 4423</a>
                 </p>
                 <p>
-                    <a href="#">Lorem ipsum dolor sit amet, consectetur</a>
+                    <a href="mailto:contact@jaldi.pro"><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;contact@jaldi.pro</a>
                 </p>
             </div>
+
+            <!-- spacer -->
+            <div class="m-t-4 visible-xs"></div>
+
+            <div class="col-sm-3">
+                <div style="">
+                    <a href="#"><i class="jaldi-icon jaldi-icon-ic-logo footer-logo"></i></a>
+                </div>
+            </div>
+
         </div>
         <hr>
         <span class="text-muted">Copyright © 2017 Jaldi. All rights reserved.</span>

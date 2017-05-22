@@ -586,7 +586,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .default-button {
   border-radius: 8px;
-  background-color: #00447d;
+  background-color: #03247d;
   color: white;
 }
 
@@ -601,7 +601,7 @@ h1, h2, h3, h4, h5, h6 {
 .default-button:hover,
 .default-button:active,
 .default-button:focus {
-  background-color: #03247d !important;
+  background-color: #00447d !important;
   color: white;
 }
 
@@ -643,7 +643,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .iphone {
   background-image: url("../img/iphone.png");
-  height: 600px;
+  height: 450px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position-x: right;
@@ -660,4 +660,48 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 25px;
   font-weight: 600;
   color: rgb(0, 0, 0);
+}
+
+.staff-item {
+  text-align: center;
+}
+
+.staff-item h1 {
+  font-size: 36px;
+  font-family: "Open Sans Light";
+  color: rgb(0, 68, 125);
+  margin: 20px 0 5px 0;
+  font-weight: lighter;
+}
+
+.staff-item h3 {
+  font-size: 28px;
+  font-family: "OpenSans";
+  color: white;
+  margin: 20px 0 40px 0;
+  font-weight: bolder;
+}
+
+.px-footer {
+  background: #222222;
+  border: none;
+}
+
+.px-footer, .px-footer a {
+  color: #aaaaaa;
+  text-decoration: none;
+}
+
+.px-footer a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-logo {
+  font-size: 80px;
+  color: #4b4b4b;
+}
+
+.footer-logo:hover {
+  color: #fdce08;
 }

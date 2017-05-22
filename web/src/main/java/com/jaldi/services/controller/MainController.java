@@ -13,7 +13,7 @@ public class MainController {
     @GetMapping("/")
     public ModelAndView main(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView model = new ModelAndView();
-        model.setViewName("landing");
+        model.setViewName("landing-new");
         return model;
     }
 
