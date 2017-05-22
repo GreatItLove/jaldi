@@ -226,7 +226,7 @@
 </div>
 
 <a class="position-relative" name="projects"></a>
-<div class="landing-section" style="margin-bottom: 40px;">
+<div class="landing-section" style="padding-bottom: 40px;">
     <div class="container">
         <h1 class="landing-heading text-xs-center jaldi-title">OUR WORKS</h1>
         <h2 class="landing-subheading text-xs-center text-muted" style="margin-bottom: 20px;">In a very short time thousands of projects successfully completed through Jaldi pros.</h2>
