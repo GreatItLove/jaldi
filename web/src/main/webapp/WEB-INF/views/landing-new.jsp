@@ -16,6 +16,7 @@
 
     <!-- Core stylesheets -->
     <link href="/resources/landing/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/resources/landing/js/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" type="text/css">
     <link href="/resources/landing/css/pixeladmin.min.css" rel="stylesheet" type="text/css">
     <link href="/resources/landing/css/widgets.min.css" rel="stylesheet" type="text/css">
 
@@ -360,13 +361,12 @@
 
 <!-- Core scripts -->
 <script src="/resources/landing/js/bootstrap.min.js"></script>
-<script src="/resources/landing/js/pixeladmin.compressed.js"></script>
+<script src="/resources/landing/js/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js"></script>
+<script src="/resources/landing/js/pxadmin-light.js"></script>
 
 <!-- Landing page dependencies -->
 <script src="/resources/landing/js/jquery.waypoints.min.js"></script>
 <script src="/resources/landing/js/jquery.scrollTo.min.js"></script>
-<script src="/resources/landing/js/lazysizes.min.js"></script>
-<script src="/resources/landing/js/jquery.counterup.min.js"></script>
 
 <!-- Landing page JS -->
 <script src="/resources/landing/js/landing.js"></script>
