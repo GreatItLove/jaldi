@@ -24,7 +24,7 @@ public enum UserRequests: JaldiRequest {
         case .forgot(_):
             return "forgot"
         case .profile:
-            return "profile/0"
+            return "rest/profile/0"
         case .register(_, _):
             return "rest/mobile/register"
         case .sendVerification(_):
@@ -40,7 +40,7 @@ public enum UserRequests: JaldiRequest {
         case .forgot(_):
             return .post
         case .profile:
-            return .post
+            return .get
         case .register(_, _):
             return .post
         case .sendVerification(_):

@@ -11,7 +11,7 @@ import UIKit
 
 class JaldiHomeViewController: UIViewController {
     
-    @IBOutlet weak var zipCodeLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var theCollectionView: UICollectionView!
     let  allCategories = HomeCategory.allCategories
@@ -30,12 +30,12 @@ class JaldiHomeViewController: UIViewController {
         self.configureCollectionView()
         
     }
-    private func configuraZip() {
-        guard let zip = UserProfile.currentProfile.guestZip else{
-          zipCodeLabel.text = ""
+    fileprivate func configuraZip() {
+        guard let address = UserProfile.currentProfile.user?.address else{
+          addressLabel.text = ""
             return
         }
-        zipCodeLabel.text = "Not in: \(zip)?"
+        addressLabel.text = "Not in: \(address)?"
     }
     private func configureCollectionView() {
         let collectionViewLayout = theCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
@@ -60,10 +60,11 @@ class JaldiHomeViewController: UIViewController {
         
 
     }
-    @IBAction func changeZipAction(_ sender: Any) {
+    @IBAction func changeAddressAction(_ sender: Any) {
         let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
-        let signInViewController = storyboard.instantiateViewController(withIdentifier: "JaldiChangeZipCodeController") as? JaldiChangeZipCodeController
-        self.present(signInViewController!, animated: true, completion: nil)
+        let placePicker = storyboard.instantiateViewController(withIdentifier: "JaldiPlacePicker") as? JaldiPlacePicker
+        placePicker?.delegate = self
+        self.present(placePicker!, animated: true, completion: nil)
     }
    
 }
@@ -151,4 +152,13 @@ extension JaldiHomeViewController: UICollectionViewDelegate,UICollectionViewData
         }
     }
 
+}
+
+extension JaldiHomeViewController: JaldiPlacePickerDelegate {
+    func placePicker(JaldiPlacePicker:JaldiPlacePicker, didSelect address:String) {
+        if let user  = UserProfile.currentProfile.user {
+          user.address = address
+            self.configuraZip()
+        }
+    }
 }

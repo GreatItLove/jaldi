@@ -65,7 +65,7 @@ class JaldiPlacePicker: UIViewController {
         if let _ = self.placemark , let address = self.placemark?.name {
             delegate?.placePicker(JaldiPlacePicker: self, didSelect: address)
          }
-        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

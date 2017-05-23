@@ -152,10 +152,18 @@ extension JaldiOnboardingInputView: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if state == .phone {
-            if ((textField.text?.characters.count)! > 12 && string.characters.count > 0) {
+            if ((textField.text?.characters.count)! > 13 && string.characters.count > 0) {
                 return false
             }
             if string.characters.count == 0 {
+                if let text = textField.text as NSString?{
+                let  strippedNumber =  text.replacingOccurrences(of: "[^0-9,+]", with: "", options: NSString.CompareOptions.regularExpression, range: NSMakeRange(0, text.length)) as NSString
+                    if strippedNumber.length <= 3 {
+                        return false
+                    }
+               
+                }
+                
                 let newValue = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
                 self.checkValidationAndChangeStateIfNededFor(newValue: newValue)
                 return true

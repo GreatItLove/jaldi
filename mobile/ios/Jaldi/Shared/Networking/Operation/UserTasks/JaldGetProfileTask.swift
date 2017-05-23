@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import ObjectMapper
 class JaldGetProfileTask: JaldiOperation {
-    typealias Output = String
+    typealias Output = JaldiUser
 
 
     var request: JaldiRequest {
@@ -24,8 +25,13 @@ class JaldGetProfileTask: JaldiOperation {
                                   completion: { (response) -> Void in
                                     
                                     switch response {
-                                    case .value(_):
-                                        taskCompletion("success")
+                                    case .value(let value):
+                                        guard let userJson  = value as? [String : AnyObject] else {
+                                            taskCompletion(nil)
+                                            return
+                                        }
+                                        let user  = Mapper<JaldiUser>().map(JSON: userJson)
+                                        taskCompletion(user)
                                     case .error(let statuseCode, let error):
                                         completionError(error,statuseCode)
                                         

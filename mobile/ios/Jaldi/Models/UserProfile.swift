@@ -14,6 +14,7 @@ class UserProfile {
 
     static let currentProfile = UserProfile()
     
+    var user:JaldiUser?
     var guestEmail:String? {
         get {
             return UserDefaults.standard.object(forKey: guestEmailUserDefaultKey) as? String
@@ -53,6 +54,7 @@ class UserProfile {
         return guest
     }
     func loginAsGuest(guest:JaldiUser) {
+      self.user = guest
       self.guestPassword = guest.password
       self.guestEmail = guest.email
       self.guestZip = guest.zip

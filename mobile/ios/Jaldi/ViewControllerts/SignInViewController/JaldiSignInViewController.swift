@@ -38,9 +38,6 @@ class JaldiSignInViewController: UIViewController {
         
         let task  = JaldiLoginTask(user: userName, password: password)
         task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: { (value) in
-            let user  = JaldiUser.emptyUser()
-            user.email = userName
-            user.password = password
             self.getProfile()
 //            UserProfile.currentProfile.loginAsGuest(guest: user)
         }) { (error, _) in
@@ -56,8 +53,12 @@ class JaldiSignInViewController: UIViewController {
 
     private func getProfile() {
         let task  = JaldGetProfileTask()
-        task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: { (value) in
-            
+        task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: { (user) in
+            guard let user = user else{
+              return
+            }
+            UserProfile.currentProfile.loginAsGuest(guest: user)
+
         }) { (error, _) in
             print(error ?? "Error")
         }
