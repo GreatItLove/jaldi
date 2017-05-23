@@ -310,7 +310,7 @@ extension JaldiBookingPaymentViewController: JaldiBookingPaymentCardCellDelegate
         DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
             let promoCodeIsAvailable = AvailablePromoCodes.promoCodeIsAvailable(promoCode: promoCode)
             if (!promoCodeIsAvailable){
-                self.showAlertWith(message: "This promo code is invalid")
+                self.showAlertWith(message: NSLocalizedString("InvalidPromoCodeMessage", comment: ""))
             }
             completion(promoCodeIsAvailable)
         }

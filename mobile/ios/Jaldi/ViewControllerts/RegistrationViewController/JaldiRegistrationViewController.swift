@@ -82,7 +82,9 @@ class JaldiRegistrationViewController: UIViewController {
         self.inputViewFor(state: self.activeState)?.resignActive()
         let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
         let signInViewController = storyboard.instantiateViewController(withIdentifier: "JaldiSignInViewController") as? JaldiSignInViewController
-        self.present(signInViewController!, animated: true, completion: nil)
+        let navController = UINavigationController(rootViewController: signInViewController!)
+        navController.isNavigationBarHidden = true
+        self.present(navController, animated: true, completion: nil)
     }
     
     //MARK: Configuration
@@ -289,7 +291,9 @@ extension JaldiRegistrationViewController: JaldiOnboardingInputViewDelegate{
             self?.hideHud()
             if let error = error {
                 if case NetworkErrors.networkMessage(error_: _, message: let message) = error {
-                    self?.showAlertWith(title: "Error", message: message)
+                    self?.showAlertWith(title: NSLocalizedString("Error", comment: ""), message: message)
+                }else{
+                    self?.showAlertWith(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("UnableToRegisterUserMessage", comment: ""))
                 }
             }
             print(error ?? "Error")
@@ -319,7 +323,9 @@ extension JaldiRegistrationViewController: JaldiOnboardingInputViewDelegate{
             self?.hideHud()
             if let error = error {
                 if case NetworkErrors.networkMessage(error_: _, message: let message) = error {
-                    self?.showAlertWith(title: "Error", message: message)
+                    self?.showAlertWith(title: NSLocalizedString("Error", comment: ""), message: message)
+                }else{
+                  self?.showAlertWith(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("PhoneIsNotVerifiedMessage", comment: ""))
                 }
             }
         print(error ?? "Error")
@@ -329,10 +335,9 @@ extension JaldiRegistrationViewController: JaldiOnboardingInputViewDelegate{
         if registrationModel.isConfirmationCodeValid {
             self.moveToNextStateFor(state: .confirmationCode)
         }else{
-        self.showAlertWith(title: "Error", message: "Wrong Verification code")
+        self.showAlertWith(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("WrongVerificationCodeMessage", comment: ""))
         }
-}
-    
+    }
     
     private func moveToNextStateFor(state:RegistrationState) {
         
@@ -344,7 +349,7 @@ extension JaldiRegistrationViewController: JaldiOnboardingInputViewDelegate{
             if registrationModel.isPasswordConfirmationValid {
                 self.registerUser()
             }else{
-                self.showAlertWith(title: nil, message: "Password confirmation must match Password")
+                self.showAlertWith(title: nil, message: NSLocalizedString("PasswordConfirmationMustMatchPasswordMessage", comment: ""))
             }
         }else{
             let nextState  = allStates[index + 1]

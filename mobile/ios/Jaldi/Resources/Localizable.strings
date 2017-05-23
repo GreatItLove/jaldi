@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  Jaldi
+
+  Created by Grigori Jlavyan on 5/22/17.
+  Copyright © 2017 Handybook. All rights reserved.
+*/
+
+//MARK: Common
+"Error" = "Error";
+"Ok" = "Ok";
+"TryAgainMessage" = "Something Went Wrong. Please Try Again";
+
+//MARK: Registration
+"WrongVerificationCodeMessage" = "Wrong Verification Code";
+"PasswordConfirmationMustMatchPasswordMessage" = "Password confirmation must match Password";
+"PhoneIsNotVerifiedMessage" = "Phone Is Not Verified";
+"UnableToRegisterUserMessage" = "Unable to register user";
+
+//MARK: ForgotPassword
+"ForgotPasswordInvalidEmailMessage" = "Please enter valid email";
+
+
+//MARK: Booking
+"InvalidPromoCodeMessage" = "This promo code is invalid";

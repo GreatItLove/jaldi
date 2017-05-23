@@ -42,7 +42,9 @@ class JaldiOnBoradingListViewController: UIViewController {
     @IBAction func signInAction(_ sender: Any) {
         let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
         let signInViewController = storyboard.instantiateViewController(withIdentifier: "JaldiSignInViewController") as? JaldiSignInViewController
-        self.present(signInViewController!, animated: true, completion: nil)
+        let navController = UINavigationController(rootViewController: signInViewController!)
+        navController.isNavigationBarHidden = true
+        self.present(navController, animated: true, completion: nil)
         
     }
 }

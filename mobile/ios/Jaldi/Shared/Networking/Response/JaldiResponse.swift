@@ -12,13 +12,12 @@ public enum JaldiResponse {
     case error(_: Int?, _: Error?)
     
     init(_ response: (isSuccess:Bool, value:AnyObject? ,r: HTTPURLResponse?, data: Data?, error: Error?), for request: JaldiRequest) {
+        print(request.path)
+        let datastring = NSString(data: response.data!, encoding: String.Encoding.utf8.rawValue)
+        print("response.data ---  \(datastring ?? "")")
+        print("response ---  \(response.r)")
+        print("response.result.error ---  \(response.error)")
         guard let statusCode = response.r?.statusCode,  statusCode == 200 else {
-            print(request.path)
-            let datastring = NSString(data: response.data!, encoding: String.Encoding.utf8.rawValue)
-            print("response.data ---  \(datastring ?? "")")
-            print("response ---  \(response.r)")
-            print("response.result.error ---  \(response.error)")
-            
             if response.isSuccess {
                 guard let errorDict  = response.value as? [String : AnyObject] else {
                     self = .error(response.r?.statusCode, response.error)
@@ -49,7 +48,7 @@ public enum JaldiResponse {
                 self = .error(response.r?.statusCode, NetworkErrors.noData)
                 return
             }
-           self = .error(response.r?.statusCode, response.error)
+           self = .value("" as AnyObject)
         }
     }
 }

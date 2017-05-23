@@ -48,6 +48,8 @@
 		4C7454D71ED2D28B00F02267 /* JaldiRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7454D31ED2D28B00F02267 /* JaldiRegistrationViewController.swift */; };
 		4C7454D81ED2D28B00F02267 /* JaldiOnboardingInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7454D51ED2D28B00F02267 /* JaldiOnboardingInputView.swift */; };
 		4C7454D91ED2D28B00F02267 /* JaldiRegistrationDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7454D61ED2D28B00F02267 /* JaldiRegistrationDefines.swift */; };
+		4C7454DE1ED2D82000F02267 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C7454DD1ED2D82000F02267 /* Localizable.strings */; };
+		4C7454E11ED2E00100F02267 /* JaldiForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7454E01ED2E00100F02267 /* JaldiForgotPasswordViewController.swift */; };
 		4C7FFA9B1ECDB17700C95E71 /* JaldiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7FFA991ECDB17700C95E71 /* JaldiRequest.swift */; };
 		4C7FFA9C1ECDB17700C95E71 /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7FFA9A1ECDB17700C95E71 /* UserRequest.swift */; };
 		4C7FFA9F1ECDB23E00C95E71 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7FFA9E1ECDB23E00C95E71 /* Dispatcher.swift */; };
@@ -118,6 +120,8 @@
 		4C7454D31ED2D28B00F02267 /* JaldiRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiRegistrationViewController.swift; sourceTree = "<group>"; };
 		4C7454D51ED2D28B00F02267 /* JaldiOnboardingInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnboardingInputView.swift; sourceTree = "<group>"; };
 		4C7454D61ED2D28B00F02267 /* JaldiRegistrationDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiRegistrationDefines.swift; sourceTree = "<group>"; };
+		4C7454DD1ED2D82000F02267 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		4C7454E01ED2E00100F02267 /* JaldiForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		4C7FFA991ECDB17700C95E71 /* JaldiRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiRequest.swift; sourceTree = "<group>"; };
 		4C7FFA9A1ECDB17700C95E71 /* UserRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
 		4C7FFA9E1ECDB23E00C95E71 /* Dispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
@@ -293,6 +297,7 @@
 				4C832AFF1EB752B70092A853 /* Models */,
 				4C832AF41EB752240092A853 /* ViewControllerts */,
 				4C45879D1EB4CD4B00169AC1 /* Sstoryboards */,
+				4C7454DA1ED2D7C200F02267 /* Resources */,
 				4C4587921EB4C23500169AC1 /* Assets.xcassets */,
 				4C4587971EB4C23500169AC1 /* Info.plist */,
 			);
@@ -446,6 +451,22 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		4C7454DA1ED2D7C200F02267 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4C7454DD1ED2D82000F02267 /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4C7454DF1ED2DFE700F02267 /* ForgotPasswordViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4C7454E01ED2E00100F02267 /* JaldiForgotPasswordViewController.swift */,
+			);
+			path = ForgotPasswordViewController;
+			sourceTree = "<group>";
+		};
 		4C7FFA931ECD9D4D00C95E71 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -487,6 +508,8 @@
 		4C832AF41EB752240092A853 /* ViewControllerts */ = {
 			isa = PBXGroup;
 			children = (
+				4C7454DF1ED2DFE700F02267 /* ForgotPasswordViewController */,
+				4C832B041EB7601F0092A853 /* SignInViewController */,
 				4C7454D21ED2D28B00F02267 /* RegistrationViewController */,
 				4C53C6831ECB30000022AFDB /* PlacePicker */,
 				4C2DAA011EB9D450002FCAD5 /* OnBoarding */,
@@ -494,7 +517,6 @@
 				4CED68641EB8D155001A7CC5 /* AnnouncementViewController */,
 				4CED68611EB8BE97001A7CC5 /* ChangeZipCodeController */,
 				4C832B091EB775C80092A853 /* NotInYourAreaViewController */,
-				4C832B041EB7601F0092A853 /* SignInViewController */,
 			);
 			path = ViewControllerts;
 			sourceTree = "<group>";
@@ -695,6 +717,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CED68591EB8802E001A7CC5 /* Login.storyboard in Resources */,
+				4C7454DE1ED2D82000F02267 /* Localizable.strings in Resources */,
 				4C4A63FB1EC1B35B00EE2C12 /* Booking.storyboard in Resources */,
 				4C4587961EB4C23500169AC1 /* LaunchScreen.storyboard in Resources */,
 				4C4587931EB4C23500169AC1 /* Assets.xcassets in Resources */,
@@ -795,6 +818,7 @@
 				4C832B081EB760730092A853 /* JaldiSignInViewController.swift in Sources */,
 				4C4998F71EBB0E100034819B /* BookingObject.swift in Sources */,
 				4C2DAA081EB9D450002FCAD5 /* JaldiOnBoradingListViewController.swift in Sources */,
+				4C7454E11ED2E00100F02267 /* JaldiForgotPasswordViewController.swift in Sources */,
 				4C2B1A441EB73FD100F63E7D /* HBAppColors.swift in Sources */,
 				4C55BB341ECEEA18003F6241 /* JaldiOperation.swift in Sources */,
 				4CCBC0611ED030AA00716749 /* JaldiRegistration.swift in Sources */,

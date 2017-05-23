@@ -1015,6 +1015,109 @@
             </objects>
             <point key="canvasLocation" x="2136" y="-69"/>
         </scene>
+        <!--Jaldi Forgot Password View Controller-->
+        <scene sceneID="lHV-yr-cHH">
+            <objects>
+                <viewController storyboardIdentifier="JaldiForgotPasswordViewController" id="vQa-hM-y9K" customClass="JaldiForgotPasswordViewController" customModule="Jaldi" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VGd-7D-lfG"/>
+                        <viewControllerLayoutGuide type="bottom" id="FeS-yC-06K"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TV2-TP-dxe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P7F-Xn-9Fx" userLabel="Top View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="flp-eu-OEa">
+                                        <rect key="frame" x="10" y="25" width="30" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="2vS-fy-43s"/>
+                                            <constraint firstAttribute="width" constant="30" id="5bU-8V-qaM"/>
+                                        </constraints>
+                                        <state key="normal" image="backward_arrow_light_gray"/>
+                                        <connections>
+                                            <action selector="backeAction:" destination="vQa-hM-y9K" eventType="touchUpInside" id="OTn-FN-khZ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="flp-eu-OEa" firstAttribute="leading" secondItem="P7F-Xn-9Fx" secondAttribute="leading" constant="10" id="WQF-xD-91N"/>
+                                    <constraint firstItem="flp-eu-OEa" firstAttribute="centerY" secondItem="P7F-Xn-9Fx" secondAttribute="centerY" constant="10" id="rp0-eL-9HV"/>
+                                    <constraint firstAttribute="height" constant="70" id="w1w-qZ-O3Z"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ixd-68-dZH">
+                                <rect key="frame" x="-0.5" y="110" width="375" height="52"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e5Q-IU-gJd">
+                                        <rect key="frame" x="24.5" y="10" width="350" height="30"/>
+                                        <color key="tintColor" red="0.23137254900000001" green="0.67450980390000004" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="g2H-HC-XHl"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VGc-UH-9H5" userLabel="Line">
+                                        <rect key="frame" x="24.5" y="50" width="350" height="1"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="YYL-z1-hQm"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="VGc-UH-9H5" secondAttribute="bottom" constant="1" id="EKV-Zb-hsn"/>
+                                    <constraint firstItem="VGc-UH-9H5" firstAttribute="trailing" secondItem="e5Q-IU-gJd" secondAttribute="trailing" id="Hw1-1z-1eU"/>
+                                    <constraint firstAttribute="height" constant="52" id="bPK-R2-jVp"/>
+                                    <constraint firstAttribute="trailing" secondItem="VGc-UH-9H5" secondAttribute="trailing" id="dGU-vw-SFr"/>
+                                    <constraint firstItem="VGc-UH-9H5" firstAttribute="top" secondItem="e5Q-IU-gJd" secondAttribute="bottom" constant="10" id="pHO-JF-Wi9"/>
+                                    <constraint firstItem="VGc-UH-9H5" firstAttribute="leading" secondItem="Ixd-68-dZH" secondAttribute="leading" constant="25" id="wDW-p7-xdh"/>
+                                    <constraint firstItem="VGc-UH-9H5" firstAttribute="leading" secondItem="e5Q-IU-gJd" secondAttribute="leading" id="xeU-o2-fTC"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71a-Rx-mPM">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" red="0.5452741981" green="0.77085918190000002" blue="0.2392095923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="SD7-T2-WhU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Send">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendForgotPasswordAction:" destination="vQa-hM-y9K" eventType="touchUpInside" id="SfU-F2-Aob"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="71a-Rx-mPM" secondAttribute="trailing" id="6wN-V2-Yv9"/>
+                            <constraint firstItem="Ixd-68-dZH" firstAttribute="width" secondItem="TV2-TP-dxe" secondAttribute="width" id="A6b-hh-nYz"/>
+                            <constraint firstItem="P7F-Xn-9Fx" firstAttribute="top" secondItem="TV2-TP-dxe" secondAttribute="top" id="Bm1-uj-Tyc"/>
+                            <constraint firstItem="Ixd-68-dZH" firstAttribute="centerX" secondItem="TV2-TP-dxe" secondAttribute="centerX" id="F6k-bJ-NU5"/>
+                            <constraint firstAttribute="trailing" secondItem="P7F-Xn-9Fx" secondAttribute="trailing" id="Kz6-4m-RjT"/>
+                            <constraint firstItem="71a-Rx-mPM" firstAttribute="leading" secondItem="TV2-TP-dxe" secondAttribute="leading" id="QvR-BJ-T6h"/>
+                            <constraint firstAttribute="bottom" secondItem="71a-Rx-mPM" secondAttribute="bottom" id="aC2-KM-Hnd"/>
+                            <constraint firstItem="Ixd-68-dZH" firstAttribute="top" secondItem="P7F-Xn-9Fx" secondAttribute="bottom" constant="40" id="iRW-VQ-8FB"/>
+                            <constraint firstItem="P7F-Xn-9Fx" firstAttribute="leading" secondItem="TV2-TP-dxe" secondAttribute="leading" id="lSw-lo-6hc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="e5Q-IU-gJd" id="LfI-aB-4Yb"/>
+                        <outlet property="sendButtonBottomConstraint" destination="aC2-KM-Hnd" id="Qfu-0I-TtE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y9Y-N7-YMp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="591" y="658"/>
+        </scene>
     </scenes>
     <resources>
         <image name="backward_arrow_light_gray" width="22" height="22"/>

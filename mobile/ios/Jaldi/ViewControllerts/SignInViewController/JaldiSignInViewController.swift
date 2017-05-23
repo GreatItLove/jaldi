@@ -30,12 +30,18 @@ class JaldiSignInViewController: UIViewController {
         guard let userName = emailTextField.text, let password = passwordTextField.text  else {
             return
         }
+        let isValidMail = JaldiValidator.isValidEmail(inputString: userName)
+        if !isValidMail {
+            self.showAlertWith(title: nil, message: NSLocalizedString("ForgotPasswordInvalidEmailMessage", comment: ""))
+            return
+        }
         
         let task  = JaldiLoginTask(user: userName, password: password)
         task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: { (value) in
             let user  = JaldiUser.emptyUser()
             user.email = userName
             user.password = password
+            self.getProfile()
 //            UserProfile.currentProfile.loginAsGuest(guest: user)
         }) { (error, _) in
             print(error ?? "Error")
@@ -43,19 +49,11 @@ class JaldiSignInViewController: UIViewController {
     }
 
     @IBAction func forgotPasswordAction(_ sender: Any) {
-        self.handleForgotPassword()
-//        self.getProfile()
-//        self.sendVerification()
+        let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
+        let forgotPasswordViewController = storyboard.instantiateViewController(withIdentifier: "JaldiForgotPasswordViewController") as? JaldiForgotPasswordViewController
+        self.navigationController?.pushViewController(forgotPasswordViewController!, animated: true)
     }
-    private func handleForgotPassword() {
-        let task  = JaldiForgotTask(email: "sedrak.dalaloyan@yandex.ru")
-        task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: { (value) in
-            
-        }) { (error, _) in
-            print(error ?? "Error")
-        }
-    }
-    
+
     private func getProfile() {
         let task  = JaldGetProfileTask()
         task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: { (value) in

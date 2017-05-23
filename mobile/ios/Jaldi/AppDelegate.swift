@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.autoLogin()
         locationManager = CLLocationManager()
         locationManager?.requestWhenInUseAuthorization()
-
         return true
     }
 
