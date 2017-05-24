@@ -13,7 +13,7 @@ enum RegistrationState: Int {
     case confirmationCode
     case email
     case password
-    case confirmPassword
+//    case confirmPassword
 }
 
 struct RegistrationPlaceholderText {
@@ -22,7 +22,7 @@ struct RegistrationPlaceholderText {
     static let password = "Password"
     static let email = "Email"
     static let name = "Name"
-    static let confirmPassword = "Confirm Password"
+//    static let confirmPassword = "Confirm Password"
     
     static  func registrationPlaceholderTextFor(registrationState:RegistrationState)->String{
         switch registrationState {
@@ -36,8 +36,8 @@ struct RegistrationPlaceholderText {
             return RegistrationPlaceholderText.password
         case .name:
             return RegistrationPlaceholderText.name
-        case .confirmPassword:
-            return RegistrationPlaceholderText.confirmPassword
+//        case .confirmPassword:
+//            return RegistrationPlaceholderText.confirmPassword
 
         }
     }
@@ -62,8 +62,8 @@ struct RegistrationStateTitle {
             return RegistrationStateTitle.password
         case .name:
             return RegistrationStateTitle.name
-        case .confirmPassword:
-            return RegistrationStateTitle.confirmPassword
+//        case .confirmPassword:
+//            return RegistrationStateTitle.confirmPassword
         }
     }
 }

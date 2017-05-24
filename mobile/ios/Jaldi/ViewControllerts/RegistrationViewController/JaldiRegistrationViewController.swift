@@ -21,7 +21,7 @@ class JaldiRegistrationViewController: UIViewController {
     @IBOutlet weak var nameInputView: JaldiOnboardingInputView!
     @IBOutlet weak var confirmationCodeInputView: JaldiOnboardingInputView!
     @IBOutlet weak var passwordInputView: JaldiOnboardingInputView!
-    @IBOutlet weak var confirmPasswordInputView: JaldiOnboardingInputView!
+    
     
     @IBOutlet weak var introViewTopConstraint: NSLayoutConstraint!
     
@@ -31,14 +31,14 @@ class JaldiRegistrationViewController: UIViewController {
     @IBOutlet weak var nameInputViewHorizontalCenterConstraint: NSLayoutConstraint!
     @IBOutlet weak var confirmationCodeInputViewHorizontalCenterConstraint: NSLayoutConstraint!
     @IBOutlet weak var passwordInputViewHorizontalCenterConstraint: NSLayoutConstraint!
-    @IBOutlet weak var confirmPasswordInputViewHorizontalCenterConstraint: NSLayoutConstraint!
+    
     
     fileprivate let allStates: [RegistrationState] = [RegistrationState.phone,
                                                    RegistrationState.confirmationCode,
                                                    RegistrationState.name,
                                                    RegistrationState.email,
-                                                   RegistrationState.password,
-                                                   RegistrationState.confirmPassword]
+                                                   RegistrationState.password
+                                                   ]
 
     fileprivate var activeState: RegistrationState = .phone
     fileprivate var registrationModel: JaldiRegistration = JaldiRegistration()
@@ -85,6 +85,12 @@ class JaldiRegistrationViewController: UIViewController {
         let navController = UINavigationController(rootViewController: signInViewController!)
         navController.isNavigationBarHidden = true
         self.present(navController, animated: true, completion: nil)
+        
+//        let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
+//        let placePicker = storyboard.instantiateViewController(withIdentifier: "JaldiPlacePicker") as? JaldiPlacePicker
+//        
+//        self.present(placePicker!, animated: true, completion: nil)
+
     }
     
     //MARK: Configuration
@@ -210,8 +216,6 @@ class JaldiRegistrationViewController: UIViewController {
             return self.passwordInputView
         case .name:
             return self.nameInputView
-        case .confirmPassword:
-            return self.confirmPasswordInputView
         }
     }
     fileprivate func horizontalCenterConstraint(state:RegistrationState) -> NSLayoutConstraint? {
@@ -226,8 +230,6 @@ class JaldiRegistrationViewController: UIViewController {
             return self.passwordInputViewHorizontalCenterConstraint
         case .name:
             return self.nameInputViewHorizontalCenterConstraint
-        case .confirmPassword:
-            return self.confirmPasswordInputViewHorizontalCenterConstraint
         }
     }
 }
@@ -255,8 +257,7 @@ extension JaldiRegistrationViewController: JaldiOnboardingInputViewDelegate{
            self.moveToNextStateFor(state: registrationState)
         case .password:
            self.moveToNextStateFor(state: registrationState)
-        case .confirmPassword:
-           self.moveToNextStateFor(state: registrationState)
+
         }
     }
     private func changeRegitrationDetailsFor(textField:UITextField, registrationState:RegistrationState) {
@@ -271,8 +272,6 @@ extension JaldiRegistrationViewController: JaldiOnboardingInputViewDelegate{
             registrationModel.password = textField.text
         case .name:
             registrationModel.name = textField.text
-        case .confirmPassword:
-            registrationModel.confirmPassword = textField.text
         }
     }
     fileprivate func registerUser() {
@@ -280,10 +279,10 @@ extension JaldiRegistrationViewController: JaldiOnboardingInputViewDelegate{
         self.showHudWithMsg(message: nil)
         let task  = JaldiRegistrationTask(registrationModel: registrationModel)
         task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: { [weak self] (value) in
+            self?.hideHud()
             guard let user  = value else{
                 return
             }
-             self?.hideHud()
             UserProfile.currentProfile.loginAsGuest(guest: user)
             self?.moveToNextStateFor(state: .phone)
            
@@ -346,11 +345,12 @@ extension JaldiRegistrationViewController: JaldiOnboardingInputViewDelegate{
         }
         let isLastState = index == allStates.count - 1
         if isLastState {
-            if registrationModel.isPasswordConfirmationValid {
-                self.registerUser()
-            }else{
-                self.showAlertWith(title: nil, message: NSLocalizedString("PasswordConfirmationMustMatchPasswordMessage", comment: ""))
-            }
+            self.registerUser()
+//            if registrationModel.isPasswordConfirmationValid {
+//                self.registerUser()
+//            }else{
+//                self.showAlertWith(title: nil, message: NSLocalizedString("PasswordConfirmationMustMatchPasswordMessage", comment: ""))
+//            }
         }else{
             let nextState  = allStates[index + 1]
             self.activeState = nextState

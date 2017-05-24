@@ -8,13 +8,14 @@
 
 import Foundation
 import UIKit
-
+import CoreLocation
 class JaldiHomeViewController: UIViewController {
     
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var theCollectionView: UICollectionView!
     let  allCategories = HomeCategory.allCategories
+    private var geocoder: CLGeocoder =  CLGeocoder()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configuration()
@@ -22,7 +23,7 @@ class JaldiHomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.configuraZip()
+        self.configureAddress()
     }
     
     //MARK: Configuration
@@ -30,12 +31,23 @@ class JaldiHomeViewController: UIViewController {
         self.configureCollectionView()
         
     }
-    fileprivate func configuraZip() {
-        guard let address = UserProfile.currentProfile.user?.address else{
+    fileprivate func configureAddress() {
+        guard let lat  = UserProfile.currentProfile.user?.latitude ,let lon  = UserProfile.currentProfile.user?.longitude  else{
           addressLabel.text = ""
             return
         }
-        addressLabel.text = "Not in: \(address)?"
+        let location  = CLLocation(latitude: lat, longitude: lon)
+        self.geocoder.reverseGeocodeLocation(location, completionHandler:
+            {(placemarks, error) in
+                if (placemarks?.count)! > 0
+                {
+                    let placemark:CLPlacemark = placemarks![0]
+                    if let address = placemark.name {
+                    self.addressLabel.text = "Not in: \(address)?"
+                    }
+                }
+        })
+        
     }
     private func configureCollectionView() {
         let collectionViewLayout = theCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
@@ -64,9 +76,38 @@ class JaldiHomeViewController: UIViewController {
         let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
         let placePicker = storyboard.instantiateViewController(withIdentifier: "JaldiPlacePicker") as? JaldiPlacePicker
         placePicker?.delegate = self
+        if let lat  = UserProfile.currentProfile.user?.latitude , let lon  = UserProfile.currentProfile.user?.longitude{
+            let location  = CLLocation(latitude: lat, longitude: lon)
+            placePicker?.location = location
+        }
+        
         self.present(placePicker!, animated: true, completion: nil)
     }
-   
+
+    fileprivate func testOrdder() {
+        guard let latitude = UserProfile.currentProfile.user?.latitude, let longitude = UserProfile.currentProfile.user?.longitude else{
+            return
+        }
+        self.showHudWithMsg(message: nil)
+        let task  = JaldiOrderTask.init(type: "CLEANER", workers: 1, address: "One Infinite Loop Cupertino, CA 95014", hours: 3, cost: 300, latitude: latitude, longitude: longitude, paymentType: "CASH", orderDate: Date())
+        task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: { [weak self] (value) in
+              self?.hideHud()
+            guard let order  = value else{
+                return
+            }
+            print("OederID \(order.orderId!)")
+        }) {[weak self] (error, _) in
+            self?.hideHud()
+            if let error = error {
+                if case NetworkErrors.networkMessage(error_: _, message: let message) = error {
+                    self?.showAlertWith(title: NSLocalizedString("Error", comment: ""), message: message)
+                }else{
+                    self?.showAlertWith(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("OrderRequestErrorMessage", comment: ""))
+                }
+            }
+            print(error ?? "Error")
+        }
+    }
 }
 
 extension JaldiHomeViewController: UICollectionViewDelegate,UICollectionViewDataSource{
@@ -91,7 +132,7 @@ extension JaldiHomeViewController: UICollectionViewDelegate,UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let category:HomeCategory = allCategories[indexPath.row]
         self.navigateTo(category:category)
-
+//        self.testOrdder()
     }
     
     //MARK: navigate to Carpenter, Electrician, Mason, Painter, Plumber, Ac Technical
@@ -155,10 +196,11 @@ extension JaldiHomeViewController: UICollectionViewDelegate,UICollectionViewData
 }
 
 extension JaldiHomeViewController: JaldiPlacePickerDelegate {
-    func placePicker(JaldiPlacePicker:JaldiPlacePicker, didSelect address:String) {
+    func placePicker(JaldiPlacePicker:JaldiPlacePicker, didSelect latitude:Double ,longitude:Double ) {
         if let user  = UserProfile.currentProfile.user {
-          user.address = address
-            self.configuraZip()
+            user.latitude = latitude
+            user.longitude = longitude
+            self.configureAddress()
         }
     }
 }

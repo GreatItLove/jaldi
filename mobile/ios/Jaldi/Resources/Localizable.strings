@@ -23,3 +23,6 @@
 
 //MARK: Booking
 "InvalidPromoCodeMessage" = "This promo code is invalid";
+"OrderRequestErrorMessage" = "Could not complete order";
+
+

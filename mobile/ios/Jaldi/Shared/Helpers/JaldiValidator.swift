@@ -51,7 +51,7 @@ struct JaldiValidator {
         var isValid = false
             let text = phone as NSString
             let  strippedNumber =  text.replacingOccurrences(of: "[^0-9,+]", with: "", options: NSString.CompareOptions.regularExpression, range: NSMakeRange(0, text.length)) as NSString
-            isValid = (strippedNumber.length == 10 || strippedNumber.length == 11)
+            isValid = (strippedNumber.length == 11 || strippedNumber.length == 12)
         return isValid
         }
     
@@ -64,10 +64,14 @@ struct JaldiValidator {
             let  character = strippedNumber.character(at: location) as  unichar
             switch location {
             case 0:
-                result = result.appendingFormat("(%C", character)
-            case 2:
-                result = result.appendingFormat("%C)", character)
-            case 6:
+                if UnicodeScalar(character) != "+" {
+                    result = result.appendingFormat("+%C", character)
+                }else{
+                    result = result.appendingFormat("%C", character)
+                }
+            case 3:
+                result = result.appendingFormat("%C ", character)
+            case 8:
                 result = result.appendingFormat("-%C", character)
             default:
                 result = result.appendingFormat("%C", character)
@@ -75,6 +79,15 @@ struct JaldiValidator {
         }
         return result as String
     }
-
+//    switch location {
+//    case 0:
+//    result = result.appendingFormat("(%C", character)
+//    case 2:
+//    result = result.appendingFormat("%C)", character)
+//    case 6:
+//    result = result.appendingFormat("-%C", character)
+//    default:
+//    result = result.appendingFormat("%C", character)
+//    }
 
 }

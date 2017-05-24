@@ -10,7 +10,7 @@ import Foundation
 class JaldiRegistration {
     var name:String?
     var email:String?
-    var phone:String? = "(792)"
+    var phone:String? = "+974"
     var confirmationCode:String?
     var password:String?
     var confirmPassword:String?

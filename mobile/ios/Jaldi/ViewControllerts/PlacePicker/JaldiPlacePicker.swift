@@ -9,19 +9,27 @@
 import UIKit
 import MapKit
 protocol JaldiPlacePickerDelegate: class {
-    func placePicker(JaldiPlacePicker:JaldiPlacePicker, didSelect address:String)
+    func placePicker(JaldiPlacePicker:JaldiPlacePicker, didSelect latitude:Double ,longitude:Double )
 }
 class JaldiPlacePicker: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
-    var placemark: MKPlacemark?
+    private var locationManager: CLLocationManager?
+    
+    var location: CLLocation?
+//    var placemark: MKPlacemark?
     weak var delegate: JaldiPlacePickerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.showsUserLocation = false
         mapView.delegate = self
-        self.addRecognizer()
-        self.zoomIn()
+//        self.addRecognizer()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.zoomIn()
+        }
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self;
+        locationManager?.requestWhenInUseAuthorization()
     }
     
     //MARK: GestureRecognizer
@@ -33,45 +41,52 @@ class JaldiPlacePicker: UIViewController {
     func handleTap(gestureRecognizer: UIGestureRecognizer) {
         let touchPoint = gestureRecognizer.location(in: mapView)
         let newCoordinates = mapView.convert(touchPoint, toCoordinateFrom: mapView)
-        if let _ =  placemark {
-          mapView.removeAnnotation(placemark!)
-        }
-        let getLat: CLLocationDegrees = newCoordinates.latitude
-        let getLon: CLLocationDegrees = newCoordinates.longitude
-        let location  = CLLocation(latitude: getLat, longitude: getLon)
-        CLGeocoder().reverseGeocodeLocation(location, completionHandler:
-            {(placemarks, error) in
-                if (placemarks?.count)! > 0 {
-                    let topResult:CLPlacemark = placemarks![0];
-                    self.placemark = MKPlacemark(placemark: topResult)
-                    let region = MKCoordinateRegionMakeWithDistance(
-                        location.coordinate, 2000, 2000)
-                    self.mapView.setRegion(region, animated: true);
-                    self.mapView.addAnnotation(self.placemark!);
-                }
-        })
-   
+         mapView.centerCoordinate = newCoordinates
     }
-   private func zoomIn() {
-        guard let location = mapView.userLocation.location else {
+    fileprivate func zoomIn() {
+        guard let location = self.location else {
+            self.centerWithLocation()
             return
         }
         let region = MKCoordinateRegionMakeWithDistance(
-        location.coordinate, 2000, 2000)
+            location.coordinate, 2000, 2000)
+        self.mapView.setRegion(region, animated: true)
+    }
+    private func centerWithLocation() {
+        guard let location = locationManager?.location else {
+            return
+        }
+        let region = MKCoordinateRegionMakeWithDistance(
+            location.coordinate, 2000, 2000)
         mapView.setRegion(region, animated: true)
     }
     //MARK: Actions
     @IBAction func closeAction(_ sender: Any) {
-        if let _ = self.placemark , let address = self.placemark?.name {
-            delegate?.placePicker(JaldiPlacePicker: self, didSelect: address)
-         }
-        self.dismiss(animated: true, completion: nil)
+        self.getCurrentLocationAndDismiss()
     }
     
+    private func getCurrentLocationAndDismiss() {
+        let centerCoordinate = mapView.centerCoordinate
+        let getLat: CLLocationDegrees = centerCoordinate.latitude
+        let getLon: CLLocationDegrees = centerCoordinate.longitude
+        self.delegate?.placePicker(JaldiPlacePicker: self, didSelect: getLat, longitude: getLon)
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 extension JaldiPlacePicker:MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didUpdate
         userLocation: MKUserLocation) {
         mapView.centerCoordinate = userLocation.location!.coordinate
+    }
+}
+extension JaldiPlacePicker:CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if (status == .restricted || status == .denied)  {
+            self.showAlertWith(title: "Location Disabled", message: "Please enable location services in the Settings app.")
+        }else{
+            if (status == .authorizedWhenInUse){
+                self.zoomIn()
+            }
+        }
     }
 }

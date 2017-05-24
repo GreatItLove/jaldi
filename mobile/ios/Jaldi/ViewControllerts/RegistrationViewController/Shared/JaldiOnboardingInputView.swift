@@ -69,10 +69,6 @@ class JaldiOnboardingInputView: UIView {
             onboardingTextField.text = user.password
             onboardingTextField.keyboardType = .default
             onboardingTextField.isSecureTextEntry = true
-        case .confirmPassword:
-            onboardingTextField.text = user.confirmPassword
-            onboardingTextField.keyboardType = .default
-            onboardingTextField.isSecureTextEntry = true
         case .email:
             onboardingTextField.text = user.email
             onboardingTextField.keyboardType = .emailAddress
@@ -100,8 +96,6 @@ class JaldiOnboardingInputView: UIView {
             enabled =  self.isValid(inputString: user.password )
         case .email:
             enabled =  self.isValid(inputString: user.email)
-        case .confirmPassword:
-            enabled =  self.isValid(inputString: user.confirmPassword)
         case .name:
             enabled =  self.isValid(inputString: user.name)
         }
@@ -130,8 +124,6 @@ class JaldiOnboardingInputView: UIView {
             return true
         case .password:
             return true
-        case .confirmPassword:
-            return true
         case .name:
             return true
         case .email:
@@ -158,12 +150,10 @@ extension JaldiOnboardingInputView: UITextFieldDelegate {
             if string.characters.count == 0 {
                 if let text = textField.text as NSString?{
                 let  strippedNumber =  text.replacingOccurrences(of: "[^0-9,+]", with: "", options: NSString.CompareOptions.regularExpression, range: NSMakeRange(0, text.length)) as NSString
-                    if strippedNumber.length <= 3 {
+                    if strippedNumber.length <= 4 {
                         return false
                     }
-               
                 }
-                
                 let newValue = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
                 self.checkValidationAndChangeStateIfNededFor(newValue: newValue)
                 return true

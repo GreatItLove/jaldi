@@ -14,14 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var homeViewController: JaldiHomeViewController?
     var loginNaveController: UINavigationController?
-    var locationManager: CLLocationManager?
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        UserProfile.currentProfile.logoutProfile()
+//        UserProfile.currentProfile.logoutProfile()
         self.registerNotofications()
         self.autoLogin()
-        locationManager = CLLocationManager()
-        locationManager?.requestWhenInUseAuthorization()
         return true
     }
 
@@ -49,9 +47,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     //NARK: Root View Controller
     private func autoLogin() {
+        
         let guest =  UserProfile.currentProfile.currentGuestUser()
         if guest.canLoginAsGuest(){
             self.setHomeViewController()
+            UserProfile.currentProfile.autoLogin(completion: { (success) in
+                if !success {
+                    self.setGuestViewController()
+                }
+            })
         }else{
             self.setGuestViewController()
         }
@@ -71,9 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let onboardingViewControllerViewController = storyboard.instantiateViewController(withIdentifier: "JaldiRegistrationViewController") as? JaldiRegistrationViewController
         self.loginNaveController  = UINavigationController(rootViewController: onboardingViewControllerViewController!)
         self.loginNaveController?.isNavigationBarHidden = true
-        
         self.window?.rootViewController = self.loginNaveController
-        
     }
     
     //MARK: Notification
@@ -81,9 +83,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.loginNotification(_:)), name: NSNotification.Name(rawValue: AppNotifications.loginNotificationName), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.logoutNotification(_:)), name: NSNotification.Name(rawValue: AppNotifications.logoutNotificationName), object: nil)
          NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.zipCodeIsChangedNotification(_:)), name: NSNotification.Name(rawValue: AppNotifications.zipCodeIsChangedNotificationName), object: nil)
-        
-        
     }
+    
     func loginNotification(_ notification: Notification) {
         self.setHomeViewController()
     }

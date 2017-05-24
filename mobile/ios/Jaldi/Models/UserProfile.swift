@@ -62,11 +62,47 @@ class UserProfile {
     }
     
     func logoutProfile(){
-        var env = Environment.defaultEnvironment()
-        env.autToken = nil
+        self.clearToken()
         self.guestEmail = nil
         self.guestPassword = ""
     }
+    private func clearToken() {
+        var env = Environment.defaultEnvironment()
+        env.autToken = nil
+    }
     private init(){
     }
+    
+    func autoLogin(completion: @escaping ((_ success:Bool)->Void)) {
+        guard let userName = self.guestEmail,   let password = self.guestPassword else {
+            self.clearToken()
+            completion(false)
+            return
+        }
+        let task  = JaldiLoginTask(user: userName, password: password)
+        task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: { (value) in
+            self.getProfile(completion: completion)
+        }) { (error, _) in
+            self.clearToken()
+            completion(false)
+        }
+    }
+    
+    private func getProfile(completion: @escaping ((_ success:Bool)->Void)) {
+        let task  = JaldGetProfileTask()
+        task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: { (user) in
+            guard let user = user else{
+                self.clearToken()
+                completion(false)
+                return
+            }
+            user.password = self.guestPassword
+            UserProfile.currentProfile.loginAsGuest(guest: user)
+            
+        }) { (error, _) in
+             self.clearToken()
+             completion(false)
+        }
+    }
+    
 }

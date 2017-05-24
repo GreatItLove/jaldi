@@ -15,7 +15,9 @@ class JaldiUser:Mappable {
     var phone:String?
     var confirmationCode:String?
     var password:String?
-    var address:String?
+//    var address:String?
+    var latitude:Double?
+    var longitude:Double?
     var profileImageId:String?
     var role:String?
     var type:String?
@@ -42,6 +44,8 @@ class JaldiUser:Mappable {
         profileImageId      <- map["profileImageId"]
         role      <- map["role"]
         type      <- map["type"]
+        creationDate    <- (map["creationDate"], DateTransform())
+        
     }
     
     func canLoginAsGuest() -> Bool {

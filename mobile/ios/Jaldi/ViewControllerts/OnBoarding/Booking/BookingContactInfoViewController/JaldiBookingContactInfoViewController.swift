@@ -117,9 +117,10 @@ class JaldiBookingContactInfoViewController: UIViewController,BookingNavigation 
     private func isValidPhone() -> Bool {
         var isValid = false
         if let phone = bookingObject?.contactInfo?.phone{
-            let text = phone as NSString
-            let  strippedNumber =  text.replacingOccurrences(of: "[^0-9,+]", with: "", options: NSString.CompareOptions.regularExpression, range: NSMakeRange(0, text.length)) as NSString
-            isValid = strippedNumber.length == 10
+//            let text = phone as NSString
+//            let  strippedNumber =  text.replacingOccurrences(of: "[^0-9,+]", with: "", options: NSString.CompareOptions.regularExpression, range: NSMakeRange(0, text.length)) as NSString
+//            isValid = strippedNumber.length == 10
+            isValid = JaldiValidator.isValid(phone: phone)
         }
        
         if !isValid{
@@ -180,7 +181,7 @@ extension JaldiBookingContactInfoViewController: UITextFieldDelegate {
         textField.textColor = UIColor.darkText
         if textField == phoneTextField {
             
-            if ((textField.text?.characters.count)! > 12 && string.characters.count > 0) {
+            if ((textField.text?.characters.count)! > 13 && string.characters.count > 0) {
                 return false
             }
             if string.characters.count == 0 {

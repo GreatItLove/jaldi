@@ -57,6 +57,7 @@ class JaldiSignInViewController: UIViewController {
             guard let user = user else{
               return
             }
+            user.password = self.passwordTextField.text
             UserProfile.currentProfile.loginAsGuest(guest: user)
 
         }) { (error, _) in
