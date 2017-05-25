@@ -11,11 +11,11 @@ import UIKit
 class JaldiBookingPaymentViewController: UIViewController ,BookingNavigation {
     fileprivate enum PaymentCellType: Int {
         case payentMethod
-        case card
+//        case card
         case details
         case termOfUse
         static let allSections:[PaymentCellType] = [PaymentCellType.payentMethod,
-                                                    PaymentCellType.card,
+//                                                    PaymentCellType.card,
                                                     PaymentCellType.details,
                                                     PaymentCellType.termOfUse
                                                     ]
@@ -63,22 +63,56 @@ class JaldiBookingPaymentViewController: UIViewController ,BookingNavigation {
         }
     }
     
+    fileprivate func ordderBooking() {
+        guard let latitude = UserProfile.currentProfile.user?.latitude, let longitude = UserProfile.currentProfile.user?.longitude else{
+            return
+        }
+        self.showHudWithMsg(message: nil)
+        let task  = JaldiOrderTask.init(type: "CLEANER", workers: 1, address: "One Infinite Loop Cupertino, CA 95014", hours: 3, cost: 300, latitude: latitude, longitude: longitude, paymentType: "CASH", orderDate: Date())
+        task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: { [weak self] (value) in
+            self?.hideHud()
+            guard let order  = value else{
+                return
+            }
+            self?.showOrderStateController(order: order)
+            print("OederID \(order.orderId!)")
+        }) {[weak self] (error, _) in
+            self?.hideHud()
+            if let error = error {
+                if case NetworkErrors.networkMessage(error_: _, message: let message) = error {
+                    self?.showAlertWith(title: NSLocalizedString("Error", comment: ""), message: message)
+                }else{
+                    self?.showAlertWith(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("OrderRequestErrorMessage", comment: ""))
+                }
+            }
+            print(error ?? "Error")
+        }
+    }
+    
     private func showNextScreen() {
         if !self.isLastScreen() {
             if let nextViewController = self.nextScreen() {
                 self.navigationController?.pushViewController(nextViewController, animated: true)
             }
+        }else{
+         self.ordderBooking()
         }
+    }
+    private func showOrderStateController(order: JaldiOrder) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Booking", bundle: nil)
+        let orderStateViewController = storyboard.instantiateViewController(withIdentifier: "JaldiOrderStateViewController") as? JaldiOrderStateViewController
+        self.present(orderStateViewController!, animated: true, completion: nil)
     }
     //MARK: Validation
     private func checkRequiredFields() -> Bool {
-        let invalidFields = self.cardInfoInvalidFields()
-    
-        let isValid = invalidFields.count == 0
-        if !isValid {
-          self.highlightCardInfo(invalidFields: invalidFields)
-        }
-        return isValid
+        return true
+//        let invalidFields = self.cardInfoInvalidFields()
+//    
+//        let isValid = invalidFields.count == 0
+//        if !isValid {
+//          self.highlightCardInfo(invalidFields: invalidFields)
+//        }
+//        return isValid
     }
     
     private func cardInfoInvalidFields() -> [CardInfoField] {
@@ -203,8 +237,8 @@ extension JaldiBookingPaymentViewController: UITableViewDelegate,UITableViewData
             
         case PaymentCellType.payentMethod:
             return self.tableView(tableView, paymentMethodCellForRowAt: indexPath)
-        case PaymentCellType.card:
-            return self.tableView(tableView, paymentCardCellForRowAt: indexPath)
+//        case PaymentCellType.card:
+//            return self.tableView(tableView, paymentCardCellForRowAt: indexPath)
         case PaymentCellType.details:
             return self.tableView(tableView, paymentDetailsCellForRowAt: indexPath)
         case PaymentCellType.termOfUse:
@@ -223,8 +257,8 @@ extension JaldiBookingPaymentViewController: UITableViewDelegate,UITableViewData
         switch cellType {
         case PaymentCellType.payentMethod:
             return 50
-        case PaymentCellType.card:
-            return 152
+//        case PaymentCellType.card:
+//            return 152
         case PaymentCellType.details:
             return UITableViewAutomaticDimension
         case PaymentCellType.termOfUse:

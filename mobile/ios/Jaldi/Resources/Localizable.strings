@@ -25,4 +25,7 @@
 "InvalidPromoCodeMessage" = "This promo code is invalid";
 "OrderRequestErrorMessage" = "Could not complete order";
 
+//MARK: Home
+"CooseYourLocationMessage" = "Please choose your location!";
+
 

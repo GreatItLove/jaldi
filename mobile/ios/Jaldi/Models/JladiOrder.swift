@@ -8,7 +8,7 @@
 
 import Foundation
 import ObjectMapper
-class JladiOrder:Mappable {
+class JaldiOrder:Mappable {
     var orderId: Int?
     var address: String?
     var cost: Float?

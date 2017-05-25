@@ -84,30 +84,6 @@ class JaldiHomeViewController: UIViewController {
         self.present(placePicker!, animated: true, completion: nil)
     }
 
-    fileprivate func testOrdder() {
-        guard let latitude = UserProfile.currentProfile.user?.latitude, let longitude = UserProfile.currentProfile.user?.longitude else{
-            return
-        }
-        self.showHudWithMsg(message: nil)
-        let task  = JaldiOrderTask.init(type: "CLEANER", workers: 1, address: "One Infinite Loop Cupertino, CA 95014", hours: 3, cost: 300, latitude: latitude, longitude: longitude, paymentType: "CASH", orderDate: Date())
-        task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: { [weak self] (value) in
-              self?.hideHud()
-            guard let order  = value else{
-                return
-            }
-            print("OederID \(order.orderId!)")
-        }) {[weak self] (error, _) in
-            self?.hideHud()
-            if let error = error {
-                if case NetworkErrors.networkMessage(error_: _, message: let message) = error {
-                    self?.showAlertWith(title: NSLocalizedString("Error", comment: ""), message: message)
-                }else{
-                    self?.showAlertWith(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("OrderRequestErrorMessage", comment: ""))
-                }
-            }
-            print(error ?? "Error")
-        }
-    }
 }
 
 extension JaldiHomeViewController: UICollectionViewDelegate,UICollectionViewDataSource{
@@ -130,9 +106,10 @@ extension JaldiHomeViewController: UICollectionViewDelegate,UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if (self.checkUserLocation()) {
         let category:HomeCategory = allCategories[indexPath.row]
         self.navigateTo(category:category)
-//        self.testOrdder()
+        }
     }
     
     //MARK: navigate to Carpenter, Electrician, Mason, Painter, Plumber, Ac Technical
@@ -191,6 +168,13 @@ extension JaldiHomeViewController: UICollectionViewDelegate,UICollectionViewData
             navController.isNavigationBarHidden = true
             self.present(navController, animated: true, completion: nil)
         }
+    }
+    private func checkUserLocation() -> Bool {
+        guard let _ = UserProfile.currentProfile.user?.latitude, let _ = UserProfile.currentProfile.user?.longitude else {
+            self.showAlertWith(title: nil, message: NSLocalizedString("CooseYourLocationMessage", comment: ""))
+            return false
+        }
+        return true
     }
 
 }

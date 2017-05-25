@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 class JaldiOrderTask: JaldiOperation {
     
-    typealias Output = JladiOrder
+    typealias Output = JaldiOrder
     var type: String
     var workers: Int
     var address: String
@@ -71,7 +71,7 @@ class JaldiOrderTask: JaldiOperation {
                                             taskCompletion(nil)
                                             return
                                         }
-                                        let order  = Mapper<JladiOrder>().map(JSON: orderJson)
+                                        let order  = Mapper<JaldiOrder>().map(JSON: orderJson)
                                         taskCompletion(order)
                                     case .error(let statuseCode, let error):
                                         completionError(error,statuseCode)

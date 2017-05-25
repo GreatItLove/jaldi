@@ -34,6 +34,7 @@ extension BookingNavigation{
         let nextScreen = booking.bookingScreens[currentIndex+1]
         return  self.screenWith(bookingScreen: nextScreen)
     }
+    
 
     //Helpers:
     private func animatedProfress() -> (Float, Bool){
@@ -104,7 +105,4 @@ extension BookingNavigation{
         bookingPaymentViewController?.bookingObject = bookingObject
         return bookingPaymentViewController
     }
-
-
-    
 }

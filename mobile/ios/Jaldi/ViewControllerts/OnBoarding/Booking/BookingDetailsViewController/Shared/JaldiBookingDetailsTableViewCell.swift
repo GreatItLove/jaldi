@@ -8,7 +8,7 @@
 
 import UIKit
 protocol JaldiBookingDetailsTableViewCellDelegate: class {
-    func detailsItem(cell:JaldiBookingDetailsTableViewCell, didChangeSelected index:Int)
+    func detailsItem(cell:JaldiBookingDetailsTableViewCell, didChangeSelected index:Int, needsReload:Bool)
 }
 class JaldiBookingDetailsTableViewCell: UITableViewCell {
     
@@ -103,12 +103,14 @@ extension JaldiBookingDetailsTableViewCell: AKPickerViewDataSource, AKPickerView
     
     // MARK: - AKPickerViewDelegate
     func pickerView(_ pickerView: AKPickerView, didSelectItem item: Int) {
+        var needsReload = false
         let descripyionIsShownBefore = detailItem?.canShowDescription()
         detailItem?.sellectedIndex = item
         let descripyionIsShownAfter = detailItem?.canShowDescription()
         if descripyionIsShownBefore != descripyionIsShownAfter {
-           self.delegate?.detailsItem(cell: self, didChangeSelected: item)
+            needsReload = true
         }
+        self.delegate?.detailsItem(cell: self, didChangeSelected: item,needsReload:needsReload)
        
     }
     fileprivate func sizeForString(_ string: NSString) -> CGSize {

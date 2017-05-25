@@ -23,7 +23,8 @@ struct BookingHelper {
             let helper = BookingDetailsHelper()
             let title = helper.bookingDetailsTitleFor(service: service)
             let items = helper.bookingDetailsItmesFor(service: service)
-            return BookingDetails(title: title, detailItems: items)
+            let hoursSugestationEnabled = service == .homeCleaning
+            return BookingDetails(title: title, detailItems: items, hoursSugestationEnabled:hoursSugestationEnabled)
         }
         
         private func bookingDetailsTitleFor(service:JaldiService) -> String {
@@ -85,11 +86,11 @@ struct BookingHelper {
         private func homeCleaningItems() -> [BookingDetailsItem] {
             let bedroomsTitle  = "Bedrooms"
             let bedroomsProperties  = (0...10).map { "\($0)" }
-            let bedrooms = BookingDetailsItem(title: bedroomsTitle, desc: nil, bookingProperties: bedroomsProperties)
+            let bedrooms = BookingDetailsItem(title: bedroomsTitle, desc: nil, bookingProperties: bedroomsProperties,sellectedIndex:1)
             
             let bathroomsTitle  = "Bathrooms"
             let bathroomsProperties  = (0...10).map { "\($0)" }
-            let bathrooms = BookingDetailsItem(title: bathroomsTitle, desc: nil, bookingProperties: bathroomsProperties)
+            let bathrooms = BookingDetailsItem(title: bathroomsTitle, desc: nil, bookingProperties: bathroomsProperties,sellectedIndex:1)
         
             return [bedrooms,bathrooms]
         }
