@@ -2928,10 +2928,10 @@ header.navbar {
     padding: 0.5rem 1rem;
     margin-right: 0;
     background-color: #1e8fc6;
-    background-image: url("../img/J-logo.png");
+    background-image: url("../img/jaldi-logo.png");
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: 90px auto; }
+    background-size: 45px auto; }
   header.navbar .navbar-nav {
     flex-direction: row;
     align-items: center; }

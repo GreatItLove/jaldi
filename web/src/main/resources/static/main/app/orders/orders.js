@@ -6,7 +6,8 @@ angular.module('jaldi.controllers')
         $scope.resultPerPage = 25;
         $scope.tableData = [];
         $scope.filterData = {
-            status: 'CREATED'
+            status: 'CREATED',
+            type: null
         };
         $scope.selectedItem = null;
 
@@ -14,14 +15,15 @@ angular.module('jaldi.controllers')
             page: 1,            // show first page
             count: $scope.resultPerPage, // count per page
             sorting: {
-                'user.name': 'asc'     // initial sorting
+                'orderDate': 'asc'     // initial sorting
             }
         }, {
             counts: [],
             total: 0,           // length of data
             getData: function(params) {
                 $scope.selectedItem = null;
-                return Order.query().$promise.then(function(data) {
+                return Order.query($scope.filterData).$promise.then(function(data) {
+                    console.log(data);
                     params.total(data.length);
                     var orderedData = params.sorting() ? $filter('orderBy')(data, params.orderBy()) : data;
                     $scope.tableData = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
@@ -34,6 +36,9 @@ angular.module('jaldi.controllers')
             $scope.selectedItem = id;
         };
 
+        $scope.reload = function() {
+            $scope.tableParams.reload();
+        };
 
     }
 ]);

@@ -129,6 +129,10 @@ public class Order {
     }
 
     @JsonSerialize(using = CommonDateTimeSerializer.class)
+    public Date getFormattedOrderDate() {
+        return orderDate;
+    }
+
     public Date getOrderDate() {
         return orderDate;
     }
@@ -147,6 +151,10 @@ public class Order {
     }
 
     @JsonSerialize(using = CommonDateTimeSerializer.class)
+    public Date getFormattedCreationDate() {
+        return creationDate;
+    }
+
     public Date getCreationDate() {
         return creationDate;
     }

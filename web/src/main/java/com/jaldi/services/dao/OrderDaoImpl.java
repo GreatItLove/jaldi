@@ -71,12 +71,13 @@ public class OrderDaoImpl {
         return order;
     }
 
-    public List<Order> findAll(String status) {
+    public List<Order> findAll(String type, String status) {
         try {
             Map namedParameters = new HashMap();
+            namedParameters.put("type", type);
             namedParameters.put("status", status);
-            return namedJdbc.query("SELECT `type`, `status`, `workers`, `hours`, `address`, `latitude`, " +
-                    "`longitude`, `cost`, `paymentType`, `orderDate`, `userId`, `creationDate` FROM `order` WHERE :status is null OR `status` = :status", namedParameters, new OrderMapper());
+            return namedJdbc.query("SELECT `id`, `type`, `status`, `workers`, `hours`, `address`, `latitude`, " +
+                    "`longitude`, `cost`, `paymentType`, `orderDate`, `userId`, `creationDate` FROM `order` WHERE (:type is null OR `type` = :type) AND (:status is null OR `status` = :status)", namedParameters, new OrderMapper());
         } catch (DataAccessException e) {
             return Collections.emptyList();
         }

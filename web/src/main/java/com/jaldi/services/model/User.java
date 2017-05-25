@@ -117,6 +117,10 @@ public class User {
     }
 
     @JsonSerialize(using = CommonDateTimeSerializer.class)
+    public Date getFormattedCreationDate() {
+        return creationDate;
+    }
+
     public Date getCreationDate() {
         return creationDate;
     }

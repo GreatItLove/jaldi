@@ -31,7 +31,21 @@ angular.module('jaldi.utils', [])
         },
         isOperator: function () {
             return isOperator;
+        },
+        getOrderTypeLabel: function(type) {
+            var result;
+            switch(type) {
+                case 'AC_TECHNICAL':
+                    result = 'AC Technical';
+                    break;
+                default:
+                    result = utils.capitalizeFirstLetter(type.toLowerCase());
+            }
+            return result;
+        },
+        capitalizeFirstLetter: function (string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
         }
-    };
+};
     return utils;
 }]);

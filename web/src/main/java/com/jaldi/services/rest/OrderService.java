@@ -30,8 +30,8 @@ public class OrderService {
 
     @GetMapping
     @PreAuthorize("hasAnyAuthority('OPERATOR', 'ADMIN')")
-    public List<Order> findAll(@RequestParam(value = "status", required = false) String status) {
-        return orderDao.findAll(status);
+    public List<Order> findAll(@RequestParam(value = "type", required = false) String type, @RequestParam(value = "status", required = false) String status) {
+        return orderDao.findAll(type, status);
     }
 
     @RequestMapping(method= RequestMethod.POST)

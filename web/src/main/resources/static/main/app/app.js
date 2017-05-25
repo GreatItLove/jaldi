@@ -52,8 +52,25 @@ var jaldi = angular
                 name: 'CREATED', label: 'Created'
             }, {
                 name: 'CANCELED', label: 'Canceled'
-            },  {
-                name: '', label: 'All'
+            }, {
+                name: null, label: 'All'
+            }],
+            orderTypes: [{
+                name: 'CLEANER', label: 'Cleaner'
+            }, {
+                name: 'CARPENTER', label: 'Carpenter'
+            }, {
+                name: 'ELECTRICIAN', label: 'Electrician'
+            }, {
+                name: 'MASON', label: 'Mason'
+            }, {
+                name: 'PAINTER', label: 'Painter'
+            }, {
+                name: 'PLUMBER', label: 'Plumber'
+            }, {
+                name: 'AC_TECHNICAL', label: 'AC Technical'
+            }, {
+                name: null, label: 'All'
             }]
         },
 
