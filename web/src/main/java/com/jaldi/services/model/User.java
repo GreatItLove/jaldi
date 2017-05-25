@@ -1,5 +1,8 @@
 package com.jaldi.services.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.jaldi.services.common.date.CommonDateTimeSerializer;
+
 import java.util.Date;
 
 /**
@@ -113,6 +116,7 @@ public class User {
         this.deleted = deleted;
     }
 
+    @JsonSerialize(using = CommonDateTimeSerializer.class)
     public Date getCreationDate() {
         return creationDate;
     }

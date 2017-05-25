@@ -1,7 +1,9 @@
 package com.jaldi.services.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.jaldi.services.common.date.CommonDateTimeDeserializer;
+import com.jaldi.services.common.date.CommonDateTimeSerializer;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -126,6 +128,7 @@ public class Order {
         this.paymentType = paymentType;
     }
 
+    @JsonSerialize(using = CommonDateTimeSerializer.class)
     public Date getOrderDate() {
         return orderDate;
     }
@@ -143,6 +146,7 @@ public class Order {
         this.user = user;
     }
 
+    @JsonSerialize(using = CommonDateTimeSerializer.class)
     public Date getCreationDate() {
         return creationDate;
     }
