@@ -15,7 +15,7 @@ class JaldiUser:Mappable {
     var phone:String?
     var confirmationCode:String?
     var password:String?
-//    var address:String?
+    var address:String?
     var latitude:Double?
     var longitude:Double?
     var profileImageId:String?
@@ -26,7 +26,7 @@ class JaldiUser:Mappable {
     var active: Bool?
     var deleted: Bool?
     var userId: Int?
-    
+ 
     required init?(map: Map) {
     }
     class func emptyUser() -> JaldiUser{
@@ -44,7 +44,7 @@ class JaldiUser:Mappable {
         profileImageId      <- map["profileImageId"]
         role      <- map["role"]
         type      <- map["type"]
-        creationDate    <- (map["creationDate"], DateTransform())
+        creationDate    <- (map["formattedCreationDate"], DateFormatterTransform(dateFormatter: Date.appDateFormater))
         
     }
     

@@ -78,6 +78,7 @@
 		4CED68631EB8BEC6001A7CC5 /* JaldiChangeZipCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED68621EB8BEC6001A7CC5 /* JaldiChangeZipCodeController.swift */; };
 		4CED68661EB8D172001A7CC5 /* JaldiAnnouncementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED68651EB8D172001A7CC5 /* JaldiAnnouncementViewController.swift */; };
 		4CED68711EB90CED001A7CC5 /* JaldiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED68701EB90CED001A7CC5 /* JaldiService.swift */; };
+		4CF754151ED86B7D00107540 /* JaldiSplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF754141ED86B7D00107540 /* JaldiSplashScreenViewController.swift */; };
 		C65CB5071EB857F000DE65B7 /* JaldiHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65CB5061EB857F000DE65B7 /* JaldiHomeViewController.swift */; };
 		E1A6EAA1DA024FCE2C8B0771 /* Pods_Jaldi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B89C32A91F1F6B3635F9B7C3 /* Pods_Jaldi.framework */; };
 /* End PBXBuildFile section */
@@ -157,6 +158,7 @@
 		4CED68621EB8BEC6001A7CC5 /* JaldiChangeZipCodeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiChangeZipCodeController.swift; sourceTree = "<group>"; };
 		4CED68651EB8D172001A7CC5 /* JaldiAnnouncementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiAnnouncementViewController.swift; sourceTree = "<group>"; };
 		4CED68701EB90CED001A7CC5 /* JaldiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiService.swift; sourceTree = "<group>"; };
+		4CF754141ED86B7D00107540 /* JaldiSplashScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiSplashScreenViewController.swift; sourceTree = "<group>"; };
 		B89C32A91F1F6B3635F9B7C3 /* Pods_Jaldi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jaldi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C65CB5061EB857F000DE65B7 /* JaldiHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JaldiHomeViewController.swift; path = HomeViewController/JaldiHomeViewController.swift; sourceTree = "<group>"; };
 		EE115EA4FE9D8A8EB071EBDF /* Pods-Jaldi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jaldi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Jaldi/Pods-Jaldi.release.xcconfig"; sourceTree = "<group>"; };
@@ -544,6 +546,7 @@
 		4C832AF41EB752240092A853 /* ViewControllerts */ = {
 			isa = PBXGroup;
 			children = (
+				4CF754131ED86B6500107540 /* SplashScreenViewController */,
 				4C7454DF1ED2DFE700F02267 /* ForgotPasswordViewController */,
 				4C832B041EB7601F0092A853 /* SignInViewController */,
 				4C7454D21ED2D28B00F02267 /* RegistrationViewController */,
@@ -671,6 +674,14 @@
 			);
 			name = AnnouncementViewController;
 			path = JaldiAnnouncementViewController;
+			sourceTree = "<group>";
+		};
+		4CF754131ED86B6500107540 /* SplashScreenViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4CF754141ED86B7D00107540 /* JaldiSplashScreenViewController.swift */,
+			);
+			path = SplashScreenViewController;
 			sourceTree = "<group>";
 		};
 		62DE40D5985912B039E2FC1A /* Pods */ = {
@@ -843,6 +854,7 @@
 				4C7FFAA21ECDB29100C95E71 /* Environment.swift in Sources */,
 				C65CB5071EB857F000DE65B7 /* JaldiHomeViewController.swift in Sources */,
 				4C53D6741ECC981E00A4A634 /* JaldiUser.swift in Sources */,
+				4CF754151ED86B7D00107540 /* JaldiSplashScreenViewController.swift in Sources */,
 				4C7FFAA41ECDB64100C95E71 /* NetworkDispatcher.swift in Sources */,
 				4C4E00901EC4833600B5E465 /* JaldiBookingPaymentMethodCell.swift in Sources */,
 				4C42BFE81EC35B860098B186 /* JaldiPaymentTotalPriceView.swift in Sources */,

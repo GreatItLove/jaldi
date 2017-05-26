@@ -18,8 +18,6 @@ class JaldiBookingPaymentDetailsCell: UITableViewCell {
     @IBOutlet weak var peyamentDetailsStackView: UIStackView!
     
     @IBOutlet weak var peyamentDetailsPriceView: JaldiPaymentPriceDetailsView!
-    @IBOutlet weak var peyamentDetailsCouponView: JaldiPaymentPriceDetailsView!
-    @IBOutlet weak var peyamentDetailsFeeView: JaldiPaymentPriceDetailsView!
     
     @IBOutlet weak var paymentDatePriceView: JaldiPaymentDatePriceView!
     @IBOutlet weak var totalPriceView: JaldiPaymentTotalPriceView!
@@ -50,13 +48,9 @@ class JaldiBookingPaymentDetailsCell: UITableViewCell {
     private func configurePaymentDetailsFor(bookingObject:BookingObject) {
         guard let bookingPrice = bookingObject.bookingPrice else {
             peyamentDetailsPriceView.isHidden = true
-            peyamentDetailsCouponView.isHidden = true
-            peyamentDetailsFeeView.isHidden = true
             return
         }
-        peyamentDetailsPriceView.configureWith(bookingPrice: bookingPrice, priceField: .price)
-        peyamentDetailsCouponView.configureWith(bookingPrice: bookingPrice, priceField: .coupon)
-        peyamentDetailsFeeView.configureWith(bookingPrice: bookingPrice, priceField: .fee)
+        peyamentDetailsPriceView.configureWith(bookingPrice: bookingPrice, bookingDetails: bookingObject.bookingDetails)
     }
     //MARK: Actions
     @IBAction func showPaymentDetailsAction(_ sender: Any) {

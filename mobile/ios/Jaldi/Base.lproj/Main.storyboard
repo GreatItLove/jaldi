@@ -258,6 +258,45 @@
             </objects>
             <point key="canvasLocation" x="909.60000000000002" y="170.46476761619192"/>
         </scene>
+        <!--Jaldi Splash Screen View Controller-->
+        <scene sceneID="CLw-AS-wXz">
+            <objects>
+                <viewController storyboardIdentifier="JaldiSplashScreenViewController" id="BIh-eG-WSk" customClass="JaldiSplashScreenViewController" customModule="Jaldi" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2Qm-sG-Zhz"/>
+                        <viewControllerLayoutGuide type="bottom" id="SiL-XG-nyJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wre-rc-ycU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hb_logo_blue" translatesAutoresizingMaskIntoConstraints="NO" id="OG8-ws-IND">
+                                <rect key="frame" x="57" y="218" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="WE4-Zj-mgp"/>
+                                    <constraint firstAttribute="width" constant="300" id="dp9-A2-RgC"/>
+                                </constraints>
+                            </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bTv-kc-0rz">
+                                <rect key="frame" x="189" y="279.66666666666669" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OG8-ws-IND" firstAttribute="centerX" secondItem="wre-rc-ycU" secondAttribute="centerX" id="G53-pW-Iid"/>
+                            <constraint firstItem="OG8-ws-IND" firstAttribute="centerY" secondItem="wre-rc-ycU" secondAttribute="centerY" id="GDj-Yh-Dcy"/>
+                            <constraint firstItem="bTv-kc-0rz" firstAttribute="centerY" secondItem="OG8-ws-IND" secondAttribute="centerY" constant="-70" id="L6k-nw-o6M"/>
+                            <constraint firstItem="bTv-kc-0rz" firstAttribute="centerX" secondItem="wre-rc-ycU" secondAttribute="centerX" id="OvJ-Ig-udO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="indicator" destination="bTv-kc-0rz" id="4NU-jZ-a26"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JPJ-yc-CwM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="409" y="838"/>
+        </scene>
         <!--Jaldi On Borading List View Controller-->
         <scene sceneID="DkK-yf-uQC">
             <objects>
@@ -432,6 +471,7 @@
     <resources>
         <image name="backward_arrow_light_gray" width="22" height="22"/>
         <image name="close_button_light_gray" width="22" height="22"/>
+        <image name="hb_logo_blue" width="115" height="115"/>
         <image name="icon-electrician-details" width="50" height="50"/>
         <image name="mega_phone_colored" width="50" height="50"/>
         <image name="mega_phone_icon" width="22" height="22"/>

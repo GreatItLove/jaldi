@@ -28,4 +28,8 @@
 //MARK: Home
 "CooseYourLocationMessage" = "Please choose your location!";
 
+//MARK: OrderStateViewController
+"OrderStateTitle" = "HOME CLEANING";
+
+
 

@@ -42,6 +42,7 @@ class JaldiBookingTimePickerViewController: UIViewController,BookingNavigation {
     }
     
     @IBAction func nextAction(_ sender: Any) {
+        bookingObject?.bookingTime = dateTimePicker?.date
         self.showNextScreen()
     }
     

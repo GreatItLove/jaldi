@@ -23,7 +23,6 @@ class JaldiOrder:Mappable {
     var creationDate: Date?
     var user: JaldiUser?
     
-    
     required init?(map: Map) {
     }
     
@@ -38,8 +37,9 @@ class JaldiOrder:Mappable {
         longitude      <- map["longitude"]
         paymentType      <- map["paymentType"]
         status      <- map["status"]
-        creationDate    <- (map["creationDate"], DateTransform())
-        orderDate    <- (map["orderDate"], DateTransform())
+        creationDate    <- (map["formattedCreationDate"], DateFormatterTransform(dateFormatter: Date.appDateFormater))
+        orderDate    <- (map["formattedOrderDate"], DateFormatterTransform(dateFormatter: Date.appDateFormater))
         user      <- map["user"]
     }
 }
+

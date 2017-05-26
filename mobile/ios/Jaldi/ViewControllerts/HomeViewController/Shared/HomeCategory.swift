@@ -41,7 +41,7 @@ struct HomeCategoryHeleper {
         static let electrician = "Don't shock yourself"
         static let painter = "Color your world"
         static let plumber = "No more leaks"
-        static let homeCleaning = "Keeping it tify"
+        static let homeCleaning = "Keeping it tidy"
         static let handyMan = "Fix or assemble"
     }
     struct HomeCategoryIconName {

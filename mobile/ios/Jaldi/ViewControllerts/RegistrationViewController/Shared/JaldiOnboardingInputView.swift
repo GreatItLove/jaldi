@@ -77,6 +77,7 @@ class JaldiOnboardingInputView: UIView {
             onboardingTextField.text = user.name
             onboardingTextField.keyboardType = .default
             onboardingTextField.isSecureTextEntry = false
+            onboardingTextField.autocapitalizationType = .words
         
         }
     }

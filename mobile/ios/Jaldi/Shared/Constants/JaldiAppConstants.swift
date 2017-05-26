@@ -47,4 +47,5 @@ struct AvailablePromoCodes {
 struct AppDateFormats {
     static let weekFormat = "EEEE, MMM d"
     static let timeFormat = "HH:mm a"
+    static let appDateFormat = "dd/MM/YYYY HH:mm"
 }

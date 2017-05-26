@@ -41,10 +41,18 @@ class JaldiOrderTask: JaldiOperation {
         self.paymentType = paymentType
         self.orderDate = orderDate
     }
+    convenience init?(bookingObject:BookingObject) {
+        guard let latitude = UserProfile.currentProfile.user?.latitude,
+            let longitude = UserProfile.currentProfile.user?.longitude else{
+                return nil
+        }
+        let bookingAddress = UserProfile.currentProfile.user?.address ?? ""
+        self.init(type: "CLEANER", workers: 1, address: bookingAddress, hours: bookingObject.bookingDetails.hours, cost: bookingObject.cost, latitude: latitude, longitude: longitude, paymentType: "CASH", orderDate: bookingObject.bookingTime ?? Date())
+    }
     
     var request: JaldiRequest {
         
-        let orderDateStr = self.orderDate.dateStringWith(format: "dd/MM/YYYY HH:mm")
+        let orderDateStr = self.orderDate.dateStringWith(format: AppDateFormats.appDateFormat)
         let orderDict  = ["type" : type,
                           "workers" : workers,
                           "address" : address,

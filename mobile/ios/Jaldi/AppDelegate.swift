@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let guest =  UserProfile.currentProfile.currentGuestUser()
         if guest.canLoginAsGuest(){
-            self.setHomeViewController()
+            self.setSplashScreenViewController()
             UserProfile.currentProfile.autoLogin(completion: { (success) in
                 if !success {
                     self.setGuestViewController()
@@ -68,6 +68,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window?.rootViewController = homeNavController
     }
+    private func setSplashScreenViewController() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let splashScreenViewController = storyboard.instantiateViewController(withIdentifier: "JaldiSplashScreenViewController") as? JaldiSplashScreenViewController
+        self.window?.rootViewController = splashScreenViewController
+    }
+    
     private func setGuestViewController() {
         let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
         

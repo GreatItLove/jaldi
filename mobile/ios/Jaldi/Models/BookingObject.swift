@@ -16,26 +16,36 @@ class BookingObject {
     var contactInfo: BookingContactInfo?
     var bookingPrice: BookingPrice?
     var cardInfo: CardInfo?
+    var cost: Float {
+        get {
+            guard let bookingPrice = self.bookingPrice else{
+                return 0
+            }
+            return bookingPrice.priceFor(hours: self.bookingDetails.hours)
+        }
+    }
+    
     
     init(service:JaldiService, bookingDetails:BookingDetails,bookingScreens:[BookingScreen]) {
         self.service = service
         self.bookingDetails = bookingDetails
         self.bookingScreens = bookingScreens
         bookingPrice = BookingPrice()
-        bookingPrice?.serivcePrice = 87
-        bookingPrice?.fee = 3
-        bookingPrice?.coupon = 43.5
+        bookingPrice?.serivcePrice = 100
+        bookingPrice?.fee = 0
+        bookingPrice?.coupon = 0
     }
 }
 
 class BookingDetails {
     let title: String
     let detailItems: [BookingDetailsItem]
-    let hoursSugestationEnabled: Bool
-    init(title:String, detailItems:[BookingDetailsItem],hoursSugestationEnabled:Bool = false) {
+    let hoursSuggestionEnabled: Bool
+    var hours: Int = 0
+    init(title:String, detailItems:[BookingDetailsItem],hoursSuggestionEnabled:Bool = false) {
         self.title = title
         self.detailItems = detailItems
-        self.hoursSugestationEnabled = hoursSugestationEnabled
+        self.hoursSuggestionEnabled = hoursSuggestionEnabled
     }
 }
 
@@ -79,6 +89,9 @@ class BookingPrice {
         get {
             return serivcePrice - coupon + fee
         }
+    }
+    func priceFor(hours:Int) -> Float {
+        return originalPrice * Float(hours)
     }
 }
 

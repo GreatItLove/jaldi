@@ -15,7 +15,7 @@ struct BookingHelper {
         let bookingDetails = BookingDetailsHelper.bookingDetailsFor(service: service)
 //        return BookingObject(service: service, bookingDetails: bookingDetails, bookingScreens: [BookingScreen.details,BookingScreen.payment])
 
-        return BookingObject(service: service, bookingDetails: bookingDetails, bookingScreens: [BookingScreen.details,BookingScreen.time,BookingScreen.contactInfo,BookingScreen.payment])
+        return BookingObject(service: service, bookingDetails: bookingDetails, bookingScreens: [BookingScreen.details,BookingScreen.time,BookingScreen.desc,BookingScreen.payment])
     }
     //MARK: BookingDetailsHelper Helper
     struct BookingDetailsHelper {
@@ -23,8 +23,8 @@ struct BookingHelper {
             let helper = BookingDetailsHelper()
             let title = helper.bookingDetailsTitleFor(service: service)
             let items = helper.bookingDetailsItmesFor(service: service)
-            let hoursSugestationEnabled = service == .homeCleaning
-            return BookingDetails(title: title, detailItems: items, hoursSugestationEnabled:hoursSugestationEnabled)
+            let hoursSuggestionEnabled = service == .homeCleaning
+            return BookingDetails(title: title, detailItems: items, hoursSuggestionEnabled:hoursSuggestionEnabled)
         }
         
         private func bookingDetailsTitleFor(service:JaldiService) -> String {

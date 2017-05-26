@@ -43,6 +43,7 @@ class JaldiHomeViewController: UIViewController {
                 {
                     let placemark:CLPlacemark = placemarks![0]
                     if let address = placemark.name {
+                    UserProfile.currentProfile.user?.address = address
                     self.addressLabel.text = "Not in: \(address)?"
                     }
                 }

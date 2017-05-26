@@ -14,4 +14,17 @@ extension Date {
         dateFormatter.timeZone = timeZone
         return dateFormatter.string(from: self)
     }
+    func add(hours:Int) -> Date {
+        let calendar = Calendar.current
+        return  calendar.date(byAdding: .hour, value: hours, to: self)!
+    }
+    static var appDateFormater:DateFormatter{
+        get {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = AppDateFormats.appDateFormat
+//            dateFormatter.timeZone = TimeZone(identifier: "UTC")
+            return dateFormatter
+        }
+    }
+    
 }

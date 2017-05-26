@@ -16,8 +16,8 @@ class JaldiBookingPaymentViewController: UIViewController ,BookingNavigation {
         case termOfUse
         static let allSections:[PaymentCellType] = [PaymentCellType.payentMethod,
 //                                                    PaymentCellType.card,
-                                                    PaymentCellType.details,
-                                                    PaymentCellType.termOfUse
+                                                    PaymentCellType.details
+//                                                    PaymentCellType.termOfUse
                                                     ]
     }
     
@@ -64,11 +64,12 @@ class JaldiBookingPaymentViewController: UIViewController ,BookingNavigation {
     }
     
     fileprivate func ordderBooking() {
-        guard let latitude = UserProfile.currentProfile.user?.latitude, let longitude = UserProfile.currentProfile.user?.longitude else{
+        guard let bookingObject = bookingObject , let task = JaldiOrderTask.init(bookingObject: bookingObject) else{
             return
         }
+        
+//        "One Infinite Loop Cupertino, CA 95014"
         self.showHudWithMsg(message: nil)
-        let task  = JaldiOrderTask.init(type: "CLEANER", workers: 1, address: "One Infinite Loop Cupertino, CA 95014", hours: 3, cost: 300, latitude: latitude, longitude: longitude, paymentType: "CASH", orderDate: Date())
         task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: { [weak self] (value) in
             self?.hideHud()
             guard let order  = value else{
@@ -101,6 +102,7 @@ class JaldiBookingPaymentViewController: UIViewController ,BookingNavigation {
     private func showOrderStateController(order: JaldiOrder) {
         let storyboard: UIStoryboard = UIStoryboard(name: "Booking", bundle: nil)
         let orderStateViewController = storyboard.instantiateViewController(withIdentifier: "JaldiOrderStateViewController") as? JaldiOrderStateViewController
+        orderStateViewController?.order = order
         self.present(orderStateViewController!, animated: true, completion: nil)
     }
     //MARK: Validation
