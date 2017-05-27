@@ -27,4 +27,12 @@ angular.module('jaldi.services')
             method: 'PUT'
         }
     });
+})
+.factory("Dashboard", function ($resource) {
+    return $resource("/rest/dashboard/:id", {id: "@id"}, {
+        overview: {
+            method: 'GET',
+            url:    '/rest/dashboard/overview'
+        },
+    });
 });

@@ -15,7 +15,7 @@ angular.module('jaldi.controllers')
             page: 1,            // show first page
             count: $scope.resultPerPage, // count per page
             sorting: {
-                'orderDate': 'asc'     // initial sorting
+                'creationDate': 'desc'     // initial sorting
             }
         }, {
             counts: [],

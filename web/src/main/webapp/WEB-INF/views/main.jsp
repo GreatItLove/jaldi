@@ -73,6 +73,9 @@
                     <img ng-src="{{utils.getProfilePictureUrl()}}" class="pull-left m-r-2 img-avatar border-round" style="width: 54px; height: 54px;">
                     <div class="font-size-13"><span class="font-weight-light">Welcome, </span><div><strong ng-bind="$root.user.userFullName"></strong></div></div>
                 </li>
+                <li ng-if="utils.isAdmin()" class="nav-item">
+                    <a class="nav-link" ui-sref="dashboard" ui-sref-active="active"><i class="icon-speedometer"></i> Dashboard</a>
+                </li>
                 <li ng-if="utils.isOperator() || utils.isAdmin()" class="nav-item">
                     <a class="nav-link" ui-sref="orders" ui-sref-active="active"><i class="icon-calendar"></i> Orders</a>
                 </li>
@@ -111,6 +114,7 @@
 <script src="/resources/main/js/libs/jquery.min.js"></script>
 <script src="/resources/main/js/libs/tether.min.js"></script>
 <script src="/resources/main/js/libs/bootstrap.min.js"></script>
+<script src="/resources/main/js/libs/Chart.min.js"></script>
 
 <script src="/resources/main/js/libs/pace.min.js"></script>
 
@@ -134,6 +138,7 @@
 <script src="/resources/main/app/workers/workers.js"></script>
 <script src="/resources/main/app/profile/profile.js"></script>
 <script src="/resources/main/app/orders/orders.js"></script>
+<script src="/resources/main/app/dashboard/dashboard.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,121 @@
+<div class="container-fluid pt-2">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-sm-6 col-lg-3">
+                <div class="card">
+                    <div class="card-block p-1 clearfix">
+                        <i class="fa fa-users bg-primary p-1 font-2xl mr-1 float-left"></i>
+                        <div class="text-uppercase text-muted font-weight-bold font-xs mb-0 mt-h">Users</div>
+                        <div class="h5"><span ng-bind="metadata.usersCount"></span></div>
+                    </div>
+                </div>
+            </div>
+            <!--/.col-->
+
+            <div class="col-sm-6 col-lg-3">
+                <div class="card">
+                    <div class="card-block p-1 clearfix">
+                        <i class="fa fa-shopping-cart bg-warning p-1 font-2xl mr-1 float-left"></i>
+                        <div class="text-uppercase text-muted font-weight-bold font-xs mb-0 mt-h">Orders</div>
+                        <div class="h5"><span ng-bind="metadata.ordersCount"></span></div>
+                    </div>
+                </div>
+            </div>
+            <!--/.col-->
+
+            <div class="col-sm-6 col-lg-3">
+                <div class="card">
+                    <div class="card-block p-1 clearfix">
+                        <i class="fa fa-dollar bg-danger p-1 font-2xl mr-1 float-left"></i>
+                        <div class="text-uppercase text-muted font-weight-bold font-xs mb-0 mt-h">Total amount</div>
+                        <div class="h5"><span ng-bind="metadata.totalAmount"></span> QR</div>
+                    </div>
+                </div>
+            </div>
+            <!--/.col-->
+
+            <div class="col-sm-6 col-lg-3">
+                <div class="card">
+                    <div class="card-block p-1 clearfix">
+                        <i class="fa fa-building bg-info p-1 font-2xl mr-1 float-left"></i>
+                        <div class="text-uppercase text-muted font-weight-bold font-xs mb-0 mt-h">Workers</div>
+                        <div class="h5"><span ng-bind="metadata.workersCount"></span></div>
+                    </div>
+                </div>
+            </div>
+            <!--/.col-->
+        </div>
+        <div class="row">
+            <div class="card">
+                <div class="card-header">
+                    Orders
+                </div>
+                <div class="card-block">
+                    <div class="row">
+                    <div class="col-md-6">
+                        <table class="table table-hover mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Specialization</th>
+                                    <th>Orders</th>
+                                    <th>Hours</th>
+                                    <th>Total amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Cleaner</td>
+                                    <td>210</td>
+                                    <td>410</td>
+                                    <td>41100 QR</td>
+                                </tr>
+                                <tr>
+                                    <td>Carpenter</td>
+                                    <td>20</td>
+                                    <td>38</td>
+                                    <td>3800 QR</td>
+                                </tr>
+                                <tr>
+                                    <td>Electrician</td>
+                                    <td>17</td>
+                                    <td>32</td>
+                                    <td>3200 QR</td>
+                                </tr>
+                                <tr>
+                                    <td>Mason</td>
+                                    <td>15</td>
+                                    <td>28</td>
+                                    <td>2800 QR</td>
+                                </tr>
+                                <tr>
+                                    <td>Painter</td>
+                                    <td>12</td>
+                                    <td>20</td>
+                                    <td>2000 QR</td>
+                                </tr>
+                                <tr>
+                                    <td>Plumber</td>
+                                    <td>10</td>
+                                    <td>18</td>
+                                    <td>1800 QR</td>
+                                </tr>
+                                <tr>
+                                    <td>AC Technical</td>
+                                    <td>9</td>
+                                    <td>18</td>
+                                    <td>1800 QR</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="chart-wrapper">
+                            <canvas id="ordersChartCanvas"></canvas>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

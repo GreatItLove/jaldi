@@ -18,8 +18,13 @@ angular.module('jaldi.controllers')
                 url: '/profile',
                 templateUrl: './resources/main/app/profile/profile.html',
                 controller: 'profileController'
+            })
+            .state('dashboard', {
+                url: '/dashboard',
+                templateUrl: './resources/main/app/dashboard/dashboard.html',
+                controller: 'dashboardController'
             });
-        $urlRouterProvider.otherwise(isAdmin || isOperator ? 'orders' : 'profile');
+        $urlRouterProvider.otherwise(isAdmin ? 'dashboard' : (isOperator ? 'orders' : 'profile'));
     }
 ])
 .controller('mainController', [
