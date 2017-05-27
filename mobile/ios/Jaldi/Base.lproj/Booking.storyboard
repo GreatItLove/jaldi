@@ -888,22 +888,20 @@
                                                         <constraint firstAttribute="height" constant="30" id="oxj-fL-2IO"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jty-5q-xmN">
-                                                    <rect key="frame" x="275" y="7" width="30" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="AWU-oX-5Ut"/>
-                                                        <constraint firstAttribute="width" constant="30" id="y6m-PF-bea"/>
-                                                    </constraints>
-                                                    <state key="normal" image="forward_arrow_gray_small"/>
-                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="juC-x1-9uc">
+                                                    <rect key="frame" x="270" y="13" width="35" height="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Jty-5q-xmN" firstAttribute="centerY" secondItem="MbL-hq-yW9" secondAttribute="centerY" id="3d2-XY-ueE"/>
-                                                <constraint firstItem="Jty-5q-xmN" firstAttribute="centerY" secondItem="uHf-Rl-3Co" secondAttribute="centerY" id="95b-eQ-bs3"/>
+                                                <constraint firstItem="juC-x1-9uc" firstAttribute="centerY" secondItem="uHf-Rl-3Co" secondAttribute="centerY" id="Bgw-pF-O17"/>
                                                 <constraint firstItem="lnp-Bp-TVc" firstAttribute="leading" secondItem="uHf-Rl-3Co" secondAttribute="leading" constant="25" id="GL5-RE-8LO"/>
-                                                <constraint firstItem="Jty-5q-xmN" firstAttribute="leading" secondItem="MbL-hq-yW9" secondAttribute="trailing" constant="10" id="INo-h6-idf"/>
+                                                <constraint firstItem="juC-x1-9uc" firstAttribute="centerY" secondItem="MbL-hq-yW9" secondAttribute="centerY" id="X73-jB-ENh"/>
                                                 <constraint firstItem="lnp-Bp-TVc" firstAttribute="centerY" secondItem="uHf-Rl-3Co" secondAttribute="centerY" id="ZIX-fj-WAl"/>
-                                                <constraint firstAttribute="trailing" secondItem="Jty-5q-xmN" secondAttribute="trailing" constant="15" id="szu-do-HcO"/>
+                                                <constraint firstAttribute="trailing" secondItem="juC-x1-9uc" secondAttribute="trailing" constant="15" id="nta-Rm-nXW"/>
+                                                <constraint firstItem="juC-x1-9uc" firstAttribute="leading" secondItem="MbL-hq-yW9" secondAttribute="trailing" constant="5" id="wKd-EH-WkL"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -920,7 +918,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qJ8-LU-J9B" userLabel="Date Price Stack">
                                                             <rect key="frame" x="0.0" y="0.0" width="270" height="69"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cleaning Plan: Every week" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNc-m4-7Px">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cleaning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNc-m4-7Px">
                                                                     <rect key="frame" x="0.0" y="0.0" width="270" height="18"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                                     <nil key="textColor"/>
@@ -1695,7 +1693,6 @@
         <image name="card_icon_blank" width="37" height="22"/>
         <image name="card_lock" width="17" height="22"/>
         <image name="close_button_light_gray" width="22" height="22"/>
-        <image name="forward_arrow_gray_small" width="10" height="19"/>
         <image name="radio_off" width="25" height="25"/>
         <image name="wallet_icon" width="50" height="50"/>
     </resources>

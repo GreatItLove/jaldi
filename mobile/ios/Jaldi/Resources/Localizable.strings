@@ -26,7 +26,7 @@
 "OrderRequestErrorMessage" = "Could not complete order";
 
 //MARK: Home
-"CooseYourLocationMessage" = "Please choose your location!";
+"CooseYourLocationMessage" = "Choose place";
 
 //MARK: OrderStateViewController
 "OrderStateTitle" = "HOME CLEANING";

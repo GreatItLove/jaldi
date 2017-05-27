@@ -19,13 +19,41 @@ class JaldiOrderStateViewController: UIViewController {
     @IBOutlet weak var milesAwayLabel: UILabel!
     private var orderState: JaldiOrderState = JaldiOrderState.tidyingUp
     var order: JaldiOrder?
+    lazy var formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeStyle = DateFormatter.Style.short
+        formatter.dateStyle = DateFormatter.Style.short
+        return formatter
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         orderStateView.configureWith(orderState: orderState)
         configureTimeAndTitleLabels()
         configureLocationManager()
+        self.addOrderPin()
     }
     //MARK: Configuration
+    private func addOrderPin() {
+        guard  let cureentOrder = order, let latitude = cureentOrder.latitude, let longitude = cureentOrder.longitude else{
+            return
+        }
+        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        let reportTime = cureentOrder.orderDate ?? Date()
+        let formattedTime = formatter.string(from: reportTime)
+        
+        let annotation = MKPointAnnotation()
+        if let type = cureentOrder.type , let hours = cureentOrder.hours {
+            annotation.title = "\(type) (\(hours) hours)"
+        }else{
+        annotation.title = "CLEANING"
+        }
+        
+        annotation.subtitle = formattedTime
+        annotation.coordinate = coordinate
+        
+        mapView.addAnnotation(annotation)
+    }
+
     private func configureLocationManager() {
         mapView.showsUserLocation = true
         mapView.delegate = self
@@ -67,8 +95,27 @@ class JaldiOrderStateViewController: UIViewController {
 extension JaldiOrderStateViewController:MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didUpdate
         userLocation: MKUserLocation) {
-        mapView.centerCoordinate = userLocation.location!.coordinate
+//        mapView.centerCoordinate = userLocation.location!.coordinate
         self.configureDistance()
+    }
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !annotation.isKind(of: MKUserLocation.self) else {
+            return nil
+        }
+        let annotationIdentifier = "AnnotationIdentifier"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier)
+        
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+            annotationView!.canShowCallout = true
+        }
+        else {
+            annotationView!.annotation = annotation
+        }
+        annotationView!.image = UIImage(named: "house_icon")
+        
+        return annotationView
+        
     }
 }
 extension JaldiOrderStateViewController:CLLocationManagerDelegate {

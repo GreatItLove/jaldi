@@ -117,9 +117,15 @@ extension JaldiBookingDetailsViewController:JaldiBookingDetailsTableViewCellDele
             self.theTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.fade)
         }
         if  (bookingObject?.bookingDetails.hoursSuggestionEnabled)!  {
-          let  lastindex = self.theTableView.numberOfRows(inSection: 0) - 1
+            let  lastindex = self.theTableView.numberOfRows(inSection: 0) - 1
             if indexPath.row != lastindex{
-             self.correctSuggestedHours()
+                self.correctSuggestedHours()
+            }else{
+                if let suggestedHoursItem = suggestedHoursItem {
+                    suggestedHoursItem.sellectedIndex = index
+                    let hours  = Int(suggestedHoursItem.bookingProperties[suggestedHoursItem.sellectedIndex])
+                    bookingObject?.bookingDetails.hours = hours!
+                }
             }
         }
     }

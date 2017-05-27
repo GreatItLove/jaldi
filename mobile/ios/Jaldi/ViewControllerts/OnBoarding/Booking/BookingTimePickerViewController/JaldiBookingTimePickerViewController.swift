@@ -37,12 +37,12 @@ class JaldiBookingTimePickerViewController: UIViewController,BookingNavigation {
     }
     //MARK: Actions
     @IBAction func backAction(_ sender: Any) {
-        bookingObject?.bookingTime = dateTimePicker?.date
+        bookingObject?.bookingTime = dateTimePicker?.clampedDate
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func nextAction(_ sender: Any) {
-        bookingObject?.bookingTime = dateTimePicker?.date
+        bookingObject?.bookingTime = dateTimePicker?.clampedDate
         self.showNextScreen()
     }
     

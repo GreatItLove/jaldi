@@ -62,6 +62,9 @@ class JaldiPlacePicker: UIViewController {
     }
     //MARK: Actions
     @IBAction func closeAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    @IBAction func doneAction(_ sender: Any) {
         self.getCurrentLocationAndDismiss()
     }
     
