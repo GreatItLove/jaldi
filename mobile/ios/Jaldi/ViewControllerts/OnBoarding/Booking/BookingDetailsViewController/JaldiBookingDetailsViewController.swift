@@ -40,7 +40,6 @@ class JaldiBookingDetailsViewController: UIViewController,BookingNavigation {
                 suggestedHoursItem = BookingDetailsItem(title: "Suggested Hours", desc: nil, bookingProperties: hours)
                 booking.bookingDetails.hours = minValue
             }
-            
         }
     }
 
@@ -111,11 +110,12 @@ extension JaldiBookingDetailsViewController: UITableViewDelegate,UITableViewData
 
 }
 extension JaldiBookingDetailsViewController:JaldiBookingDetailsTableViewCellDelegate {
-    func detailsItem(cell:JaldiBookingDetailsTableViewCell, didChangeSelected index:Int, needsReload:Bool) {
+    func detailsItem(cell:JaldiBookingDetailsTableViewCell, didChange detailItem:BookingDetailsItem?, selected index:Int , needsReload:Bool){
         guard let indexPath = theTableView.indexPath(for: cell) else {return}
         if needsReload {
             self.theTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.fade)
         }
+        // If hoursSuggestionEnabled the calculate hours based on Suggested Item
         if  (bookingObject?.bookingDetails.hoursSuggestionEnabled)!  {
             let  lastindex = self.theTableView.numberOfRows(inSection: 0) - 1
             if indexPath.row != lastindex{
@@ -125,6 +125,15 @@ extension JaldiBookingDetailsViewController:JaldiBookingDetailsTableViewCellDele
                     suggestedHoursItem.sellectedIndex = index
                     let hours  = Int(suggestedHoursItem.bookingProperties[suggestedHoursItem.sellectedIndex])
                     bookingObject?.bookingDetails.hours = hours!
+                }
+            }
+        }else{
+            guard let item = detailItem else {
+                return
+            }
+            if item.title == "Hours" {
+                if let hours =  Int(item.bookingProperties[index]){
+                bookingObject?.bookingDetails.hours = hours
                 }
             }
         }

@@ -79,20 +79,18 @@ class JaldiRegistrationViewController: UIViewController {
     }
     
     @IBAction func signInAction(_ sender: Any) {
+        self.showSignInViewController(canDismiss: true, userName: nil)
+    }
+    fileprivate func showSignInViewController(canDismiss:Bool, userName:String?) {
         self.inputViewFor(state: self.activeState)?.resignActive()
         let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
         let signInViewController = storyboard.instantiateViewController(withIdentifier: "JaldiSignInViewController") as? JaldiSignInViewController
+        signInViewController?.canDismiss = canDismiss
+        signInViewController?.userName = userName
         let navController = UINavigationController(rootViewController: signInViewController!)
         navController.isNavigationBarHidden = true
         self.present(navController, animated: true, completion: nil)
-        
-//        let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
-//        let placePicker = storyboard.instantiateViewController(withIdentifier: "JaldiPlacePicker") as? JaldiPlacePicker
-//        
-//        self.present(placePicker!, animated: true, completion: nil)
-
     }
-    
     //MARK: Configuration
     private func configureInputVievs() {
         for state in allStates{
@@ -283,8 +281,7 @@ extension JaldiRegistrationViewController: JaldiOnboardingInputViewDelegate{
             guard let user  = value else{
                 return
             }
-            UserProfile.currentProfile.loginAsGuest(guest: user)
-            self?.moveToNextStateFor(state: .phone)
+            self?.showSignInViewController(canDismiss: false, userName: user.email)
            
         }) {[weak self] (error, _) in
             self?.hideHud()

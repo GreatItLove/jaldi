@@ -100,7 +100,7 @@ class JaldiBookingPaymentViewController: UIViewController ,BookingNavigation {
         }
     }
     private func showOrderStateController(order: JaldiOrder) {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Booking", bundle: nil)
+        let storyboard: UIStoryboard = UIStoryboard(name: "Order", bundle: nil)
         let orderStateViewController = storyboard.instantiateViewController(withIdentifier: "JaldiOrderStateViewController") as? JaldiOrderStateViewController
         orderStateViewController?.order = order
         self.present(orderStateViewController!, animated: true, completion: nil)

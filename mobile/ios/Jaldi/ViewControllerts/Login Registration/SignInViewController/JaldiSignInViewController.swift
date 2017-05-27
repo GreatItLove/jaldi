@@ -11,13 +11,19 @@ import UIKit
 class JaldiSignInViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var dismissButton: UIButton!
 
     @IBOutlet weak var signInButtonBottomConstraint: NSLayoutConstraint!
+    
+    var canDismiss = true
+    var userName:String?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addRecognizer()
         self.addNotification()
         self.configureTextFields()
+        dismissButton.isHidden = !canDismiss
+        emailTextField.text = userName
     }
 
     //MARK: Actions

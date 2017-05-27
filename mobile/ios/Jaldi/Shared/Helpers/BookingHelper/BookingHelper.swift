@@ -57,9 +57,18 @@ struct BookingHelper {
         }
         
         private func bookingDetailsDefaultItems() -> [BookingDetailsItem]  {
-          let hours  =  (0...10).map { "\($0)" }
-          return [BookingDetailsItem(title: "Hours", desc: nil, bookingProperties: hours)]
+            
+            let hoursTitle  = "Hours"
+            let hoursProperties   =  (2...10).map { "\($0)" }
+            let hours = BookingDetailsItem(title: hoursTitle, desc: nil, bookingProperties: hoursProperties)
+            
+            let professionalsTitle  = "Professionals"
+            let professionalsProperties   =  (1...10).map { "\($0)" }
+            let professionals = BookingDetailsItem(title: professionalsTitle, desc: nil, bookingProperties: professionalsProperties)
+            
+            return [hours,professionals]
         }
+       
         //MARK: Items for Service
         private func lightFixturesItems() -> [BookingDetailsItem] {
             let changeBulbsTitle  = "Change bulbs"

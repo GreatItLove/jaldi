@@ -16,9 +16,11 @@ class JaldiHomeViewController: UIViewController {
     @IBOutlet weak var theCollectionView: UICollectionView!
     let  allCategories = HomeCategory.allCategories
     private var geocoder: CLGeocoder =  CLGeocoder()
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configuration()
+        self.showPlacePickerIfNeeded()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -30,6 +32,14 @@ class JaldiHomeViewController: UIViewController {
     private func configuration() {
         self.configureCollectionView()
         
+    }
+    private func showPlacePickerIfNeeded() {
+        guard let _  = UserProfile.currentProfile.user?.latitude , let _  = UserProfile.currentProfile.user?.longitude else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.presentPlacePicker()
+            }
+            return
+        }
     }
     fileprivate func configureAddress() {
         guard let lat  = UserProfile.currentProfile.user?.latitude ,let lon  = UserProfile.currentProfile.user?.longitude  else{
@@ -59,21 +69,21 @@ class JaldiHomeViewController: UIViewController {
 
     //MARK: Actions
     @IBAction func announcementAction(_ sender: Any) {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let signInViewController = storyboard.instantiateViewController(withIdentifier: "JaldiAnnouncementViewController") as? JaldiAnnouncementViewController
-        self.present(signInViewController!, animated: true, completion: nil)
-        
+//        self.presentAnnouncements()
+        self.presentOrders()
     }
+    
     @IBAction func signInAction(_ sender: Any) {
         let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
         let signInViewController = storyboard.instantiateViewController(withIdentifier: "JaldiSignInViewController") as? JaldiSignInViewController
         let navController = UINavigationController(rootViewController: signInViewController!)
         navController.isNavigationBarHidden = true
         self.present(navController, animated: true, completion: nil)
-        
-
     }
     @IBAction func changeAddressAction(_ sender: Any) {
+       self.presentPlacePicker()
+    }
+    private func presentPlacePicker() {
         let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
         let placePicker = storyboard.instantiateViewController(withIdentifier: "JaldiPlacePicker") as? JaldiPlacePicker
         placePicker?.delegate = self
@@ -81,8 +91,17 @@ class JaldiHomeViewController: UIViewController {
             let location  = CLLocation(latitude: lat, longitude: lon)
             placePicker?.location = location
         }
-        
         self.present(placePicker!, animated: true, completion: nil)
+    }
+    private func presentAnnouncements() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let announcementViewController = storyboard.instantiateViewController(withIdentifier: "JaldiAnnouncementViewController") as? JaldiAnnouncementViewController
+        self.present(announcementViewController!, animated: true, completion: nil)
+    }
+    private func presentOrders() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Order", bundle: nil)
+        let ordersViewController = storyboard.instantiateViewController(withIdentifier: "JaldiOrdersViewController") as? JaldiOrdersViewController
+        self.present(ordersViewController!, animated: true, completion: nil)
     }
 
 }
@@ -116,41 +135,13 @@ extension JaldiHomeViewController: UICollectionViewDelegate,UICollectionViewData
     //MARK: navigate to Carpenter, Electrician, Mason, Painter, Plumber, Ac Technical
     fileprivate func navigateTo(category:HomeCategory) {
         switch category {
-        case .homeCleaning:
-            self.navigateToHomeCleaning()
-        case .handyMan:
-            self.navigateHandyMan()
-        case .electrician:
-            self.navigateToElectrician()
-        case .painter:
-            self.navigateToPainter()
-        case .plumber:
-            self.navigateToPlumber()
-       
+        case .homeCleaning,.mason,.acTechnical,.carpenter,.painter:
+            self.showBookingDetailsViewController(category: category)
+        case .handyMan,.electrician,.plumber:
+           self.showOnBoradingListViewFor(category: category)
         }
     }
 
-    fileprivate func navigateToHomeCleaning() {
-       self.showBookingDetailsViewController(category: .homeCleaning)
-    }
-    
-    fileprivate func navigateToElectrician() {
-        self.showOnBoradingListViewFor(category: .electrician)
-    }
-    
-    fileprivate func navigateHandyMan() {
-        self.showOnBoradingListViewFor(category: .handyMan)
-    }
-    
-    fileprivate func navigateToPainter() {
-        self.showBookingDetailsViewController(category: .painter)
-    }
-    
-    fileprivate func navigateToPlumber() {
-        self.showOnBoradingListViewFor(category: .plumber)
-    }
-    
-   
     fileprivate func showOnBoradingListViewFor(category:HomeCategory) {
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let onBoradingListViewController = storyboard.instantiateViewController(withIdentifier: "JaldiOnBoradingListViewController") as? JaldiOnBoradingListViewController

@@ -11,6 +11,9 @@ enum JaldiService: Int {
 
     // Parent Services
     case homeCleaning
+    case mason
+    case carpenter
+    case acTechnical
     
     // handyMan
     case acRepair
@@ -132,6 +135,7 @@ struct JaldiServiceHeleper {
         
     }
     //MARK: Helper Methods
+    /// Sub Category title
     static  func titleFor(service:JaldiService) -> String{
         switch service {
         // HandyMan
@@ -183,7 +187,7 @@ struct JaldiServiceHeleper {
             return ""
         }
     }
-    
+    /// Sub category description
     static  func descriptionFor(service:JaldiService) -> String{
         switch service {
         // HandyMan
@@ -236,7 +240,7 @@ struct JaldiServiceHeleper {
         }
 
     }
-    
+    /// Sub category image Name
     static  func iconImageNameFor(service:JaldiService) -> String{
         switch service {
         // HandyMan
@@ -288,7 +292,7 @@ struct JaldiServiceHeleper {
             return JaldiServiceIconName.plumbingDefault
         }
     }
-    
+    /// sub categories for parent home category
     static  func servicesFor(category:HomeCategory) -> [JaldiService] {
         switch category {
         case .electrician:
@@ -301,10 +305,17 @@ struct JaldiServiceHeleper {
             return []
         }
     }
+    /// category for home category (does't have sub categories)
     static  func serviceFor(category:HomeCategory) -> JaldiService?{
         switch category {
         case .homeCleaning:
             return JaldiService.homeCleaning
+        case .mason:
+            return JaldiService.mason
+        case .carpenter:
+            return JaldiService.carpenter
+        case .acTechnical:
+            return JaldiService.acTechnical
         default:
             return nil
         }

@@ -41,7 +41,7 @@ class BookingDetails {
     let title: String
     let detailItems: [BookingDetailsItem]
     let hoursSuggestionEnabled: Bool
-    var hours: Int = 0
+    var hours: Int = 2
     init(title:String, detailItems:[BookingDetailsItem],hoursSuggestionEnabled:Bool = false) {
         self.title = title
         self.detailItems = detailItems

@@ -22,7 +22,6 @@ extension Date {
         get {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = AppDateFormats.appDateFormat
-//            dateFormatter.timeZone = TimeZone(identifier: "UTC")
             return dateFormatter
         }
     }

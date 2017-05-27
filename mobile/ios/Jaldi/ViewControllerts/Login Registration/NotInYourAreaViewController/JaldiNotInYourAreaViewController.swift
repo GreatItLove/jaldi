@@ -17,7 +17,6 @@ class JaldiNotInYourAreaViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        self.configureWith(guest: guest)
-        // Do any additional setup after loading the view.
     }
     //MARK: Configurations
     private func configureWith(guest: JaldiUser?) {
@@ -32,6 +31,7 @@ class JaldiNotInYourAreaViewController: UIViewController {
     @IBAction func backAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func tryAnotherZipAction(_ sender: Any) {
         if presentedFromCangeZipScreen {
           self.dismiss(animated: true, completion: nil)
