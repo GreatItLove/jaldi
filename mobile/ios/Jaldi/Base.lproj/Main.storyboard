@@ -271,21 +271,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hb_logo_blue" translatesAutoresizingMaskIntoConstraints="NO" id="OG8-ws-IND">
-                                <rect key="frame" x="57" y="218" width="300" height="300"/>
+                                <rect key="frame" x="132" y="293" width="150" height="150"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="WE4-Zj-mgp"/>
-                                    <constraint firstAttribute="width" constant="300" id="dp9-A2-RgC"/>
+                                    <constraint firstAttribute="height" constant="150" id="WE4-Zj-mgp"/>
+                                    <constraint firstAttribute="width" constant="150" id="dp9-A2-RgC"/>
                                 </constraints>
                             </imageView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bTv-kc-0rz">
-                                <rect key="frame" x="189" y="279.66666666666669" width="37" height="37"/>
+                                <rect key="frame" x="189" y="309.66666666666669" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="OG8-ws-IND" firstAttribute="centerX" secondItem="wre-rc-ycU" secondAttribute="centerX" id="G53-pW-Iid"/>
                             <constraint firstItem="OG8-ws-IND" firstAttribute="centerY" secondItem="wre-rc-ycU" secondAttribute="centerY" id="GDj-Yh-Dcy"/>
-                            <constraint firstItem="bTv-kc-0rz" firstAttribute="centerY" secondItem="OG8-ws-IND" secondAttribute="centerY" constant="-70" id="L6k-nw-o6M"/>
+                            <constraint firstItem="bTv-kc-0rz" firstAttribute="centerY" secondItem="OG8-ws-IND" secondAttribute="centerY" constant="-40" id="L6k-nw-o6M"/>
                             <constraint firstItem="bTv-kc-0rz" firstAttribute="centerX" secondItem="wre-rc-ycU" secondAttribute="centerX" id="OvJ-Ig-udO"/>
                         </constraints>
                     </view>

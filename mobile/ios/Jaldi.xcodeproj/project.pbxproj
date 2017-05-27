@@ -18,6 +18,7 @@
 		4C2DAA081EB9D450002FCAD5 /* JaldiOnBoradingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2DAA031EB9D450002FCAD5 /* JaldiOnBoradingListViewController.swift */; };
 		4C2DAA091EB9D450002FCAD5 /* JaldiOnBoradingListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2DAA061EB9D450002FCAD5 /* JaldiOnBoradingListViewCell.swift */; };
 		4C2DAA0A1EB9D450002FCAD5 /* JaldiOnBoradingListViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2DAA071EB9D450002FCAD5 /* JaldiOnBoradingListViewHeaderCell.swift */; };
+		4C382F0B1ED975CB0052734E /* BookingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C382F0A1ED975CA0052734E /* BookingHelper.swift */; };
 		4C42BFDE1EC2F8F00098B186 /* JaldiBookingPaymentTermOfUseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C42BFDD1EC2F8F00098B186 /* JaldiBookingPaymentTermOfUseCell.swift */; };
 		4C42BFE11EC30B320098B186 /* JaldiBookingPaymentDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C42BFE01EC30B320098B186 /* JaldiBookingPaymentDetailsCell.swift */; };
 		4C42BFE41EC3471F0098B186 /* JaldiPaymentPriceDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C42BFE31EC3471F0098B186 /* JaldiPaymentPriceDetailsView.swift */; };
@@ -29,7 +30,6 @@
 		4C4587961EB4C23500169AC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C4587941EB4C23500169AC1 /* LaunchScreen.storyboard */; };
 		4C4998F71EBB0E100034819B /* BookingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4998F61EBB0E100034819B /* BookingObject.swift */; };
 		4C4998FA1EBB109B0034819B /* JaldiValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4998F91EBB109B0034819B /* JaldiValidator.swift */; };
-		4C4998FC1EBB11280034819B /* BookingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4998FB1EBB11280034819B /* BookingHelper.swift */; };
 		4C4999001EBB214E0034819B /* JaldiBookingDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4998FF1EBB214E0034819B /* JaldiBookingDetailsViewController.swift */; };
 		4C4999031EBB25590034819B /* JaldiBookingDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4999021EBB25590034819B /* JaldiBookingDetailsTableViewCell.swift */; };
 		4C4999051EBB3D990034819B /* JaldiBookingDetailsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4999041EBB3D990034819B /* JaldiBookingDetailsHeaderCell.swift */; };
@@ -97,6 +97,7 @@
 		4C2DAA031EB9D450002FCAD5 /* JaldiOnBoradingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnBoradingListViewController.swift; sourceTree = "<group>"; };
 		4C2DAA061EB9D450002FCAD5 /* JaldiOnBoradingListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnBoradingListViewCell.swift; sourceTree = "<group>"; };
 		4C2DAA071EB9D450002FCAD5 /* JaldiOnBoradingListViewHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnBoradingListViewHeaderCell.swift; sourceTree = "<group>"; };
+		4C382F0A1ED975CA0052734E /* BookingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingHelper.swift; sourceTree = "<group>"; };
 		4C42BFDD1EC2F8F00098B186 /* JaldiBookingPaymentTermOfUseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingPaymentTermOfUseCell.swift; sourceTree = "<group>"; };
 		4C42BFE01EC30B320098B186 /* JaldiBookingPaymentDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingPaymentDetailsCell.swift; sourceTree = "<group>"; };
 		4C42BFE31EC3471F0098B186 /* JaldiPaymentPriceDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiPaymentPriceDetailsView.swift; sourceTree = "<group>"; };
@@ -110,7 +111,6 @@
 		4C4587971EB4C23500169AC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C4998F61EBB0E100034819B /* BookingObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingObject.swift; sourceTree = "<group>"; };
 		4C4998F91EBB109B0034819B /* JaldiValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiValidator.swift; sourceTree = "<group>"; };
-		4C4998FB1EBB11280034819B /* BookingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingHelper.swift; sourceTree = "<group>"; };
 		4C4998FF1EBB214E0034819B /* JaldiBookingDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingDetailsViewController.swift; sourceTree = "<group>"; };
 		4C4999021EBB25590034819B /* JaldiBookingDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		4C4999041EBB3D990034819B /* JaldiBookingDetailsHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingDetailsHeaderCell.swift; sourceTree = "<group>"; };
@@ -290,6 +290,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		4C382F091ED975CA0052734E /* BookingHelper */ = {
+			isa = PBXGroup;
+			children = (
+				4C382F0A1ED975CA0052734E /* BookingHelper.swift */,
+			);
+			path = BookingHelper;
+			sourceTree = "<group>";
+		};
 		4C42BFDF1EC30B060098B186 /* PaymentDetailsCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -356,8 +364,8 @@
 		4C4998F81EBB109B0034819B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				4C382F091ED975CA0052734E /* BookingHelper */,
 				4C4998F91EBB109B0034819B /* JaldiValidator.swift */,
-				4C4998FB1EBB11280034819B /* BookingHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -858,7 +866,6 @@
 				4C4999031EBB25590034819B /* JaldiBookingDetailsTableViewCell.swift in Sources */,
 				4C55BB3C1ECF1252003F6241 /* JaldiLoginTask.swift in Sources */,
 				4C4999001EBB214E0034819B /* JaldiBookingDetailsViewController.swift in Sources */,
-				4C4998FC1EBB11280034819B /* BookingHelper.swift in Sources */,
 				4C25C7C21EBC9D8400092203 /* JaldiBookingContactInfoViewController.swift in Sources */,
 				4C832B0B1EB775DD0092A853 /* JaldiNotInYourAreaViewController.swift in Sources */,
 				4C53C6851ECB30240022AFDB /* JaldiPlacePicker.swift in Sources */,
@@ -895,6 +902,7 @@
 				4C55BB341ECEEA18003F6241 /* JaldiOperation.swift in Sources */,
 				4C27C0811ED724EA00B158C6 /* JaldiOrderState.swift in Sources */,
 				4C8AAB111ED5C5BF009A522D /* JaldiOrderTask.swift in Sources */,
+				4C382F0B1ED975CB0052734E /* BookingHelper.swift in Sources */,
 				4CCBC0611ED030AA00716749 /* JaldiRegistration.swift in Sources */,
 				4CED685C1EB89594001A7CC5 /* JaldiHomeCollectionViewCell.swift in Sources */,
 				4C49990B1EBB65210034819B /* JaldiBookingDescriptionTableCell.swift in Sources */,
