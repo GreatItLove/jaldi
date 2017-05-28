@@ -44,26 +44,27 @@ public class OrderDaoImpl {
             @Override
             public PreparedStatement createPreparedStatement(Connection connection)
                     throws SQLException {
-                PreparedStatement ps = connection.prepareStatement("INSERT INTO `order` (type, status, workers, hours, address, latitude, longitude, cost, paymentType, orderDate, userId) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", Statement.RETURN_GENERATED_KEYS);
+                PreparedStatement ps = connection.prepareStatement("INSERT INTO `order` (type, status, workers, hours, address, comment, latitude, longitude, cost, paymentType, orderDate, userId) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", Statement.RETURN_GENERATED_KEYS);
                 ps.setString(1, order.getType().name());
                 ps.setString(2, order.getStatus().name());
                 ps.setInt(3, order.getWorkers());
                 ps.setFloat(4, order.getHours());
                 ps.setString(5, order.getAddress());
+                ps.setString(6, order.getComment());
                 if(order.getLatitude() == null) {
-                    ps.setNull(6, Types.DECIMAL);
-                } else {
-                    ps.setDouble(6, order.getLatitude());
-                }
-                if(order.getLongitude() == null) {
                     ps.setNull(7, Types.DECIMAL);
                 } else {
-                    ps.setDouble(7, order.getLongitude());
+                    ps.setDouble(7, order.getLatitude());
                 }
-                ps.setBigDecimal(8, order.getCost());
-                ps.setString(9, order.getPaymentType().name());
-                ps.setTimestamp(10, new Timestamp(order.getOrderDate().getTime()));
-                ps.setLong(11, order.getUser().getId());
+                if(order.getLongitude() == null) {
+                    ps.setNull(8, Types.DECIMAL);
+                } else {
+                    ps.setDouble(8, order.getLongitude());
+                }
+                ps.setBigDecimal(9, order.getCost());
+                ps.setString(10, order.getPaymentType().name());
+                ps.setTimestamp(11, new Timestamp(order.getOrderDate().getTime()));
+                ps.setLong(12, order.getUser().getId());
                 return ps;
             }
         }, holder);
@@ -76,7 +77,7 @@ public class OrderDaoImpl {
             Map namedParameters = new HashMap();
             namedParameters.put("type", type);
             namedParameters.put("status", status);
-            return namedJdbc.query("SELECT `id`, `type`, `status`, `workers`, `hours`, `address`, `latitude`, " +
+            return namedJdbc.query("SELECT `id`, `type`, `status`, `workers`, `hours`, `address`, `comment`, `latitude`, " +
                     "`longitude`, `cost`, `paymentType`, `orderDate`, `userId`, `creationDate` FROM `order` WHERE (:type is null OR `type` = :type) AND (:status is null OR `status` = :status)", namedParameters, new OrderMapper());
         } catch (DataAccessException e) {
             return Collections.emptyList();

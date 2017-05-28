@@ -40,6 +40,7 @@ public class Order {
     private int workers;
     private float hours;
     private String address;
+    private String comment;
     private Double latitude;
     private Double longitude;
     private BigDecimal cost;
@@ -94,6 +95,14 @@ public class Order {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public Double getLatitude() {
