@@ -103,7 +103,10 @@ class JaldiBookingPaymentViewController: UIViewController ,BookingNavigation {
         let storyboard: UIStoryboard = UIStoryboard(name: "Order", bundle: nil)
         let orderStateViewController = storyboard.instantiateViewController(withIdentifier: "JaldiOrderStateViewController") as? JaldiOrderStateViewController
         orderStateViewController?.order = order
-        self.present(orderStateViewController!, animated: true, completion: nil)
+        self.navigationController?.dismiss(animated: false)
+        if let topController = UIApplication.shared.keyWindow?.rootViewController {
+            topController.present(orderStateViewController!, animated: true, completion: nil)
+        }
     }
     //MARK: Validation
     private func checkRequiredFields() -> Bool {

@@ -50,7 +50,8 @@ class JaldiOrderTask: JaldiOperation {
                 return nil
         }
         let bookingAddress = UserProfile.currentProfile.user?.address ?? ""
-        self.init(type: "CLEANER", workers: 1, address: bookingAddress, comment:bookingObject.description!, hours: bookingObject.bookingDetails.hours, cost: bookingObject.cost, latitude: latitude, longitude: longitude, paymentType: "CASH", orderDate: bookingObject.bookingTime ?? Date())
+        let bookingComment = bookingObject.description ?? ""
+        self.init(type: "CLEANER", workers: 1, address: bookingAddress, comment:bookingComment, hours: bookingObject.bookingDetails.hours, cost: bookingObject.cost, latitude: latitude, longitude: longitude, paymentType: "CASH", orderDate: bookingObject.bookingTime ?? Date())
     }
     
     var request: JaldiRequest {

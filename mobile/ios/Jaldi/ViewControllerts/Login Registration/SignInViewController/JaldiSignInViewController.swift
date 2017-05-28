@@ -44,6 +44,7 @@ class JaldiSignInViewController: UIViewController {
         
         let task  = JaldiLoginTask(user: userName, password: password)
         task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: { (value) in
+            self.view.endEditing(true)
             self.getProfile()
 //            UserProfile.currentProfile.loginAsGuest(guest: user)
         }) { (error, _) in

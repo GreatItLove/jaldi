@@ -49,4 +49,11 @@ extension JaldiOrderListViewController: UITableViewDelegate,UITableViewDataSourc
         cell.configureWith(order: orders[indexPath.row])
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Order", bundle: nil)
+        let orderStateViewController = storyboard.instantiateViewController(withIdentifier: "JaldiOrderStateViewController") as? JaldiOrderStateViewController
+        orderStateViewController?.order = nil
+        self.present(orderStateViewController!, animated: true, completion: nil)
+    }
 }

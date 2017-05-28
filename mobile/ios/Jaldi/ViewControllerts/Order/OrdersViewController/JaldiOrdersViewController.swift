@@ -45,8 +45,8 @@ class JaldiOrdersViewController: UIViewController {
         self.upComingOrderListController.orderListType = .upcoming
         self.inProgressOrderListController.orderListType = .inProgress
         
-        let VCsArray = [self.pastOrderListController, self.upComingOrderListController, self.inProgressOrderListController] as [UIViewController]
-        let buttonTitles = ["Past", "Upcoming", "In progress",]
+        let VCsArray = [self.inProgressOrderListController, self.upComingOrderListController, self.pastOrderListController] as [UIViewController]
+        let buttonTitles = ["In progress", "Upcoming", "Past"]
         
         // Sample customization
         ordersContainerView.setOriginY(origin: 0)
