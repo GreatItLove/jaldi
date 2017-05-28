@@ -39,9 +39,9 @@ struct HomeCategoryHeleper {
         static let handyMan = "Handyman"
     }
     struct HomeCategoryDescription {
-        static let carpenter = "Carpenter"
-        static let mason = "Mason"
-        static let acTechnical = "Ac Technical"
+        static let carpenter = "From the ground up!"
+        static let mason = "Build the future"
+        static let acTechnical = "Breath of fresh air"
         static let electrician = "Don't shock yourself"
         static let painter = "Color your world"
         static let plumber = "No more leaks"

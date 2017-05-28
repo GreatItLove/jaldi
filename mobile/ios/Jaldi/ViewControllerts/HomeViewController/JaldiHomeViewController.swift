@@ -20,7 +20,6 @@ class JaldiHomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configuration()
-        self.showPlacePickerIfNeeded()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -83,7 +82,7 @@ class JaldiHomeViewController: UIViewController {
     @IBAction func changeAddressAction(_ sender: Any) {
        self.presentPlacePicker()
     }
-    private func presentPlacePicker() {
+    func presentPlacePicker() {
         let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
         let placePicker = storyboard.instantiateViewController(withIdentifier: "JaldiPlacePicker") as? JaldiPlacePicker
         placePicker?.delegate = self
@@ -163,7 +162,9 @@ extension JaldiHomeViewController: UICollectionViewDelegate,UICollectionViewData
     }
     private func checkUserLocation() -> Bool {
         guard let _ = UserProfile.currentProfile.user?.latitude, let _ = UserProfile.currentProfile.user?.longitude else {
-            self.showAlertWith(title: nil, message: NSLocalizedString("CooseYourLocationMessage", comment: ""))
+            let alert = UIAlertController(title: title, message: NSLocalizedString("CooseYourLocationMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: UIAlertActionStyle.default, handler: { (alert: UIAlertAction!) in self.presentPlacePicker() }))
+            self.present(alert, animated: true, completion: nil)
             return false
         }
         return true

@@ -14,6 +14,7 @@ class JaldiOrderTask: JaldiOperation {
     var type: String
     var workers: Int
     var address: String
+    var comment: String
     var hours: Int
     var cost: Float
     var latitude: Double
@@ -24,6 +25,7 @@ class JaldiOrderTask: JaldiOperation {
     init(type: String,
          workers: Int,
          address: String,
+         comment: String,
          hours: Int,
          cost: Float,
          latitude: Double,
@@ -34,6 +36,7 @@ class JaldiOrderTask: JaldiOperation {
         self.type = type
         self.workers = workers
         self.address = address
+        self.comment = comment
         self.hours = hours
         self.cost = cost
         self.latitude = latitude
@@ -47,7 +50,7 @@ class JaldiOrderTask: JaldiOperation {
                 return nil
         }
         let bookingAddress = UserProfile.currentProfile.user?.address ?? ""
-        self.init(type: "CLEANER", workers: 1, address: bookingAddress, hours: bookingObject.bookingDetails.hours, cost: bookingObject.cost, latitude: latitude, longitude: longitude, paymentType: "CASH", orderDate: bookingObject.bookingTime ?? Date())
+        self.init(type: "CLEANER", workers: 1, address: bookingAddress, comment:bookingObject.description!, hours: bookingObject.bookingDetails.hours, cost: bookingObject.cost, latitude: latitude, longitude: longitude, paymentType: "CASH", orderDate: bookingObject.bookingTime ?? Date())
     }
     
     var request: JaldiRequest {
@@ -56,6 +59,7 @@ class JaldiOrderTask: JaldiOperation {
         let orderDict  = ["type" : type,
                           "workers" : workers,
                           "address" : address,
+                          "comment" : comment,
                           "hours" : hours,
                           "cost" : cost,
                           "latitude" : latitude,
