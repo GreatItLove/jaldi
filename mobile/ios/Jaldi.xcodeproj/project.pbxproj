@@ -71,6 +71,9 @@
 		4C8AAB0F1ED5C412009A522D /* OrderRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8AAB0E1ED5C412009A522D /* OrderRequest.swift */; };
 		4C8AAB111ED5C5BF009A522D /* JaldiOrderTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8AAB101ED5C5BF009A522D /* JaldiOrderTask.swift */; };
 		4C8AAB131ED5D1A8009A522D /* JladiOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8AAB121ED5D1A8009A522D /* JladiOrder.swift */; };
+		4CC318531EDC3AAC00478B1C /* JaldiOrderStateCheckMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC318521EDC3AAC00478B1C /* JaldiOrderStateCheckMark.swift */; };
+		4CC318551EDC4AF900478B1C /* JaldiOrderWorkersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC318541EDC4AF900478B1C /* JaldiOrderWorkersView.swift */; };
+		4CC318571EDC540A00478B1C /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC318561EDC540A00478B1C /* CircleView.swift */; };
 		4CCBC0611ED030AA00716749 /* JaldiRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCBC0601ED030AA00716749 /* JaldiRegistration.swift */; };
 		4CCBC0681ED0674C00716749 /* Date+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCBC0651ED0674C00716749 /* Date+Helper.swift */; };
 		4CCBC0691ED0674C00716749 /* UIViewController+ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCBC0671ED0674C00716749 /* UIViewController+ProgressHUD.swift */; };
@@ -158,6 +161,19 @@
 		4C8AAB0E1ED5C412009A522D /* OrderRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderRequest.swift; sourceTree = "<group>"; };
 		4C8AAB101ED5C5BF009A522D /* JaldiOrderTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOrderTask.swift; sourceTree = "<group>"; };
 		4C8AAB121ED5D1A8009A522D /* JladiOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JladiOrder.swift; sourceTree = "<group>"; };
+		4CC318481EDC256A00478B1C /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		4CC318491EDC256A00478B1C /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		4CC3184A1EDC256A00478B1C /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		4CC3184B1EDC256A00478B1C /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		4CC3184C1EDC256A00478B1C /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		4CC3184D1EDC256A00478B1C /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		4CC3184E1EDC256A00478B1C /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		4CC3184F1EDC256A00478B1C /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		4CC318501EDC256A00478B1C /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		4CC318511EDC256A00478B1C /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		4CC318521EDC3AAC00478B1C /* JaldiOrderStateCheckMark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOrderStateCheckMark.swift; sourceTree = "<group>"; };
+		4CC318541EDC4AF900478B1C /* JaldiOrderWorkersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOrderWorkersView.swift; sourceTree = "<group>"; };
+		4CC318561EDC540A00478B1C /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		4CCBC0601ED030AA00716749 /* JaldiRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiRegistration.swift; sourceTree = "<group>"; };
 		4CCBC0651ED0674C00716749 /* Date+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Helper.swift"; sourceTree = "<group>"; };
 		4CCBC0671ED0674C00716749 /* UIViewController+ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ProgressHUD.swift"; sourceTree = "<group>"; };
@@ -242,6 +258,7 @@
 		4C2DA9F51EB9D178002FCAD5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				4CC318561EDC540A00478B1C /* CircleView.swift */,
 				4C382F341ED9821E0052734E /* SwiftPages.swift */,
 				4C2DA9F61EB9D1A3002FCAD5 /* AKPickerView.swift */,
 			);
@@ -317,6 +334,8 @@
 				4C382F101ED97D930052734E /* JaldiOrderState.swift */,
 				4C382F111ED97D930052734E /* JaldiOrderStateSeparatorView.swift */,
 				4C382F121ED97D930052734E /* JaldiOrderStateView.swift */,
+				4CC318541EDC4AF900478B1C /* JaldiOrderWorkersView.swift */,
+				4CC318521EDC3AAC00478B1C /* JaldiOrderStateCheckMark.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -602,6 +621,7 @@
 		4C7454DA1ED2D7C200F02267 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4CC318471EDC255200478B1C /* Fonts */,
 				4C7454DD1ED2D82000F02267 /* Localizable.strings */,
 			);
 			path = Resources;
@@ -679,6 +699,23 @@
 				4C8AAB101ED5C5BF009A522D /* JaldiOrderTask.swift */,
 			);
 			path = OrderTasks;
+			sourceTree = "<group>";
+		};
+		4CC318471EDC255200478B1C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4CC318481EDC256A00478B1C /* OpenSans-Bold.ttf */,
+				4CC318491EDC256A00478B1C /* OpenSans-BoldItalic.ttf */,
+				4CC3184A1EDC256A00478B1C /* OpenSans-ExtraBold.ttf */,
+				4CC3184B1EDC256A00478B1C /* OpenSans-ExtraBoldItalic.ttf */,
+				4CC3184C1EDC256A00478B1C /* OpenSans-Italic.ttf */,
+				4CC3184D1EDC256A00478B1C /* OpenSans-Light.ttf */,
+				4CC3184E1EDC256A00478B1C /* OpenSans-LightItalic.ttf */,
+				4CC3184F1EDC256A00478B1C /* OpenSans-Regular.ttf */,
+				4CC318501EDC256A00478B1C /* OpenSans-Semibold.ttf */,
+				4CC318511EDC256A00478B1C /* OpenSans-SemiboldItalic.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		4CCBC0641ED0674C00716749 /* Date */ = {
@@ -941,6 +978,7 @@
 				C65CB5071EB857F000DE65B7 /* JaldiHomeViewController.swift in Sources */,
 				4C53D6741ECC981E00A4A634 /* JaldiUser.swift in Sources */,
 				4CF754151ED86B7D00107540 /* JaldiSplashScreenViewController.swift in Sources */,
+				4CC318531EDC3AAC00478B1C /* JaldiOrderStateCheckMark.swift in Sources */,
 				4C382F2E1ED97FC90052734E /* JaldiOrdersViewController.swift in Sources */,
 				4C7FFAA41ECDB64100C95E71 /* NetworkDispatcher.swift in Sources */,
 				4C4E00901EC4833600B5E465 /* JaldiBookingPaymentMethodCell.swift in Sources */,
@@ -961,6 +999,7 @@
 				4CCBD3B01EBCB5F9009D5408 /* JaldiBookingDatePriceView.swift in Sources */,
 				4C4998FA1EBB109B0034819B /* JaldiValidator.swift in Sources */,
 				4C42BFDE1EC2F8F00098B186 /* JaldiBookingPaymentTermOfUseCell.swift in Sources */,
+				4CC318571EDC540A00478B1C /* CircleView.swift in Sources */,
 				4C7FFA9F1ECDB23E00C95E71 /* Dispatcher.swift in Sources */,
 				4C55BB401ECF1D06003F6241 /* JaldGetProfileTask.swift in Sources */,
 				4C4998F71EBB0E100034819B /* BookingObject.swift in Sources */,
@@ -982,6 +1021,7 @@
 				4C382F211ED97DFC0052734E /* JaldiOnboardingInputView.swift in Sources */,
 				4C55BB371ECEECC9003F6241 /* JaldiResponse.swift in Sources */,
 				4CED68661EB8D172001A7CC5 /* JaldiAnnouncementViewController.swift in Sources */,
+				4CC318551EDC4AF900478B1C /* JaldiOrderWorkersView.swift in Sources */,
 				4C382F3B1ED9AA5A0052734E /* JaldiOrderListTableViewCell.swift in Sources */,
 				4C55BB461ECF3D42003F6241 /* MobileVerification.swift in Sources */,
 				4CCBC06B1ED0676A00716749 /* UIViewController+Alert.swift in Sources */,

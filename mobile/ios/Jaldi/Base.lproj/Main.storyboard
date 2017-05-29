@@ -29,7 +29,7 @@
                                             <constraint firstAttribute="width" constant="30" id="Y0X-HZ-pt2"/>
                                             <constraint firstAttribute="height" constant="40" id="vha-3f-vgi"/>
                                         </constraints>
-                                        <state key="normal" image="mega_phone_icon">
+                                        <state key="normal" image="list_icon">
                                             <color key="titleColor" red="0.69803921568627447" green="0.69803921568627447" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -352,7 +352,7 @@
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="JaldiOnBoradingListViewHeaderCell" rowHeight="115" id="dws-wX-BAA" customClass="JaldiOnBoradingListViewHeaderCell" customModule="Jaldi" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55" width="414" height="115"/>
+                                        <rect key="frame" x="0.0" y="55.333333333333336" width="414" height="115"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dws-wX-BAA" id="x3D-e3-50o">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="115"/>
@@ -395,7 +395,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="JaldiOnBoradingListViewCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="JaldiOnBoradingListViewCell" rowHeight="90" id="38g-dd-OL0" customClass="JaldiOnBoradingListViewCell" customModule="Jaldi" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="170" width="414" height="90"/>
+                                        <rect key="frame" x="0.0" y="170.33333333333334" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="38g-dd-OL0" id="ePR-Fb-qEz">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
@@ -473,8 +473,8 @@
         <image name="close_button_light_gray" width="22" height="22"/>
         <image name="hb_logo_blue" width="115" height="115"/>
         <image name="icon-electrician-details" width="50" height="50"/>
+        <image name="list_icon" width="22" height="22"/>
         <image name="mega_phone_colored" width="50" height="50"/>
-        <image name="mega_phone_icon" width="22" height="22"/>
         <image name="serviceicon-plumbing-default" width="50" height="50"/>
     </resources>
 </document>

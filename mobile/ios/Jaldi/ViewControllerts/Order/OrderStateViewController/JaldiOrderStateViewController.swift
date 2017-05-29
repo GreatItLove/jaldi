@@ -12,6 +12,7 @@ class JaldiOrderStateViewController: UIViewController {
 
     let meterToMiles = 0.000621371
     @IBOutlet weak var orderStateView: JaldiOrderStateView!
+     @IBOutlet weak var workerView: JaldiOrderWorkersView!
     @IBOutlet weak var mapView: MKMapView!
     private var locationManager: CLLocationManager?
     @IBOutlet weak var timeLabel: UILabel!
@@ -28,6 +29,9 @@ class JaldiOrderStateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         orderStateView.configureWith(orderState: orderState)
+        if let order = self.order {
+            workerView.configureWith(order: order)
+        }
         configureTimeAndTitleLabels()
         configureLocationManager()
         self.addOrderPin()

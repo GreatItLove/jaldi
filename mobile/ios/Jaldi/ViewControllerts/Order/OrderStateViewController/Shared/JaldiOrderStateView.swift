@@ -9,17 +9,16 @@
 import UIKit
 
 class JaldiOrderStateView: UIView {
-    @IBOutlet weak var enRouteImageVew: UIImageView!
-    @IBOutlet weak var workingImageVew: UIImageView!
-    @IBOutlet weak var tidyingUpImageVew: UIImageView!
-    @IBOutlet weak var finishedImageVew: UIImageView!
+    @IBOutlet weak var enRouteStateCheckMark: JaldiOrderStateCheckMark!
+    @IBOutlet weak var workingStateCheckMark: JaldiOrderStateCheckMark!
+    @IBOutlet weak var tidyingUpStateCheckMark: JaldiOrderStateCheckMark!
+    @IBOutlet weak var finishedIStateCheckMark: JaldiOrderStateCheckMark!
     
     @IBOutlet weak var enRouteLabel: UILabel!
     @IBOutlet weak var workingLabel: UILabel!
     @IBOutlet weak var tidyingLabel: UILabel!
     @IBOutlet weak var finishedLabel: UILabel!
 
-    
     @IBOutlet weak var workingSeparator: JaldiOrderStateSeparatorView!
     @IBOutlet weak var tidyingUpSeparator: JaldiOrderStateSeparatorView!
     @IBOutlet weak var finishedSeparator: JaldiOrderStateSeparatorView!
@@ -32,10 +31,10 @@ class JaldiOrderStateView: UIView {
     
     private func configureIconsFor(orderState:JaldiOrderState) {
         for state in JaldiOrderState.allStates {
-            let imageView = self.imageViewForState(orderState: state)
+            let stateCheckMark = self.stateCheckMarkForState(orderState: state)
             let isSelected = state.rawValue <= orderState.rawValue
-            let imageName  = JaldiOrderStateHeleper.orderStateIconeFor(orderState: state, selected: isSelected)
-            imageView.image = UIImage(named: imageName)
+            stateCheckMark.configureWith(orderState: state, isSelected: isSelected)
+
         }
     }
     
@@ -56,16 +55,16 @@ class JaldiOrderStateView: UIView {
     }
    
     //Mark: Helpers
-    private func imageViewForState(orderState:JaldiOrderState) -> UIImageView {
+    private func stateCheckMarkForState(orderState:JaldiOrderState) -> JaldiOrderStateCheckMark {
         switch orderState {
         case .enRoute:
-            return enRouteImageVew
+            return enRouteStateCheckMark
         case .working:
-            return workingImageVew
+            return workingStateCheckMark
         case .tidyingUp:
-            return tidyingUpImageVew
+            return tidyingUpStateCheckMark
         case .finished:
-            return finishedImageVew
+            return finishedIStateCheckMark
         }
     }
     private func separatorFor(orderState:JaldiOrderState) -> JaldiOrderStateSeparatorView? {
@@ -80,6 +79,4 @@ class JaldiOrderStateView: UIView {
             return finishedSeparator
         }
     }
-
-
 }

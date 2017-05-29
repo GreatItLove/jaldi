@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 struct AppNotifications {
     static let loginNotificationName = "JALDI_APP_LOGIN_NOTIFICATION"
@@ -48,4 +48,7 @@ struct AppDateFormats {
     static let weekFormat = "EEEE, MMM d"
     static let timeFormat = "HH:mm a"
     static let appDateFormat = "dd/MM/YYYY HH:mm"
+}
+struct AppImages {
+    static let dumy_profile_pic = UIImage(named:"dummy_user_pic")!
 }

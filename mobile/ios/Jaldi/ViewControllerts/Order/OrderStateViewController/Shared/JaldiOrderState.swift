@@ -56,4 +56,16 @@ struct JaldiOrderStateHeleper {
             return CheckMarkIcons.blue
         }
     }
+    static func orderStateLabelTitleFor(orderState:JaldiOrderState , selected:Bool) -> String? {
+        switch orderState {
+        case .enRoute:
+            return selected ? nil : "1"
+        case .working:
+            return selected ? nil : "2"
+        case .tidyingUp:
+            return "3"
+        case .finished:
+            return "4"
+        }
+    }
 }
