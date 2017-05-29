@@ -41,6 +41,10 @@ class JaldiOrdersViewController: UIViewController {
     private func configurePages(){
         automaticallyAdjustsScrollViewInsets = false
         
+        self.pastOrderListController.delegate = self
+        self.upComingOrderListController.delegate = self
+        self.inProgressOrderListController.delegate = self
+        
         self.pastOrderListController.orderListType = .past
         self.upComingOrderListController.orderListType = .upcoming
         self.inProgressOrderListController.orderListType = .inProgress
@@ -72,6 +76,16 @@ class JaldiOrdersViewController: UIViewController {
 extension JaldiOrdersViewController: SwiftPagesDelegate {
     func SwiftPagesCurrentPageNumber(currentIndex: Int){
        print(currentIndex)
+    }
+}
+
+extension JaldiOrdersViewController: JaldiOrderListViewControllerDelegate {
+    func orderList(viewController:JaldiOrderListViewController, didSelect order:JaldiOrder) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Order", bundle: nil)
+        let orderStateViewController = storyboard.instantiateViewController(withIdentifier: "JaldiOrderStateViewController") as? JaldiOrderStateViewController
+        orderStateViewController?.order = order
+        orderStateViewController?.appearance = .push
+        self.navigationController?.pushViewController(orderStateViewController!, animated: true)
     }
 }
 

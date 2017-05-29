@@ -100,7 +100,11 @@ class JaldiHomeViewController: UIViewController {
     private func presentOrders() {
         let storyboard: UIStoryboard = UIStoryboard(name: "Order", bundle: nil)
         let ordersViewController = storyboard.instantiateViewController(withIdentifier: "JaldiOrdersViewController") as? JaldiOrdersViewController
-        self.present(ordersViewController!, animated: true, completion: nil)
+        let navController = UINavigationController(rootViewController: ordersViewController!)
+        navController.isNavigationBarHidden = true
+        self.present(navController, animated: true, completion: nil)
+
+//        self.present(ordersViewController!, animated: true, completion: nil)
     }
 
 }

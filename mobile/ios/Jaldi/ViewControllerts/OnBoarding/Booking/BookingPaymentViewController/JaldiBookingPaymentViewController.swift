@@ -103,6 +103,7 @@ class JaldiBookingPaymentViewController: UIViewController ,BookingNavigation {
         let storyboard: UIStoryboard = UIStoryboard(name: "Order", bundle: nil)
         let orderStateViewController = storyboard.instantiateViewController(withIdentifier: "JaldiOrderStateViewController") as? JaldiOrderStateViewController
         orderStateViewController?.order = order
+        orderStateViewController?.appearance = .present
         self.navigationController?.dismiss(animated: false)
         if let topController = UIApplication.shared.keyWindow?.rootViewController {
             topController.present(orderStateViewController!, animated: true, completion: nil)

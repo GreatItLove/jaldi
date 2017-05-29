@@ -32,7 +32,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kpf-I8-R0y">
-                                        <rect key="frame" x="75" y="20.5" width="170" height="39"/>
+                                        <rect key="frame" x="75" y="21" width="170" height="39"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOME CLEANING" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxq-Cn-Jtx">
                                                 <rect key="frame" x="0.0" y="0.0" width="170" height="22.5"/>
@@ -251,7 +251,7 @@
                                         </connections>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finished" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i62-d7-A98">
-                                        <rect key="frame" x="271.5" y="47" width="49" height="16.5"/>
+                                        <rect key="frame" x="272" y="47" width="49" height="16.5"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                         <color key="textColor" red="0.19215686274509802" green="0.19215686274509802" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -346,7 +346,7 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="PxR-Vz-CnJ">
-                                        <rect key="frame" x="105" y="13.5" width="75.5" height="32.5"/>
+                                        <rect key="frame" x="105" y="14" width="75.5" height="32.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sonia Agraval" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Og7-Ju-383">
                                                 <rect key="frame" x="0.0" y="0.0" width="75.5" height="16.5"/>
@@ -409,7 +409,7 @@
                                         <rect key="frame" x="269" y="6" width="51" height="45"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="cS6-Ea-GjY">
-                                                <rect key="frame" x="7" y="5" width="37" height="35"/>
+                                                <rect key="frame" x="7.5" y="5" width="37" height="35"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="order_cancel_icon" translatesAutoresizingMaskIntoConstraints="NO" id="cu2-Ts-8mz">
                                                         <rect key="frame" x="9" y="0.0" width="19" height="19"/>
@@ -491,6 +491,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cloasButton" destination="XBG-iK-w7W" id="hCt-1T-dU4"/>
                         <outlet property="mapView" destination="Scz-IX-aRs" id="xBY-fS-JoB"/>
                         <outlet property="milesAwayLabel" destination="eIW-Xp-ACl" id="F2P-mf-f2j"/>
                         <outlet property="orderStateView" destination="seF-Cj-M7u" id="7Ef-mn-0ML"/>
@@ -600,13 +601,8 @@
                                     <constraint firstAttribute="height" constant="35" id="esK-yo-pDX"/>
                                 </constraints>
                             </view>
-<<<<<<< Updated upstream
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CyX-QV-apV">
-                                <rect key="frame" x="0.0" y="35" width="375" height="632"/>
-=======
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CyX-QV-apV">
                                 <rect key="frame" x="0.0" y="35" width="320" height="445"/>
->>>>>>> Stashed changes
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="JaldiOrderListTableViewCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="JaldiOrderListTableViewCell" rowHeight="90" id="aR6-AX-87d" customClass="JaldiOrderListTableViewCell" customModule="Jaldi" customModuleProvider="target">

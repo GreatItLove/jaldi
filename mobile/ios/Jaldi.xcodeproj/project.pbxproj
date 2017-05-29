@@ -74,6 +74,7 @@
 		4CC318531EDC3AAC00478B1C /* JaldiOrderStateCheckMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC318521EDC3AAC00478B1C /* JaldiOrderStateCheckMark.swift */; };
 		4CC318551EDC4AF900478B1C /* JaldiOrderWorkersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC318541EDC4AF900478B1C /* JaldiOrderWorkersView.swift */; };
 		4CC318571EDC540A00478B1C /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC318561EDC540A00478B1C /* CircleView.swift */; };
+		4CC3185B1EDC648500478B1C /* UIViewController+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC3185A1EDC648500478B1C /* UIViewController+Appearance.swift */; };
 		4CCBC0611ED030AA00716749 /* JaldiRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCBC0601ED030AA00716749 /* JaldiRegistration.swift */; };
 		4CCBC0681ED0674C00716749 /* Date+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCBC0651ED0674C00716749 /* Date+Helper.swift */; };
 		4CCBC0691ED0674C00716749 /* UIViewController+ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCBC0671ED0674C00716749 /* UIViewController+ProgressHUD.swift */; };
@@ -174,6 +175,7 @@
 		4CC318521EDC3AAC00478B1C /* JaldiOrderStateCheckMark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOrderStateCheckMark.swift; sourceTree = "<group>"; };
 		4CC318541EDC4AF900478B1C /* JaldiOrderWorkersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOrderWorkersView.swift; sourceTree = "<group>"; };
 		4CC318561EDC540A00478B1C /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		4CC3185A1EDC648500478B1C /* UIViewController+Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Appearance.swift"; sourceTree = "<group>"; };
 		4CCBC0601ED030AA00716749 /* JaldiRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiRegistration.swift; sourceTree = "<group>"; };
 		4CCBC0651ED0674C00716749 /* Date+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Helper.swift"; sourceTree = "<group>"; };
 		4CCBC0671ED0674C00716749 /* UIViewController+ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ProgressHUD.swift"; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 		4C2B1A411EB73FD100F63E7D /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				4CC3185A1EDC648500478B1C /* UIViewController+Appearance.swift */,
 				4C2B1A421EB73FD100F63E7D /* HBAppColors.swift */,
 				4CED68531EB870A5001A7CC5 /* JaldiAppConstants.swift */,
 			);
@@ -969,6 +972,7 @@
 				4C2DAA0A1EB9D450002FCAD5 /* JaldiOnBoradingListViewHeaderCell.swift in Sources */,
 				4C42BFE41EC3471F0098B186 /* JaldiPaymentPriceDetailsView.swift in Sources */,
 				4C4999031EBB25590034819B /* JaldiBookingDetailsTableViewCell.swift in Sources */,
+				4CC3185B1EDC648500478B1C /* UIViewController+Appearance.swift in Sources */,
 				4C55BB3C1ECF1252003F6241 /* JaldiLoginTask.swift in Sources */,
 				4C4999001EBB214E0034819B /* JaldiBookingDetailsViewController.swift in Sources */,
 				4C382F131ED97D930052734E /* JaldiOrderStateViewController.swift in Sources */,

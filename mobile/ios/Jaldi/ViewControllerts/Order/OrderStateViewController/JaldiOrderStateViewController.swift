@@ -18,6 +18,8 @@ class JaldiOrderStateViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var orderTitleLabel: UILabel!
     @IBOutlet weak var milesAwayLabel: UILabel!
+    @IBOutlet weak var cloasButton: UIButton!
+    var appearance: Appearance = .none
     private var orderState: JaldiOrderState = JaldiOrderState.tidyingUp
     var order: JaldiOrder?
     lazy var formatter: DateFormatter = {
@@ -35,8 +37,21 @@ class JaldiOrderStateViewController: UIViewController {
         configureTimeAndTitleLabels()
         configureLocationManager()
         self.addOrderPin()
+        configureAppearance()
     }
     //MARK: Configuration
+    private func configureAppearance() {
+        switch appearance {
+        case .push:
+            let image  = UIImage(named: "backward_arrow_light_gray")
+            cloasButton.setImage(image, for: .normal)
+        case .present:
+            let image  = UIImage(named: "close_button_light_gray")
+            cloasButton.setImage(image, for: .normal)
+        case .none:
+            cloasButton.isHidden = true
+        }
+    }
     private func addOrderPin() {
         guard  let cureentOrder = order, let latitude = cureentOrder.latitude, let longitude = cureentOrder.longitude else{
             return
@@ -92,8 +107,16 @@ class JaldiOrderStateViewController: UIViewController {
     }
     //MARK: Actions
     @IBAction func closeAction(_ sender: Any) {
-        self.dismiss(animated: true) {
+        switch appearance {
+        case .push:
+            self.navigationController?.popViewController(animated: true)
+        case .present:
+            self.dismiss(animated: true) {
+            }
+        case .none:
+            break
         }
+       
     }
 }
 extension JaldiOrderStateViewController:MKMapViewDelegate {
@@ -117,11 +140,10 @@ extension JaldiOrderStateViewController:MKMapViewDelegate {
             annotationView!.annotation = annotation
         }
         annotationView!.image = UIImage(named: "house_icon")
-        
         return annotationView
-        
     }
 }
+
 extension JaldiOrderStateViewController:CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if (status == .restricted || status == .denied)  {
