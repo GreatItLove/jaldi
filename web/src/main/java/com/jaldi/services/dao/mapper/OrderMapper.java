@@ -23,9 +23,17 @@ public class OrderMapper implements RowMapper<Order> {
         order.setWorkers(rs.getInt("workers"));
         order.setHours(rs.getInt("hours"));
         order.setAddress(rs.getString("address"));
+        order.setCity(rs.getString("city"));
+        order.setCountry(rs.getString("country"));
         order.setComment(rs.getString("comment"));
-        order.setLatitude(rs.getDouble("latitude"));
-        order.setLongitude(rs.getDouble("longitude"));
+        double latitude = rs.getDouble("latitude");
+        if (!rs.wasNull()) {
+            order.setLatitude(latitude);
+        }
+        double longitude = rs.getDouble("longitude");
+        if (!rs.wasNull()) {
+            order.setLongitude(longitude);
+        }
         order.setCost(rs.getBigDecimal("cost"));
         order.setPaymentType(Order.PaymentType.valueOf(rs.getString("paymentType")));
         order.setOrderDate(rs.getTimestamp("orderDate"));
