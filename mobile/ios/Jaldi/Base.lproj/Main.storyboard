@@ -29,7 +29,7 @@
                                             <constraint firstAttribute="width" constant="30" id="Y0X-HZ-pt2"/>
                                             <constraint firstAttribute="height" constant="40" id="vha-3f-vgi"/>
                                         </constraints>
-                                        <state key="normal" image="mega_phone_icon">
+                                        <state key="normal" image="list_icon">
                                             <color key="titleColor" red="0.69803921568627447" green="0.69803921568627447" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -277,15 +277,15 @@
                                     <constraint firstAttribute="width" constant="150" id="dp9-A2-RgC"/>
                                 </constraints>
                             </imageView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bTv-kc-0rz">
-                                <rect key="frame" x="189" y="309.66666666666669" width="37" height="37"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="bTv-kc-0rz">
+                                <rect key="frame" x="197" y="368" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="OG8-ws-IND" firstAttribute="centerX" secondItem="wre-rc-ycU" secondAttribute="centerX" id="G53-pW-Iid"/>
                             <constraint firstItem="OG8-ws-IND" firstAttribute="centerY" secondItem="wre-rc-ycU" secondAttribute="centerY" id="GDj-Yh-Dcy"/>
-                            <constraint firstItem="bTv-kc-0rz" firstAttribute="centerY" secondItem="OG8-ws-IND" secondAttribute="centerY" constant="-40" id="L6k-nw-o6M"/>
+                            <constraint firstItem="bTv-kc-0rz" firstAttribute="centerY" secondItem="OG8-ws-IND" secondAttribute="centerY" constant="10" id="L6k-nw-o6M"/>
                             <constraint firstItem="bTv-kc-0rz" firstAttribute="centerX" secondItem="wre-rc-ycU" secondAttribute="centerX" id="OvJ-Ig-udO"/>
                         </constraints>
                     </view>
@@ -352,7 +352,7 @@
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="JaldiOnBoradingListViewHeaderCell" rowHeight="115" id="dws-wX-BAA" customClass="JaldiOnBoradingListViewHeaderCell" customModule="Jaldi" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55" width="414" height="115"/>
+                                        <rect key="frame" x="0.0" y="55.333333333333336" width="414" height="115"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dws-wX-BAA" id="x3D-e3-50o">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="115"/>
@@ -395,7 +395,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="JaldiOnBoradingListViewCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="JaldiOnBoradingListViewCell" rowHeight="90" id="38g-dd-OL0" customClass="JaldiOnBoradingListViewCell" customModule="Jaldi" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="170" width="414" height="90"/>
+                                        <rect key="frame" x="0.0" y="170.33333333333334" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="38g-dd-OL0" id="ePR-Fb-qEz">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
@@ -473,8 +473,8 @@
         <image name="close_button_light_gray" width="22" height="22"/>
         <image name="hb_logo_blue" width="115" height="115"/>
         <image name="icon-electrician-details" width="50" height="50"/>
+        <image name="list_icon" width="22" height="22"/>
         <image name="mega_phone_colored" width="50" height="50"/>
-        <image name="mega_phone_icon" width="22" height="22"/>
         <image name="serviceicon-plumbing-default" width="50" height="50"/>
     </resources>
 </document>

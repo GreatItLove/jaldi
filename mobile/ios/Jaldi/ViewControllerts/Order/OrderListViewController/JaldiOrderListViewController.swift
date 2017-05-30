@@ -12,11 +12,15 @@ enum OrderListType: Int {
     case upcoming
     case inProgress
 }
+protocol JaldiOrderListViewControllerDelegate: class {
+    func orderList(viewController:JaldiOrderListViewController, didSelect order:JaldiOrder)
+}
 class JaldiOrderListViewController: UIViewController {
 
     @IBOutlet weak var theTableView: UITableView!
     var orderListType:OrderListType = .past
     fileprivate var orders: [JaldiOrder]?
+    weak var delegate: JaldiOrderListViewControllerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
         theTableView.rowHeight = 90
@@ -51,9 +55,11 @@ extension JaldiOrderListViewController: UITableViewDelegate,UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Order", bundle: nil)
-        let orderStateViewController = storyboard.instantiateViewController(withIdentifier: "JaldiOrderStateViewController") as? JaldiOrderStateViewController
-        orderStateViewController?.order = nil
-        self.present(orderStateViewController!, animated: true, completion: nil)
-    }
+        guard let orders = self.orders else {
+            return
+        }
+        let order = orders[indexPath.row]
+        delegate?.orderList(viewController: self, didSelect: order)
+
+     }
 }
