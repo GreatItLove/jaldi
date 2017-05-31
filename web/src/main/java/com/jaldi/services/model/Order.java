@@ -27,6 +27,11 @@ public class Order {
 
     public enum Status {
         CREATED,
+        ASSIGNED,
+        EN_ROUTE,
+        WORKING,
+        TIDYING_UP,
+        FINISHED,
         CANCELED
     }
 
@@ -47,6 +52,8 @@ public class Order {
     private Double longitude;
     private BigDecimal cost;
     private PaymentType paymentType;
+    private Integer userRating;
+    private String userFeedback;
     private Date orderDate;
     private User user;
     private Date creationDate;
@@ -153,6 +160,22 @@ public class Order {
 
     public void setPaymentType(PaymentType paymentType) {
         this.paymentType = paymentType;
+    }
+
+    public Integer getUserRating() {
+        return userRating;
+    }
+
+    public void setUserRating(Integer userRating) {
+        this.userRating = userRating;
+    }
+
+    public String getUserFeedback() {
+        return userFeedback;
+    }
+
+    public void setUserFeedback(String userFeedback) {
+        this.userFeedback = userFeedback;
     }
 
     @JsonSerialize(using = CommonDateTimeSerializer.class)

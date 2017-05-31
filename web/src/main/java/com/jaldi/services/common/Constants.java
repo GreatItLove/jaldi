@@ -13,4 +13,9 @@ public class Constants {
 
     public static final String COMMON_DATE_TIME_FORMAT = "dd/MM/yyyy HH:mm";
 
+    public static final String OPERATOR_PERMISSION_NAME = "OPERATOR";
+
+    public static final String ADMIN_PERMISSION_NAME = "ADMIN";
+
+
 }

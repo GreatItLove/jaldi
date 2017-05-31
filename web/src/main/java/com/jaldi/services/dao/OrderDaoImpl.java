@@ -4,6 +4,7 @@ import com.jaldi.services.dao.mapper.OrderMapper;
 import com.jaldi.services.model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -80,9 +81,53 @@ public class OrderDaoImpl {
             namedParameters.put("type", type);
             namedParameters.put("status", status);
             return namedJdbc.query("SELECT `id`, `type`, `status`, `workers`, `hours`, `address`, `city`, `country`, `comment`, `latitude`, " +
-                    "`longitude`, `cost`, `paymentType`, `orderDate`, `userId`, `creationDate` FROM `order` WHERE (:type is null OR `type` = :type) AND (:status is null OR `status` = :status)", namedParameters, new OrderMapper());
+                    "`longitude`, `cost`, `paymentType`, `userRating`, `userFeedback`, `orderDate`, `userId`, `creationDate` FROM `order` WHERE (:type is null OR `type` = :type) AND (:status is null OR `status` = :status);", namedParameters, new OrderMapper());
         } catch (DataAccessException e) {
             return Collections.emptyList();
         }
+    }
+
+    public List<Order> findForUser(long userId) {
+        try {
+            Map namedParameters = new HashMap();
+            namedParameters.put("userId", userId);
+            return namedJdbc.query("SELECT `id`, `type`, `status`, `workers`, `hours`, `address`, `city`, `country`, `comment`, `latitude`, " +
+                    "`longitude`, `cost`, `paymentType`, `userRating`, `userFeedback`, `orderDate`, `userId`, `creationDate` FROM `order` WHERE userId = :userId ORDER BY creationDate DESC;", namedParameters, new OrderMapper());
+        } catch (DataAccessException e) {
+            return Collections.emptyList();
+        }
+    }
+
+    public Order findOne(long id) {
+        try {
+            return jdbcTemplate.queryForObject("SELECT `id`, `type`, `status`, `workers`, `hours`, `address`, `city`, `country`, `comment`, `latitude`, " +
+                    "`longitude`, `cost`, `paymentType`, `userRating`, `userFeedback`, `orderDate`, `userId`, `creationDate` FROM `order` WHERE id = ?;", new OrderMapper(), id);
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+    }
+
+    public void updateWorkerRating(long id, Order order) {
+        Map namedParameters = new HashMap();
+        namedParameters.put("userId", id);
+        namedParameters.put("userRating", order.getUserRating());
+        namedParameters.put("id", order.getId());
+        namedJdbc.update("update `order` set `userRating` = :userRating where `id` = :id AND `userId` = :userId;", namedParameters);
+    }
+
+    public void updateFeedback(long id, Order order) {
+        Map namedParameters = new HashMap();
+        namedParameters.put("userId", id);
+        namedParameters.put("userFeedback", order.getUserFeedback());
+        namedParameters.put("id", order.getId());
+        namedJdbc.update("update `order` set `userFeedback` = :userFeedback where `id` = :id AND `userId` = :userId;", namedParameters);
+    }
+
+    public void cancelOrder(long userId, long orderId) {
+        Map namedParameters = new HashMap();
+        namedParameters.put("userId", userId);
+        namedParameters.put("status", Order.Status.CANCELED.name());
+        namedParameters.put("id", orderId);
+        namedJdbc.update("update `order` set `status` = :status where `id` = :id AND `userId` = :userId;", namedParameters);
     }
 }

@@ -36,6 +36,8 @@ public class OrderMapper implements RowMapper<Order> {
         }
         order.setCost(rs.getBigDecimal("cost"));
         order.setPaymentType(Order.PaymentType.valueOf(rs.getString("paymentType")));
+        order.setUserRating((Integer) rs.getObject("userRating"));
+        order.setUserFeedback(rs.getString("userFeedback"));
         order.setOrderDate(rs.getTimestamp("orderDate"));
         User user = new User();
         user.setId(rs.getLong("userId"));
