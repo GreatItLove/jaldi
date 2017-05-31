@@ -10,8 +10,6 @@ import Foundation
 import ObjectMapper
 class JaldGetProfileTask: JaldiOperation {
     typealias Output = JaldiUser
-
-
     var request: JaldiRequest {
         return UserRequests.profile
     }

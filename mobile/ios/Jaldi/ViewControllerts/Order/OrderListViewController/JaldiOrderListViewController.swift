@@ -7,24 +7,39 @@
 //
 
 import UIKit
-enum OrderListType: Int {
-    case past
-    case upcoming
-    case inProgress
-}
-protocol JaldiOrderListViewControllerDelegate: class {
-    func orderList(viewController:JaldiOrderListViewController, didSelect order:JaldiOrder)
-}
+
 class JaldiOrderListViewController: UIViewController {
 
     @IBOutlet weak var theTableView: UITableView!
-    var orderListType:OrderListType = .past
     fileprivate var orders: [JaldiOrder]?
-    weak var delegate: JaldiOrderListViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        orders = JaldiOrderDummyData.ordersFor(orderListType: orderListType)
-        theTableView.reloadData()
+        self.reloadOrders()
+    }
+    private func reloadOrders() {
+        self.showHudWithMsg(message: nil)
+        let task  = JaldiMyOrdersTask()
+        task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: {[weak self] (orderList) in
+            self?.hideHud()
+            self?.orders = orderList
+            self?.theTableView.reloadData()
+        }) { [weak self] (error, _) in
+            self?.hideHud()
+            if let error = error {
+                if case NetworkErrors.networkMessage(error_: _, message: let message) = error {
+                    self?.showAlertWith(title: NSLocalizedString("Error", comment: ""), message: message)
+                }else{
+                    self?.showAlertWith(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("CantLoadOrder", comment: ""))
+                }
+            }
+            print(error ?? "Error")
+        }
+    }
+    //MARK: Actions
+    @IBAction func closeAction(_ sender: Any) {
+        self.dismiss(animated: true) {
+        }
     }
 }
 
@@ -86,7 +101,7 @@ extension JaldiOrderListViewController: UITableViewDelegate,UITableViewDataSourc
         }
         let order = orders[indexPath.section]
         if order.orderRatingState == .none || indexPath.row == 1 {
-            delegate?.orderList(viewController: self, didSelect: order)
+            self.orderListShow(order: order)
         }
      }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
@@ -149,20 +164,70 @@ extension JaldiOrderListViewController: UITableViewDelegate,UITableViewDataSourc
         let cell:JaldiOrderListRatingFinishedCell! = tableView.dequeueReusableCell(withIdentifier: simpleTableIdentifier) as? JaldiOrderListRatingFinishedCell
         return cell
     }
+    
+    private func orderListShow(order:JaldiOrder) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Order", bundle: nil)
+        let orderStateViewController = storyboard.instantiateViewController(withIdentifier: "JaldiOrderStateViewController") as? JaldiOrderStateViewController
+        orderStateViewController?.order = order
+        orderStateViewController?.appearance = .push
+//        testOrderById(orderId: order.orderId!)
+        self.navigationController?.pushViewController(orderStateViewController!, animated: true)
+    }
+    private func testOrderById(orderId: Int) {
+        let task  = JaldiOrderByIdTask(orderId: orderId)
+        task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: {(order) in
+//            print(order?.orderId)
+        }) {  (error, _) in
+           print("error")
+        }
+    }
 }
 extension JaldiOrderListViewController:JaldiOrderListRatingCellDelegate {
     func orderList(ratingCell:UITableViewCell, didSaveComment comment:String?) {
-        guard let indexPath  = self.theTableView.indexPath(for: ratingCell), let orders  = self.orders else { return }
+        
+        guard let indexPath  = self.theTableView.indexPath(for: ratingCell),
+            let orders  = self.orders , let userFeedback = comment else { return }
         let order =  orders[indexPath.section]
-        order.comment = comment
-        self.theTableView.reloadRows(at: [indexPath], with: .fade)
+        self.feedback(order: order, userFeedback: userFeedback, indexPath: indexPath)
     }
     func orderList(ratingCell:UITableViewCell, didSaveRating rating:Float) {
         guard let indexPath  = self.theTableView.indexPath(for: ratingCell), let orders  = self.orders else { return }
         let order =  orders[indexPath.section]
-        order.rate = rating
-        self.theTableView.reloadRows(at: [indexPath], with: .fade)
+        self.rate(order: order, rating: rating, indexPath: indexPath)
     }
+    private func rate(order:JaldiOrder, rating:Float, indexPath:IndexPath) {
+        guard let orderId = order.orderId else {
+            return
+        }
+        let task  = JaldiOrderRateTask(orderId: orderId, userRating: rating)
+        task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: {[weak self] (success) in
+            order.userRating = rating
+            self?.theTableView.reloadRows(at: [indexPath], with: .fade)
+        }) { [weak self] (error, _) in
+            if let error = error {
+                if case NetworkErrors.networkMessage(error_: _, message: let message) = error {
+                    self?.showAlertWith(title: NSLocalizedString("Error", comment: ""), message: message)
+                }
+            }
+        }
+    }
+    private func feedback(order:JaldiOrder, userFeedback:String, indexPath:IndexPath) {
+        guard let orderId = order.orderId else {
+            return
+        }
+        let task  = JaldiOrderFeedbackTask(orderId: orderId, userFeedback: userFeedback)
+        task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: {[weak self] (success) in
+            order.userFeedback = userFeedback
+            self?.theTableView.reloadRows(at: [indexPath], with: .fade)
+        }) { [weak self] (error, _) in
+            if let error = error {
+                if case NetworkErrors.networkMessage(error_: _, message: let message) = error {
+                    self?.showAlertWith(title: NSLocalizedString("Error", comment: ""), message: message)
+                }
+            }
+        }
+    }
+    
 }
 
     

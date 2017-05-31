@@ -37,17 +37,18 @@ class JaldiOrdersViewController: UIViewController {
         configurePages()
 
     }
+ 
     //Mark: Configuration
     private func configurePages(){
         automaticallyAdjustsScrollViewInsets = false
         
-        self.pastOrderListController.delegate = self
-        self.upComingOrderListController.delegate = self
-        self.inProgressOrderListController.delegate = self
+//        self.pastOrderListController.delegate = self
+//        self.upComingOrderListController.delegate = self
+//        self.inProgressOrderListController.delegate = self
         
-        self.pastOrderListController.orderListType = .past
-        self.upComingOrderListController.orderListType = .upcoming
-        self.inProgressOrderListController.orderListType = .inProgress
+//        self.pastOrderListController.orderListType = .past
+//        self.upComingOrderListController.orderListType = .upcoming
+//        self.inProgressOrderListController.orderListType = .inProgress
         
         let VCsArray = [self.inProgressOrderListController, self.upComingOrderListController, self.pastOrderListController] as [UIViewController]
         let buttonTitles = ["In progress", "Upcoming", "Past"]
@@ -79,13 +80,13 @@ extension JaldiOrdersViewController: SwiftPagesDelegate {
     }
 }
 
-extension JaldiOrdersViewController: JaldiOrderListViewControllerDelegate {
-    func orderList(viewController:JaldiOrderListViewController, didSelect order:JaldiOrder) {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Order", bundle: nil)
-        let orderStateViewController = storyboard.instantiateViewController(withIdentifier: "JaldiOrderStateViewController") as? JaldiOrderStateViewController
-        orderStateViewController?.order = order
-        orderStateViewController?.appearance = .push
-        self.navigationController?.pushViewController(orderStateViewController!, animated: true)
-    }
-}
+//extension JaldiOrdersViewController: JaldiOrderListViewControllerDelegate {
+//    func orderList(viewController:JaldiOrderListViewController, didSelect order:JaldiOrder) {
+//        let storyboard: UIStoryboard = UIStoryboard(name: "Order", bundle: nil)
+//        let orderStateViewController = storyboard.instantiateViewController(withIdentifier: "JaldiOrderStateViewController") as? JaldiOrderStateViewController
+//        orderStateViewController?.order = order
+//        orderStateViewController?.appearance = .push
+//        self.navigationController?.pushViewController(orderStateViewController!, animated: true)
+//    }
+//}
 

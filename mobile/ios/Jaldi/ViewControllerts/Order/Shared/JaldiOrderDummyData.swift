@@ -8,6 +8,11 @@
 
 import Foundation
 import ObjectMapper
+enum OrderListType: Int {
+    case past
+    case upcoming
+    case inProgress
+}
 struct JaldiOrderDummyData {
     static func ordersFor(orderListType: OrderListType) -> [JaldiOrder] {
        let orderDummyData =  JaldiOrderDummyData()

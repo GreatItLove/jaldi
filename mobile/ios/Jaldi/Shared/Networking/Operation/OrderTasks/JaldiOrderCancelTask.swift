@@ -1,5 +1,5 @@
 //
-//  JaldiUpdateLocationTask.swift
+//  JaldiOrderCancelTask.swift
 //  Jaldi
 //
 //  Created by Grigori Jlavyan on 5/31/17.
@@ -7,18 +7,19 @@
 //
 
 import Foundation
-class JaldiUpdateLocationTask: JaldiOperation {
+
+import ObjectMapper
+class JaldiOrderCancelTask: JaldiOperation {
     typealias Output = String
-    var latitude:  Double
-    var longitude: Double
+    var orderId: Int
     
-    init(latitude: Double, longitude: Double) {
-        self.latitude = latitude
-        self.longitude = longitude
+    
+    init(orderId: Int) {
+        self.orderId = orderId
     }
     
     var request: JaldiRequest {
-        return UserRequests.updateLocation(latitude: self.latitude, longitude: self.longitude)
+        return OrderRequest.cancel(orderId: self.orderId)
     }
     
     func execute(in dispatcher: Dispatcher,
@@ -31,10 +32,9 @@ class JaldiUpdateLocationTask: JaldiOperation {
                                     
                                     switch response {
                                     case .value(_):
-                                        taskCompletion("success")
+                                        taskCompletion("Success")
                                     case .error(let statuseCode, let error):
                                         completionError(error,statuseCode)
-                                        
                                     }
         })
     }

@@ -99,12 +99,10 @@ class JaldiHomeViewController: UIViewController {
     }
     private func presentOrders() {
         let storyboard: UIStoryboard = UIStoryboard(name: "Order", bundle: nil)
-        let ordersViewController = storyboard.instantiateViewController(withIdentifier: "JaldiOrdersViewController") as? JaldiOrdersViewController
+        let ordersViewController = storyboard.instantiateViewController(withIdentifier: "JaldiOrderListViewController") as? JaldiOrderListViewController
         let navController = UINavigationController(rootViewController: ordersViewController!)
         navController.isNavigationBarHidden = true
         self.present(navController, animated: true, completion: nil)
-
-//        self.present(ordersViewController!, animated: true, completion: nil)
     }
 
 }
@@ -173,7 +171,6 @@ extension JaldiHomeViewController: UICollectionViewDelegate,UICollectionViewData
         }
         return true
     }
-
 }
 
 extension JaldiHomeViewController: JaldiPlacePickerDelegate {

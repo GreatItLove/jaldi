@@ -15,7 +15,7 @@ class JaldiOrderWorkersView: UIView {
     @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var serviceImageView: UIImageView!
-   
+    weak var delegate:JaldiOrderStateViewControllerDelegate?
      //Mark: Configuaration
     func configureWith(order:JaldiOrder) {
        configureUserDetailsFor(order: order)
@@ -52,6 +52,6 @@ class JaldiOrderWorkersView: UIView {
     
     //Mark: Action
     @IBAction func cancelAction(_ sender: Any) {
-        print("Cancel")
+        delegate?.orderStateViewControllerDidCancelOrder()
     }
 }

@@ -31,5 +31,13 @@
 //MARK: OrderStateViewController
 "OrderStateTitle" = "HOME CLEANING";
 
+//MARK: PlacePicker
+"CantUpdateLocation" = "Can't update location";
+
+//MARK: Orders
+"CantLoadOrder" = "Can't load orders";
+
+
+
 
 

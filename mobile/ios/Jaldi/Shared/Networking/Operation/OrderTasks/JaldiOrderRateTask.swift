@@ -1,5 +1,5 @@
 //
-//  JaldiUpdateLocationTask.swift
+//  JaldiOrderRateTask.swift
 //  Jaldi
 //
 //  Created by Grigori Jlavyan on 5/31/17.
@@ -7,18 +7,20 @@
 //
 
 import Foundation
-class JaldiUpdateLocationTask: JaldiOperation {
+import ObjectMapper
+class JaldiOrderRateTask: JaldiOperation {
     typealias Output = String
-    var latitude:  Double
-    var longitude: Double
     
-    init(latitude: Double, longitude: Double) {
-        self.latitude = latitude
-        self.longitude = longitude
+    var orderId: Int
+    var userRating: Float
+
+    init(orderId: Int, userRating: Float) {
+        self.orderId = orderId
+        self.userRating = userRating
     }
     
     var request: JaldiRequest {
-        return UserRequests.updateLocation(latitude: self.latitude, longitude: self.longitude)
+        return OrderRequest.orderRate(orderId: self.orderId, userRating: self.userRating)
     }
     
     func execute(in dispatcher: Dispatcher,
@@ -31,10 +33,9 @@ class JaldiUpdateLocationTask: JaldiOperation {
                                     
                                     switch response {
                                     case .value(_):
-                                        taskCompletion("success")
+                                        taskCompletion("Success")
                                     case .error(let statuseCode, let error):
                                         completionError(error,statuseCode)
-                                        
                                     }
         })
     }

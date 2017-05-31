@@ -31,7 +31,7 @@ class JaldiOrderStateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        workerView.delegate = self
         if let order = self.order {
             workerView.configureWith(order: order)
             orderState = order.orderState
@@ -121,13 +121,9 @@ class JaldiOrderStateViewController: UIViewController {
         }
     }
     @IBAction func currentLocationAction(_ sender: Any) {
-//        guard let location = locationManager?.location?.coordinate else {
-//            return
-//        }
         if let location = mapView?.userLocation.coordinate {
           mapView.centerCoordinate = location
         }
-        
     }
 }
 extension JaldiOrderStateViewController:MKMapViewDelegate {
@@ -166,3 +162,21 @@ extension JaldiOrderStateViewController:CLLocationManagerDelegate {
         }
     }
 }
+extension JaldiOrderStateViewController:JaldiOrderStateViewControllerDelegate {
+    func orderStateViewControllerDidCancelOrder() {
+        guard let orderId = self.order?.orderId else {
+            return
+        }
+        cacelOrderById(orderId: orderId)
+    }
+    
+    private func cacelOrderById(orderId: Int) {
+        let task  = JaldiOrderCancelTask(orderId: orderId)
+        task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: {(success) in
+//            print(success)
+        }) {  (error, _) in
+            print("error")
+        }
+    }
+}
+

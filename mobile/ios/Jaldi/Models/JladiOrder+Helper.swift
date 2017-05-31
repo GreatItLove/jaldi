@@ -53,10 +53,10 @@ extension JaldiOrder {
             guard orderState == .finished else {
                 return OrderRatingState.none
             }
-            guard let _ = comment else {
+            guard let _ = userFeedback else {
               return OrderRatingState.comment
             }
-            guard let _ = rate else {
+            guard let _ = userRating else {
                 return OrderRatingState.rate
             }
             return OrderRatingState.finished

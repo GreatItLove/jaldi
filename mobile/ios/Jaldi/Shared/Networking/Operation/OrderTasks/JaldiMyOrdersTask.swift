@@ -1,5 +1,5 @@
 //
-//  JaldiUpdateLocationTask.swift
+//  JaldiMyOrdersTask.swift
 //  Jaldi
 //
 //  Created by Grigori Jlavyan on 5/31/17.
@@ -7,18 +7,12 @@
 //
 
 import Foundation
-class JaldiUpdateLocationTask: JaldiOperation {
-    typealias Output = String
-    var latitude:  Double
-    var longitude: Double
-    
-    init(latitude: Double, longitude: Double) {
-        self.latitude = latitude
-        self.longitude = longitude
-    }
-    
+import ObjectMapper
+class JaldiMyOrdersTask: JaldiOperation {
+    typealias Output = [JaldiOrder]
+   
     var request: JaldiRequest {
-        return UserRequests.updateLocation(latitude: self.latitude, longitude: self.longitude)
+        return OrderRequest.myOrders
     }
     
     func execute(in dispatcher: Dispatcher,
@@ -30,11 +24,18 @@ class JaldiUpdateLocationTask: JaldiOperation {
                                   completion: { (response) -> Void in
                                     
                                     switch response {
-                                    case .value(_):
-                                        taskCompletion("success")
+                                    case .value(let value):
+                                        guard let orderlist  = value as? [[String : AnyObject]] else {
+                                            taskCompletion(nil)
+                                            return
+                                        }
+                                        guard let orders  = Mapper<JaldiOrder>().mapArray(JSONArray: orderlist) else{
+                                            taskCompletion([JaldiOrder]())
+                                            return
+                                        }
+                                        taskCompletion(orders)
                                     case .error(let statuseCode, let error):
                                         completionError(error,statuseCode)
-                                        
                                     }
         })
     }

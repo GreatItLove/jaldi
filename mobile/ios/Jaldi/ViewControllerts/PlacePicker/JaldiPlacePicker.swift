@@ -94,13 +94,11 @@ class JaldiPlacePicker: UIViewController {
                 if case NetworkErrors.networkMessage(error_: _, message: let message) = error {
                     self?.showAlertWith(title: NSLocalizedString("Error", comment: ""), message: message)
                 }else{
-                    self?.showAlertWith(title: NSLocalizedString("Error", comment: ""), message: "Cant't update location")
+                    self?.showAlertWith(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("CantUpdateLocation", comment: ""))
                 }
             }
             print(error ?? "Error")
         }
-        
-        
     }
   
     
