@@ -44,6 +44,9 @@ class JaldiUser:Mappable {
         profileImageId      <- map["profileImageId"]
         role      <- map["role"]
         type      <- map["type"]
+        
+        latitude      <- map["latitude"]
+        longitude      <- map["longitude"]
         creationDate    <- (map["formattedCreationDate"], DateFormatterTransform(dateFormatter: Date.appDateFormater))
         
     }

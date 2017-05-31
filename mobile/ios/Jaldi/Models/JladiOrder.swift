@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 class JaldiOrder:Mappable {
     var orderId: Int?
-    var address: String?
+    
     var cost: Float?
     var type: String?
     var workers: Int?
@@ -21,7 +21,12 @@ class JaldiOrder:Mappable {
     var status: String?
     var orderDate: Date?
     var creationDate: Date?
+    var comment: String?
+    var address: String?
+    var city: String?
     var user: JaldiUser?
+    
+    var rate: Float?
     
     required init?(map: Map) {
     }
@@ -37,9 +42,13 @@ class JaldiOrder:Mappable {
         longitude      <- map["longitude"]
         paymentType      <- map["paymentType"]
         status      <- map["status"]
+        comment      <- map["comment"]
+        address      <- map["address"]
+        city        <- map["city"]
         creationDate    <- (map["formattedCreationDate"], DateFormatterTransform(dateFormatter: Date.appDateFormater))
         orderDate    <- (map["formattedOrderDate"], DateFormatterTransform(dateFormatter: Date.appDateFormater))
         user      <- map["user"]
+  
     }
 }
 

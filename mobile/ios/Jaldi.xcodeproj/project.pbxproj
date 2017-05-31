@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C2433951EDEA73000129BBC /* CosmosDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2433941EDEA73000129BBC /* CosmosDistrib.swift */; };
+		4C2433971EDEB07400129BBC /* JaldiOrderListRatingCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2433961EDEB07400129BBC /* JaldiOrderListRatingCellDelegate.swift */; };
+		4C2433991EDEBD3700129BBC /* JaldiUpdateLocationTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2433981EDEBD3700129BBC /* JaldiUpdateLocationTask.swift */; };
 		4C25C7BC1EBC677A00092203 /* JaldiBookingTimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C25C7BB1EBC677A00092203 /* JaldiBookingTimePickerViewController.swift */; };
 		4C25C7C21EBC9D8400092203 /* JaldiBookingContactInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C25C7C11EBC9D8400092203 /* JaldiBookingContactInfoViewController.swift */; };
 		4C2B1A441EB73FD100F63E7D /* HBAppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B1A421EB73FD100F63E7D /* HBAppColors.swift */; };
@@ -14,6 +17,12 @@
 		4C2DAA081EB9D450002FCAD5 /* JaldiOnBoradingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2DAA031EB9D450002FCAD5 /* JaldiOnBoradingListViewController.swift */; };
 		4C2DAA091EB9D450002FCAD5 /* JaldiOnBoradingListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2DAA061EB9D450002FCAD5 /* JaldiOnBoradingListViewCell.swift */; };
 		4C2DAA0A1EB9D450002FCAD5 /* JaldiOnBoradingListViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2DAA071EB9D450002FCAD5 /* JaldiOnBoradingListViewHeaderCell.swift */; };
+		4C3162A31EDD989A00ACE29A /* JaldiOrderListWorkersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3162A21EDD989A00ACE29A /* JaldiOrderListWorkersView.swift */; };
+		4C3162A51EDDA3E000ACE29A /* OrderListStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3162A41EDDA3E000ACE29A /* OrderListStateView.swift */; };
+		4C3162A71EDDB94F00ACE29A /* JladiOrder+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3162A61EDDB94F00ACE29A /* JladiOrder+Helper.swift */; };
+		4C3162AA1EDDBDAE00ACE29A /* JaldiOrderListCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3162A91EDDBDAE00ACE29A /* JaldiOrderListCommentCell.swift */; };
+		4C3162AC1EDDBDC600ACE29A /* JaldiOrderListRatingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3162AB1EDDBDC600ACE29A /* JaldiOrderListRatingCell.swift */; };
+		4C3162AE1EDDBDE000ACE29A /* JaldiOrderListRatingFinishedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3162AD1EDDBDE000ACE29A /* JaldiOrderListRatingFinishedCell.swift */; };
 		4C382F0B1ED975CB0052734E /* BookingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C382F0A1ED975CA0052734E /* BookingHelper.swift */; };
 		4C382F131ED97D930052734E /* JaldiOrderStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C382F0E1ED97D930052734E /* JaldiOrderStateViewController.swift */; };
 		4C382F141ED97D930052734E /* JaldiOrderState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C382F101ED97D930052734E /* JaldiOrderState.swift */; };
@@ -96,6 +105,9 @@
 
 /* Begin PBXFileReference section */
 		4ACCDF1DD65D3B4B33983253 /* Pods-Jaldi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jaldi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jaldi/Pods-Jaldi.debug.xcconfig"; sourceTree = "<group>"; };
+		4C2433941EDEA73000129BBC /* CosmosDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosDistrib.swift; sourceTree = "<group>"; };
+		4C2433961EDEB07400129BBC /* JaldiOrderListRatingCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOrderListRatingCellDelegate.swift; sourceTree = "<group>"; };
+		4C2433981EDEBD3700129BBC /* JaldiUpdateLocationTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiUpdateLocationTask.swift; sourceTree = "<group>"; };
 		4C25C7BB1EBC677A00092203 /* JaldiBookingTimePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingTimePickerViewController.swift; sourceTree = "<group>"; };
 		4C25C7C11EBC9D8400092203 /* JaldiBookingContactInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingContactInfoViewController.swift; sourceTree = "<group>"; };
 		4C2B1A421EB73FD100F63E7D /* HBAppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBAppColors.swift; sourceTree = "<group>"; };
@@ -103,6 +115,12 @@
 		4C2DAA031EB9D450002FCAD5 /* JaldiOnBoradingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnBoradingListViewController.swift; sourceTree = "<group>"; };
 		4C2DAA061EB9D450002FCAD5 /* JaldiOnBoradingListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnBoradingListViewCell.swift; sourceTree = "<group>"; };
 		4C2DAA071EB9D450002FCAD5 /* JaldiOnBoradingListViewHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOnBoradingListViewHeaderCell.swift; sourceTree = "<group>"; };
+		4C3162A21EDD989A00ACE29A /* JaldiOrderListWorkersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOrderListWorkersView.swift; sourceTree = "<group>"; };
+		4C3162A41EDDA3E000ACE29A /* OrderListStateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderListStateView.swift; sourceTree = "<group>"; };
+		4C3162A61EDDB94F00ACE29A /* JladiOrder+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JladiOrder+Helper.swift"; sourceTree = "<group>"; };
+		4C3162A91EDDBDAE00ACE29A /* JaldiOrderListCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOrderListCommentCell.swift; sourceTree = "<group>"; };
+		4C3162AB1EDDBDC600ACE29A /* JaldiOrderListRatingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOrderListRatingCell.swift; sourceTree = "<group>"; };
+		4C3162AD1EDDBDE000ACE29A /* JaldiOrderListRatingFinishedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOrderListRatingFinishedCell.swift; sourceTree = "<group>"; };
 		4C382F0A1ED975CA0052734E /* BookingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingHelper.swift; sourceTree = "<group>"; };
 		4C382F0E1ED97D930052734E /* JaldiOrderStateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOrderStateViewController.swift; sourceTree = "<group>"; };
 		4C382F101ED97D930052734E /* JaldiOrderState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOrderState.swift; sourceTree = "<group>"; };
@@ -261,6 +279,7 @@
 		4C2DA9F51EB9D178002FCAD5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				4C2433941EDEA73000129BBC /* CosmosDistrib.swift */,
 				4CC318561EDC540A00478B1C /* CircleView.swift */,
 				4C382F341ED9821E0052734E /* SwiftPages.swift */,
 				4C2DA9F61EB9D1A3002FCAD5 /* AKPickerView.swift */,
@@ -301,6 +320,26 @@
 				4C2DAA071EB9D450002FCAD5 /* JaldiOnBoradingListViewHeaderCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		4C3162A11EDD987A00ACE29A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4C3162A21EDD989A00ACE29A /* JaldiOrderListWorkersView.swift */,
+				4C3162A41EDDA3E000ACE29A /* OrderListStateView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4C3162A81EDDBD8300ACE29A /* Order RatingCells */ = {
+			isa = PBXGroup;
+			children = (
+				4C3162A91EDDBDAE00ACE29A /* JaldiOrderListCommentCell.swift */,
+				4C3162AB1EDDBDC600ACE29A /* JaldiOrderListRatingCell.swift */,
+				4C3162AD1EDDBDE000ACE29A /* JaldiOrderListRatingFinishedCell.swift */,
+				4C2433961EDEB07400129BBC /* JaldiOrderListRatingCellDelegate.swift */,
+			);
+			path = "Order RatingCells";
 			sourceTree = "<group>";
 		};
 		4C382F091ED975CA0052734E /* BookingHelper */ = {
@@ -434,6 +473,8 @@
 			isa = PBXGroup;
 			children = (
 				4C382F3A1ED9AA5A0052734E /* JaldiOrderListTableViewCell.swift */,
+				4C3162A81EDDBD8300ACE29A /* Order RatingCells */,
+				4C3162A11EDD987A00ACE29A /* Views */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -613,6 +654,7 @@
 			isa = PBXGroup;
 			children = (
 				4C55BB3B1ECF1252003F6241 /* JaldiLoginTask.swift */,
+				4C2433981EDEBD3700129BBC /* JaldiUpdateLocationTask.swift */,
 				4C55BB3D1ECF12B5003F6241 /* JaldiForgotTask.swift */,
 				4C55BB3F1ECF1D06003F6241 /* JaldGetProfileTask.swift */,
 				4C55BB411ECF2BA9003F6241 /* JaldRegistrationTask.swift */,
@@ -688,6 +730,7 @@
 			children = (
 				4C53D6731ECC981E00A4A634 /* JaldiUser.swift */,
 				4C8AAB121ED5D1A8009A522D /* JladiOrder.swift */,
+				4C3162A61EDDB94F00ACE29A /* JladiOrder+Helper.swift */,
 				4CCBC0601ED030AA00716749 /* JaldiRegistration.swift */,
 				4C55BB451ECF3D42003F6241 /* MobileVerification.swift */,
 				4CED68551EB871BF001A7CC5 /* UserProfile.swift */,
@@ -967,15 +1010,19 @@
 				4C25C7BC1EBC677A00092203 /* JaldiBookingTimePickerViewController.swift in Sources */,
 				4C45878C1EB4C23500169AC1 /* AppDelegate.swift in Sources */,
 				4C55BB441ECF3C03003F6241 /* JaldiSendVerificationTask.swift in Sources */,
+				4C3162AE1EDDBDE000ACE29A /* JaldiOrderListRatingFinishedCell.swift in Sources */,
 				4CED68711EB90CED001A7CC5 /* JaldiService.swift in Sources */,
 				4C2DAA091EB9D450002FCAD5 /* JaldiOnBoradingListViewCell.swift in Sources */,
 				4C2DAA0A1EB9D450002FCAD5 /* JaldiOnBoradingListViewHeaderCell.swift in Sources */,
 				4C42BFE41EC3471F0098B186 /* JaldiPaymentPriceDetailsView.swift in Sources */,
 				4C4999031EBB25590034819B /* JaldiBookingDetailsTableViewCell.swift in Sources */,
+				4C2433951EDEA73000129BBC /* CosmosDistrib.swift in Sources */,
+				4C3162AA1EDDBDAE00ACE29A /* JaldiOrderListCommentCell.swift in Sources */,
 				4CC3185B1EDC648500478B1C /* UIViewController+Appearance.swift in Sources */,
 				4C55BB3C1ECF1252003F6241 /* JaldiLoginTask.swift in Sources */,
 				4C4999001EBB214E0034819B /* JaldiBookingDetailsViewController.swift in Sources */,
 				4C382F131ED97D930052734E /* JaldiOrderStateViewController.swift in Sources */,
+				4C2433971EDEB07400129BBC /* JaldiOrderListRatingCellDelegate.swift in Sources */,
 				4C25C7C21EBC9D8400092203 /* JaldiBookingContactInfoViewController.swift in Sources */,
 				4C53C6851ECB30240022AFDB /* JaldiPlacePicker.swift in Sources */,
 				4C7FFAA21ECDB29100C95E71 /* Environment.swift in Sources */,
@@ -991,6 +1038,8 @@
 				4C8AAB0F1ED5C412009A522D /* OrderRequest.swift in Sources */,
 				4C7FFA9B1ECDB17700C95E71 /* JaldiRequest.swift in Sources */,
 				4C55BB3E1ECF12B5003F6241 /* JaldiForgotTask.swift in Sources */,
+				4C3162AC1EDDBDC600ACE29A /* JaldiOrderListRatingCell.swift in Sources */,
+				4C3162A71EDDB94F00ACE29A /* JladiOrder+Helper.swift in Sources */,
 				4C382F201ED97DFC0052734E /* JaldiRegistrationViewController.swift in Sources */,
 				4C382F151ED97D930052734E /* JaldiOrderStateSeparatorView.swift in Sources */,
 				4CCBD3AD1EBCB598009D5408 /* BookingNavigation.swift in Sources */,
@@ -1013,6 +1062,7 @@
 				4C2B1A441EB73FD100F63E7D /* HBAppColors.swift in Sources */,
 				4C55BB341ECEEA18003F6241 /* JaldiOperation.swift in Sources */,
 				4C8AAB111ED5C5BF009A522D /* JaldiOrderTask.swift in Sources */,
+				4C2433991EDEBD3700129BBC /* JaldiUpdateLocationTask.swift in Sources */,
 				4C382F141ED97D930052734E /* JaldiOrderState.swift in Sources */,
 				4C382F0B1ED975CB0052734E /* BookingHelper.swift in Sources */,
 				4CCBC0611ED030AA00716749 /* JaldiRegistration.swift in Sources */,
@@ -1024,11 +1074,13 @@
 				4CED68601EB8A9AC001A7CC5 /* HomeCategory.swift in Sources */,
 				4C382F211ED97DFC0052734E /* JaldiOnboardingInputView.swift in Sources */,
 				4C55BB371ECEECC9003F6241 /* JaldiResponse.swift in Sources */,
+				4C3162A31EDD989A00ACE29A /* JaldiOrderListWorkersView.swift in Sources */,
 				4CED68661EB8D172001A7CC5 /* JaldiAnnouncementViewController.swift in Sources */,
 				4CC318551EDC4AF900478B1C /* JaldiOrderWorkersView.swift in Sources */,
 				4C382F3B1ED9AA5A0052734E /* JaldiOrderListTableViewCell.swift in Sources */,
 				4C55BB461ECF3D42003F6241 /* MobileVerification.swift in Sources */,
 				4CCBC06B1ED0676A00716749 /* UIViewController+Alert.swift in Sources */,
+				4C3162A51EDDA3E000ACE29A /* OrderListStateView.swift in Sources */,
 				4C4A63F81EC1B20000EE2C12 /* JaldiBookingPaymentViewController.swift in Sources */,
 				4C42BFE11EC30B320098B186 /* JaldiBookingPaymentDetailsCell.swift in Sources */,
 				4C382F1F1ED97DFC0052734E /* JaldiForgotPasswordViewController.swift in Sources */,

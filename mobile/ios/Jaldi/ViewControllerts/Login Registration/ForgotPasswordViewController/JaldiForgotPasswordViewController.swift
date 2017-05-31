@@ -80,6 +80,7 @@ class JaldiForgotPasswordViewController: UIViewController {
         }, completion: { (finished) -> Void in
         })
     }
+    
     //MARK: Handle Sending Forgot Password
     private func handleForgotPassword() {
         guard let userName = emailTextField.text  else {

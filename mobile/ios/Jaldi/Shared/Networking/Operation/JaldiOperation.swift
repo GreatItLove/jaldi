@@ -13,7 +13,6 @@ protocol JaldiOperation {
     /// Request to execute
     var request: JaldiRequest { get }
     
-    
     /// Execute request in passed dispatcher
     ///
     /// - Parameter dispatcher: dispatcher

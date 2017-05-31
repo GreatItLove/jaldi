@@ -30,10 +30,13 @@ class JaldiOrderStateViewController: UIViewController {
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        orderStateView.configureWith(orderState: orderState)
+        
+        
         if let order = self.order {
             workerView.configureWith(order: order)
+            orderState = order.orderState
         }
+        orderStateView.configureWith(orderState: orderState)
         configureTimeAndTitleLabels()
         configureLocationManager()
         self.addOrderPin()
@@ -116,7 +119,15 @@ class JaldiOrderStateViewController: UIViewController {
         case .none:
             break
         }
-       
+    }
+    @IBAction func currentLocationAction(_ sender: Any) {
+//        guard let location = locationManager?.location?.coordinate else {
+//            return
+//        }
+        if let location = mapView?.userLocation.coordinate {
+          mapView.centerCoordinate = location
+        }
+        
     }
 }
 extension JaldiOrderStateViewController:MKMapViewDelegate {
@@ -155,4 +166,3 @@ extension JaldiOrderStateViewController:CLLocationManagerDelegate {
         }
     }
 }
-

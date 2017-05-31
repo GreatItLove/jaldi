@@ -29,8 +29,10 @@ class JaldiPlacePicker: UIViewController {
         }
         locationManager = CLLocationManager()
         locationManager?.delegate = self;
+        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
         locationManager?.requestWhenInUseAuthorization()
-    }
+        locationManager?.startUpdatingLocation()
+            }
     
     //MARK: GestureRecognizer
     private func addRecognizer(){
@@ -67,13 +69,43 @@ class JaldiPlacePicker: UIViewController {
     @IBAction func doneAction(_ sender: Any) {
         self.getCurrentLocationAndDismiss()
     }
+    @IBAction func currentLocationAction(_ sender: Any) {
+        guard let location = locationManager?.location?.coordinate else {
+            return
+        }
+        mapView.centerCoordinate = location
+    }
     
     private func getCurrentLocationAndDismiss() {
         let centerCoordinate = mapView.centerCoordinate
         let getLat: CLLocationDegrees = centerCoordinate.latitude
         let getLon: CLLocationDegrees = centerCoordinate.longitude
-        self.delegate?.placePicker(JaldiPlacePicker: self, didSelect: getLat, longitude: getLon)
-        self.dismiss(animated: true, completion: nil)
+        
+        self.showHudWithMsg(message: nil)
+        let task  = JaldiUpdateLocationTask(latitude: getLat, longitude: getLon)
+        task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: { [weak self] (value) in
+            self?.hideHud()
+            self?.delegate?.placePicker(JaldiPlacePicker: self!, didSelect: getLat, longitude: getLon)
+            self?.dismiss(animated: true, completion: nil)
+            
+        }) {[weak self] (error, _) in
+            self?.hideHud()
+            if let error = error {
+                if case NetworkErrors.networkMessage(error_: _, message: let message) = error {
+                    self?.showAlertWith(title: NSLocalizedString("Error", comment: ""), message: message)
+                }else{
+                    self?.showAlertWith(title: NSLocalizedString("Error", comment: ""), message: "Cant't update location")
+                }
+            }
+            print(error ?? "Error")
+        }
+        
+        
+    }
+  
+    
+    deinit{
+        locationManager?.stopUpdatingLocation()
     }
 }
 extension JaldiPlacePicker:MKMapViewDelegate {
@@ -91,5 +123,9 @@ extension JaldiPlacePicker:CLLocationManagerDelegate {
                 self.zoomIn()
             }
         }
+    }
+    func locationManager(_ manager: CLLocationManager,
+                                  didUpdateLocations locations: [CLLocation]){
+    
     }
 }

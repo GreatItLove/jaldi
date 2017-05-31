@@ -949,11 +949,23 @@
                                     <constraint firstAttribute="width" constant="50" id="gEQ-rt-TRy"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mb7-Ny-46S">
+                                <rect key="frame" x="330" y="75" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="LMr-bp-gvu"/>
+                                    <constraint firstAttribute="height" constant="40" id="LrF-G7-C0l"/>
+                                </constraints>
+                                <state key="normal" image="location_on"/>
+                                <connections>
+                                    <action selector="currentLocationAction:" destination="kJp-zO-tkc" eventType="touchUpInside" id="tdA-gR-bZK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.90971422199999996" green="0.90986675019999996" blue="0.90969407560000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="cCb-yY-tX5" firstAttribute="leading" secondItem="gZ1-eG-0uZ" secondAttribute="leading" id="4GT-50-fvR"/>
                             <constraint firstItem="cCb-yY-tX5" firstAttribute="top" secondItem="UBD-8P-ITX" secondAttribute="bottom" id="57l-0o-0yr"/>
+                            <constraint firstItem="Mb7-Ny-46S" firstAttribute="top" secondItem="cCb-yY-tX5" secondAttribute="top" constant="5" id="9HW-TC-KIb"/>
                             <constraint firstAttribute="bottom" secondItem="cCb-yY-tX5" secondAttribute="bottom" id="GmV-TP-v8o"/>
                             <constraint firstItem="UBD-8P-ITX" firstAttribute="top" secondItem="gZ1-eG-0uZ" secondAttribute="top" id="LEZ-DJ-SXZ"/>
                             <constraint firstItem="pPf-3q-hh4" firstAttribute="bottom" secondItem="cCb-yY-tX5" secondAttribute="centerY" id="LSP-ps-y2O"/>
@@ -961,6 +973,7 @@
                             <constraint firstAttribute="trailing" secondItem="UBD-8P-ITX" secondAttribute="trailing" id="cBn-sf-027"/>
                             <constraint firstAttribute="trailing" secondItem="cCb-yY-tX5" secondAttribute="trailing" id="jXw-84-rnE"/>
                             <constraint firstItem="UBD-8P-ITX" firstAttribute="leading" secondItem="gZ1-eG-0uZ" secondAttribute="leading" id="noa-Ne-KL8"/>
+                            <constraint firstAttribute="trailing" secondItem="Mb7-Ny-46S" secondAttribute="trailing" constant="5" id="wSe-Fi-9a4"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1079,6 +1092,7 @@
         <image name="backward_arrow_light_gray" width="22" height="22"/>
         <image name="close_button_light_gray" width="22" height="22"/>
         <image name="hb_logo_blue" width="115" height="115"/>
+        <image name="location_on" width="17" height="17"/>
         <image name="map_bg_image" width="162" height="250"/>
         <image name="not_in_area_image" width="190" height="192"/>
         <image name="placeholder" width="50" height="50"/>

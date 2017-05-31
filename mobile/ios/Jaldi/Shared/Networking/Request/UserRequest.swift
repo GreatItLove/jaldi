@@ -16,6 +16,7 @@ public enum UserRequests: JaldiRequest {
     case sendVerification(recipient:String)
     case register(verification: (verificationId:Int, verificationCode:String) ,
                   user:(name:String,email:String,phone:String,password:String))
+    case updateLocation(latitude:Double,longitude:Double)
     
     public var path: String {
         switch self {
@@ -29,6 +30,8 @@ public enum UserRequests: JaldiRequest {
             return "rest/mobile/register"
         case .sendVerification(_):
             return "rest/mobile/sendVerification"
+        case .updateLocation(_,_):
+            return "rest/profile/location"
             
         }
     }
@@ -45,6 +48,8 @@ public enum UserRequests: JaldiRequest {
             return .post
         case .sendVerification(_):
             return .post
+        case .updateLocation(_,_):
+            return .put
         }
     }
     
@@ -65,6 +70,8 @@ public enum UserRequests: JaldiRequest {
                                     "password" : user.password]])
         case .sendVerification(let recipient):
             return .body(["recipient" : recipient])
+        case .updateLocation(let latitude , let longitude):
+            return .body(["latitude" : latitude,"longitude" : longitude])
             
         }
     }

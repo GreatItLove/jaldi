@@ -1,26 +1,24 @@
 //
-//  JaldiOrderWorkersView.swift
+//  JaldiOrderListWorkersView.swift
 //  Jaldi
 //
-//  Created by Grigori Jlavyan on 5/29/17.
+//  Created by Grigori Jlavyan on 5/30/17.
 //  Copyright © 2017 Handybook. All rights reserved.
 //
 
 import UIKit
-
-class JaldiOrderWorkersView: UIView {
-
+class JaldiOrderListWorkersView: UIView {
+    
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var rateLabel: UILabel!
-    @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var serviceImageView: UIImageView!
-   
-     //Mark: Configuaration
+    
+    //Mark: Configuaration
     func configureWith(order:JaldiOrder) {
-       configureUserDetailsFor(order: order)
-        configureOrderDetails(order: order)
-     }
+        configureUserDetailsFor(order: order)
+        configureOrderType(order: order)
+    }
     private func configureUserDetailsFor(order:JaldiOrder) {
         if let user = order.user {
             fullNameLabel.text = user.name
@@ -36,22 +34,9 @@ class JaldiOrderWorkersView: UIView {
         }
         avatarImageView.image = AppImages.dumy_profile_pic
     }
-    private func configureOrderDetails(order:JaldiOrder) {
-       configureOrderCost(order: order)
-        configureOrderType(order: order)
-    }
-    
-    private func configureOrderCost(order:JaldiOrder) {
-        let cost = order.cost ?? 0
-        costLabel.text = "\(Int(cost)) QR"
-    }
+ 
     private func configureOrderType(order:JaldiOrder) {
-       let imageName = HomeCategoryHeleper.iconImageNameFor(category: order.homeCategory)
-       serviceImageView.image = UIImage(named: imageName)
-    }
-    
-    //Mark: Action
-    @IBAction func cancelAction(_ sender: Any) {
-        print("Cancel")
+        let imageName = HomeCategoryHeleper.iconImageNameFor(category: order.homeCategory)
+        serviceImageView.image = UIImage(named: imageName)
     }
 }

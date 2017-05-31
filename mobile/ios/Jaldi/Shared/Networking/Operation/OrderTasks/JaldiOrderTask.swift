@@ -88,7 +88,6 @@ class JaldiOrderTask: JaldiOperation {
                                         taskCompletion(order)
                                     case .error(let statuseCode, let error):
                                         completionError(error,statuseCode)
-                                        
                                     }
         })
     }
