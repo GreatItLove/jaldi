@@ -23,6 +23,14 @@ public class UserMapper implements RowMapper<User> {
         user.setRole(User.Role.valueOf(rs.getString("role")));
         user.setType(User.Type.valueOf(rs.getString("type")));
         user.setProfileImageId(rs.getString("profileImageId"));
+        double latitude = rs.getDouble("latitude");
+        if (!rs.wasNull()) {
+            user.setLatitude(latitude);
+        }
+        double longitude = rs.getDouble("longitude");
+        if (!rs.wasNull()) {
+            user.setLongitude(longitude);
+        }
         user.setActive(rs.getBoolean("isActive"));
         user.setDeleted(rs.getBoolean("isDeleted"));
         user.setCreationDate(rs.getTimestamp("creationDate"));

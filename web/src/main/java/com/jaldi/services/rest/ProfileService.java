@@ -46,6 +46,14 @@ public class ProfileService {
         return userDao.updateProfile(user);
     }
 
+    @RequestMapping(value="/location", method= RequestMethod.PUT)
+    public User updateLocation(@RequestBody User user) {
+        CustomAuthenticationToken token = (CustomAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+        User currentUser = token.getUser();
+        user.setId(currentUser.getId());
+        return userDao.updateLocation(user);
+    }
+
     @PostMapping("/changePassword")
     public ResponseEntity changePassword(@RequestBody UpdateProfileRequest request) {
         CustomAuthenticationToken token = (CustomAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();

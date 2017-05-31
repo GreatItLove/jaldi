@@ -42,12 +42,15 @@ class JaldiSignInViewController: UIViewController {
             return
         }
         
+        self.showHudWithMsg(message: nil)
         let task  = JaldiLoginTask(user: userName, password: password)
         task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: { (value) in
+            self.hideHud()
             self.view.endEditing(true)
             self.getProfile()
 //            UserProfile.currentProfile.loginAsGuest(guest: user)
         }) { (error, _) in
+            self.hideHud()
             print(error ?? "Error")
         }
     }
@@ -75,6 +78,7 @@ class JaldiSignInViewController: UIViewController {
     //MARK: Configurations
     private func configureTextFields() {
       emailTextField.placeholder = "Email"
+      emailTextField.keyboardType = .emailAddress
       passwordTextField.placeholder = "Password"
     }
     //MARK: GestureRecognizer

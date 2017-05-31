@@ -40,7 +40,7 @@ public class UserDaoImpl {
 
     public User getById(long id) {
         try {
-            String sql = "SELECT `id`, `email`, `name`, `phone`, `password`, `role`, `type`, `profileImageId`, `isActive`, `isDeleted`, `creationDate` FROM `user` WHERE `id` = ?;";
+            String sql = "SELECT `id`, `email`, `name`, `phone`, `password`, `role`, `type`, `profileImageId`, `latitude`, `longitude`, `isActive`, `isDeleted`, `creationDate` FROM `user` WHERE `id` = ?;";
             User user = jdbcTemplate.queryForObject(
                     sql, new UserMapper(), id);
             return user;
@@ -51,7 +51,7 @@ public class UserDaoImpl {
 
     public User getByUsernameAndPassword(String username, String password) {
         try {
-            String sql = "SELECT `id`, `email`, `name`, `phone`, `password`, `role`, `type`, `profileImageId`, `isActive`, `isDeleted`, `creationDate` FROM `user` WHERE `email` = ? AND password(?) = `password`;";
+            String sql = "SELECT `id`, `email`, `name`, `phone`, `password`, `role`, `type`, `profileImageId`, `latitude`, `longitude`, `isActive`, `isDeleted`, `creationDate` FROM `user` WHERE `email` = ? AND password(?) = `password`;";
             User user = jdbcTemplate.queryForObject(
                     sql, new UserMapper(), username, password);
             return user;
@@ -62,7 +62,7 @@ public class UserDaoImpl {
 
     public User loadUserByUsername(String username) {
         try {
-            String sql = "SELECT `id`, `email`, `name`, `phone`, `password`, `role`, `type`, `profileImageId`, `isActive`, `isDeleted`, `creationDate` FROM `user` WHERE `email` = ?;";
+            String sql = "SELECT `id`, `email`, `name`, `phone`, `password`, `role`, `type`, `profileImageId`, `latitude`, `longitude`, `isActive`, `isDeleted`, `creationDate` FROM `user` WHERE `email` = ?;";
             User user = jdbcTemplate.queryForObject(
                     sql, new UserMapper(), username);
             return user;
@@ -87,6 +87,15 @@ public class UserDaoImpl {
         namedParameters.put("name", user.getName());
         namedParameters.put("phone", user.getPhone());
         namedJdbc.update("update `user` set `name` = :name, phone = :phone where `id` = :id;", namedParameters);
+        return user;
+    }
+
+    public User updateLocation(User user) {
+        Map namedParameters = new HashMap();
+        namedParameters.put("id", user.getId());
+        namedParameters.put("latitude", user.getLatitude());
+        namedParameters.put("longitude", user.getLongitude());
+        namedJdbc.update("update `user` set `latitude` = :latitude, longitude = :longitude where `id` = :id;", namedParameters);
         return user;
     }
 

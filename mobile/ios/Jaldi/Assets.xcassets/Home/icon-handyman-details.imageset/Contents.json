@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icon-handyman-details.png",
+      "filename" : "Handyman@1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "icon-handyman-details@2x.png",
+      "filename" : "Handyman@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "icon-handyman-details@3x.png",
+      "filename" : "Handyman@3x.png",
       "scale" : "3x"
     }
   ],
