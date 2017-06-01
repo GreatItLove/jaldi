@@ -57,7 +57,7 @@ class JaldiOrderStateView: UIView {
     //Mark: Helpers
     private func stateCheckMarkForState(orderState:JaldiOrderState) -> JaldiOrderStateCheckMark {
         switch orderState {
-        case .enRoute:
+        case .enRoute, .assigned, .created, .canceled:
             return enRouteStateCheckMark
         case .working:
             return workingStateCheckMark
@@ -69,7 +69,7 @@ class JaldiOrderStateView: UIView {
     }
     private func separatorFor(orderState:JaldiOrderState) -> JaldiOrderStateSeparatorView? {
         switch orderState {
-        case .enRoute:
+        case .enRoute, .assigned, .canceled, .created:
             return nil
         case .working:
             return workingSeparator

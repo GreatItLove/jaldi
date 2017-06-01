@@ -27,6 +27,7 @@ class JaldiOrder:Mappable {
     var userFeedback: String?
     var userRating: Float?
     var user: JaldiUser?
+    var ratingInProgress: Bool?
     
     
     required init?(map: Map) {

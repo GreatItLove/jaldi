@@ -21,6 +21,12 @@ class OrderListStateView: UIView {
    
     private func titleFor(orderState:JaldiOrderState) -> String {
         switch orderState {
+        case .created:
+            return "Created"
+        case .assigned:
+            return "Assigned"
+        case .canceled:
+            return "Canceled"
         case .working:
             return "Working"
         case .enRoute:

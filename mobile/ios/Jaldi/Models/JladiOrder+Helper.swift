@@ -16,18 +16,22 @@ enum OrderRatingState: Int {
 extension JaldiOrder {
     var orderState:JaldiOrderState {
         get {
-            guard let order_id = self.orderId else {
+            guard let status = self.status else {
                 return JaldiOrderState.enRoute
             }
-            switch order_id {
-            case let x where x > 50:
-                return JaldiOrderState.finished
-            case let x where x > 40:
+            switch status {
+            case "EN_ROUTE":
                 return JaldiOrderState.enRoute
-            case let x where x > 30:
-                return JaldiOrderState.tidyingUp
-            case let x where x > 20:
+            case "WORKING":
                 return JaldiOrderState.working
+            case "TIDYING_UP":
+                return JaldiOrderState.tidyingUp
+            case "FINISHED":
+                return JaldiOrderState.finished
+            case "CANCELED":
+                return JaldiOrderState.canceled
+            case "CREATED":
+                return JaldiOrderState.created
             default:
                 return JaldiOrderState.enRoute
             }
@@ -50,19 +54,18 @@ extension JaldiOrder {
     }
     var orderRatingState:OrderRatingState {
         get {
-            guard orderState == .finished else {
+            guard orderState == .finished
+                && (ratingInProgress ?? false
+                    || userRating == nil)  else {
                 return OrderRatingState.none
-            }
-            guard let _ = userFeedback else {
-              return OrderRatingState.comment
             }
             guard let _ = userRating else {
                 return OrderRatingState.rate
             }
+            guard let _ = userFeedback else {
+              return OrderRatingState.comment
+            }
             return OrderRatingState.finished
         }
     }
-
-    
-    
 }
