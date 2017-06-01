@@ -133,8 +133,6 @@ struct HomeCategoryHeleper {
         case .acTechnical:
             return "AC TECHNICAL"
 
-        default:
-            return "HOME CLEANING"
         }
     }
 
