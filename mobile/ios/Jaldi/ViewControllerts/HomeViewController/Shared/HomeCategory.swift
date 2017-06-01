@@ -10,7 +10,6 @@ import Foundation
 enum HomeCategory: Int {
     
     case homeCleaning
-    case handyMan
     case electrician
     case painter
     case plumber
@@ -18,7 +17,6 @@ enum HomeCategory: Int {
     case carpenter
     case acTechnical
     static let allCategories = [HomeCategory.homeCleaning,
-//                                HomeCategory.handyMan,
                                 HomeCategory.electrician,
                                 HomeCategory.painter,
                                 HomeCategory.plumber,
@@ -73,8 +71,6 @@ struct HomeCategoryHeleper {
             return HomeCategoryTitle.painter
         case .plumber:
             return HomeCategoryTitle.plumber
-        case .handyMan:
-            return HomeCategoryTitle.handyMan
         case .acTechnical:
             return HomeCategoryTitle.acTechnical
         }
@@ -94,8 +90,6 @@ struct HomeCategoryHeleper {
             return HomeCategoryDescription.painter
         case .plumber:
             return HomeCategoryDescription.plumber
-        case .handyMan:
-            return HomeCategoryDescription.handyMan
         case .acTechnical:
             return HomeCategoryDescription.acTechnical
         }
@@ -111,8 +105,6 @@ struct HomeCategoryHeleper {
             return HomeCategoryIconName.plumber
         case .homeCleaning:
             return HomeCategoryIconName.homeCleaning
-        case .handyMan:
-            return HomeCategoryIconName.handyMane
         case .carpenter:
             return HomeCategoryIconName.carpenter
         case .mason:

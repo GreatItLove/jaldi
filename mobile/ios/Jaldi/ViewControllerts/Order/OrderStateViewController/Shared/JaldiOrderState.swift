@@ -11,11 +11,11 @@ enum JaldiOrderState: Int {
     case created
     case assigned
     case canceled
-    
     case enRoute
     case working
     case tidyingUp
     case finished
+    
     static let allStates = [JaldiOrderState.enRoute,
                             JaldiOrderState.working,
                             JaldiOrderState.tidyingUp,
@@ -25,10 +25,13 @@ enum JaldiOrderState: Int {
 
 struct JaldiOrderStateHeleper {
     struct OrderStateTitle {
+        static let created = "Created"
+        static let assigned = "Assigned"
         static let enRoute = "En route"
         static let working = "Working"
         static let tidyingUp = "Tidyng Up"
         static let finished = "Finshed"
+        static let canceled = "Canceled"
     }
     struct CheckMarkIcons {
         static let unchecked = "radio_off"
@@ -38,6 +41,10 @@ struct JaldiOrderStateHeleper {
     
     static func orderStateTitleFor(orderState:JaldiOrderState) -> String {
         switch orderState {
+        case .created:
+            return OrderStateTitle.created
+        case .assigned:
+            return OrderStateTitle.assigned
         case .enRoute:
             return OrderStateTitle.enRoute
         case .working:
@@ -46,14 +53,14 @@ struct JaldiOrderStateHeleper {
             return OrderStateTitle.tidyingUp
         case .finished:
             return OrderStateTitle.finished
-        default:
-            return ""
-        }
+        case .canceled:
+            return OrderStateTitle.canceled
+}
     }
     
     static func orderStateIconeFor(orderState:JaldiOrderState , selected:Bool) -> String? {
         if !selected {
-          return CheckMarkIcons.unchecked
+            return CheckMarkIcons.unchecked
         }
         switch orderState {
         case .enRoute, .working:
@@ -71,12 +78,11 @@ struct JaldiOrderStateHeleper {
         case .working:
             return selected ? nil : "2"
         case .tidyingUp:
-            return "3"
+            return  "3"
         case .finished:
             return "4"
         default:
             return nil
-
         }
     }
 }

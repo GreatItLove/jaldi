@@ -183,6 +183,7 @@ extension JaldiOrderStateViewController:JaldiOrderStateViewControllerDelegate {
             return
         }
         if currentOrder.orderId == orderId {
+            self.showAlertWith(title: nil, message:"Order is canceled")
             currentOrder.status = JaldiStatus.canceled.rawValue
             workerView.configureWith(order: currentOrder)
         }

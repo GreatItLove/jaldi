@@ -78,15 +78,15 @@ extension JaldiOrderListViewController: UITableViewDelegate,UITableViewDataSourc
         switch order.orderRatingState {
         case .none:
           return  orderListTableView(tableView, orderListCellForRowAt: indexPath)
-        case .comment:
-            if indexPath.row == 0{
-                return  orderListTableView(tableView, orderListCommentCellForRowAt: indexPath)
-            }else{
-                return  orderListTableView(tableView, orderListCellForRowAt: indexPath)
-            }
         case .rate:
             if indexPath.row == 0{
                 return  orderListTableView(tableView, orderListRatingCellForRowAt: indexPath)
+            }else{
+                return  orderListTableView(tableView, orderListCellForRowAt: indexPath)
+            }
+        case .comment:
+            if indexPath.row == 0{
+                return  orderListTableView(tableView, orderListCommentCellForRowAt: indexPath)
             }else{
                 return  orderListTableView(tableView, orderListCellForRowAt: indexPath)
             }
@@ -207,6 +207,7 @@ extension JaldiOrderListViewController:JaldiOrderListRatingCellDelegate {
         let task  = JaldiOrderRateTask(orderId: orderId, userRating: rating)
         task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: {[weak self] (success) in
             order.userRating = rating
+            order.ratingInProgress = true
             self?.theTableView.reloadRows(at: [indexPath], with: .fade)
         }) { [weak self] (error, _) in
             if let error = error {
@@ -223,6 +224,7 @@ extension JaldiOrderListViewController:JaldiOrderListRatingCellDelegate {
         let task  = JaldiOrderFeedbackTask(orderId: orderId, userFeedback: userFeedback)
         task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: {[weak self] (success) in
             order.userFeedback = userFeedback
+            order.ratingInProgress = true
             self?.theTableView.reloadRows(at: [indexPath], with: .fade)
         }) { [weak self] (error, _) in
             if let error = error {

@@ -11,6 +11,7 @@ enum JaldiService: Int {
 
     // Parent Services
     case homeCleaning
+    case painter
     case mason
     case carpenter
     case acTechnical
@@ -299,8 +300,6 @@ struct JaldiServiceHeleper {
             return JaldiService.electricianServices
         case .plumber:
             return JaldiService.plumberServices
-        case .handyMan:
-            return JaldiService.handyManServices
         default:
             return []
         }
@@ -310,6 +309,8 @@ struct JaldiServiceHeleper {
         switch category {
         case .homeCleaning:
             return JaldiService.homeCleaning
+        case .painter:
+            return JaldiService.painter
         case .mason:
             return JaldiService.mason
         case .carpenter:

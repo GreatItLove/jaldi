@@ -58,6 +58,7 @@ extension JaldiOrder {
                 return JaldiOrderState.finished
             default:
                 return JaldiOrderState.created
+
             }
         }
     }
@@ -89,14 +90,16 @@ extension JaldiOrder {
 
     var orderRatingState:OrderRatingState {
         get {
-            guard orderState == .finished else {
+            guard orderState == .finished
+                && (ratingInProgress ?? false
+                    || userRating == nil)  else {
                 return OrderRatingState.none
-            }
-            guard let _ = userFeedback else {
-              return OrderRatingState.comment
             }
             guard let _ = userRating else {
                 return OrderRatingState.rate
+            }
+            guard let _ = userFeedback else {
+              return OrderRatingState.comment
             }
             return OrderRatingState.finished
         }

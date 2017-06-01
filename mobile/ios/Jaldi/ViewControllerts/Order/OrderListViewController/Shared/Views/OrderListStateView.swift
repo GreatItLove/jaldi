@@ -21,20 +21,21 @@ class OrderListStateView: UIView {
    
     private func titleFor(orderState:JaldiOrderState) -> String {
         switch orderState {
-        case .working:
-            return "Working"
         case .created:
             return "Created"
+        case .assigned:
+            return "Assigned"
+        case .canceled:
+            return "Canceled"
+        case .working:
+            return "Working"
         case .tidyingUp:
             return "Tidying Up"
         case .finished:
             return "Finished"
-        case .canceled:
-            return "Canceled"
         case .enRoute:
             return "En Route"
-        case .assigned:
-            return "Assigned"
+
         }
     }
     private func colorFor(orderState:JaldiOrderState) -> UIColor {

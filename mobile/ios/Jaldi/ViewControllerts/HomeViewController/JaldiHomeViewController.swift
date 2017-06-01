@@ -144,7 +144,7 @@ extension JaldiHomeViewController: UICollectionViewDelegate,UICollectionViewData
         switch category {
         case .homeCleaning,.mason,.acTechnical,.carpenter,.painter:
             self.showBookingDetailsViewController(category: category)
-        case .handyMan,.electrician,.plumber:
+        case .electrician,.plumber:
            self.showOnBoradingListViewFor(category: category)
         }
     }
