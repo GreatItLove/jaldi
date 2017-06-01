@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreLocation
+import MessageUI
 class JaldiHomeViewController: UIViewController {
     
     @IBOutlet weak var addressLabel: UILabel!
@@ -88,6 +89,9 @@ class JaldiHomeViewController: UIViewController {
     @IBAction func changeAddressAction(_ sender: Any) {
        self.presentPlacePicker()
     }
+    @IBAction func infoAction(_ sender: Any) {
+        showInfoAlert()
+    }
     func presentPlacePicker() {
         let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
         let placePicker = storyboard.instantiateViewController(withIdentifier: "JaldiPlacePicker") as? JaldiPlacePicker
@@ -109,6 +113,39 @@ class JaldiHomeViewController: UIViewController {
         let navController = UINavigationController(rootViewController: ordersViewController!)
         navController.isNavigationBarHidden = true
         self.present(navController, animated: true, completion: nil)
+    }
+    //Mark: Info Helpers
+    private func showInfoAlert() {
+        let deletAlert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        deletAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        deletAlert.addAction(UIAlertAction(title: "Call Us", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) -> () in
+            self.callUs()
+        }))
+        deletAlert.addAction(UIAlertAction(title: "Email Us", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) -> () in
+            self.emailUs()
+        }))
+        self.present(deletAlert, animated: true, completion: nil)
+    }
+    
+    private func callUs() {
+        let phone  = "+974 4022 5336"
+        guard let url = NSURL(string: "tel://\(phone)") else{
+            return
+        }
+        UIApplication.shared.openURL(url as URL)
+    }
+    private func emailUs() {
+         // the recipient email address
+        let email  = "support@jaldi.pro"
+        
+        if MFMailComposeViewController.canSendMail() {
+            let emailController = MFMailComposeViewController()
+            emailController.mailComposeDelegate = self
+            emailController.setSubject("Thanks for your feedback!")
+            emailController.setMessageBody("", isHTML: false)
+            emailController.setToRecipients([email])
+            present(emailController, animated: true, completion: nil)
+        }
     }
 
 }
@@ -188,3 +225,19 @@ extension JaldiHomeViewController: JaldiPlacePickerDelegate {
         }
     }
 }
+extension JaldiHomeViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?){
+        switch(result) { // <-- Here, note .value is being used
+        case .cancelled:
+            print("cancelled")
+        case .saved:
+            print("saved")
+        case .sent:
+            print("sent")
+        case .failed:
+            print("failed")
+        }
+        controller.dismiss(animated: true, completion: nil)
+    }
+}
+

@@ -322,6 +322,29 @@ struct JaldiServiceHeleper {
         }
     }
     
+    static  func homeCategoryFor(service:JaldiService) -> HomeCategory{
+        switch service {
+        case .homeCleaning:
+            return HomeCategory.homeCleaning
+        case .painter:
+            return HomeCategory.painter
+        case .mason:
+            return HomeCategory.mason
+        case .carpenter:
+            return HomeCategory.carpenter
+        case .acTechnical:
+            return HomeCategory.acTechnical
+        default:
+            if let _ = JaldiService.electricianServices.index(of: service) {
+                return HomeCategory.electrician
+            }
+            if let _ = JaldiService.plumberServices.index(of: service) {
+                return HomeCategory.plumber
+            }
+            return HomeCategory.homeCleaning
+        }
+    }
+    
    
     
 }

@@ -136,6 +136,7 @@ extension JaldiBookingDetailsViewController:JaldiBookingDetailsTableViewCellDele
                 bookingObject?.bookingDetails.hours = hours
                 }
             }
+                        
         }
     }
     private func correctSuggestedHours() {

@@ -73,7 +73,9 @@ class JaldiPlacePicker: UIViewController {
         guard let location = locationManager?.location?.coordinate else {
             return
         }
-        mapView.centerCoordinate = location
+        let region = MKCoordinateRegionMakeWithDistance(
+            location, 500, 500)
+        mapView.setRegion(region, animated: true)
     }
     
     private func getCurrentLocationAndDismiss() {

@@ -22,14 +22,14 @@ class JaldiOrderListTableViewCell: UITableViewCell {
     @IBOutlet weak var workersLabel: UILabel!
     lazy var formatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.timeStyle = DateFormatter.Style.medium
-        formatter.dateStyle = DateFormatter.Style.short
+        formatter.timeStyle = DateFormatter.Style.short
+        formatter.dateStyle = DateFormatter.Style.medium
         return formatter
     }()
     lazy var timeFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.timeStyle = DateFormatter.Style.none
-        formatter.dateStyle = DateFormatter.Style.short
+        formatter.timeStyle = DateFormatter.Style.short
+        formatter.dateStyle = DateFormatter.Style.none
         return formatter
     }()
     override func awakeFromNib() {

@@ -31,7 +31,6 @@ public enum OrderRequest: JaldiRequest {
             return "rest/order/\(orderId)"
         case .cancel(let orderId):
             return "rest/order/cancel/\(orderId)"
-
         }
     }
     
@@ -49,7 +48,6 @@ public enum OrderRequest: JaldiRequest {
             return .get
         case .cancel(_):
             return .put
-
         }
     }
     
@@ -67,7 +65,6 @@ public enum OrderRequest: JaldiRequest {
             return .body(nil)
         case .cancel(_):
             return .body(nil)
-
         }
     }
 

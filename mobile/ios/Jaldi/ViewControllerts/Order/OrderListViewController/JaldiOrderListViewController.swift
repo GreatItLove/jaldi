@@ -96,7 +96,6 @@ extension JaldiOrderListViewController: UITableViewDelegate,UITableViewDataSourc
             }else{
                 return  orderListTableView(tableView, orderListCellForRowAt: indexPath)
             }
-            
         }
     }
     
@@ -115,7 +114,7 @@ extension JaldiOrderListViewController: UITableViewDelegate,UITableViewDataSourc
         }
         let order = orders[indexPath.section]
         if order.orderRatingState == .none || indexPath.row == 1 {
-            return 140
+            return 130
         }else {
           return 90
         }
@@ -217,6 +216,7 @@ extension JaldiOrderListViewController:JaldiOrderListRatingCellDelegate {
             }
         }
     }
+    
     private func feedback(order:JaldiOrder, userFeedback:String, indexPath:IndexPath) {
         guard let orderId = order.orderId else {
             return

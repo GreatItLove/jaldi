@@ -130,7 +130,11 @@ class JaldiOrderStateViewController: UIViewController {
     }
     @IBAction func currentLocationAction(_ sender: Any) {
         if let location = mapView?.userLocation.coordinate {
-          mapView.centerCoordinate = location
+//          mapView.centerCoordinate = location
+            let region = MKCoordinateRegionMakeWithDistance(
+                location, 500, 500)
+            mapView.setRegion(region, animated: true)
+            
         }
     }
 }
@@ -175,9 +179,17 @@ extension JaldiOrderStateViewController:JaldiOrderStateViewControllerDelegate {
         guard let orderId = self.order?.orderId else {
             return
         }
-        cacelOrderById(orderId: orderId)
+        showCanceOrderAlert(orderId: orderId)
     }
     
+    fileprivate func showCanceOrderAlert(orderId:Int)  {
+        let deletAlert = UIAlertController(title: "", message: "Are you sure you want to cancel this order?", preferredStyle: UIAlertControllerStyle.alert)
+        deletAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        deletAlert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) -> () in
+            self.cacelOrderById(orderId: orderId)
+        }))
+        self.present(deletAlert, animated: true, completion: nil)
+    }
     private func cacelOrderById(orderId: Int) {
         let task  = JaldiOrderCancelTask(orderId: orderId)
         task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: {(success) in
@@ -191,7 +203,6 @@ extension JaldiOrderStateViewController:JaldiOrderStateViewControllerDelegate {
             return
         }
         if currentOrder.orderId == orderId {
-            self.showAlertWith(title: nil, message:"Order is canceled")
             currentOrder.status = JaldiStatus.canceled.rawValue
             workerView.configureWith(order: currentOrder)
         }

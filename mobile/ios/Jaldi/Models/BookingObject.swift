@@ -24,6 +24,27 @@ class BookingObject {
             return bookingPrice.priceFor(hours: self.bookingDetails.hours)
         }
     }
+    var type:String {
+        get {
+         let homeCategory = JaldiServiceHeleper.homeCategoryFor(service: service)
+            switch homeCategory {
+            case .carpenter:
+                return JaldiType.carpenter.rawValue
+            case .homeCleaning:
+                return JaldiType.homeCleaning.rawValue
+            case .electrician:
+                return JaldiType.electrician.rawValue
+            case .mason:
+                return JaldiType.mason.rawValue
+            case .painter:
+                return JaldiType.painter.rawValue
+            case .plumber:
+                return JaldiType.plumber.rawValue
+            case .acTechnical:
+                return JaldiType.acTechnical.rawValue
+            }
+        }
+    }
     
     
     init(service:JaldiService, bookingDetails:BookingDetails,bookingScreens:[BookingScreen]) {
