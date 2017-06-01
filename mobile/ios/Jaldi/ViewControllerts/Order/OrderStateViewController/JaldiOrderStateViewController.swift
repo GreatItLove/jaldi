@@ -37,7 +37,8 @@ class JaldiOrderStateViewController: UIViewController {
             orderState = order.orderState
         }
         orderStateView.configureWith(orderState: orderState)
-        configureTimeAndTitleLabels()
+        configureTimeLabel()
+        configureTitleLabel()
         configureLocationManager()
         self.addOrderPin()
         configureAppearance()
@@ -83,7 +84,7 @@ class JaldiOrderStateViewController: UIViewController {
         locationManager?.delegate = self;
         locationManager?.requestWhenInUseAuthorization()
     }
-    private func configureTimeAndTitleLabels(){
+    private func configureTimeLabel(){
         orderTitleLabel.text = NSLocalizedString("OrderStateTitle", comment: "")
         guard let order = self.order , let orderDate = order.orderDate else {
             return
@@ -93,6 +94,13 @@ class JaldiOrderStateViewController: UIViewController {
         let endTimeTimeStr = endDate.dateStringWith(format: "HH:mm a")
         timeLabel.text = "\(startTimeStr) - \(endTimeTimeStr)"
     }
+    private func configureTitleLabel(){
+        guard let order = self.order  else {
+            return
+        }
+        orderTitleLabel.text = HomeCategoryHeleper.orderTitleFor(homeCategory:order.homeCategory)
+    }
+    
     fileprivate func configureDistance(){
         guard let latitude = self.order?.latitude, let longitude = self.order?.longitude else {
             return

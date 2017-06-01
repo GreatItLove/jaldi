@@ -76,6 +76,7 @@ struct HomeCategoryHeleper {
         }
     }
     
+    
     static  func descriptionFor(category:HomeCategory)->String{
         switch category {
         case .carpenter:
@@ -114,5 +115,27 @@ struct HomeCategoryHeleper {
         
         }
     }
-   
+    
+    static func orderTitleFor(homeCategory:HomeCategory) -> String {
+        switch homeCategory {
+        case .homeCleaning:
+            return "HOME CLEANING"
+        case .painter:
+            return "HOME PAINTING"
+        case .plumber:
+            return "PLUMBING"
+        case .mason:
+            return "MASON"
+        case .electrician:
+            return "ELECTRICIAN"
+        case .carpenter:
+            return "CARPENTER"
+        case .acTechnical:
+            return "AC TECHNICAL"
+
+        default:
+            return "HOME CLEANING"
+        }
+    }
+
 }

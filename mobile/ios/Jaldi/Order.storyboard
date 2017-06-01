@@ -32,7 +32,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kpf-I8-R0y">
-                                        <rect key="frame" x="75" y="21" width="170" height="39"/>
+                                        <rect key="frame" x="75" y="21.5" width="170" height="39"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOME CLEANING" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxq-Cn-Jtx">
                                                 <rect key="frame" x="0.0" y="0.0" width="170" height="22.5"/>
@@ -251,7 +251,7 @@
                                         </connections>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finished" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i62-d7-A98">
-                                        <rect key="frame" x="271" y="47" width="49" height="16.5"/>
+                                        <rect key="frame" x="271.5" y="47" width="49" height="16.5"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                         <color key="textColor" red="0.19215686274509802" green="0.19215686274509802" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -357,7 +357,7 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="PxR-Vz-CnJ">
-                                        <rect key="frame" x="105" y="14" width="75.5" height="32.5"/>
+                                        <rect key="frame" x="105" y="13.5" width="75.5" height="32.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sonia Agraval" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Og7-Ju-383">
                                                 <rect key="frame" x="0.0" y="0.0" width="75.5" height="16.5"/>
@@ -420,7 +420,7 @@
                                         <rect key="frame" x="269" y="6" width="51" height="45"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="cS6-Ea-GjY">
-                                                <rect key="frame" x="7.5" y="5" width="37" height="35"/>
+                                                <rect key="frame" x="8" y="5" width="37" height="35"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="order_cancel_icon" translatesAutoresizingMaskIntoConstraints="NO" id="cu2-Ts-8mz">
                                                         <rect key="frame" x="9" y="0.0" width="19" height="19"/>
@@ -676,7 +676,7 @@
                                                     <rect key="frame" x="0.0" y="36" width="100" height="104"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3Pu-ZH-xiT">
-                                                            <rect key="frame" x="10" y="14" width="80" height="77.5"/>
+                                                            <rect key="frame" x="10" y="13.5" width="80" height="77.5"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AyY-dV-YGf">
                                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="45"/>
@@ -888,7 +888,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Plf-Rj-Lea">
-                                                    <rect key="frame" x="104.5" y="15.5" width="111.5" height="60.5"/>
+                                                    <rect key="frame" x="105" y="15" width="111.5" height="60.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank You!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyA-Jp-kFD">
                                                             <rect key="frame" x="23.5" y="0.0" width="64" height="16.5"/>
@@ -938,7 +938,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Pt4-0d-9Xx">
-                                                    <rect key="frame" x="0.0" y="14" width="320" height="63.5"/>
+                                                    <rect key="frame" x="0.0" y="13.5" width="320" height="63.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leave a comment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQd-iQ-N2H">
                                                             <rect key="frame" x="109" y="0.0" width="102.5" height="16.5"/>
@@ -1033,22 +1033,22 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="nPf-y2-bio">
-                                                    <rect key="frame" x="30" y="12.5" width="260" height="65.5"/>
+                                                    <rect key="frame" x="30" y="15.5" width="260" height="61"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Work Finished!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuz-1b-ju7">
-                                                            <rect key="frame" x="87.5" y="0.0" width="85.5" height="16.5"/>
+                                                            <rect key="frame" x="90.5" y="0.0" width="79.5" height="14"/>
                                                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please rate your experience to improve service quality." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEU-kq-QTb">
-                                                            <rect key="frame" x="3.5" y="21.5" width="253.5" height="14"/>
+                                                            <rect key="frame" x="8.5" y="19" width="243.5" height="12"/>
                                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="10"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ces-LH-8jV">
-                                                            <rect key="frame" x="0.0" y="40.5" width="260" height="25"/>
+                                                            <rect key="frame" x="0.0" y="36" width="260" height="25"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yjb-kv-CqQ" customClass="CosmosView" customModule="Jaldi" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="140" height="25"/>

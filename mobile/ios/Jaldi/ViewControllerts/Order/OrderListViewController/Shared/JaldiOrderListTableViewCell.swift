@@ -76,16 +76,7 @@ class JaldiOrderListTableViewCell: UITableViewCell {
     }
     
     private func orderTitleFor(homeCategory:HomeCategory) -> String {
-        switch homeCategory {
-        case .homeCleaning:
-            return "HOME CLEANING"
-        case .painter:
-            return "HOME PAINTING"
-        case .plumber:
-            return "PLUMBING"
-        default:
-            return "HOME CLEANING"
-        }
+       return HomeCategoryHeleper.orderTitleFor(homeCategory:homeCategory)
     }
     
 }

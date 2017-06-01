@@ -29,7 +29,7 @@
 "CooseYourLocationMessage" = "Choose place";
 
 //MARK: OrderStateViewController
-"OrderStateTitle" = "HOME CLEANING";
+
 
 //MARK: PlacePicker
 "CantUpdateLocation" = "Can't update location";
