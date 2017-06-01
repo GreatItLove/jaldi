@@ -15,6 +15,8 @@ class JaldiOrderWorkersView: UIView {
     @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var serviceImageView: UIImageView!
+    @IBOutlet weak var cancelView: UIView!
+    
     weak var delegate:JaldiOrderStateViewControllerDelegate?
      //Mark: Configuaration
     func configureWith(order:JaldiOrder) {
@@ -37,8 +39,9 @@ class JaldiOrderWorkersView: UIView {
         avatarImageView.image = AppImages.dumy_profile_pic
     }
     private func configureOrderDetails(order:JaldiOrder) {
-       configureOrderCost(order: order)
+        configureOrderCost(order: order)
         configureOrderType(order: order)
+        cancelView.isHidden = (order.orderState == .finished || order.orderState == .canceled)
     }
     
     private func configureOrderCost(order:JaldiOrder) {

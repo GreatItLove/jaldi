@@ -31,10 +31,10 @@ class JaldiOrderStateView: UIView {
     
     private func configureIconsFor(orderState:JaldiOrderState) {
         for state in JaldiOrderState.allStates {
-            let stateCheckMark = self.stateCheckMarkForState(orderState: state)
-            let isSelected = state.rawValue <= orderState.rawValue
-            stateCheckMark.configureWith(orderState: state, isSelected: isSelected)
-
+            if  let stateCheckMark = self.stateCheckMarkForState(orderState: state) {
+                let isSelected = state.rawValue <= orderState.rawValue
+                stateCheckMark.configureWith(orderState: state, isSelected: isSelected)
+            }
         }
     }
     
@@ -55,7 +55,7 @@ class JaldiOrderStateView: UIView {
     }
    
     //Mark: Helpers
-    private func stateCheckMarkForState(orderState:JaldiOrderState) -> JaldiOrderStateCheckMark {
+    private func stateCheckMarkForState(orderState:JaldiOrderState) -> JaldiOrderStateCheckMark? {
         switch orderState {
         case .enRoute:
             return enRouteStateCheckMark
@@ -65,6 +65,8 @@ class JaldiOrderStateView: UIView {
             return tidyingUpStateCheckMark
         case .finished:
             return finishedIStateCheckMark
+        default:
+            return nil
         }
     }
     private func separatorFor(orderState:JaldiOrderState) -> JaldiOrderStateSeparatorView? {
@@ -77,6 +79,8 @@ class JaldiOrderStateView: UIView {
             return tidyingUpSeparator
         case .finished:
             return finishedSeparator
+        default:
+            return nil
         }
     }
 }

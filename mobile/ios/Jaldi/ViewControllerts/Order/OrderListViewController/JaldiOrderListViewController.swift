@@ -17,6 +17,11 @@ class JaldiOrderListViewController: UIViewController {
         super.viewDidLoad()
         self.reloadOrders()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        theTableView.reloadData()
+    }
     private func reloadOrders() {
         self.showHudWithMsg(message: nil)
         let task  = JaldiMyOrdersTask()

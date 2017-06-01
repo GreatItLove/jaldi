@@ -17,7 +17,10 @@ class JaldiOrderStateCheckMark: UIView {
     }
     
     private func configureImageViewWith(orderState:JaldiOrderState, isSelected:Bool) {
-        let imageName  = JaldiOrderStateHeleper.orderStateIconeFor(orderState: orderState, selected: isSelected)
+        guard let imageName  = JaldiOrderStateHeleper.orderStateIconeFor(orderState: orderState, selected: isSelected) else {
+            stateImageVew.image = nil
+            return
+        }
         stateImageVew.image = UIImage(named: imageName)
     }
     

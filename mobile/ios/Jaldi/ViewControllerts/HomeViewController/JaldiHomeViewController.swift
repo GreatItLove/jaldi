@@ -55,6 +55,12 @@ class JaldiHomeViewController: UIViewController {
                     UserProfile.currentProfile.user?.address = address
                     self.addressLabel.text = "Not in: \(address)?"
                     }
+                    if let country = placemark.country {
+                        UserProfile.currentProfile.user?.country = country
+                    }
+                    if let city = placemark.locality {
+                        UserProfile.currentProfile.user?.city = city
+                    }
                 }
         })
         

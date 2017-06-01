@@ -63,16 +63,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="bhI-yW-n44">
-                                <rect key="frame" x="130.33333333333331" y="112.66666666666666" width="154.33333333333331" height="29.999999999999972"/>
+                                <rect key="frame" x="177" y="112.66666666666666" width="61" height="29.999999999999972"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not in: 0930 ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Og-ep-9oN">
-                                        <rect key="frame" x="0.0" y="0.0" width="97.333333333333314" height="29.999999999999986"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Og-ep-9oN">
+                                        <rect key="frame" x="0.0" y="0.0" width="4" height="29.999999999999986"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hj-bQ-Lnr">
-                                        <rect key="frame" x="101.33333333333331" y="0.0" width="53.000000000000028" height="29.999999999999986"/>
+                                        <rect key="frame" x="8" y="0.0" width="53" height="29.999999999999986"/>
                                         <state key="normal" title="Change">
                                             <color key="titleColor" red="0.18431372549019609" green="0.80392156862745101" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -472,7 +472,7 @@
         <image name="backward_arrow_light_gray" width="22" height="22"/>
         <image name="close_button_light_gray" width="22" height="22"/>
         <image name="hb_logo_blue" width="115" height="115"/>
-        <image name="icon-electrician-details" width="50" height="50"/>
+        <image name="icon-electrician-details" width="986" height="986"/>
         <image name="list_icon" width="22" height="22"/>
         <image name="mega_phone_colored" width="50" height="50"/>
         <image name="serviceicon-plumbing-default" width="50" height="50"/>

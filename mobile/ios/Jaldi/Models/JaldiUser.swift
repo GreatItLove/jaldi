@@ -26,6 +26,9 @@ class JaldiUser:Mappable {
     var active: Bool?
     var deleted: Bool?
     var userId: Int?
+    
+    var city: String?
+    var country: String?
  
     required init?(map: Map) {
     }

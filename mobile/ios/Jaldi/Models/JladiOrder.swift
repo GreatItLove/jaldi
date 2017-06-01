@@ -24,6 +24,7 @@ class JaldiOrder:Mappable {
     var comment: String?
     var address: String?
     var city: String?
+    var country: String?
     var userFeedback: String?
     var userRating: Float?
     var user: JaldiUser?
@@ -46,6 +47,7 @@ class JaldiOrder:Mappable {
         comment      <- map["comment"]
         address      <- map["address"]
         city        <- map["city"]
+        country        <- map["country"]
         userFeedback        <- map["userFeedback"]
         userRating        <- map["userRating"]
         creationDate    <- (map["formattedCreationDate"], DateFormatterTransform(dateFormatter: Date.appDateFormater))

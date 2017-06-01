@@ -23,12 +23,18 @@ class OrderListStateView: UIView {
         switch orderState {
         case .working:
             return "Working"
-        case .enRoute:
+        case .created:
             return "Created"
         case .tidyingUp:
             return "Tidying Up"
         case .finished:
             return "Finished"
+        case .canceled:
+            return "Canceled"
+        case .enRoute:
+            return "En Route"
+        case .assigned:
+            return "Assigned"
         }
     }
     private func colorFor(orderState:JaldiOrderState) -> UIColor {

@@ -8,6 +8,10 @@
 
 import Foundation
 enum JaldiOrderState: Int {
+    case created
+    case assigned
+    case canceled
+    
     case enRoute
     case working
     case tidyingUp
@@ -42,10 +46,12 @@ struct JaldiOrderStateHeleper {
             return OrderStateTitle.tidyingUp
         case .finished:
             return OrderStateTitle.finished
+        default:
+            return ""
         }
     }
     
-    static func orderStateIconeFor(orderState:JaldiOrderState , selected:Bool) -> String {
+    static func orderStateIconeFor(orderState:JaldiOrderState , selected:Bool) -> String? {
         if !selected {
           return CheckMarkIcons.unchecked
         }
@@ -54,6 +60,8 @@ struct JaldiOrderStateHeleper {
              return CheckMarkIcons.green
         case .tidyingUp, .finished:
             return CheckMarkIcons.blue
+        default:
+            return nil
         }
     }
     static func orderStateLabelTitleFor(orderState:JaldiOrderState , selected:Bool) -> String? {
@@ -66,6 +74,9 @@ struct JaldiOrderStateHeleper {
             return "3"
         case .finished:
             return "4"
+        default:
+            return nil
+
         }
     }
 }

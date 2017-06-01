@@ -474,6 +474,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="avatarImageView" destination="ykZ-cE-2oi" id="wJr-sV-iMz"/>
+                                    <outlet property="cancelView" destination="DQD-Gx-9RL" id="rRj-Kd-VYp"/>
                                     <outlet property="costLabel" destination="SFH-V7-5YH" id="sVw-Yg-em2"/>
                                     <outlet property="fullNameLabel" destination="Og7-Ju-383" id="w6m-cB-8ih"/>
                                     <outlet property="rateLabel" destination="M6W-Hc-OZ6" id="OTw-UL-rbF"/>
@@ -1032,7 +1033,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="nPf-y2-bio">
-                                                    <rect key="frame" x="30" y="13" width="260" height="65.5"/>
+                                                    <rect key="frame" x="30" y="12.5" width="260" height="65.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Work Finished!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuz-1b-ju7">
                                                             <rect key="frame" x="87.5" y="0.0" width="85.5" height="16.5"/>

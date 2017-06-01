@@ -21,6 +21,8 @@ class JaldiOrderTask: JaldiOperation {
     var longitude: Double
     var paymentType: String
     var orderDate: Date
+    var city: String
+    var country: String
     
     init(type: String,
          workers: Int,
@@ -31,7 +33,9 @@ class JaldiOrderTask: JaldiOperation {
          latitude: Double,
          longitude: Double,
          paymentType: String,
-         orderDate: Date)
+         orderDate: Date,
+         city:String,
+         country:String)
     {
         self.type = type
         self.workers = workers
@@ -43,6 +47,9 @@ class JaldiOrderTask: JaldiOperation {
         self.longitude = longitude
         self.paymentType = paymentType
         self.orderDate = orderDate
+        self.city = city
+        self.country = country
+        
     }
     convenience init?(bookingObject:BookingObject) {
         guard let latitude = UserProfile.currentProfile.user?.latitude,
@@ -51,7 +58,9 @@ class JaldiOrderTask: JaldiOperation {
         }
         let bookingAddress = UserProfile.currentProfile.user?.address ?? ""
         let bookingComment = bookingObject.description ?? ""
-        self.init(type: "CLEANER", workers: 1, address: bookingAddress, comment:bookingComment, hours: bookingObject.bookingDetails.hours, cost: bookingObject.cost, latitude: latitude, longitude: longitude, paymentType: "CASH", orderDate: bookingObject.bookingTime ?? Date())
+        let bookingCity = UserProfile.currentProfile.user?.city ?? ""
+        let bookingCountry = UserProfile.currentProfile.user?.country ?? ""
+        self.init(type: "CLEANER", workers: 1, address: bookingAddress, comment:bookingComment, hours: bookingObject.bookingDetails.hours, cost: bookingObject.cost, latitude: latitude, longitude: longitude, paymentType: "CASH", orderDate: bookingObject.bookingTime ?? Date(),city:bookingCity,country:bookingCountry)
     }
     
     var request: JaldiRequest {
@@ -66,6 +75,8 @@ class JaldiOrderTask: JaldiOperation {
                           "latitude" : latitude,
                           "longitude" : longitude,
                           "paymentType" : paymentType,
+                          "city" : city,
+                          "country" : country,
                           "orderDate" : orderDateStr] as [String : Any]
         return OrderRequest.order(orderDict: orderDict)
     }

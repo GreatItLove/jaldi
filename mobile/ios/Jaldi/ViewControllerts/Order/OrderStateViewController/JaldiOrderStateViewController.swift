@@ -173,9 +173,18 @@ extension JaldiOrderStateViewController:JaldiOrderStateViewControllerDelegate {
     private func cacelOrderById(orderId: Int) {
         let task  = JaldiOrderCancelTask(orderId: orderId)
         task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: {(success) in
-//            print(success)
+         self.setOrderCanceledFor(orderId: orderId)
         }) {  (error, _) in
             print("error")
+        }
+    }
+    private func setOrderCanceledFor(orderId: Int) {
+        guard let currentOrder = order else {
+            return
+        }
+        if currentOrder.orderId == orderId {
+            currentOrder.status = JaldiStatus.canceled.rawValue
+            workerView.configureWith(order: currentOrder)
         }
     }
 }

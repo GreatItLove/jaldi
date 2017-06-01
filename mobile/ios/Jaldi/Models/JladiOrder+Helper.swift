@@ -13,23 +13,51 @@ enum OrderRatingState: Int {
     case rate
     case finished
 }
+
+enum JaldiStatus: String {
+    case created = "CREATED"
+    case assigned = "ASSIGNED"
+    case canceled = "CANCELED"
+    case enRoute = "EN_ROUTE"
+    case working = "WORKING"
+    case tidyingUp = "TIDYING_UP"
+    case finished = "FINISHED"
+}
+
+enum JaldiType: String {
+    case homeCleaning = "CLEANER"
+    case carpenter = "CARPENTER"
+    case electrician = "ELECTRICIAN"
+    case mason = "MASON"
+    case painter = "PAINTER"
+    case plumber = "PLUMBER"
+    case acTechnical = "AC_TECHNICALL"
+}
+
+
 extension JaldiOrder {
     var orderState:JaldiOrderState {
         get {
-            guard let order_id = self.orderId else {
-                return JaldiOrderState.enRoute
+            guard let status = self.status else {
+                return JaldiOrderState.created
             }
-            switch order_id {
-            case let x where x > 50:
-                return JaldiOrderState.finished
-            case let x where x > 40:
+            switch status {
+            case JaldiStatus.created.rawValue:
+                return JaldiOrderState.created
+            case JaldiStatus.assigned.rawValue:
+                return JaldiOrderState.assigned
+            case JaldiStatus.canceled.rawValue:
+                return JaldiOrderState.canceled
+            case JaldiStatus.enRoute.rawValue:
                 return JaldiOrderState.enRoute
-            case let x where x > 30:
-                return JaldiOrderState.tidyingUp
-            case let x where x > 20:
+            case JaldiStatus.working.rawValue:
                 return JaldiOrderState.working
+            case JaldiStatus.tidyingUp.rawValue:
+                return JaldiOrderState.tidyingUp
+            case JaldiStatus.finished.rawValue:
+                return JaldiOrderState.finished
             default:
-                return JaldiOrderState.enRoute
+                return JaldiOrderState.created
             }
         }
     }
@@ -39,15 +67,26 @@ extension JaldiOrder {
                 return HomeCategory.homeCleaning
             }
             switch order_type {
-            case "CLEANER":
+            case JaldiType.homeCleaning.rawValue:
                 return HomeCategory.homeCleaning
-            case "PAINTER":
+            case JaldiType.carpenter.rawValue:
+                return HomeCategory.carpenter
+            case JaldiType.electrician.rawValue:
+                return HomeCategory.electrician
+            case JaldiType.mason.rawValue:
+                return HomeCategory.mason
+            case JaldiType.plumber.rawValue:
+                return HomeCategory.plumber
+            case JaldiType.acTechnical.rawValue:
+                return HomeCategory.acTechnical
+            case JaldiType.painter.rawValue:
                 return HomeCategory.painter
             default:
                 return HomeCategory.homeCleaning
             }
         }
     }
+
     var orderRatingState:OrderRatingState {
         get {
             guard orderState == .finished else {
@@ -62,7 +101,4 @@ extension JaldiOrder {
             return OrderRatingState.finished
         }
     }
-
-    
-    
 }

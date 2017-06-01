@@ -13,7 +13,6 @@ class JaldiOrderByIdTask: JaldiOperation {
     
     var orderId: Int
 
-    
     init(orderId: Int) {
         self.orderId = orderId
     }
