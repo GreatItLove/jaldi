@@ -107,14 +107,15 @@ extension JaldiOrderListViewController: UITableViewDelegate,UITableViewDataSourc
         if order.orderRatingState == .none || indexPath.row == 1 {
             self.orderListShow(order: order)
         }
-     }
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         guard let orders = self.orders else {
             return 0
         }
         let order = orders[indexPath.section]
         if order.orderRatingState == .none || indexPath.row == 1 {
-            return 130
+            return 120
         }else {
           return 90
         }
@@ -122,12 +123,24 @@ extension JaldiOrderListViewController: UITableViewDelegate,UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-      return 0.1
+        if section == 0 {
+            return 10
+        } else {
+            return 1
+        }
     }
     
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-     return 20
+     return 0.01
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return nil
     }
 
     

@@ -45,7 +45,6 @@
 		4C382F311ED9802D0052734E /* JaldiOrderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C382F301ED9802D0052734E /* JaldiOrderListViewController.swift */; };
 		4C382F331ED981700052734E /* Order.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C382F321ED981700052734E /* Order.storyboard */; };
 		4C382F351ED9821E0052734E /* SwiftPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C382F341ED9821E0052734E /* SwiftPages.swift */; };
-		4C382F381ED991220052734E /* JaldiOrderDummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C382F371ED991220052734E /* JaldiOrderDummyData.swift */; };
 		4C382F3B1ED9AA5A0052734E /* JaldiOrderListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C382F3A1ED9AA5A0052734E /* JaldiOrderListTableViewCell.swift */; };
 		4C42BFDE1EC2F8F00098B186 /* JaldiBookingPaymentTermOfUseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C42BFDD1EC2F8F00098B186 /* JaldiBookingPaymentTermOfUseCell.swift */; };
 		4C42BFE11EC30B320098B186 /* JaldiBookingPaymentDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C42BFE01EC30B320098B186 /* JaldiBookingPaymentDetailsCell.swift */; };
@@ -149,7 +148,6 @@
 		4C382F301ED9802D0052734E /* JaldiOrderListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOrderListViewController.swift; sourceTree = "<group>"; };
 		4C382F321ED981700052734E /* Order.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Order.storyboard; sourceTree = "<group>"; };
 		4C382F341ED9821E0052734E /* SwiftPages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPages.swift; sourceTree = "<group>"; };
-		4C382F371ED991220052734E /* JaldiOrderDummyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOrderDummyData.swift; sourceTree = "<group>"; };
 		4C382F3A1ED9AA5A0052734E /* JaldiOrderListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiOrderListTableViewCell.swift; sourceTree = "<group>"; };
 		4C42BFDD1EC2F8F00098B186 /* JaldiBookingPaymentTermOfUseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingPaymentTermOfUseCell.swift; sourceTree = "<group>"; };
 		4C42BFE01EC30B320098B186 /* JaldiBookingPaymentDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiBookingPaymentDetailsCell.swift; sourceTree = "<group>"; };
@@ -365,7 +363,6 @@
 		4C382F0C1ED97D560052734E /* Order */ = {
 			isa = PBXGroup;
 			children = (
-				4C382F361ED990AA0052734E /* Shared */,
 				4C382F2C1ED97FB50052734E /* OrdersViewController */,
 				4C382F2F1ED9801A0052734E /* OrderListViewController */,
 				4C382F0D1ED97D930052734E /* OrderStateViewController */,
@@ -472,14 +469,6 @@
 				4C382F391ED9AA2C0052734E /* Shared */,
 			);
 			path = OrderListViewController;
-			sourceTree = "<group>";
-		};
-		4C382F361ED990AA0052734E /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				4C382F371ED991220052734E /* JaldiOrderDummyData.swift */,
-			);
-			path = Shared;
 			sourceTree = "<group>";
 		};
 		4C382F391ED9AA2C0052734E /* Shared */ = {
@@ -931,6 +920,7 @@
 				TargetAttributes = {
 					4C4587871EB4C23500169AC1 = {
 						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = 6K6JE4UYP8;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1066,7 +1056,6 @@
 				4C382F221ED97DFC0052734E /* JaldiRegistrationDefines.swift in Sources */,
 				4CED68541EB870A5001A7CC5 /* JaldiAppConstants.swift in Sources */,
 				4C7FFA9C1ECDB17700C95E71 /* UserRequest.swift in Sources */,
-				4C382F381ED991220052734E /* JaldiOrderDummyData.swift in Sources */,
 				4CED68561EB871BF001A7CC5 /* UserProfile.swift in Sources */,
 				4CCBD3B01EBCB5F9009D5408 /* JaldiBookingDatePriceView.swift in Sources */,
 				4C4998FA1EBB109B0034819B /* JaldiValidator.swift in Sources */,
@@ -1257,13 +1246,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "";
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6K6JE4UYP8;
 				INFOPLIST_FILE = Jaldi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = pro.jaldi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1274,13 +1265,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "";
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6K6JE4UYP8;
 				INFOPLIST_FILE = Jaldi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = pro.jaldi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

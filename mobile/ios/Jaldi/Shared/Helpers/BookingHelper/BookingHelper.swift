@@ -47,8 +47,8 @@ struct BookingHelper {
         static func bookingItemsFor(service:JaldiService) -> [BookingDetailsItem] {
             let helper = BookingDetailsItemHelper()
             switch service {
-            case .lightFixtures:
-                return helper.lightFixturesItems()
+//            case .lightFixtures:
+//                return helper.lightFixturesItems()
             case .homeCleaning:
                 return helper.homeCleaningItems()
             default:
