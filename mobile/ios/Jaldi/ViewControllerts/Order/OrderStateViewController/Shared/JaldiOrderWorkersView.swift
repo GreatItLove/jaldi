@@ -46,7 +46,7 @@ class JaldiOrderWorkersView: UIView {
     
     private func configureOrderCost(order:JaldiOrder) {
         let cost = order.cost ?? 0
-        costLabel.text = "\(Int(cost)) QR"
+        costLabel.text = "\(Int(cost)) QAR"
     }
     private func configureOrderType(order:JaldiOrder) {
        let imageName = HomeCategoryHeleper.iconImageNameFor(category: order.homeCategory)

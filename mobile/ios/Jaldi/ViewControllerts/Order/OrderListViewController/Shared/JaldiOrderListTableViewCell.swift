@@ -63,7 +63,7 @@ class JaldiOrderListTableViewCell: UITableViewCell {
         orderPriceLabel.text = "Workers: \(workers)"
         
         let cost  = order.cost ?? 0
-        orderPriceLabel.text = "Cost: \(Int(cost)) QR"
+        orderPriceLabel.text = "Cost: \(Int(cost)) QAR"
     }
     
     private func configureTimeFor(order:JaldiOrder) {

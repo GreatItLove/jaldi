@@ -13,6 +13,6 @@ class JaldiPaymentTotalPriceView: UIView {
     @IBOutlet weak var originalPriceLabel: UILabel!
     
     func configureWith(bookingObject:BookingObject) {
-         originalPriceLabel.text = "\(Int(bookingObject.cost)) QR"
+         originalPriceLabel.text = "\(Int(bookingObject.cost)) QAR"
     }
 }

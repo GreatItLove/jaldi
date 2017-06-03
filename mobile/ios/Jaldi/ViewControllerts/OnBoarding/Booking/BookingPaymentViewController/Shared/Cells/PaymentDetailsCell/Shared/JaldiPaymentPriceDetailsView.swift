@@ -25,7 +25,7 @@ class JaldiPaymentPriceDetailsView: UIView {
     }
     
     private func configureValueLabelFor(bookingPrice:BookingPrice , bookingDetails:BookingDetails ) {
-        detailsValueLabel.text = "\(bookingDetails.hours)x\(bookingPrice.serivcePrice) QR"
+        detailsValueLabel.text = "\(bookingDetails.hours)x\(bookingPrice.serivcePrice) QAR"
     }
  
 }

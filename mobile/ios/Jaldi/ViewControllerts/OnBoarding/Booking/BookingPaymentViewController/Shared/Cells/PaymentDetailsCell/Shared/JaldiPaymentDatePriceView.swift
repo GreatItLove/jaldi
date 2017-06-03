@@ -19,7 +19,7 @@ class JaldiPaymentDatePriceView: UIView {
         originalPriceLabel.isHidden = hiddePrice
         let time  = dateTime.dateStringWith(format: AppDateFormats.timeFormat)
         timeAndDurationLabel.text = "\(time) (\(bookingObject.bookingDetails.hours) hours)"
-        originalPriceLabel.text = "\(Int(bookingObject.cost)) QR"
+        originalPriceLabel.text = "\(Int(bookingObject.cost)) QAR"
     }
 
 

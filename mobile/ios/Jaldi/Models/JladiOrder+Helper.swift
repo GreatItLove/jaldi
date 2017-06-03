@@ -31,7 +31,7 @@ enum JaldiType: String {
     case mason = "MASON"
     case painter = "PAINTER"
     case plumber = "PLUMBER"
-    case acTechnical = "AC_TECHNICALL"
+    case acTechnical = "AC_TECHNICAL"
 }
 
 
