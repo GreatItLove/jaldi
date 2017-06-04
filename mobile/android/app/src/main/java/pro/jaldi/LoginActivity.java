@@ -71,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
     };
 
     // UI references.
-    private TextView mEmailView;
+    private EditText mEmailView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
@@ -81,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        mEmailView = (EditText) findViewById(R.id.email);
 
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -203,8 +203,8 @@ public class LoginActivity extends AppCompatActivity {
     protected Map<String, String> getParams()
     {
         Map<String, String>  params = new HashMap<String, String>();
-        params.put("username", "admin@jaldi.pro");
-        params.put("password", "123");
+        params.put("username", mEmailView.getText().toString()); // admin@jaldi.pro
+        params.put("password", mPasswordView.getText().toString()); // 123
 
         return params;
     }
@@ -254,18 +254,18 @@ public class LoginActivity extends AppCompatActivity {
                     responseString = String.valueOf(response.statusCode);
                     if (response.statusCode == 200) {
                         String authToken = response.headers.get("Authorization");
-                       saveAuthToken(authToken);
-                        handleLoginSuccess();
+                        if (authToken != null && !authToken.equals("")) {
+                            saveAuthToken(authToken);
+                            handleLoginSuccess();
+                            return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
+                        }
                     }
-                    // can get more details such as response.headers
-                } else {
-                    mPasswordView.setError(getString(R.string.error_incorrect_password));
-                    showProgress(false);
                 }
+                mPasswordView.setError(getString(R.string.error_incorrect_password));
+                showProgress(false);
                 return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
             }
         };
-
         requestQueue.add(stringRequest);
     }
 
