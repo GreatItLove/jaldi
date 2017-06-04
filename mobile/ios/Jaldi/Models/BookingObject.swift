@@ -21,7 +21,7 @@ class BookingObject {
             guard let bookingPrice = self.bookingPrice else{
                 return 0
             }
-            return bookingPrice.priceFor(hours: self.bookingDetails.hours)
+            return bookingPrice.priceFor(hours: self.bookingDetails.hours, workers: self.bookingDetails.workers)
         }
     }
     var type:String {
@@ -63,6 +63,7 @@ class BookingDetails {
     let detailItems: [BookingDetailsItem]
     let hoursSuggestionEnabled: Bool
     var hours: Int = 2
+    var workers: Int = 1
     init(title:String, detailItems:[BookingDetailsItem],hoursSuggestionEnabled:Bool = false) {
         self.title = title
         self.detailItems = detailItems
@@ -111,8 +112,8 @@ class BookingPrice {
             return serivcePrice - coupon + fee
         }
     }
-    func priceFor(hours:Int) -> Float {
-        return originalPrice * Float(hours)
+    func priceFor(hours:Int, workers:Int) -> Float {
+        return originalPrice * Float(workers) * Float(hours)
     }
 }
 

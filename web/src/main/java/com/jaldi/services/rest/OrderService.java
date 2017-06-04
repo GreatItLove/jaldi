@@ -5,6 +5,8 @@ import com.jaldi.services.common.security.CustomAuthenticationToken;
 import com.jaldi.services.dao.OrderDaoImpl;
 import com.jaldi.services.model.Order;
 import com.jaldi.services.model.User;
+import com.jaldi.services.model.Worker;
+import com.jaldi.services.model.request.AssignWorkerRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +37,8 @@ public class OrderService {
     @GetMapping
     @PreAuthorize("hasAnyAuthority('OPERATOR', 'ADMIN')")
     public List<Order> findAll(@RequestParam(value = "type", required = false) String type, @RequestParam(value = "status", required = false) String status) {
-        return orderDao.findAll(type, status);
+        List<Order> orders = orderDao.findAll(type, status);
+        return orders;
     }
 
     @RequestMapping(value="/{id}", method=RequestMethod.GET)
@@ -66,7 +69,8 @@ public class OrderService {
         User currentUser = token.getUser();
         order.setStatus(Order.Status.CREATED);
         order.setUser(currentUser);
-        return orderDao.create(order);
+        Order newolder = orderDao.create(order);
+        return newolder;
     }
 
     @RequestMapping(value="/cancel/{id}", method=RequestMethod.PUT)
@@ -94,4 +98,19 @@ public class OrderService {
         User currentUser = token.getUser();
         orderDao.updateFeedback(currentUser.getId(), order);
     }
+
+    @RequestMapping(value = "/assignWorker", method = RequestMethod.POST)
+    public ResponseEntity assignWorker(@RequestBody AssignWorkerRequest assignWorkerRequest) {
+        boolean isValidData = orderDao.assignWorker(assignWorkerRequest);
+        if(isValidData){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
+        }
+        return ResponseEntity.ok(null);
+    }
+
+    @RequestMapping(value = "/workers/{id}", method = RequestMethod.GET)
+    public List<Worker> findWorkersByOrderId(@PathVariable("id") long id){
+        return orderDao.findWorkersByOrderId(id);
+    }
+
 }

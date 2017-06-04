@@ -53,6 +53,7 @@ class JaldiOrderListTableViewCell: UITableViewCell {
     }
     private func configureOrderDetailsFor(order:JaldiOrder) {
         orderTypeLabel.text = orderTitleFor(homeCategory: order.homeCategory)
+        orderTypeLabel.sizeToFit()
         orderAddressLabel.text = order.address ?? ""
         configureTimeFor(order: order)
         

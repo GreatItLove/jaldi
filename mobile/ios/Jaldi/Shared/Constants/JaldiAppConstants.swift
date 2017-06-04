@@ -50,5 +50,5 @@ struct AppDateFormats {
     static let appDateFormat = "dd/MM/YYYY HH:mm"
 }
 struct AppImages {
-    static let dumy_profile_pic = UIImage(named:"dummy_user_pic")!
+    static let dumy_profile_pic = UIImage(named:"dummy_user_pic1")!
 }

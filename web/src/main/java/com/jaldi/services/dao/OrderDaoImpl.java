@@ -1,7 +1,12 @@
 package com.jaldi.services.dao;
 
+import com.jaldi.services.dao.mapper.AssignWorkerRequestMapper;
 import com.jaldi.services.dao.mapper.OrderMapper;
+import com.jaldi.services.dao.mapper.WorkerMapper;
 import com.jaldi.services.model.Order;
+import com.jaldi.services.model.Worker;
+import com.jaldi.services.model.request.AssignWorkerRequest;
+import com.sun.org.apache.xpath.internal.operations.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -18,10 +23,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.sql.Types;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by: Sedrak Dalaloyan
@@ -129,5 +132,51 @@ public class OrderDaoImpl {
         namedParameters.put("status", Order.Status.CANCELED.name());
         namedParameters.put("id", orderId);
         namedJdbc.update("update `order` set `status` = :status where `id` = :id AND `userId` = :userId;", namedParameters);
+    }
+
+    public List<Worker> findWorkersByOrderId(long orderId){
+        Map namedParameters = new HashMap();
+        namedParameters.put("orderId", orderId);
+        return namedJdbc.query("SELECT `id`, `email`, `name`, `phone`, `role`, `type`, `profileImageId`, `latitude`, `longitude`, `isActive`, `isDeleted`, `creationDate`, `isCleaner`, `isCarpenter`, `isElectrician`, `isMason`, `isPainter`, `isPlumber`, `isAcTechnical`, `rating` FROM `user` inner join workerDetails on `user`.id = workerDetails.userId where `type` = 'WORKER' AND isDeleted = 0;",namedParameters, new WorkerMapper());
+    }
+
+    public boolean assignWorker(AssignWorkerRequest assignWorkerRequest) {
+        boolean isValidData = findAllOrderWorkers().stream().anyMatch(a -> Objects.equals(a.getOrderId(), assignWorkerRequest.getOrderId()) &&
+                Objects.equals(a.getWorkerId(), assignWorkerRequest.getWorkerId()));
+        Order order = findOne(assignWorkerRequest.getOrderId());
+        List<Order> workers = findByWorkerId(assignWorkerRequest.getWorkerId());
+        workers.stream().sorted((o1, o2) -> ((Long) o1.getOrderDate().getTime()).compareTo(o2.getOrderDate().getTime())).collect(Collectors.toList());
+        if(!isValidData){
+            jdbcTemplate.update(new PreparedStatementCreator() {
+
+                @Override
+                public PreparedStatement createPreparedStatement(Connection connection)
+                        throws SQLException {
+                    PreparedStatement ps = connection.prepareStatement("INSERT INTO `orderWorker` (orderId, workerId) VALUES (?, ?);");
+                    ps.setString(1, String.valueOf(assignWorkerRequest.getOrderId()));
+                    ps.setString(2, String.valueOf(assignWorkerRequest.getWorkerId()));
+                    return ps;
+                }
+            });
+        }
+        return isValidData;
+    }
+
+    public List<Order> findByWorkerId(long id) {
+        Map namedParameters = new HashMap();
+        namedParameters.put("workerId", id);
+        return namedJdbc.query("SELECT `id`, `type`, `status`, `workers`, `hours`, `address`, `city`, `country`, `comment`, `latitude`, " +
+                "`longitude`, `cost`, `paymentType`, `userRating`, `userFeedback`, `orderDate`, `userId`, `creationDate` FROM orderWorker " +
+                "INNER JOIN `order` ON `order`.id = orderWorker.orderId WHERE orderWorker.workerId = :workerId",namedParameters, new OrderMapper());
+    }
+
+
+    public List<AssignWorkerRequest> findAllOrderWorkers(){
+        try {
+            String sql = "SELECT orderId, workerId FROM orderWorker";
+            return jdbcTemplate.query(sql, new AssignWorkerRequestMapper());
+        } catch (EmptyResultDataAccessException e) {
+            return Collections.emptyList();
+        }
     }
 }

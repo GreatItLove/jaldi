@@ -7,6 +7,7 @@ import com.jaldi.services.common.date.CommonDateTimeSerializer;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by: Sedrak Dalaloyan
@@ -57,6 +58,7 @@ public class Order {
     private Date orderDate;
     private User user;
     private Date creationDate;
+    private List<Worker> workersList;
 
     public long getId() {
         return id;
@@ -211,5 +213,13 @@ public class Order {
 
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
+    }
+
+    public List<Worker> getWorkersList() {
+        return workersList;
+    }
+
+    public void setWorkersList(List<Worker> workersList) {
+        this.workersList = workersList;
     }
 }

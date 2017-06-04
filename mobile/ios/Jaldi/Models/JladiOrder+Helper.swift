@@ -98,7 +98,7 @@ extension JaldiOrder {
             guard let _ = userRating else {
                 return OrderRatingState.rate
             }
-            guard let _ = userFeedback else {
+            guard (userFeedback != nil || userRating ?? 0 == 5.0) else {
               return OrderRatingState.comment
             }
             return OrderRatingState.finished

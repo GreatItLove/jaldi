@@ -58,29 +58,26 @@ struct JaldiOrderStateHeleper {
 }
     }
     
-    static func orderStateIconeFor(orderState:JaldiOrderState , selected:Bool) -> String? {
-        if !selected {
+    static func orderStateIconeFor(orderState:JaldiOrderState , currentState:JaldiOrderState) -> String? {
+        if orderState.rawValue > currentState.rawValue {
             return CheckMarkIcons.unchecked
-        }
-        switch orderState {
-        case .enRoute, .working:
-             return CheckMarkIcons.green
-        case .tidyingUp, .finished:
+        } else if orderState.rawValue == currentState.rawValue && currentState != .finished {
             return CheckMarkIcons.blue
-        default:
-            return nil
+        } else {
+            return CheckMarkIcons.green
         }
     }
-    static func orderStateLabelTitleFor(orderState:JaldiOrderState , selected:Bool) -> String? {
+    static func orderStateLabelTitleFor(orderState:JaldiOrderState , currentState:JaldiOrderState) -> String? {
+        let showNumber = orderState.rawValue >= currentState.rawValue && currentState != .finished
         switch orderState {
         case .enRoute:
-            return selected ? nil : "1"
+            return showNumber ? "1" : nil
         case .working:
-            return selected ? nil : "2"
+            return showNumber ? "2" : nil
         case .tidyingUp:
-            return  "3"
+            return showNumber ? "3" : nil
         case .finished:
-            return "4"
+            return showNumber ? "4" : nil
         default:
             return nil
         }

@@ -14,18 +14,20 @@ class JaldiPaymentPriceDetailsView: UIView {
     @IBOutlet weak var detailsValueLabel: UILabel!
 
     //Mark: Configuration
-    func configureWith(bookingPrice:BookingPrice,bookingDetails:BookingDetails) {
+    func configureWith(bookingPrice:BookingPrice,bookingDetails:BookingDetails, category:HomeCategory) {
         
-        self.configureTitleLabelFor(bookingDetails:bookingDetails)
+        self.configureTitleLabelFor(bookingDetails:bookingDetails, category: category)
         self.configureValueLabelFor(bookingPrice: bookingPrice, bookingDetails: bookingDetails)
     }
 
-    private func configureTitleLabelFor(bookingDetails:BookingDetails ) {
-        detailsTitleLabel.text = "Cleaning (\(bookingDetails.hours) hours)"
+    private func configureTitleLabelFor(bookingDetails:BookingDetails, category:HomeCategory) {
+        let title = HomeCategoryHeleper.orderTitleFor(homeCategory:category)
+        let workers = bookingDetails.workers > 1 ? ", \(bookingDetails.workers) workers" : ""
+        detailsTitleLabel.text = "\(title) (\(bookingDetails.hours) hours\(workers))"
     }
     
     private func configureValueLabelFor(bookingPrice:BookingPrice , bookingDetails:BookingDetails ) {
-        detailsValueLabel.text = "\(bookingDetails.hours)x\(bookingPrice.serivcePrice) QAR"
+        detailsValueLabel.text = "\(bookingDetails.hours*bookingDetails.workers)x\(bookingPrice.serivcePrice) QAR"
     }
  
 }

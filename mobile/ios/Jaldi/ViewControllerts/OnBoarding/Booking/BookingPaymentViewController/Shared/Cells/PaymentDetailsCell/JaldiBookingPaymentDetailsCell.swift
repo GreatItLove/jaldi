@@ -14,6 +14,7 @@ protocol JaldiBookingPaymentDetailsCellDelegate: class {
 
 class JaldiBookingPaymentDetailsCell: UITableViewCell {
 
+    @IBOutlet weak var paymentDetailsTitle: UILabel!
     @IBOutlet weak var peyamentDetailsActionableView: UIView!
     @IBOutlet weak var peyamentDetailsStackView: UIStackView!
     
@@ -40,6 +41,8 @@ class JaldiBookingPaymentDetailsCell: UITableViewCell {
         self.paymentDatePriceView.configureWith(bookingObject: bookingObject, hiddePrice: showPaymentDetails)
         peyamentDetailsActionableView.isHidden = showPaymentDetails
         peyamentDetailsStackView.isHidden = !showPaymentDetails
+        let homeCategory = JaldiServiceHeleper.homeCategoryFor(service: bookingObject.service)
+        self.paymentDetailsTitle.text = HomeCategoryHeleper.orderTitleFor(homeCategory:homeCategory)
         self.configurePaymentDetailsFor(bookingObject: bookingObject)
         self.totalPriceView.isHidden = !showPaymentDetails
         self.totalPriceView.configureWith(bookingObject: bookingObject)
@@ -50,7 +53,8 @@ class JaldiBookingPaymentDetailsCell: UITableViewCell {
             peyamentDetailsPriceView.isHidden = true
             return
         }
-        peyamentDetailsPriceView.configureWith(bookingPrice: bookingPrice, bookingDetails: bookingObject.bookingDetails)
+        let homeCategory = JaldiServiceHeleper.homeCategoryFor(service: bookingObject.service)
+        peyamentDetailsPriceView.configureWith(bookingPrice: bookingPrice, bookingDetails: bookingObject.bookingDetails, category: homeCategory)
     }
     //MARK: Actions
     @IBAction func showPaymentDetailsAction(_ sender: Any) {

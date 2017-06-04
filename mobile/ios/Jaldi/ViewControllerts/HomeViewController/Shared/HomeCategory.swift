@@ -119,19 +119,19 @@ struct HomeCategoryHeleper {
     static func orderTitleFor(homeCategory:HomeCategory) -> String {
         switch homeCategory {
         case .homeCleaning:
-            return "HOME CLEANING"
+            return "Home cleaning"
         case .painter:
-            return "HOME PAINTING"
+            return "Painting"
         case .plumber:
-            return "PLUMBING"
+            return "Plumbing"
         case .mason:
-            return "MASON"
+            return "Mason"
         case .electrician:
-            return "ELECTRICIAN"
+            return "Electrician"
         case .carpenter:
-            return "CARPENTER"
+            return "Carpenter"
         case .acTechnical:
-            return "AC TECHNICAL"
+            return "AC technical"
 
         }
     }
