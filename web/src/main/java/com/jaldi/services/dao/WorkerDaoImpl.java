@@ -33,7 +33,7 @@ public class WorkerDaoImpl {
 
     public List<Worker> findAll() {
         try {
-            String sql = "SELECT `id`, `email`, `name`, `phone`, `role`, `type`, `profileImageId`, `isActive`, `isDeleted`, `creationDate`, `isCleaner`, `isCarpenter`, `isElectrician`, `isMason`, `isPainter`, `isPlumber`, `isAcTechnical`, `rating` FROM `user` inner join workerDetails on `user`.id = workerDetails.userId where `type` = 'WORKER' AND isDeleted = 0;";
+            String sql = "SELECT `id`, `email`, `name`, `phone`, `role`, `type`, `profileImageId`, `latitude`, `longitude`, `isActive`, `isDeleted`, `creationDate`, `isCleaner`, `isCarpenter`, `isElectrician`, `isMason`, `isPainter`, `isPlumber`, `isAcTechnical`, `rating` FROM `user` inner join workerDetails on `user`.id = workerDetails.userId where `type` = 'WORKER' AND isDeleted = 0;";
             return jdbc.query(
                     sql, new WorkerMapper());
         } catch (EmptyResultDataAccessException e) {
@@ -53,7 +53,7 @@ public class WorkerDaoImpl {
 
     public Worker findOne(long id) {
         try {
-            String sql = "SELECT `id`, `email`, `name`, `phone`, `role`, `type`, `profileImageId`, `isActive`, `isDeleted`, `creationDate`, `isCleaner`, `isCarpenter`, `isElectrician`, `isMason`, `isPainter`, `isPlumber`, `isAcTechnical`, `rating` FROM `user` inner join workerDetails on `user`.id = workerDetails.userId where `type` = 'WORKER' AND `user`.id = ?;";
+            String sql = "SELECT `id`, `email`, `name`, `phone`, `role`, `type`, `profileImageId`, `latitude`, `longitude`, `isActive`, `isDeleted`, `creationDate`, `isCleaner`, `isCarpenter`, `isElectrician`, `isMason`, `isPainter`, `isPlumber`, `isAcTechnical`, `rating` FROM `user` inner join workerDetails on `user`.id = workerDetails.userId where `type` = 'WORKER' AND `user`.id = ?;";
             return jdbc.queryForObject(
                     sql, new WorkerMapper(), id);
         } catch (EmptyResultDataAccessException e) {
