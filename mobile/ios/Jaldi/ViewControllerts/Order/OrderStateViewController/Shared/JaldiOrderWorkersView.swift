@@ -41,7 +41,7 @@ class JaldiOrderWorkersView: UIView {
     private func configureOrderDetails(order:JaldiOrder) {
         configureOrderCost(order: order)
         configureOrderType(order: order)
-        cancelView.isHidden = (order.orderState == .finished || order.orderState == .canceled)
+        cancelView.isHidden = (order.orderState.rawValue > JaldiOrderState.enRoute.rawValue || order.orderState == .canceled)
     }
     
     private func configureOrderCost(order:JaldiOrder) {

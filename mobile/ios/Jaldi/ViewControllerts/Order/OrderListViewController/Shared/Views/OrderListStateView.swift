@@ -10,8 +10,6 @@ import UIKit
 
 class OrderListStateView: UIView {
 
-    let blueColor = UIColor(red: 67/256.0, green: 176/256.0, blue: 208/256.0, alpha: 1)//43b0d0
-    let greenColor = UIColor(red: 118/256.0, green: 206/256.0, blue: 103/256.0, alpha: 1)//76ce67
     @IBOutlet weak var stateLabel: UILabel!
     //Mark: Configuaration
     func configureWith(orderState:JaldiOrderState) {
@@ -39,8 +37,13 @@ class OrderListStateView: UIView {
         }
     }
     private func colorFor(orderState:JaldiOrderState) -> UIColor {
-        
-        let color  = orderState == .finished ? AppColors.orderStateGreenColor : AppColors.orderStateBlueColor
-        return color
+        switch orderState {
+        case .finished:
+            return AppColors.orderStateGreenColor
+        case .canceled:
+            return AppColors.orderStateGrayColor
+        default:
+            return AppColors.orderStateBlueColor
+        }
     }
 }

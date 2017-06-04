@@ -32,8 +32,7 @@ class JaldiOrderStateView: UIView {
     private func configureIconsFor(orderState:JaldiOrderState) {
         for state in JaldiOrderState.allStates {
             if  let stateCheckMark = self.stateCheckMarkForState(orderState: state) {
-                let isSelected = state.rawValue <= orderState.rawValue
-                stateCheckMark.configureWith(orderState: state, isSelected: isSelected)
+                stateCheckMark.configureWith(orderState: state, currentState:orderState)
             }
         }
     }

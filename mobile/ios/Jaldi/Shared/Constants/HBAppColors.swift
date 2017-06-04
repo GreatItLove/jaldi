@@ -18,4 +18,5 @@ struct AppColors {
     
     static let orderStateBlueColor = UIColor(red: 67/256.0, green: 176/256.0, blue: 208/256.0, alpha: 1)//43b0d0
     static let orderStateGreenColor = UIColor(red: 118/256.0, green: 206/256.0, blue: 103/256.0, alpha: 1)//76ce67
+    static let  orderStateGrayColor = UIColor(red: 232/256.0, green: 232/256.0, blue: 232/256.0, alpha: 1)//e8e8e8
 }
