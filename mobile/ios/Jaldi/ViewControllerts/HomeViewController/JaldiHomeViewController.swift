@@ -128,7 +128,7 @@ class JaldiHomeViewController: UIViewController {
     }
     
     private func callUs() {
-        let phone  = "+974 4022 5336"
+        let phone  = "+79150014148"
         guard let url = NSURL(string: "tel://\(phone)") else{
             return
         }

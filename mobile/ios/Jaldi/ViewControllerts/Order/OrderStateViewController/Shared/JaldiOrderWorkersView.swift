@@ -25,7 +25,7 @@ class JaldiOrderWorkersView: UIView {
      }
     private func configureUserDetailsFor(order:JaldiOrder) {
         if let user = order.user {
-            fullNameLabel.text = user.name
+            fullNameLabel.text = "Sedrak"
             self.configureAvaterFor(user: user)
         }
         rateLabel.text = "4.9"

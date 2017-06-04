@@ -12,13 +12,14 @@ class JaldiOrderStateViewController: UIViewController {
 
     let meterToMiles = 0.000621371
     @IBOutlet weak var orderStateView: JaldiOrderStateView!
-     @IBOutlet weak var workerView: JaldiOrderWorkersView!
+    @IBOutlet weak var workerView: JaldiOrderWorkersView!
     @IBOutlet weak var mapView: MKMapView!
     private var locationManager: CLLocationManager?
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var orderTitleLabel: UILabel!
     @IBOutlet weak var milesAwayLabel: UILabel!
     @IBOutlet weak var cloasButton: UIButton!
+    @IBOutlet weak var contactWorker: UITapGestureRecognizer!
     var appearance: Appearance = .none
     private var orderState: JaldiOrderState = JaldiOrderState.tidyingUp
     var order: JaldiOrder?
@@ -42,6 +43,7 @@ class JaldiOrderStateViewController: UIViewController {
         configureLocationManager()
         self.addOrderPin()
         configureAppearance()
+        contactWorker.addTarget(self, action: #selector(showContactAlert))
     }
     //MARK: Configuration
     private func configureAppearance() {
@@ -137,6 +139,32 @@ class JaldiOrderStateViewController: UIViewController {
             
         }
     }
+    //MARK: Contact
+    public func showContactAlert() {
+        let contactAlert = UIAlertController(title: "Contact", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        contactAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        contactAlert.addAction(UIAlertAction(title: "Call", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) -> () in
+            self.callWorker()
+        }))
+        contactAlert.addAction(UIAlertAction(title: "Message", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) -> () in
+            self.messageWorker()
+        }))
+        self.present(contactAlert, animated: true, completion: nil)
+    }
+    private func callWorker() {
+        let phone  = "+79150014148"
+        guard let url = NSURL(string: "tel://\(phone)") else{
+            return
+        }
+        UIApplication.shared.openURL(url as URL)
+    }
+    private func messageWorker() {
+        let phone  = "+79150014148"
+        guard let url = NSURL(string: "sms://\(phone)") else{
+            return
+        }
+        UIApplication.shared.openURL(url as URL)
+    }
 }
 extension JaldiOrderStateViewController:MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didUpdate
@@ -174,6 +202,7 @@ extension JaldiOrderStateViewController:CLLocationManagerDelegate {
         }
     }
 }
+
 extension JaldiOrderStateViewController:JaldiOrderStateViewControllerDelegate {
     func orderStateViewControllerDidCancelOrder() {
         guard let orderId = self.order?.orderId else {

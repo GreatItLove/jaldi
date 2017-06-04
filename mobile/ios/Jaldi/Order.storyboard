@@ -384,6 +384,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
+                                        <gestureRecognizers/>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6jO-gF-5FU" customClass="CircleView" customModule="Jaldi" customModuleProvider="target">
                                         <rect key="frame" x="15" y="7.6666666666666288" width="45" height="45"/>
@@ -470,6 +471,13 @@
                                             </view>
                                         </subviews>
                                     </stackView>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jHC-bG-wut">
+                                        <rect key="frame" x="0.0" y="0.0" width="180" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="X5a-6p-p2H" appends="YES" id="hQG-yR-fLw"/>
+                                        </connections>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -493,7 +501,7 @@
                                 </connections>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.90971422199999996" green="0.90986675019999996" blue="0.90969407560000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.8862745098" green="0.93725490199999995" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="MFF-V0-3Ke" secondAttribute="trailing" id="1tn-ks-rdm"/>
                             <constraint firstAttribute="trailing" secondItem="Scz-IX-aRs" secondAttribute="trailing" id="4hA-h5-MS7"/>
@@ -517,6 +525,7 @@
                     </view>
                     <connections>
                         <outlet property="cloasButton" destination="XBG-iK-w7W" id="hCt-1T-dU4"/>
+                        <outlet property="contactWorker" destination="X5a-6p-p2H" id="dp2-8j-h9r"/>
                         <outlet property="mapView" destination="Scz-IX-aRs" id="xBY-fS-JoB"/>
                         <outlet property="milesAwayLabel" destination="eIW-Xp-ACl" id="F2P-mf-f2j"/>
                         <outlet property="orderStateView" destination="seF-Cj-M7u" id="7Ef-mn-0ML"/>
@@ -526,8 +535,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jGv-iF-1Fi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="X5a-6p-p2H"/>
             </objects>
-            <point key="canvasLocation" x="151.875" y="1497.5"/>
+            <point key="canvasLocation" x="150.72463768115944" y="1496.7391304347827"/>
         </scene>
         <!--Jaldi Orders View Controller-->
         <scene sceneID="wgS-Rt-S8q">
