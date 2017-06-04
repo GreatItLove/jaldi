@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/samvel/Documents/workspace/jaldi-master/mobile/android/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
+        <dex dex="/Users/samvel/Documents/workspace/jaldi-master/mobile/android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_e4755c7eb4c036bd3c84dcbc7eab84d1e46865ea/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/samvel/Documents/workspace/jaldi-master/mobile/android/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3cdb8efd99f5e9a79724fe9a2928374faeeadf8b">
+        <dex dex="/Users/samvel/Documents/workspace/jaldi-master/mobile/android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_21fe7d97a374c73ed960936cbb38daff784a4c66/classes.dex" />
+    </item>
+
+</items>

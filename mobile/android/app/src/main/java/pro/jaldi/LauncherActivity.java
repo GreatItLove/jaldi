@@ -16,6 +16,7 @@ public class LauncherActivity extends AppCompatActivity {
         String authToken = userDetails.getString("authToken","");
         Intent intent;
 
+        //TODO remove !
         if (authToken.equals("")) {
             // unauthorized
             intent = new Intent(this, LoginActivity.class);
