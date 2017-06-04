@@ -135,6 +135,10 @@ extension JaldiBookingDetailsViewController:JaldiBookingDetailsTableViewCellDele
                 if let hours =  Int(item.bookingProperties[index]){
                 bookingObject?.bookingDetails.hours = hours
                 }
+            } else if item.title == "Professionals" {
+                if let workers =  Int(item.bookingProperties[index]){
+                    bookingObject?.bookingDetails.workers = workers
+                }
             }
                         
         }

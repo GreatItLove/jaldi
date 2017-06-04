@@ -1008,26 +1008,26 @@
                                                                     <rect key="frame" x="0.0" y="50" width="270" height="171"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yes-Xh-AZ4">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="270" height="61"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="270" height="51"/>
                                                                             <subviews>
                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ceW-GR-Avc">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="270" height="10"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="270" height="0.0"/>
                                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                                     <constraints>
-                                                                                        <constraint firstAttribute="height" constant="10" id="SOa-2c-kWm"/>
+                                                                                        <constraint firstAttribute="height" id="SOa-2c-kWm"/>
                                                                                     </constraints>
                                                                                 </view>
                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pjh-Bh-IUU" customClass="JaldiPaymentPriceDetailsView" customModule="Jaldi" customModuleProvider="target">
-                                                                                    <rect key="frame" x="0.0" y="20" width="270" height="30"/>
+                                                                                    <rect key="frame" x="0.0" y="10" width="270" height="30"/>
                                                                                     <subviews>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home Cleaning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fx-3I-6Bk">
-                                                                                            <rect key="frame" x="0.0" y="5.5" width="165" height="18"/>
+                                                                                            <rect key="frame" x="0.0" y="5.5" width="175" height="18"/>
                                                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                                             <nil key="textColor"/>
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$75" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fop-LU-hBR">
-                                                                                            <rect key="frame" x="170" y="6" width="100" height="18"/>
+                                                                                            <rect key="frame" x="180" y="6" width="90" height="18"/>
                                                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                                             <nil key="textColor"/>
                                                                                             <nil key="highlightedColor"/>
@@ -1040,7 +1040,7 @@
                                                                                         <constraint firstItem="7fx-3I-6Bk" firstAttribute="leading" secondItem="Pjh-Bh-IUU" secondAttribute="leading" id="Dqa-75-Ze1"/>
                                                                                         <constraint firstAttribute="trailing" secondItem="Fop-LU-hBR" secondAttribute="trailing" id="HOj-jK-5pw"/>
                                                                                         <constraint firstAttribute="height" constant="30" id="KAL-3i-vFC"/>
-                                                                                        <constraint firstAttribute="centerX" secondItem="7fx-3I-6Bk" secondAttribute="trailing" constant="-30" id="NM9-jG-n8P"/>
+                                                                                        <constraint firstAttribute="centerX" secondItem="7fx-3I-6Bk" secondAttribute="trailing" constant="-40" id="NM9-jG-n8P"/>
                                                                                         <constraint firstItem="7fx-3I-6Bk" firstAttribute="centerY" secondItem="Pjh-Bh-IUU" secondAttribute="centerY" id="sex-A9-OI9"/>
                                                                                     </constraints>
                                                                                     <connections>
@@ -1049,7 +1049,7 @@
                                                                                     </connections>
                                                                                 </view>
                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WOL-eh-63v" userLabel="Line ">
-                                                                                    <rect key="frame" x="0.0" y="60" width="270" height="1"/>
+                                                                                    <rect key="frame" x="0.0" y="50" width="270" height="1"/>
                                                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="1" id="7aG-zY-Bgd"/>
@@ -1105,6 +1105,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="paymentDatePriceView" destination="bOD-vY-n6f" id="D3s-No-MIc"/>
+                                            <outlet property="paymentDetailsTitle" destination="FNc-m4-7Px" id="NGl-MX-brP"/>
                                             <outlet property="peyamentDetailsActionableView" destination="tfS-mC-kGo" id="Dkn-E8-cdw"/>
                                             <outlet property="peyamentDetailsPriceView" destination="Pjh-Bh-IUU" id="sYX-Zh-Ntp"/>
                                             <outlet property="peyamentDetailsStackView" destination="m9I-Bf-cWL" id="lm4-Kw-2a1"/>
