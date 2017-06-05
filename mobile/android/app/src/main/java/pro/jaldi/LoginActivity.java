@@ -253,8 +253,13 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 }
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
-                showProgress(false);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mPasswordView.setError(getString(R.string.error_incorrect_password));
+                        showProgress(false);
+                    }
+                });
                 return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
             }
         };

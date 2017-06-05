@@ -7,6 +7,7 @@ import com.jaldi.services.model.Order;
 import com.jaldi.services.model.User;
 import com.jaldi.services.model.Worker;
 import com.jaldi.services.model.request.AssignWorkerRequest;
+import com.jaldi.services.model.request.UpdateOrderStatusRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -112,6 +113,17 @@ public class OrderService {
     @RequestMapping(value = "/workers/{id}", method = RequestMethod.GET)
     public List<Worker> getWorkers(@PathVariable("id") long id){
         return orderDao.getWorkers(id);
+    }
+
+    @RequestMapping(value="/updateOrderStatus", method=RequestMethod.PUT)
+    public ResponseEntity updateOrderStatus(@RequestBody UpdateOrderStatusRequest updateOrderStatusRequest){
+        CustomAuthenticationToken token = (CustomAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+        User currentUser = token.getUser();
+        if(orderDao.getOrderWorkersById(updateOrderStatusRequest.getOrderId(), currentUser.getId()).size() == 0 || updateOrderStatusRequest.getStatus().ordinal()<2 || updateOrderStatusRequest.getStatus().ordinal() > 5){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
+        }
+        orderDao.updateOrderStatus(updateOrderStatusRequest.getStatus(),updateOrderStatusRequest.getOrderId());
+        return ResponseEntity.ok(null);
     }
 
 }

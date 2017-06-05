@@ -3,6 +3,8 @@ package pro.jaldi;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,7 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, OrderFragment.OnListFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        showMyOrders();
     }
 
     @Override
@@ -81,13 +84,34 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.orders) {
-
+            showAllOrders();
         } else if (id == R.id.myOrders) {
-
+            showMyOrders();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void showAllOrders() {
+        OrderFragment orderFragment = new OrderFragment();
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction tr = fm.beginTransaction();
+        tr.replace(R.id.ordersListContainer, orderFragment);
+        tr.commit();
+    }
+
+    private void showMyOrders() {
+        OrderFragment orderFragment = new OrderFragment();
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction tr = fm.beginTransaction();
+        tr.replace(R.id.ordersListContainer, orderFragment);
+        tr.commit();
+    }
+
+    @Override
+    public void onListFragmentInteraction(OrderModel order) {
+
     }
 }
