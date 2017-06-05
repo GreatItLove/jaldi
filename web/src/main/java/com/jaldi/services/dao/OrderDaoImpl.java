@@ -4,7 +4,6 @@ import com.jaldi.services.dao.mapper.PartialOrderResultSetExtractor;
 import com.jaldi.services.dao.mapper.OrderMapper;
 import com.jaldi.services.dao.mapper.WorkerMapper;
 import com.jaldi.services.model.Order;
-import com.jaldi.services.model.PartialOrder;
 import com.jaldi.services.model.Worker;
 import com.jaldi.services.model.request.AssignWorkerRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,7 +100,7 @@ public class OrderDaoImpl {
         }
     }
 
-    public List<PartialOrder> findForUserPartial(long userId) {
+    public List<Order> findForUserPartial(long userId) {
         try {
             Map namedParameters = new HashMap();
             namedParameters.put("userId", userId);

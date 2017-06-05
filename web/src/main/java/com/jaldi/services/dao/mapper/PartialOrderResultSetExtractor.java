@@ -1,7 +1,8 @@
 package com.jaldi.services.dao.mapper;
 
-import com.jaldi.services.model.PartialOrder;
+import com.jaldi.services.model.Order;
 import com.jaldi.services.model.User;
+import com.jaldi.services.model.Worker;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ResultSetExtractor;
 
@@ -16,19 +17,18 @@ import java.util.List;
  * Date: 6/5/17
  * Time: 7:21 PM
  */
-public class PartialOrderResultSetExtractor implements ResultSetExtractor<List<PartialOrder>> {
+public class PartialOrderResultSetExtractor implements ResultSetExtractor<List<Order>> {
 
     private static final OrderMapper ORDER_MAPPER = new OrderMapper();
 
     @Override
-    public List<PartialOrder> extractData(ResultSet rs) throws SQLException, DataAccessException {
-        HashMap<Long, PartialOrder> orderHashMap = new HashMap<>();
+    public List<Order> extractData(ResultSet rs) throws SQLException, DataAccessException {
+        HashMap<Long, Order> orderHashMap = new HashMap<>();
         while (rs.next()) {
             long orderId = rs.getLong("id");
-            PartialOrder partialOrder = orderHashMap.get(orderId);
-            if(partialOrder == null) {
-                partialOrder = new PartialOrder();
-                partialOrder.setOrder(ORDER_MAPPER.mapRow(rs, 0));
+            Order order = orderHashMap.get(orderId);
+            if(order == null) {
+                order = ORDER_MAPPER.mapRow(rs, 0);
                 long workerId = rs.getLong("workerId");
                 if(workerId > 0) {
                     User user = new User();
@@ -39,13 +39,16 @@ public class PartialOrderResultSetExtractor implements ResultSetExtractor<List<P
                     user.setProfileImageId(rs.getString("workerImage"));
                     user.setLongitude(rs.getDouble("workerLatitude"));
                     user.setLongitude(rs.getDouble("workerLongitude"));
+                    Worker worker = new Worker();
                     float rating = rs.getFloat("rating");
                     if (!rs.wasNull()) {
-                        partialOrder.setRating(rating);
+                        worker.setRating(rating);
                     }
-                    partialOrder.setWorker(user);
+                    worker.setUser(user);
+                    order.setWorkersList(new ArrayList<>());
+                    order.getWorkersList().add(worker);
                 }
-                orderHashMap.put(orderId, partialOrder);
+                orderHashMap.put(orderId, order);
             }
 
         }
