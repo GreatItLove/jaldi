@@ -99,18 +99,19 @@ public class OrderService {
         orderDao.updateFeedback(currentUser.getId(), order);
     }
 
+    @PreAuthorize("hasAnyAuthority('OPERATOR', 'ADMIN')")
     @RequestMapping(value = "/assignWorker", method = RequestMethod.POST)
     public ResponseEntity assignWorker(@RequestBody AssignWorkerRequest assignWorkerRequest) {
-        boolean isValidData = orderDao.assignWorker(assignWorkerRequest);
-        if(isValidData){
+        boolean created = orderDao.assignWorker(assignWorkerRequest);
+        if(!created){
             return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
         }
         return ResponseEntity.ok(null);
     }
 
     @RequestMapping(value = "/workers/{id}", method = RequestMethod.GET)
-    public List<Worker> findWorkersByOrderId(@PathVariable("id") long id){
-        return orderDao.findWorkersByOrderId(id);
+    public List<Worker> getWorkers(@PathVariable("id") long id){
+        return orderDao.getWorkers(id);
     }
 
 }
