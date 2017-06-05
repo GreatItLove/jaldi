@@ -4,6 +4,7 @@ import com.jaldi.services.common.Constants;
 import com.jaldi.services.common.security.CustomAuthenticationToken;
 import com.jaldi.services.dao.OrderDaoImpl;
 import com.jaldi.services.model.Order;
+import com.jaldi.services.model.PartialOrder;
 import com.jaldi.services.model.User;
 import com.jaldi.services.model.Worker;
 import com.jaldi.services.model.request.AssignWorkerRequest;
@@ -57,10 +58,10 @@ public class OrderService {
     }
 
     @GetMapping("/my")
-    public List<Order> getMy() {
+    public List<PartialOrder> getMy() {
         CustomAuthenticationToken token = (CustomAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
         User currentUser = token.getUser();
-        return orderDao.findForUser(currentUser.getId());
+        return orderDao.findForUserPartial(currentUser.getId());
     }
 
     @RequestMapping(method= RequestMethod.POST)
@@ -99,18 +100,19 @@ public class OrderService {
         orderDao.updateFeedback(currentUser.getId(), order);
     }
 
+    @PreAuthorize("hasAnyAuthority('OPERATOR', 'ADMIN')")
     @RequestMapping(value = "/assignWorker", method = RequestMethod.POST)
     public ResponseEntity assignWorker(@RequestBody AssignWorkerRequest assignWorkerRequest) {
-        boolean isValidData = orderDao.assignWorker(assignWorkerRequest);
-        if(isValidData){
+        boolean created = orderDao.assignWorker(assignWorkerRequest);
+        if(!created){
             return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
         }
         return ResponseEntity.ok(null);
     }
 
     @RequestMapping(value = "/workers/{id}", method = RequestMethod.GET)
-    public List<Worker> findWorkersByOrderId(@PathVariable("id") long id){
-        return orderDao.findWorkersByOrderId(id);
+    public List<Worker> getWorkers(@PathVariable("id") long id){
+        return orderDao.getWorkers(id);
     }
 
 }

@@ -27,6 +27,10 @@ public class WorkerMapper implements RowMapper<Worker> {
         worker.setPainter(rs.getBoolean("isPainter"));
         worker.setPlumber(rs.getBoolean("isPlumber"));
         worker.setAcTechnical(rs.getBoolean("isAcTechnical"));
+        float rating = rs.getFloat("rating");
+        if (!rs.wasNull()) {
+            worker.setRating(rating);
+        }
         return worker;
     }
 }

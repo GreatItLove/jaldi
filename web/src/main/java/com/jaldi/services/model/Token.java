@@ -8,7 +8,8 @@ package com.jaldi.services.model;
 public class Token {
 
     public enum Type {
-        RESET_PASSWORD
+        RESET_PASSWORD,
+        APNS
     }
 
     private long id;
