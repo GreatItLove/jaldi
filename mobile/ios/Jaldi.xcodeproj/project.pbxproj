@@ -105,6 +105,7 @@
 		4CF754151ED86B7D00107540 /* JaldiSplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF754141ED86B7D00107540 /* JaldiSplashScreenViewController.swift */; };
 		4CF754181ED891EA00107540 /* UIDatePicker+ClampedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF754171ED891EA00107540 /* UIDatePicker+ClampedDate.swift */; };
 		C65CB5071EB857F000DE65B7 /* JaldiHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65CB5061EB857F000DE65B7 /* JaldiHomeViewController.swift */; };
+		D166277C1EE619EE00AFC34E /* UIImageView+FromUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166277B1EE619EE00AFC34E /* UIImageView+FromUrl.swift */; };
 		D17A440D1EE5B37B00EF7FC2 /* JaldiWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17A440C1EE5B37B00EF7FC2 /* JaldiWorker.swift */; };
 		E1A6EAA1DA024FCE2C8B0771 /* Pods_Jaldi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B89C32A91F1F6B3635F9B7C3 /* Pods_Jaldi.framework */; };
 /* End PBXBuildFile section */
@@ -222,6 +223,7 @@
 		4CF754171ED891EA00107540 /* UIDatePicker+ClampedDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDatePicker+ClampedDate.swift"; sourceTree = "<group>"; };
 		B89C32A91F1F6B3635F9B7C3 /* Pods_Jaldi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jaldi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C65CB5061EB857F000DE65B7 /* JaldiHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JaldiHomeViewController.swift; path = HomeViewController/JaldiHomeViewController.swift; sourceTree = "<group>"; };
+		D166277B1EE619EE00AFC34E /* UIImageView+FromUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImageView+FromUrl.swift"; path = "UIImageView/UIImageView+FromUrl.swift"; sourceTree = "<group>"; };
 		D17A440C1EE5B37B00EF7FC2 /* JaldiWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiWorker.swift; sourceTree = "<group>"; };
 		EE115EA4FE9D8A8EB071EBDF /* Pods-Jaldi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jaldi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Jaldi/Pods-Jaldi.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -819,6 +821,7 @@
 		4CCBD3B11EBCBEE2009D5408 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				D166277A1EE6199B00AFC34E /* UIImageView */,
 				4CF754161ED891C600107540 /* UIDatePicker */,
 				4CCBC0641ED0674C00716749 /* Date */,
 				4CCBC0661ED0674C00716749 /* UIViewController */,
@@ -878,6 +881,14 @@
 				4CED685A1EB8956B001A7CC5 /* Shared */,
 			);
 			name = HomeViewController;
+			sourceTree = "<group>";
+		};
+		D166277A1EE6199B00AFC34E /* UIImageView */ = {
+			isa = PBXGroup;
+			children = (
+				D166277B1EE619EE00AFC34E /* UIImageView+FromUrl.swift */,
+			);
+			name = UIImageView;
 			sourceTree = "<group>";
 		};
 		D18D4EEB6B66676FD2AA5C0D /* Frameworks */ = {
@@ -1038,6 +1049,7 @@
 				4C2433971EDEB07400129BBC /* JaldiOrderListRatingCellDelegate.swift in Sources */,
 				4C25C7C21EBC9D8400092203 /* JaldiBookingContactInfoViewController.swift in Sources */,
 				4C53C6851ECB30240022AFDB /* JaldiPlacePicker.swift in Sources */,
+				D166277C1EE619EE00AFC34E /* UIImageView+FromUrl.swift in Sources */,
 				4C7FFAA21ECDB29100C95E71 /* Environment.swift in Sources */,
 				C65CB5071EB857F000DE65B7 /* JaldiHomeViewController.swift in Sources */,
 				4C53D6741ECC981E00A4A634 /* JaldiUser.swift in Sources */,
