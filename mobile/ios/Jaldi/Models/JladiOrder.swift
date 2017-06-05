@@ -27,6 +27,7 @@ class JaldiOrder:Mappable {
     var country: String?
     var userFeedback: String?
     var userRating: Float?
+    var workersList: [JaldiWorker]?
     var user: JaldiUser?
     var ratingInProgress: Bool?
     
@@ -54,6 +55,7 @@ class JaldiOrder:Mappable {
         creationDate    <- (map["formattedCreationDate"], DateFormatterTransform(dateFormatter: Date.appDateFormater))
         orderDate    <- (map["formattedOrderDate"], DateFormatterTransform(dateFormatter: Date.appDateFormater))
         user      <- map["user"]
+        workersList      <- map["workersList"]
   
     }
 }
