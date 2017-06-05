@@ -1,8 +1,10 @@
 package com.jaldi.services.dao;
 
+import com.jaldi.services.dao.mapper.PartialOrderResultSetExtractor;
 import com.jaldi.services.dao.mapper.OrderMapper;
 import com.jaldi.services.dao.mapper.WorkerMapper;
 import com.jaldi.services.model.Order;
+import com.jaldi.services.model.PartialOrder;
 import com.jaldi.services.model.Worker;
 import com.jaldi.services.model.request.AssignWorkerRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,6 +101,23 @@ public class OrderDaoImpl {
         }
     }
 
+    public List<PartialOrder> findForUserPartial(long userId) {
+        try {
+            Map namedParameters = new HashMap();
+            namedParameters.put("userId", userId);
+            namedParameters.put("limit", 100);
+            return namedJdbc.query("SELECT o.`id`, o.`type`, o.`status`, o.`workers`, o.`hours`, o.`address`, " +
+                    "o.`city`, o.`country`, o.`comment`, o.`latitude`, o.`longitude`, o.`cost`, o.`paymentType`, o.`userRating`, o.`userFeedback`, o.`orderDate`, o.`userId`, o.`creationDate`, " +
+                    "u.id workerId, u.email workerEmail, u.name workerName, u.phone workerPhone, u.profileImageId workerImage, u.latitude workerLatitude, u.longitude workerLongitude, wd.rating " +
+                    "FROM `order` o  " +
+                    "left join `orderWorker` ow on ow.orderId = o.id " +
+                    "left join `user` u on ow.workerId = u.id " +
+                    "left join workerDetails wd on wd.userId = ow.workerId WHERE o.userId = :userId ORDER BY o.creationDate DESC limit :limit;", namedParameters, new PartialOrderResultSetExtractor());
+        } catch (DataAccessException e) {
+            return Collections.emptyList();
+        }
+    }
+
     public Order findOne(long id) {
         try {
             return jdbcTemplate.queryForObject("SELECT `id`, `type`, `status`, `workers`, `hours`, `address`, `city`, `country`, `comment`, `latitude`, " +
@@ -146,7 +165,7 @@ public class OrderDaoImpl {
         cal.setTime(fromDate);
         cal.add(Calendar.MINUTE, Math.round(60 * order.getHours()));
         Date toDate = cal.getTime();
-        //TODO possible date convertation problem
+        //TODO possible date transform problem
         Integer sameTimeOrders = jdbcTemplate.queryForObject("SELECT count(*) FROM `order` o inner join `orderWorker` ow " +
                 "on o.id = ow.orderId where o.status != 'CANCELED' and ow.workerId = ? and (o.orderDate < ? or o.orderDate > ?);", Integer.class, request.getWorkerId(), fromDate, toDate);
         boolean created = sameTimeOrders == 0;
