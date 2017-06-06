@@ -206,7 +206,6 @@ public class OrderFragment extends Fragment {
 
             @Override
             protected Response<String> parseNetworkResponse(NetworkResponse response) {
-                String responseString = "";
                 if (response != null) {
                     String json = new String (response.data);
                     Gson gson = new Gson();
