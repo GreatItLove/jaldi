@@ -1,10 +1,10 @@
 package com.jaldi.services.dao;
 
+import com.jaldi.services.dao.mapper.AssignWorkerRequestMapper;
 import com.jaldi.services.dao.mapper.PartialOrderResultSetExtractor;
 import com.jaldi.services.dao.mapper.OrderMapper;
 import com.jaldi.services.dao.mapper.WorkerMapper;
 import com.jaldi.services.model.Order;
-import com.jaldi.services.model.PartialOrder;
 import com.jaldi.services.model.Worker;
 import com.jaldi.services.model.request.AssignWorkerRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,7 +101,7 @@ public class OrderDaoImpl {
         }
     }
 
-    public List<PartialOrder> findForUserPartial(long userId) {
+    public List<Order> findForUserPartial(long userId) {
         try {
             Map namedParameters = new HashMap();
             namedParameters.put("userId", userId);
@@ -165,7 +165,6 @@ public class OrderDaoImpl {
         cal.setTime(fromDate);
         cal.add(Calendar.MINUTE, Math.round(60 * order.getHours()));
         Date toDate = cal.getTime();
-        //TODO possible date transform problem
         Integer sameTimeOrders = jdbcTemplate.queryForObject("SELECT count(*) FROM `order` o inner join `orderWorker` ow " +
                 "on o.id = ow.orderId where o.status != 'CANCELED' and ow.workerId = ? and (o.orderDate < ? or o.orderDate > ?);", Integer.class, request.getWorkerId(), fromDate, toDate);
         boolean created = sameTimeOrders == 0;
@@ -181,14 +180,25 @@ public class OrderDaoImpl {
                 }
             });
         }
+        if(created){
+            updateOrderStatus(Order.Status.ASSIGNED, order.getId());
+        }
         return created;
     }
 
-    public List<Order> getWorkerOrders(long workerId) {
+    public void updateOrderStatus(Order.Status status, long orderId) {
         Map namedParameters = new HashMap();
-        namedParameters.put("workerId", workerId);
-        return namedJdbc.query("SELECT `id`, `type`, `status`, `workers`, `hours`, `address`, `city`, `country`, `comment`, `latitude`, " +
-                "`longitude`, `cost`, `paymentType`, `userRating`, `userFeedback`, `orderDate`, `userId`, `creationDate` FROM orderWorker " +
-                "INNER JOIN `order` ON `order`.id = orderWorker.orderId WHERE orderWorker.workerId = :workerId",namedParameters, new OrderMapper());
+        namedParameters.put("status", status.name());
+        namedParameters.put("id", orderId);
+        namedJdbc.update("update `order` set `status` = :status where `id` = :id;", namedParameters);
     }
+
+    public List<AssignWorkerRequest> getOrderWorkersById(long orderId, long workerId){
+        Map namedParameters = new HashMap();
+        namedParameters.put("orderId", orderId);
+        namedParameters.put("workerId", workerId);
+        return namedJdbc.query("SELECT orderId, workerId FROM orderWorker WHERE orderId = :orderId AND workerId = :workerId", namedParameters, new AssignWorkerRequestMapper());
+    }
+
+
 }

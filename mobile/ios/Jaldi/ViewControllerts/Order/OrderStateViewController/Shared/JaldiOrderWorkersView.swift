@@ -24,19 +24,22 @@ class JaldiOrderWorkersView: UIView {
         configureOrderDetails(order: order)
      }
     private func configureUserDetailsFor(order:JaldiOrder) {
-        if let user = order.user {
-            fullNameLabel.text = "Sedrak"
+        let worker = order.workersList?.first
+        if let user = worker?.user {
+            fullNameLabel.text = user.name
             self.configureAvaterFor(user: user)
+        } else {
+            avatarImageView.image = AppImages.dumy_profile_pic
         }
-        rateLabel.text = "4.9"
+        rateLabel.text = worker?.rating != nil ? String(format: "%.1f", (worker?.rating)!) : ""
     }
     
     private func configureAvaterFor(user:JaldiUser) {
-        guard let _ = user.profileImageId else {
+        guard let imageId = user.profileImageId else {
             avatarImageView.image = AppImages.dumy_profile_pic
             return
         }
-        avatarImageView.image = AppImages.dumy_profile_pic
+        avatarImageView.downloadedFrom(link: Environment.imageBaseUrl + imageId)
     }
     private func configureOrderDetails(order:JaldiOrder) {
         configureOrderCost(order: order)
