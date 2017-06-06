@@ -106,6 +106,7 @@
 		4CF754181ED891EA00107540 /* UIDatePicker+ClampedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF754171ED891EA00107540 /* UIDatePicker+ClampedDate.swift */; };
 		C65CB5071EB857F000DE65B7 /* JaldiHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65CB5061EB857F000DE65B7 /* JaldiHomeViewController.swift */; };
 		D166277C1EE619EE00AFC34E /* UIImageView+FromUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166277B1EE619EE00AFC34E /* UIImageView+FromUrl.swift */; };
+		D166277E1EE6B21E00AFC34E /* JaldiPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166277D1EE6B21E00AFC34E /* JaldiPointAnnotation.swift */; };
 		D17A440D1EE5B37B00EF7FC2 /* JaldiWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17A440C1EE5B37B00EF7FC2 /* JaldiWorker.swift */; };
 		E1A6EAA1DA024FCE2C8B0771 /* Pods_Jaldi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B89C32A91F1F6B3635F9B7C3 /* Pods_Jaldi.framework */; };
 /* End PBXBuildFile section */
@@ -224,6 +225,7 @@
 		B89C32A91F1F6B3635F9B7C3 /* Pods_Jaldi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jaldi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C65CB5061EB857F000DE65B7 /* JaldiHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JaldiHomeViewController.swift; path = HomeViewController/JaldiHomeViewController.swift; sourceTree = "<group>"; };
 		D166277B1EE619EE00AFC34E /* UIImageView+FromUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImageView+FromUrl.swift"; path = "UIImageView/UIImageView+FromUrl.swift"; sourceTree = "<group>"; };
+		D166277D1EE6B21E00AFC34E /* JaldiPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiPointAnnotation.swift; sourceTree = "<group>"; };
 		D17A440C1EE5B37B00EF7FC2 /* JaldiWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiWorker.swift; sourceTree = "<group>"; };
 		EE115EA4FE9D8A8EB071EBDF /* Pods-Jaldi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jaldi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Jaldi/Pods-Jaldi.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -297,6 +299,7 @@
 				4CC318561EDC540A00478B1C /* CircleView.swift */,
 				4C382F341ED9821E0052734E /* SwiftPages.swift */,
 				4C2DA9F61EB9D1A3002FCAD5 /* AKPickerView.swift */,
+				D166277D1EE6B21E00AFC34E /* JaldiPointAnnotation.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1029,6 +1032,7 @@
 			files = (
 				4CCBC0691ED0674C00716749 /* UIViewController+ProgressHUD.swift in Sources */,
 				4C382F351ED9821E0052734E /* SwiftPages.swift in Sources */,
+				D166277E1EE6B21E00AFC34E /* JaldiPointAnnotation.swift in Sources */,
 				4C25C7BC1EBC677A00092203 /* JaldiBookingTimePickerViewController.swift in Sources */,
 				4C45878C1EB4C23500169AC1 /* AppDelegate.swift in Sources */,
 				4C55BB441ECF3C03003F6241 /* JaldiSendVerificationTask.swift in Sources */,

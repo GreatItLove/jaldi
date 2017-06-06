@@ -11,6 +11,7 @@ import MapKit
 class JaldiOrderStateViewController: UIViewController {
 
     let meterToMiles = 0.000621371
+    let meterToKm = 0.001
     @IBOutlet weak var orderStateView: JaldiOrderStateView!
     @IBOutlet weak var workerView: JaldiOrderWorkersView!
     @IBOutlet weak var mapView: MKMapView!
@@ -21,7 +22,7 @@ class JaldiOrderStateViewController: UIViewController {
     @IBOutlet weak var cloasButton: UIButton!
     @IBOutlet weak var contactWorker: UITapGestureRecognizer!
     var appearance: Appearance = .none
-    private var orderState: JaldiOrderState = JaldiOrderState.tidyingUp
+    private var orderState: JaldiOrderState = JaldiOrderState.created
     var order: JaldiOrder?
     lazy var formatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -42,6 +43,7 @@ class JaldiOrderStateViewController: UIViewController {
         configureTitleLabel()
         configureLocationManager()
         self.addOrderPin()
+        self.addWorkerPin()
         configureAppearance()
         contactWorker.addTarget(self, action: #selector(showContactAlert))
     }
@@ -57,6 +59,10 @@ class JaldiOrderStateViewController: UIViewController {
         case .none:
             cloasButton.isHidden = true
         }
+        mapView.showAnnotations(mapView.annotations, animated: true)
+//        let region = MKCoordinateRegionMakeWithDistance(
+//            mapView.region.center, mapView.region.span.latitudeDelta, mapView.region.span.longitudeDelta)
+//        mapView.setRegion(region, animated: true)
     }
     private func addOrderPin() {
         guard  let cureentOrder = order, let latitude = cureentOrder.latitude, let longitude = cureentOrder.longitude else{
@@ -66,15 +72,36 @@ class JaldiOrderStateViewController: UIViewController {
         let reportTime = cureentOrder.orderDate ?? Date()
         let formattedTime = formatter.string(from: reportTime)
         
-        let annotation = MKPointAnnotation()
-        if let type = cureentOrder.type , let hours = cureentOrder.hours {
+        let annotation = JaldiPointAnnotation()
+        let type = HomeCategoryHeleper.orderTitleFor(homeCategory:cureentOrder.homeCategory)
+        if let hours = cureentOrder.hours {
             annotation.title = "\(type) (\(hours) hours)"
-        }else{
-        annotation.title = "CLEANING"
         }
         
         annotation.subtitle = formattedTime
         annotation.coordinate = coordinate
+        annotation.image = UIImage(named: "house_icon")
+        
+        mapView.addAnnotation(annotation)
+    }
+    
+    
+    private func addWorkerPin() {
+        let worker = self.order?.workersList?.first
+        let latitude = worker?.user?.latitude
+        let longitude = worker?.user?.longitude
+        if latitude == nil || latitude == 0 || longitude == nil || longitude == 0 {
+            return
+        }
+        let coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+        let annotation = JaldiPointAnnotation()
+        annotation.title = worker?.user?.name
+        annotation.coordinate = coordinate
+        annotation.type = "url"
+        let imageId = worker?.user?.profileImageId ?? nil
+        if imageId != nil {
+            annotation.url = Environment.imageBaseUrl + imageId!
+        }
         
         mapView.addAnnotation(annotation)
     }
@@ -107,16 +134,23 @@ class JaldiOrderStateViewController: UIViewController {
         guard let latitude = self.order?.latitude, let longitude = self.order?.longitude else {
             return
         }
+        let worker = self.order?.workersList?.first
+        let workerLatitude = worker?.user?.latitude
+        let workerLlongitude = worker?.user?.longitude
+        if workerLatitude == nil || workerLatitude == 0 || workerLlongitude == nil || workerLlongitude == 0 {
+            return
+        }
+        let workerCoordinate = CLLocation(latitude: workerLatitude!, longitude: workerLlongitude!)
         let orderLocation =  CLLocation(latitude: latitude, longitude: longitude)
-        if let userLocation = mapView.userLocation.location {
-            let distance = userLocation.distance(from: orderLocation)
-            let miles = distance * self.meterToMiles
-            if miles > 1 {
-                milesAwayLabel.text = "\(String(format: "%.2f", miles)) MILES AWAY "
+//        if let userLocation = mapView.userLocation.location {
+            let distance = orderLocation.distance(from: workerCoordinate)
+            let km = distance * self.meterToKm
+            if km > 1 {
+                milesAwayLabel.text = "\(String(format: "%.2f", km)) KM AWAY "
             }else{
                 milesAwayLabel.text = "\(String(format: "%.f", distance)) METERS AWAY"
             }
-        }
+//        }
     }
     //MARK: Actions
     @IBAction func closeAction(_ sender: Any) {
@@ -152,14 +186,20 @@ class JaldiOrderStateViewController: UIViewController {
         self.present(contactAlert, animated: true, completion: nil)
     }
     private func callWorker() {
-        let phone  = "+79150014148"
+        let worker = order?.workersList?.first
+        guard let phone = worker?.user?.phone else{
+            return
+        }
         guard let url = NSURL(string: "tel://\(phone)") else{
             return
         }
         UIApplication.shared.openURL(url as URL)
     }
     private func messageWorker() {
-        let phone  = "+79150014148"
+        let worker = order?.workersList?.first
+        guard let phone = worker?.user?.phone else{
+            return
+        }
         guard let url = NSURL(string: "sms://\(phone)") else{
             return
         }
@@ -173,20 +213,28 @@ extension JaldiOrderStateViewController:MKMapViewDelegate {
         self.configureDistance()
     }
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard !annotation.isKind(of: MKUserLocation.self) else {
+        if !(annotation is JaldiPointAnnotation) {
             return nil
         }
-        let annotationIdentifier = "AnnotationIdentifier"
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier)
-        
-        if annotationView == nil {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
-            annotationView!.canShowCallout = true
+        let annotationView = MKAnnotationView()
+        annotationView.annotation = annotation
+        annotationView.canShowCallout = true
+        let jaldiAnotation = annotation as? JaldiPointAnnotation
+        if jaldiAnotation?.type == "url" {
+            let imageView = UIImageView(frame: CGRect(x:0, y:0, width:25, height:25))
+            let url = jaldiAnotation?.url
+            if url != nil {
+                imageView.downloadedFrom(link: jaldiAnotation!.url!)
+            } else {
+                imageView.image = AppImages.dumy_profile_pic
+            }
+            
+            imageView.layer.cornerRadius = imageView.layer.frame.size.width / 2
+            imageView.layer.masksToBounds = true
+            annotationView.addSubview(imageView)
+        } else {
+            annotationView.image = jaldiAnotation?.image
         }
-        else {
-            annotationView!.annotation = annotation
-        }
-        annotationView!.image = UIImage(named: "house_icon")
         return annotationView
     }
 }

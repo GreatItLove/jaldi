@@ -28,6 +28,8 @@ class JaldiOrderWorkersView: UIView {
         if let user = worker?.user {
             fullNameLabel.text = user.name
             self.configureAvaterFor(user: user)
+        } else {
+            avatarImageView.image = AppImages.dumy_profile_pic
         }
         rateLabel.text = worker?.rating != nil ? String(format: "%.1f", (worker?.rating)!) : ""
     }

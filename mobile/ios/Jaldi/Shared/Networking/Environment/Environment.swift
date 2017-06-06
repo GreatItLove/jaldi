@@ -13,6 +13,8 @@ public struct Environment {
     
     static let imageBaseUrl = baseUrl + "/getFile?id="
     
+    static let defaltJaldiProfileimage = baseUrl + "/resources/main/img/default_profile_pic.jpg"
+    
     static func defaultEnvironment() -> Environment {
         var env = Environment("Default", host: baseUrl )
         env.headers = ["Content-Type": "application/json"]
