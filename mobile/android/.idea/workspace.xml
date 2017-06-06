@@ -79,8 +79,8 @@
       <file leaf-file-name="OrderFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/pro/jaldi/OrderFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="180" column="65" selection-start-line="180" selection-start-column="65" selection-end-line="180" selection-end-column="65" />
+            <state relative-caret-position="224">
+              <caret line="184" column="40" selection-start-line="184" selection-start-column="40" selection-end-line="184" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#5937#6206#0" expanded="true" />
@@ -2936,8 +2936,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/pro/jaldi/OrderFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="180" column="65" selection-start-line="180" selection-start-column="65" selection-end-line="180" selection-end-column="65" />
+        <state relative-caret-position="224">
+          <caret line="184" column="40" selection-start-line="184" selection-start-column="40" selection-end-line="184" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5937#6206#0" expanded="true" />
