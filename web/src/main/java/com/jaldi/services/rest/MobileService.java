@@ -2,14 +2,19 @@ package com.jaldi.services.rest;
 
 import com.jaldi.services.common.MailSenderService;
 import com.jaldi.services.common.MessageService;
+import com.jaldi.services.common.security.CustomAuthenticationToken;
+import com.jaldi.services.dao.TokenDaoImpl;
 import com.jaldi.services.dao.UserDaoImpl;
 import com.jaldi.services.dao.VerificationDao;
+import com.jaldi.services.model.Token;
 import com.jaldi.services.model.User;
 import com.jaldi.services.model.Verification;
 import com.jaldi.services.model.request.MobileCreateUserRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,6 +38,9 @@ public class MobileService {
 
     @Autowired
     private UserDaoImpl userDao;
+
+    @Autowired
+    private TokenDaoImpl tokenDao;
 
     @Autowired
     private MailSenderService mailSender;
@@ -74,5 +82,14 @@ public class MobileService {
         user = userDao.create(user);
         mailSender.sendWelcomeEmail(user);
         return ResponseEntity.ok(user);
+    }
+
+    @PostMapping("/updateDeviceToken")
+    @PreAuthorize("isAuthenticated()")
+    public void create(@RequestBody Token deviceToken) {
+        CustomAuthenticationToken token = (CustomAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+        User currentUser = token.getUser();
+        deviceToken.setUserId(currentUser.getId());
+        tokenDao.update(deviceToken);
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by: Sedrak Dalaloyan
@@ -36,5 +37,15 @@ public class TokenDaoImpl {
 
     public void removeToken(long id) {
         jdbcTemplate.update("DELETE FROM token WHERE id = ?;", id);
+    }
+
+    public void removeToken(Token.Type type, long userId) {
+        jdbcTemplate.update("DELETE from token WHERE type = ? and userId = ?;", type.name(), userId);
+    }
+
+    @Transactional
+    public void update(Token deviceToken) {
+        removeToken(deviceToken.getType(), deviceToken.getUserId());
+        create(deviceToken);
     }
 }
