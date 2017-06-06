@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -110,8 +111,18 @@ public class MainActivity extends AppCompatActivity
         tr.commit();
     }
 
+    private void showOrderDetails(OrderModel selectedOrder) {
+        OrderDetailFragment orderDetailFragment = new OrderDetailFragment();
+        orderDetailFragment.selectedOrder = selectedOrder;
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction tr = fm.beginTransaction();
+        tr.replace(R.id.ordersListContainer, orderDetailFragment).addToBackStack("");
+        tr.commit();
+    }
+
     @Override
     public void onListFragmentInteraction(OrderModel order) {
-
+        Log.d("MYTAG", "Oroder " + order.id + " clicked");
+        showOrderDetails(order);
     }
 }
