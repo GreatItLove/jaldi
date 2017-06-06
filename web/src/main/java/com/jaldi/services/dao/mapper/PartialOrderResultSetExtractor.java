@@ -37,7 +37,7 @@ public class PartialOrderResultSetExtractor implements ResultSetExtractor<List<O
                     user.setName(rs.getString("workerName"));
                     user.setPhone(rs.getString("workerPhone"));
                     user.setProfileImageId(rs.getString("workerImage"));
-                    user.setLongitude(rs.getDouble("workerLatitude"));
+                    user.setLatitude(rs.getDouble("workerLatitude"));
                     user.setLongitude(rs.getDouble("workerLongitude"));
                     Worker worker = new Worker();
                     float rating = rs.getFloat("rating");
