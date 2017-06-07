@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity
     private void showAllOrders() {
         OrderFragment orderFragment = new OrderFragment();
         FragmentManager fm = getSupportFragmentManager();
+        fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         FragmentTransaction tr = fm.beginTransaction();
         tr.replace(R.id.ordersListContainer, orderFragment);
         tr.commit();
@@ -106,6 +107,7 @@ public class MainActivity extends AppCompatActivity
     private void showMyOrders() {
         OrderFragment orderFragment = new OrderFragment();
         FragmentManager fm = getSupportFragmentManager();
+        fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         FragmentTransaction tr = fm.beginTransaction();
         tr.replace(R.id.ordersListContainer, orderFragment);
         tr.commit();
