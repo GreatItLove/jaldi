@@ -23,8 +23,8 @@ public class PushNotificationService {
     private TokenDaoImpl tokenDao;
 
     public void sendOrderStatusChangedNotification(Order order) {
-        String payload = APNS.newPayload().alertBody("Your order status changed.").
-                customField("orderId", order.getId()).build();
+        String payload = APNS.newPayload().alertBody("Your order status has been changed.").
+                customField("orderId", order.getId()).sound("default").build();
         Token token = tokenDao.getUserToken(order.getUser().getId(), Token.Type.APNS);
         if(token != null) {
             apnsService.push(token.getToken(), payload);
