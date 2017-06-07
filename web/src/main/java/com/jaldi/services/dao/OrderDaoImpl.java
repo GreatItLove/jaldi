@@ -1,15 +1,16 @@
 package com.jaldi.services.dao;
 
-import com.jaldi.services.dao.mapper.*;
+import com.jaldi.services.dao.mapper.AssignWorkerRequestMapper;
+import com.jaldi.services.dao.mapper.PartialOrderResultSetExtractor;
+import com.jaldi.services.dao.mapper.OrderMapper;
+import com.jaldi.services.dao.mapper.WorkerMapper;
 import com.jaldi.services.model.Order;
-import com.jaldi.services.model.Token;
 import com.jaldi.services.model.Worker;
 import com.jaldi.services.model.request.AssignWorkerRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementCallback;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -199,36 +200,5 @@ public class OrderDaoImpl {
         return namedJdbc.query("SELECT orderId, workerId FROM orderWorker WHERE orderId = :orderId AND workerId = :workerId", namedParameters, new AssignWorkerRequestMapper());
     }
 
-    public Token getUserDeviceToken(long userId) {
-        Map namedParameters = new HashMap();
-        namedParameters.put("userId", userId);
-        try {
-            return namedJdbc.queryForObject("SELECT id, token, userId, type FROM token WHERE userId = :userId;", namedParameters, new TokenMapper());
-        } catch (DataAccessException e) {
-            return null;
-        }
-    }
-
-    public void updateDeviceToken(String token, long userId) {
-        Map namedParameters = new HashMap();
-        namedParameters.put("token", token);
-        namedParameters.put("userId", userId);
-        namedParameters.put("type", Token.Type.APNS.toString());
-        if (Objects.equals(getUserDeviceToken(userId), null)) {
-            jdbcTemplate.update(new PreparedStatementCreator() {
-                @Override
-                public PreparedStatement createPreparedStatement(Connection connection)
-                        throws SQLException {
-                    PreparedStatement ps = connection.prepareStatement("INSERT INTO token (token, userId, type) VALUES(?, ?, ?);");
-                    ps.setString(1, String.valueOf(namedParameters.get("token")));
-                    ps.setString(2, String.valueOf(namedParameters.get("userId")));
-                    ps.setString(3, String.valueOf(namedParameters.get("type")));
-                    return ps;
-                }
-            });
-        } else {
-            namedJdbc.update("UPDATE token SET token = :token WHERE userId = :userId ;", namedParameters);
-        }
-    }
 
 }

@@ -35,6 +35,17 @@ public class TokenDaoImpl {
         }
     }
 
+    public Token getUserToken(long userId, Token.Type type) {
+        try {
+            String sql = "SELECT `id`, `token`, `userId`, `type` from `token` WHERE `userId` = ? and `type` = ?;";
+            Token tokenObj = jdbcTemplate.queryForObject(
+                    sql, new TokenMapper(), userId, type.name());
+            return tokenObj;
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+    }
+
     public void removeToken(long id) {
         jdbcTemplate.update("DELETE FROM token WHERE id = ?;", id);
     }

@@ -4,7 +4,6 @@ import com.jaldi.services.common.Constants;
 import com.jaldi.services.common.security.CustomAuthenticationToken;
 import com.jaldi.services.dao.OrderDaoImpl;
 import com.jaldi.services.model.Order;
-import com.jaldi.services.model.Token;
 import com.jaldi.services.model.User;
 import com.jaldi.services.model.Worker;
 import com.jaldi.services.model.request.AssignWorkerRequest;
@@ -23,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Created by: Sedrak Dalaloyan
@@ -125,14 +123,6 @@ public class OrderService {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
         }
         orderDao.updateOrderStatus(updateOrderStatusRequest.getStatus(),updateOrderStatusRequest.getOrderId());
-        return ResponseEntity.ok(null);
-    }
-
-    @RequestMapping(value = "/updateDeviceToken", method = RequestMethod.POST)
-    public ResponseEntity UpdateDeviceToken(@RequestBody Token token){
-        CustomAuthenticationToken customAuthenticationToken = (CustomAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
-        User currentUser = customAuthenticationToken.getUser();
-        orderDao.updateDeviceToken(token.getToken(), currentUser.getId());
         return ResponseEntity.ok(null);
     }
 

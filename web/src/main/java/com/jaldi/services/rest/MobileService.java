@@ -18,6 +18,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -84,7 +85,7 @@ public class MobileService {
         return ResponseEntity.ok(user);
     }
 
-    @PostMapping("/updateDeviceToken")
+    @PutMapping("/updateDeviceToken")
     @PreAuthorize("isAuthenticated()")
     public void create(@RequestBody Token deviceToken) {
         CustomAuthenticationToken token = (CustomAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();

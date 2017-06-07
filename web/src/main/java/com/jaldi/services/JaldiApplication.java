@@ -1,5 +1,8 @@
 package com.jaldi.services;
 
+import com.notnoop.apns.APNS;
+import com.notnoop.apns.ApnsService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -35,6 +38,23 @@ public class JaldiApplication extends SpringBootServletInitializer {
 		source.setBasenames("i18n/messages");  // name of the resource bundle
 		source.setUseCodeAsDefaultMessage(true);
 		return source;
+	}
+
+	@Value("${apns.certificate.path}")
+	private String certPath;
+
+	@Value("${apns.certificate.password}")
+	private String certPassword;
+
+	@Value("${apns.production}")
+	private String isProduction;
+
+	@Bean
+	public ApnsService apnsService() {
+		return APNS.newService()
+				.withCert(certPath, certPassword)
+				.withAppleDestination(Boolean.parseBoolean(isProduction))
+				.build();
 	}
 
 	public static void main(String[] args) {

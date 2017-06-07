@@ -94,6 +94,12 @@
 			<groupId>com.sun.mail</groupId>
 			<artifactId>javax.mail</artifactId>
 		</dependency>
+		<!--APNS-->
+		<dependency>
+			<groupId>com.notnoop.apns</groupId>
+			<artifactId>apns</artifactId>
+			<version>1.0.0.Beta6</version>
+		</dependency>
 		<!--Amazon SNS-->
 		<dependency>
 			<groupId>com.amazonaws</groupId>
@@ -160,6 +166,7 @@
 				<excludes>
 					<exclude>static/**</exclude>
 					<exclude>templates/**</exclude>
+					<exclude>conf/**</exclude>
 				</excludes>
 			</resource>
 			<resource>
@@ -168,6 +175,7 @@
 				<includes>
 					<include>static/**</include>
 					<include>templates/**</include>
+					<include>conf/**</include>
 				</includes>
 			</resource>
 		</resources>
