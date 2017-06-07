@@ -54,7 +54,7 @@ public class JaldiApplication extends SpringBootServletInitializer {
 	@Bean
 	public ApnsService apnsService() throws IOException {
 		return APNS.newService()
-				.withCert(certPath.getFile().getAbsolutePath(), certPassword)
+				.withCert(certPath.getInputStream(), certPassword)
 				.withAppleDestination(Boolean.parseBoolean(isProduction))
 				.build();
 	}
