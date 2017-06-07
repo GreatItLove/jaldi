@@ -105,6 +105,7 @@
 		4CF754151ED86B7D00107540 /* JaldiSplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF754141ED86B7D00107540 /* JaldiSplashScreenViewController.swift */; };
 		4CF754181ED891EA00107540 /* UIDatePicker+ClampedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF754171ED891EA00107540 /* UIDatePicker+ClampedDate.swift */; };
 		C65CB5071EB857F000DE65B7 /* JaldiHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65CB5061EB857F000DE65B7 /* JaldiHomeViewController.swift */; };
+		D15A834A1EE8050D00CE048B /* JaldiUpdateTokenTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15A83491EE8050D00CE048B /* JaldiUpdateTokenTask.swift */; };
 		D166277C1EE619EE00AFC34E /* UIImageView+FromUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166277B1EE619EE00AFC34E /* UIImageView+FromUrl.swift */; };
 		D166277E1EE6B21E00AFC34E /* JaldiPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166277D1EE6B21E00AFC34E /* JaldiPointAnnotation.swift */; };
 		D17A440D1EE5B37B00EF7FC2 /* JaldiWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17A440C1EE5B37B00EF7FC2 /* JaldiWorker.swift */; };
@@ -224,6 +225,9 @@
 		4CF754171ED891EA00107540 /* UIDatePicker+ClampedDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDatePicker+ClampedDate.swift"; sourceTree = "<group>"; };
 		B89C32A91F1F6B3635F9B7C3 /* Pods_Jaldi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jaldi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C65CB5061EB857F000DE65B7 /* JaldiHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JaldiHomeViewController.swift; path = HomeViewController/JaldiHomeViewController.swift; sourceTree = "<group>"; };
+		D15A83461EE76CC200CE048B /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		D15A83481EE76DB300CE048B /* Jaldi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Jaldi.entitlements; sourceTree = "<group>"; };
+		D15A83491EE8050D00CE048B /* JaldiUpdateTokenTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiUpdateTokenTask.swift; sourceTree = "<group>"; };
 		D166277B1EE619EE00AFC34E /* UIImageView+FromUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImageView+FromUrl.swift"; path = "UIImageView/UIImageView+FromUrl.swift"; sourceTree = "<group>"; };
 		D166277D1EE6B21E00AFC34E /* JaldiPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiPointAnnotation.swift; sourceTree = "<group>"; };
 		D17A440C1EE5B37B00EF7FC2 /* JaldiWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiWorker.swift; sourceTree = "<group>"; };
@@ -528,11 +532,12 @@
 		4C45878A1EB4C23500169AC1 /* Jaldi */ = {
 			isa = PBXGroup;
 			children = (
+				D15A83481EE76DB300CE048B /* Jaldi.entitlements */,
 				4C45878B1EB4C23500169AC1 /* AppDelegate.swift */,
 				4C2B1A401EB73FD100F63E7D /* Shared */,
 				4C832AFF1EB752B70092A853 /* Models */,
 				4C832AF41EB752240092A853 /* ViewControllerts */,
-				4C45879D1EB4CD4B00169AC1 /* Sstoryboards */,
+				4C45879D1EB4CD4B00169AC1 /* Storyboards */,
 				4C7454DA1ED2D7C200F02267 /* Resources */,
 				4C4587921EB4C23500169AC1 /* Assets.xcassets */,
 				4C4587971EB4C23500169AC1 /* Info.plist */,
@@ -540,7 +545,7 @@
 			path = Jaldi;
 			sourceTree = "<group>";
 		};
-		4C45879D1EB4CD4B00169AC1 /* Sstoryboards */ = {
+		4C45879D1EB4CD4B00169AC1 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
 				4C45878F1EB4C23500169AC1 /* Main.storyboard */,
@@ -549,7 +554,7 @@
 				4CED68571EB8802E001A7CC5 /* Login.storyboard */,
 				4C4587941EB4C23500169AC1 /* LaunchScreen.storyboard */,
 			);
-			name = Sstoryboards;
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 		4C4998F81EBB109B0034819B /* Helpers */ = {
@@ -758,6 +763,7 @@
 				4C24339A1EDF067600129BBC /* JaldiMyOrdersTask.swift */,
 				4C24339C1EDF0F9200129BBC /* JaldiOrderRateTask.swift */,
 				4C24339E1EDF253A00129BBC /* JaldiOrderFeedbackTask.swift */,
+				D15A83491EE8050D00CE048B /* JaldiUpdateTokenTask.swift */,
 			);
 			path = OrderTasks;
 			sourceTree = "<group>";
@@ -897,6 +903,7 @@
 		D18D4EEB6B66676FD2AA5C0D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D15A83461EE76CC200CE048B /* UserNotifications.framework */,
 				B89C32A91F1F6B3635F9B7C3 /* Pods_Jaldi.framework */,
 			);
 			name = Frameworks;
@@ -939,6 +946,11 @@
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = 6K6JE4UYP8;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1090,6 +1102,7 @@
 				4C2DAA081EB9D450002FCAD5 /* JaldiOnBoradingListViewController.swift in Sources */,
 				4C8AAB131ED5D1A8009A522D /* JladiOrder.swift in Sources */,
 				4C2B1A441EB73FD100F63E7D /* HBAppColors.swift in Sources */,
+				D15A834A1EE8050D00CE048B /* JaldiUpdateTokenTask.swift in Sources */,
 				4C55BB341ECEEA18003F6241 /* JaldiOperation.swift in Sources */,
 				4C8AAB111ED5C5BF009A522D /* JaldiOrderTask.swift in Sources */,
 				4C2433A31EDF2B9F00129BBC /* JaldiOrderCancelTask.swift in Sources */,
@@ -1265,6 +1278,7 @@
 			baseConfigurationReference = 4ACCDF1DD65D3B4B33983253 /* Pods-Jaldi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Jaldi/Jaldi.entitlements;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 6K6JE4UYP8;
@@ -1284,6 +1298,7 @@
 			baseConfigurationReference = EE115EA4FE9D8A8EB071EBDF /* Pods-Jaldi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Jaldi/Jaldi.entitlements;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 6K6JE4UYP8;

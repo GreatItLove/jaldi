@@ -11,6 +11,7 @@ class UserProfile {
     let guestEmailUserDefaultKey = "guestEmailUserDefaultKey"
     let guestPasswordUserDefaultKey = "guestPasswordUserDefaultKey"
     let guestZipUserDefaultKey = "guestZipUserDefaultKey"
+    let guestDeviceTokenDefaultKey = "guestDeviceTokenDefaultKey"
 
     static let currentProfile = UserProfile()
     
@@ -46,6 +47,18 @@ class UserProfile {
             userDefaults.synchronize()
         }
     }
+    
+    var deviceToken:String? {
+        get {
+            return UserDefaults.standard.object(forKey: guestDeviceTokenDefaultKey) as? String
+        }
+        set{
+            let userDefaults  = UserDefaults.standard
+            userDefaults.setValue(newValue, forKey: guestDeviceTokenDefaultKey)
+            userDefaults.synchronize()
+        }
+    }
+    
     func currentGuestUser() -> JaldiUser {
         let guest = JaldiUser.emptyUser()
         guest.email = self.guestEmail
