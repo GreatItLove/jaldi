@@ -10,9 +10,11 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.core.io.Resource;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
+import java.io.IOException;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -41,7 +43,7 @@ public class JaldiApplication extends SpringBootServletInitializer {
 	}
 
 	@Value("${apns.certificate.path}")
-	private String certPath;
+	private Resource certPath;
 
 	@Value("${apns.certificate.password}")
 	private String certPassword;
@@ -50,9 +52,9 @@ public class JaldiApplication extends SpringBootServletInitializer {
 	private String isProduction;
 
 	@Bean
-	public ApnsService apnsService() {
+	public ApnsService apnsService() throws IOException {
 		return APNS.newService()
-				.withCert(certPath, certPassword)
+				.withCert(certPath.getFile().getAbsolutePath(), certPassword)
 				.withAppleDestination(Boolean.parseBoolean(isProduction))
 				.build();
 	}
