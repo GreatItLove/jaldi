@@ -45,6 +45,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Push notification received
     func application(_ application: UIApplication, didReceiveRemoteNotification data: [AnyHashable : Any]) {
         // Print notification payload data
+        if ( application.applicationState == UIApplicationState.inactive || application.applicationState == UIApplicationState.background ){
+            if let orderId = data["orderId"] {
+                UIApplication.shared.keyWindow?.rootViewController?.showHudWithMsg(message: nil)
+                let task  = JaldiOrderByIdTask(orderId: orderId as! Int)
+                task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: {(order) in
+                    UIApplication.shared.keyWindow?.rootViewController?.hideHud()
+                }) {  (error, _) in
+                    UIApplication.shared.keyWindow?.rootViewController?.hideHud()
+                    print("error")
+                }
+            }
+        }else{
+            print("opened from a push notification when the app was on foreground")
+        }
         print("Push notification received: \(data)")
     }
 
@@ -136,6 +150,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        else {  
 //            application.registerForRemoteNotifications(matching: [.badge, .sound, .alert])
 //        }
+    }
+    
+    private func showOrderStateController(order: JaldiOrder) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Order", bundle: nil)
+        let orderStateViewController = storyboard.instantiateViewController(withIdentifier: "JaldiOrderStateViewController") as? JaldiOrderStateViewController
+        orderStateViewController?.order = order
+        orderStateViewController?.appearance = .present
+        if let topController = UIApplication.shared.keyWindow?.rootViewController {
+            topController.present(orderStateViewController!, animated: true, completion: nil)
+        }
     }
     
     public func updateDeviceToken() {
