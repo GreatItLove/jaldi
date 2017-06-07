@@ -1,5 +1,8 @@
 package com.jaldi.services;
 
+import com.notnoop.apns.APNS;
+import com.notnoop.apns.ApnsService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -7,9 +10,11 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.core.io.Resource;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
+import java.io.IOException;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -35,6 +40,23 @@ public class JaldiApplication extends SpringBootServletInitializer {
 		source.setBasenames("i18n/messages");  // name of the resource bundle
 		source.setUseCodeAsDefaultMessage(true);
 		return source;
+	}
+
+	@Value("${apns.certificate.path}")
+	private Resource certPath;
+
+	@Value("${apns.certificate.password}")
+	private String certPassword;
+
+	@Value("${apns.production}")
+	private String isProduction;
+
+	@Bean
+	public ApnsService apnsService() throws IOException {
+		return APNS.newService()
+				.withCert(certPath.getInputStream(), certPassword)
+				.withAppleDestination(Boolean.parseBoolean(isProduction))
+				.build();
 	}
 
 	public static void main(String[] args) {

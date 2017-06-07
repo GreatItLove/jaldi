@@ -58,7 +58,7 @@ public class NetworkDispatcher: Dispatcher {
        let dateRequest =  Alamofire.request(path, method: request.method, parameters: bodyParams, encoding: JSONEncoding.default, headers: headers)
         print("path \(path)")
         print("headers \(headers)")
-        print("bodyParams \(bodyParams)")
+        print("bodyParams \(String(describing: bodyParams))")
         return dateRequest
     }
 }

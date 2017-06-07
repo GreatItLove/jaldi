@@ -57,12 +57,12 @@ public class OrderDaoImpl {
                 ps.setString(6, order.getCity());
                 ps.setString(7, order.getCountry());
                 ps.setString(8, order.getComment());
-                if(order.getLatitude() == null) {
+                if (order.getLatitude() == null) {
                     ps.setNull(9, Types.DECIMAL);
                 } else {
                     ps.setDouble(9, order.getLatitude());
                 }
-                if(order.getLongitude() == null) {
+                if (order.getLongitude() == null) {
                     ps.setNull(10, Types.DECIMAL);
                 } else {
                     ps.setDouble(10, order.getLongitude());
@@ -151,7 +151,7 @@ public class OrderDaoImpl {
         namedJdbc.update("update `order` set `status` = :status where `id` = :id AND `userId` = :userId;", namedParameters);
     }
 
-    public List<Worker> getWorkers(long orderId){
+    public List<Worker> getWorkers(long orderId) {
         Map namedParameters = new HashMap();
         namedParameters.put("orderId", orderId);
         return namedJdbc.query("SELECT `id`, `email`, `name`, `phone`, `role`, `type`, `profileImageId`, `latitude`, `longitude`, `isActive`, `isDeleted`, `creationDate`, `isCleaner`, `isCarpenter`, `isElectrician`, `isMason`, `isPainter`, `isPlumber`, `isAcTechnical`, `rating` FROM `user` inner join workerDetails on `user`.id = workerDetails.userId inner join orderWorker on orderWorker.workerId = `user`.id AND orderWorker.orderId = :orderId where `type` = 'WORKER' AND isDeleted = 0;", namedParameters, new WorkerMapper());
@@ -168,7 +168,7 @@ public class OrderDaoImpl {
         Integer sameTimeOrders = jdbcTemplate.queryForObject("SELECT count(*) FROM `order` o inner join `orderWorker` ow " +
                 "on o.id = ow.orderId where o.status != 'CANCELED' and ow.workerId = ? and (o.orderDate < ? or o.orderDate > ?);", Integer.class, request.getWorkerId(), fromDate, toDate);
         boolean created = sameTimeOrders == 0;
-        if(created){
+        if (created) {
             jdbcTemplate.update(new PreparedStatementCreator() {
                 @Override
                 public PreparedStatement createPreparedStatement(Connection connection)
@@ -180,7 +180,7 @@ public class OrderDaoImpl {
                 }
             });
         }
-        if(created){
+        if (created) {
             updateOrderStatus(Order.Status.ASSIGNED, order.getId());
         }
         return created;
@@ -193,7 +193,7 @@ public class OrderDaoImpl {
         namedJdbc.update("update `order` set `status` = :status where `id` = :id;", namedParameters);
     }
 
-    public List<AssignWorkerRequest> getOrderWorkersById(long orderId, long workerId){
+    public List<AssignWorkerRequest> getOrderWorkersById(long orderId, long workerId) {
         Map namedParameters = new HashMap();
         namedParameters.put("orderId", orderId);
         namedParameters.put("workerId", workerId);

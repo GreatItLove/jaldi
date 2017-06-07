@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 public enum JaldiResponse {
     case value(_: AnyObject?)
     case error(_: Int?, _: Error?)
@@ -15,8 +16,8 @@ public enum JaldiResponse {
         print(request.path)
         let datastring = NSString(data: response.data!, encoding: String.Encoding.utf8.rawValue)
         print("response.data ---  \(datastring ?? "")")
-        print("response ---  \(response.r)")
-        print("response.result.error ---  \(response.error)")
+        print("response ---  \(String(describing: response.r))")
+        print("response.result.error ---  \(String(describing: response.error))")
         guard let statusCode = response.r?.statusCode,  statusCode == 200 else {
             if response.isSuccess {
                 guard let errorDict  = response.value as? [String : AnyObject] else {
@@ -41,6 +42,8 @@ public enum JaldiResponse {
                     var env = Environment.defaultEnvironment()
                     env.autToken = authorization
                     self = .value("" as AnyObject)
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.updateDeviceToken()
                     return
                 }
             }
