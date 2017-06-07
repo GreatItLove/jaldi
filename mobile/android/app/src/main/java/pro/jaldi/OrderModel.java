@@ -1,5 +1,7 @@
 package pro.jaldi;
 
+import java.util.List;
+
 /**
  * Created by samvel on 6/5/17.
  */
@@ -21,7 +23,7 @@ public class OrderModel {
     float userRating;//: 5,
     String userFeedback;//": null,
     UserModel user;//":{
-
+    List<UserModel> workersList;
     String orderDate;//": 1496253600000,
     String creationDate;//": 1496235815000,
 //            "workersList": null,
