@@ -53,9 +53,9 @@ public class OrderService {
         Order result = orderDao.findOne(id);
         if(result != null && (Util.isAdmin(token) || Util.isOperator(token) ||
                         result.getUser().getId() == currentUser.getId())) {
+            result.setWorkersList(orderDao.getWorkers(id));
             return ResponseEntity.ok(result);
         }
-        result.setWorkersList(orderDao.getWorkers(id));
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 
     }
