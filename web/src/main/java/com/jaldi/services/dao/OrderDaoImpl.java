@@ -166,7 +166,7 @@ public class OrderDaoImpl {
         cal.add(Calendar.MINUTE, Math.round(60 * order.getHours()));
         Date toDate = cal.getTime();
         Integer sameTimeOrders = jdbcTemplate.queryForObject("SELECT count(*) FROM `order` o inner join `orderWorker` ow " +
-                "on o.id = ow.orderId where o.status != 'CANCELED' and ow.workerId = ? and (o.orderDate < ? or o.orderDate > ?);", Integer.class, request.getWorkerId(), fromDate, toDate);
+                "on o.id = ow.orderId where o.status != 'CANCELED' and ow.workerId = ? and o.orderDate > ? AND o.orderDate < ?;", Integer.class, request.getWorkerId(), fromDate, toDate);
         boolean created = sameTimeOrders == 0;
         if (created) {
             jdbcTemplate.update(new PreparedStatementCreator() {
