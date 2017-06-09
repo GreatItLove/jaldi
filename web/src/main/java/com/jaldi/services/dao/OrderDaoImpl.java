@@ -158,9 +158,17 @@ public class OrderDaoImpl {
         return namedJdbc.query("SELECT `id`, `email`, `name`, `phone`, `role`, `type`, `profileImageId`, `latitude`, `longitude`, `isActive`, `isDeleted`, `creationDate`, `isCleaner`, `isCarpenter`, `isElectrician`, `isMason`, `isPainter`, `isPlumber`, `isAcTechnical`, `rating` FROM `user` inner join workerDetails on `user`.id = workerDetails.userId inner join orderWorker on orderWorker.workerId = `user`.id AND orderWorker.orderId = :orderId where `type` = 'WORKER' AND isDeleted = 0;", namedParameters, new WorkerMapper());
     }
 
+    public List<AssignWorkerRequest> getWorkersIdByOrderId(long orderId){
+        Map namedParameters = new HashMap();
+        namedParameters.put("orderId", orderId);
+        return namedJdbc.query("SELECT orderId, workerId FROM orderWorker WHERE orderId = :orderId", namedParameters,  new AssignWorkerRequestMapper());
+    }
+
     @Transactional
     public boolean assignWorker(AssignWorkerRequest request) {
         Order order = findOne(request.getOrderId());
+        List<AssignWorkerRequest> workersAssignOrder = getWorkersIdByOrderId(order.getId());
+        if (workersAssignOrder.size() >= order.getWorkers() ) return false;
         Date fromDate = order.getOrderDate();
         Calendar cal = Calendar.getInstance();
         cal.setTime(fromDate);
