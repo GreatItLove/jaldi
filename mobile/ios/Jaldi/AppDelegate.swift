@@ -45,18 +45,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Push notification received
     func application(_ application: UIApplication, didReceiveRemoteNotification data: [AnyHashable : Any]) {
         // Print notification payload data
+        let orderId = data["orderId"]
         if ( application.applicationState == UIApplicationState.inactive || application.applicationState == UIApplicationState.background ){
-            if let orderId = data["orderId"] {
+            if let _ = orderId {
                 UIApplication.shared.keyWindow?.rootViewController?.showHudWithMsg(message: nil)
                 let task  = JaldiOrderByIdTask(orderId: orderId as! Int)
                 task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: {(order) in
                     UIApplication.shared.keyWindow?.rootViewController?.hideHud()
+                    guard let _ = order else {
+                        return
+                    }
+                    self.showOrderStateController(order: order!)
                 }) {  (error, _) in
                     UIApplication.shared.keyWindow?.rootViewController?.hideHud()
                     print("error")
                 }
             }
         }else{
+            if let _ = orderId {
+                NotificationCenter.default.post(name: Notification.Name(rawValue: AppNotifications.orderUpdatedNotificationName), object: nil, userInfo: ["orderId": orderId!])
+            }
             print("opened from a push notification when the app was on foreground")
         }
         print("Push notification received: \(data)")
@@ -158,6 +166,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         orderStateViewController?.order = order
         orderStateViewController?.appearance = .present
         if let topController = UIApplication.shared.keyWindow?.rootViewController {
+            topController.dismiss(animated: false, completion: nil)
             topController.present(orderStateViewController!, animated: true, completion: nil)
         }
     }

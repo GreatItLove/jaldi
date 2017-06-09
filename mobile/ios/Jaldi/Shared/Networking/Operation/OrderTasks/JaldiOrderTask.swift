@@ -66,7 +66,7 @@ class JaldiOrderTask: JaldiOperation {
     
     var request: JaldiRequest {
         
-        let orderDateStr = self.orderDate.dateStringWith(format: AppDateFormats.appDateFormat)
+//        let orderDateStr = self.orderDate.dateStringWith(format: AppDateFormats.appDateFormat)
         let orderDict  = ["type" : type,
                           "workers" : workers,
                           "address" : address,
@@ -78,7 +78,7 @@ class JaldiOrderTask: JaldiOperation {
                           "paymentType" : paymentType,
                           "city" : city,
                           "country" : country,
-                          "orderDate" : orderDateStr] as [String : Any]
+                          "orderDate" : Int(orderDate.timeIntervalSince1970 * 1000)] as [String : Any]
         return OrderRequest.order(orderDict: orderDict)
     }
     

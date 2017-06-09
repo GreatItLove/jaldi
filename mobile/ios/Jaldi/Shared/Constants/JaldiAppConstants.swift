@@ -12,6 +12,7 @@ import UIKit
 struct AppNotifications {
     static let loginNotificationName = "JALDI_APP_LOGIN_NOTIFICATION"
     static let logoutNotificationName = "JALDI_APP_LOG_OUT_NOTIFICATION"
+    static let orderUpdatedNotificationName = "JALDI_APP_ORDER_UPDATED_NOTIFICATION"
     static let zipCodeIsChangedNotificationName = "JALDI_APP_ZIP_CODE_IS_CHANGED_NOTIFICATION"
 }
 struct AvailableZipCodes {

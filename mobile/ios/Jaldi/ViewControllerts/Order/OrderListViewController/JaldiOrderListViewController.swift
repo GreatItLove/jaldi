@@ -15,19 +15,21 @@ class JaldiOrderListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.reloadOrders()
+        self.registerNotifications()
+        //self.reloadOrders()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        theTableView.reloadData()
+        self.reloadOrders()
+        //theTableView.reloadData()
     }
     private func reloadOrders() {
         self.showHudWithMsg(message: nil)
         let task  = JaldiMyOrdersTask()
         task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: {[weak self] (orderList) in
             self?.hideHud()
-            self?.orders = orderList
+            self?.orders = orderList?.reversed()
             self?.theTableView.reloadData()
         }) { [weak self] (error, _) in
             self?.hideHud()
@@ -41,10 +43,24 @@ class JaldiOrderListViewController: UIViewController {
             print(error ?? "Error")
         }
     }
+    
+    private func registerNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadOrdersNotification(_:)), name: NSNotification.Name(rawValue: AppNotifications.orderUpdatedNotificationName), object: nil)
+    }
+    
+    func reloadOrdersNotification(_ notification: Notification) {
+        self.reloadOrders()
+    }
+
+    
     //MARK: Actions
     @IBAction func closeAction(_ sender: Any) {
         self.dismiss(animated: true) {
         }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 

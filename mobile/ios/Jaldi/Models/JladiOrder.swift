@@ -52,8 +52,8 @@ class JaldiOrder:Mappable {
         country        <- map["country"]
         userFeedback        <- map["userFeedback"]
         userRating        <- map["userRating"]
-        creationDate    <- (map["formattedCreationDate"], DateFormatterTransform(dateFormatter: Date.appDateFormater))
-        orderDate    <- (map["formattedOrderDate"], DateFormatterTransform(dateFormatter: Date.appDateFormater))
+        creationDate    <- (map["creationDate"], MilisecondDateTransform())
+        orderDate    <- (map["orderDate"], MilisecondDateTransform())
         user      <- map["user"]
         workersList      <- map["workersList"]
   
