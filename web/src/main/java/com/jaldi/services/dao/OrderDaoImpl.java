@@ -25,6 +25,7 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.sql.Types;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by: Sedrak Dalaloyan
@@ -201,4 +202,37 @@ public class OrderDaoImpl {
     }
 
 
+    public List<Order> getAvailableOrders(long workerId){
+        String sql ="SELECT `id`, `type`, `status`, `workers`, `hours`, `address`, `city`, `country`, `comment`, `latitude`, `longitude`, `cost`, `paymentType`, `userRating`, `userFeedback`, `orderDate`, `userId`, `creationDate`, COUNT(`order`.`id`) as qt  FROM  `order` LEFT JOIN orderWorker ON `order`.id = orderWorker.orderId WHERE (`order`.status = 'CREATED' OR `order`.status = 'ASSIGNED') GROUP BY `order`.id HAVING `order`.workers > qt";
+        List<Order> list =   namedJdbc.query(sql,new OrderMapper());
+        return list.stream().filter(order -> checkWorkerType(order.getType(), workerId) && (order.getStatus().equals(Order.Status.CREATED) || getOrderWorkersById(order.getId(),workerId).size()== 0)).collect(Collectors.toList());
+    }
+
+    public List<Order> getMyOrders(long workerId) {
+        Map namedParameters = new HashMap();
+        namedParameters.put("workerId", workerId);
+        return namedJdbc.query("SELECT `id`, `type`, `status`, `workers`, `hours`, `address`, `city`, `country`, `comment`, `latitude`, `longitude`, `cost`, `paymentType`, `userRating`, `userFeedback`, `orderDate`, `userId`, `creationDate` FROM `order` INNER JOIN orderWorker ON `order`.id = orderWorker.orderId WHERE orderWorker.workerId  = :workerId", namedParameters, new OrderMapper());
+    }
+
+    public boolean checkWorkerType(Order.Type type, long workerId) {
+        Map namedParameters = new HashMap();
+        namedParameters.put("workerId", workerId);
+        switch (type.name()) {
+            case "CLEANER":
+                return namedJdbc.queryForObject("SELECT count(*) FROM workerDetails WHERE userId = :workerId AND isCleaner = 1", namedParameters, Integer.class) > 0;
+            case "CARPENTER":
+                return namedJdbc.queryForObject("SELECT count(*) FROM workerDetails WHERE userId = :workerId AND isCarpenter = 1", namedParameters, Integer.class) > 0;
+            case "ELECTRICIAN":
+                return namedJdbc.queryForObject("SELECT count(*) FROM workerDetails WHERE userId = :workerId AND isElectrician = 1", namedParameters, Integer.class) > 0;
+            case "MASON":
+                return namedJdbc.queryForObject("SELECT count(*) FROM workerDetails WHERE userId = :workerId AND isMason = 1", namedParameters, Integer.class) > 0;
+            case "PAINTER":
+                return namedJdbc.queryForObject("SELECT count(*) FROM workerDetails WHERE userId = :workerId AND isPainter = 1", namedParameters, Integer.class) > 0;
+            case "PLUMBER":
+                return namedJdbc.queryForObject("SELECT count(*) FROM workerDetails WHERE userId = :workerId AND isPlumber = 1", namedParameters, Integer.class) > 0;
+            case "AC_TECHNICAL":
+                return namedJdbc.queryForObject("SELECT count(*) FROM workerDetails WHERE userId = :workerId AND isAcTechnical = 1", namedParameters, Integer.class) > 0;
+        }
+        return false;
+    }
 }
