@@ -210,16 +210,16 @@ public class OrderDaoImpl {
     }
 
 
-    public List<Order> getAvailableOrders(long workerId){
+    public List<Order> getFreeOrders(long workerId){
         String sql ="SELECT `id`, `type`, `status`, `workers`, `hours`, `address`, `city`, `country`, `comment`, `latitude`, `longitude`, `cost`, `paymentType`, `userRating`, `userFeedback`, `orderDate`, `userId`, `creationDate`, COUNT(`order`.`id`) as qt  FROM  `order` LEFT JOIN orderWorker ON `order`.id = orderWorker.orderId WHERE (`order`.status = 'CREATED' OR `order`.status = 'ASSIGNED') GROUP BY `order`.id HAVING `order`.workers > qt";
-        List<Order> list =   namedJdbc.query(sql,new OrderMapper());
+        List<Order> list =   namedJdbc.query(sql, new OrderMapper());
         return list.stream().filter(order -> checkWorkerType(order.getType(), workerId) && (order.getStatus().equals(Order.Status.CREATED) || getOrderWorkersById(order.getId(),workerId).size()== 0)).collect(Collectors.toList());
     }
 
-    public List<Order> getMyOrders(long workerId) {
+    public List<Order> getWorkerOrders(long workerId) {
         Map namedParameters = new HashMap();
         namedParameters.put("workerId", workerId);
-        return namedJdbc.query("SELECT `id`, `type`, `status`, `workers`, `hours`, `address`, `city`, `country`, `comment`, `latitude`, `longitude`, `cost`, `paymentType`, `userRating`, `userFeedback`, `orderDate`, `userId`, `creationDate` FROM `order` INNER JOIN orderWorker ON `order`.id = orderWorker.orderId WHERE orderWorker.workerId  = :workerId", namedParameters, new OrderMapper());
+        return namedJdbc.query("SELECT `id`, `type`, `status`, `workers`, `hours`, `address`, `city`, `country`, `comment`, `latitude`, `longitude`, `cost`, `paymentType`, `userRating`, `userFeedback`, `orderDate`, `userId`, `creationDate` FROM `order` INNER JOIN orderWorker ON `order`.id = orderWorker.orderId WHERE orderWorker.workerId  = :workerId;", namedParameters, new OrderMapper());
     }
 
     public boolean checkWorkerType(Order.Type type, long workerId) {

@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -138,17 +138,23 @@ public class OrderService {
         return ResponseEntity.ok(null);
     }
 
-    @RequestMapping(value = "/availableOrders", method = RequestMethod.GET)
-    public List<Order> getAvailableOrders(){
+    @RequestMapping(value = "/freeOrders", method = RequestMethod.GET)
+    public List<Order> getFreeOrders(){
         CustomAuthenticationToken customAuthenticationToken = (CustomAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
         User currentUser = customAuthenticationToken.getUser();
-        return orderDao.getAvailableOrders(currentUser.getId());
+        if (currentUser.getType() != User.Type.WORKER) {
+            return Collections.emptyList();
+        }
+        return orderDao.getFreeOrders(currentUser.getId());
     }
 
-    @RequestMapping(value = "/myOrders", method = RequestMethod.GET)
-    public List<Order> getMyOrders(){
+    @RequestMapping(value = "/workerOrders", method = RequestMethod.GET)
+    public List<Order> getWorkerOrders(){
         CustomAuthenticationToken customAuthenticationToken = (CustomAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
         User currentUser = customAuthenticationToken.getUser();
-        return orderDao.getMyOrders(currentUser.getId());
+        if (currentUser.getType() != User.Type.WORKER) {
+            return Collections.emptyList();
+        }
+        return orderDao.getWorkerOrders(currentUser.getId());
     }
 }
