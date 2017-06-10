@@ -1,20 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/cell_top_margin"
+    android:paddingEnd="@dimen/cell_end_margin"
+    android:paddingStart="@dimen/cell_start_margin">
 
+<LinearLayout
+    android:layout_width="135dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginRight="@dimen/order_control_right_margin"
+    android:id="@+id/controlContainer"
+    android:layout_alignParentStart="true"
+    >
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/app_icon"
+        android:layout_gravity="center_horizontal"
+       />
     <TextView
-        android:id="@+id/id"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:textAppearance="?attr/textAppearanceListItem" />
-
-    <TextView
-        android:id="@+id/content"
-        android:layout_width="wrap_content"
+        android:maxLines="1"
+        android:layout_marginTop="@dimen/position_top_margin"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@android:color/black"
+        android:text="3 of 5 positions left"/>
+    <Button
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:textAppearance="?attr/textAppearanceListItem" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/take_order_button_top_margin"
+        android:text="TAKE"/>
 </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/detailsContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/controlContainer"
+        android:layout_toEndOf="@+id/controlContainer"
+        android:textAppearance="?attr/textAppearanceListItem" >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:id="@+id/orderTilte"
+        android:textStyle="bold"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="HOME CLEANING"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:id="@+id/orderDate"
+        android:layout_below="@+id/orderTilte"
+        android:layout_alignParentStart="true"
+        android:textColor="@android:color/black"
+        android:text="20 May 2017"
+        android:textSize="14sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:id="@+id/orderTime"
+        android:layout_marginStart="@dimen/order_time_margin"
+        android:layout_below="@+id/orderTilte"
+        android:layout_toEndOf="@id/orderDate"
+        android:text="01:23 AM - 09:17 PM"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+
+        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:id="@+id/orderDetails"
+            android:layout_below="@+id/orderDate"
+            android:layout_marginTop="@dimen/order_details_top_margin"
+            android:layout_alignParentStart="true"
+            android:text="Details"
+            android:textSize="12sp"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/orderDetails"
+            android:orientation="horizontal"
+            android:id="@+id/orderDetailsContainer"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:id="@+id/orderDistanceTilte"
+                android:text="Distance: "
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:id="@+id/orderDistanceValue"
+                android:text="100 km"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="  |  "
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textColor="@android:color/black"
+                android:id="@+id/orderDurationTitle"
+                android:text="Duration: "
+                android:textSize="12sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textColor="@android:color/black"
+                android:id="@+id/orderDurationValue"
+                android:text="4 hr"
+                android:textSize="12sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="  |  "
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="Profit: "
+                android:textColor="@android:color/black"
+                android:textSize="12sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="80 QR"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                />
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="Address"
+            android:layout_marginTop="@dimen/order_details_top_margin"
+            android:id="@+id/AddressTitle"
+            android:layout_below="@+id/orderDetailsContainer"
+            android:textSize="12sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="Bol'shaya Dmitrovka ulitsa 5/6с8"
+            android:id="@+id/AddressValue"
+            android:layout_below="@+id/AddressTitle"
+            android:textSize="12sp"
+            android:textColor="@android:color/black"
+            />
+
+
+    </RelativeLayout>
+</RelativeLayout>

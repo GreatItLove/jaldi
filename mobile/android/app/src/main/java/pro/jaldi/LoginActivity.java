@@ -195,8 +195,8 @@ public class LoginActivity extends AppCompatActivity {
     protected Map<String, String> getParams()
     {
         Map<String, String>  params = new HashMap<String, String>();
-        params.put("username", mEmailView.getText().toString()); // admin@jaldi.pro
-        params.put("password", mPasswordView.getText().toString()); // 123
+        params.put("username", mEmailView.getText().toString());
+        params.put("password", mPasswordView.getText().toString());
 
         return params;
     }

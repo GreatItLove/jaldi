@@ -50,7 +50,6 @@ public class OrderFragment extends Fragment {
     public OrderFragment() {
     }
 
-    // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
     public static OrderFragment newInstance(int columnCount) {
         OrderFragment fragment = new OrderFragment();
@@ -67,7 +66,6 @@ public class OrderFragment extends Fragment {
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
-
     }
 
     @Override
@@ -203,7 +201,6 @@ public class OrderFragment extends Fragment {
                 params.put("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0MUBnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImV4cCI6MTU4MjYzNTU5MX0.jUCrG5MfmheOprwBcBJUhCYvgaNGooZhm_I__RnzqlAldwJF3aEzJ28AaY121vggakMHmS8HdE6lX1MCOhW4fA"); // admin@jaldi.pro
                 return params;
             }
-
             @Override
             protected Response<String> parseNetworkResponse(NetworkResponse response) {
                 if (response != null) {
