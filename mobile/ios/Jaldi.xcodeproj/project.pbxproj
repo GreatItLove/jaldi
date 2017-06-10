@@ -109,6 +109,7 @@
 		D166277C1EE619EE00AFC34E /* UIImageView+FromUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166277B1EE619EE00AFC34E /* UIImageView+FromUrl.swift */; };
 		D166277E1EE6B21E00AFC34E /* JaldiPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166277D1EE6B21E00AFC34E /* JaldiPointAnnotation.swift */; };
 		D17A440D1EE5B37B00EF7FC2 /* JaldiWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17A440C1EE5B37B00EF7FC2 /* JaldiWorker.swift */; };
+		D1AFBBA41EE9B7030068287D /* MilisecondDateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFBBA31EE9B7030068287D /* MilisecondDateTransform.swift */; };
 		E1A6EAA1DA024FCE2C8B0771 /* Pods_Jaldi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B89C32A91F1F6B3635F9B7C3 /* Pods_Jaldi.framework */; };
 /* End PBXBuildFile section */
 
@@ -231,6 +232,7 @@
 		D166277B1EE619EE00AFC34E /* UIImageView+FromUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImageView+FromUrl.swift"; path = "UIImageView/UIImageView+FromUrl.swift"; sourceTree = "<group>"; };
 		D166277D1EE6B21E00AFC34E /* JaldiPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiPointAnnotation.swift; sourceTree = "<group>"; };
 		D17A440C1EE5B37B00EF7FC2 /* JaldiWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiWorker.swift; sourceTree = "<group>"; };
+		D1AFBBA31EE9B7030068287D /* MilisecondDateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MilisecondDateTransform.swift; sourceTree = "<group>"; };
 		EE115EA4FE9D8A8EB071EBDF /* Pods-Jaldi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jaldi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Jaldi/Pods-Jaldi.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -562,6 +564,7 @@
 			children = (
 				4C382F091ED975CA0052734E /* BookingHelper */,
 				4C4998F91EBB109B0034819B /* JaldiValidator.swift */,
+				D1AFBBA31EE9B7030068287D /* MilisecondDateTransform.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -947,6 +950,9 @@
 						DevelopmentTeam = 6K6JE4UYP8;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -1099,6 +1105,7 @@
 				4C55BB401ECF1D06003F6241 /* JaldGetProfileTask.swift in Sources */,
 				4C4998F71EBB0E100034819B /* BookingObject.swift in Sources */,
 				4C382F251ED97E4E0052734E /* JaldiSignInViewController.swift in Sources */,
+				D1AFBBA41EE9B7030068287D /* MilisecondDateTransform.swift in Sources */,
 				4C2DAA081EB9D450002FCAD5 /* JaldiOnBoradingListViewController.swift in Sources */,
 				4C8AAB131ED5D1A8009A522D /* JladiOrder.swift in Sources */,
 				4C2B1A441EB73FD100F63E7D /* HBAppColors.swift in Sources */,

@@ -34,6 +34,14 @@ class JaldiOrderStateViewController: UIViewController {
         super.viewDidLoad()
         
         workerView.delegate = self
+        registerNotifications()
+        configureLocationManager()
+        displayOrder()
+        configureAppearance()
+        contactWorker.addTarget(self, action: #selector(showContactAlert))
+    }
+
+    private func displayOrder() {
         if let order = self.order {
             workerView.configureWith(order: order)
             orderState = order.orderState
@@ -41,11 +49,8 @@ class JaldiOrderStateViewController: UIViewController {
         orderStateView.configureWith(orderState: orderState)
         configureTimeLabel()
         configureTitleLabel()
-        configureLocationManager()
         self.addOrderPin()
         self.addWorkerPin()
-        configureAppearance()
-        contactWorker.addTarget(self, action: #selector(showContactAlert))
     }
     //MARK: Configuration
     private func configureAppearance() {
@@ -64,6 +69,7 @@ class JaldiOrderStateViewController: UIViewController {
 //            mapView.region.center, mapView.region.span.latitudeDelta, mapView.region.span.longitudeDelta)
 //        mapView.setRegion(region, animated: true)
     }
+    
     private func addOrderPin() {
         guard  let cureentOrder = order, let latitude = cureentOrder.latitude, let longitude = cureentOrder.longitude else{
             return
@@ -204,6 +210,39 @@ class JaldiOrderStateViewController: UIViewController {
             return
         }
         UIApplication.shared.openURL(url as URL)
+    }
+    
+    private func registerNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(orderUpdatedNotification(_:)), name: NSNotification.Name(rawValue: AppNotifications.orderUpdatedNotificationName), object: nil)
+    }
+    
+    func orderUpdatedNotification(_ notification: Notification) {
+        guard let orderId = order?.orderId, let userInfo = notification.userInfo else {
+            return
+        }
+        let updatedOrderId = userInfo["orderId"] as! Int
+        if orderId == updatedOrderId {
+            reloadOrderData(orderId: orderId)
+        }
+    }
+    
+    func reloadOrderData(orderId:Int) {
+        let task  = JaldiOrderByIdTask(orderId: orderId)
+        task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: {(newOrder) in
+            UIApplication.shared.keyWindow?.rootViewController?.hideHud()
+            guard let _ = newOrder else {
+                return
+            }
+            self.order = newOrder
+            self.displayOrder()
+        }) {  (error, _) in
+            UIApplication.shared.keyWindow?.rootViewController?.hideHud()
+            print("error")
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 extension JaldiOrderStateViewController:MKMapViewDelegate {

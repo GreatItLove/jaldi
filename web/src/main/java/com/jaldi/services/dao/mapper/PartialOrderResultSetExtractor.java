@@ -9,8 +9,8 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.TreeMap;
 
 /**
  * Created by: Sedrak Dalaloyan
@@ -23,7 +23,7 @@ public class PartialOrderResultSetExtractor implements ResultSetExtractor<List<O
 
     @Override
     public List<Order> extractData(ResultSet rs) throws SQLException, DataAccessException {
-        HashMap<Long, Order> orderHashMap = new HashMap<>();
+        TreeMap<Long, Order> orderHashMap = new TreeMap<>();
         while (rs.next()) {
             long orderId = rs.getLong("id");
             Order order = orderHashMap.get(orderId);

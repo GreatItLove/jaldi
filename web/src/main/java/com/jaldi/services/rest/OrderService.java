@@ -1,6 +1,7 @@
 package com.jaldi.services.rest;
 
-import com.jaldi.services.common.Constants;
+import com.jaldi.services.common.PushNotificationService;
+import com.jaldi.services.common.Util;
 import com.jaldi.services.common.security.CustomAuthenticationToken;
 import com.jaldi.services.dao.OrderDaoImpl;
 import com.jaldi.services.model.Order;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -35,6 +37,9 @@ public class OrderService {
     @Autowired
     private OrderDaoImpl orderDao;
 
+    @Autowired
+    private PushNotificationService pushNotificationService;
+
     @GetMapping
     @PreAuthorize("hasAnyAuthority('OPERATOR', 'ADMIN')")
     public List<Order> findAll(@RequestParam(value = "type", required = false) String type, @RequestParam(value = "status", required = false) String status) {
@@ -47,10 +52,9 @@ public class OrderService {
         CustomAuthenticationToken token = (CustomAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
         User currentUser = token.getUser();
         Order result = orderDao.findOne(id);
-        //TODO
-        if(result != null && (token.getAuthorities().contains(Constants.OPERATOR_PERMISSION_NAME) ||
-                token.getAuthorities().contains(Constants.ADMIN_PERMISSION_NAME) ||
+        if(result != null && (Util.isAdmin(token) || Util.isOperator(token) ||
                         result.getUser().getId() == currentUser.getId())) {
+            result.setWorkersList(orderDao.getWorkers(id));
             return ResponseEntity.ok(result);
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
@@ -107,6 +111,8 @@ public class OrderService {
         if(!created){
             return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
         }
+        Order order = orderDao.findOne(assignWorkerRequest.getOrderId());
+        pushNotificationService.sendOrderStatusChangedNotification(order);
         return ResponseEntity.ok(null);
     }
 
@@ -119,11 +125,36 @@ public class OrderService {
     public ResponseEntity updateOrderStatus(@RequestBody UpdateOrderStatusRequest updateOrderStatusRequest){
         CustomAuthenticationToken token = (CustomAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
         User currentUser = token.getUser();
-        if(orderDao.getOrderWorkersById(updateOrderStatusRequest.getOrderId(), currentUser.getId()).size() == 0 || updateOrderStatusRequest.getStatus().ordinal()<2 || updateOrderStatusRequest.getStatus().ordinal() > 5){
+        if(orderDao.getOrderWorkersById(updateOrderStatusRequest.getOrderId(), currentUser.getId()).size() == 0 &&
+                !Util.isAdmin(token) && !Util.isOperator(token)) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+        if(updateOrderStatusRequest.getStatus().ordinal() < 2 || updateOrderStatusRequest.getStatus().ordinal() > 5){
             return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
         }
         orderDao.updateOrderStatus(updateOrderStatusRequest.getStatus(),updateOrderStatusRequest.getOrderId());
+        Order order = orderDao.findOne(updateOrderStatusRequest.getOrderId());
+        pushNotificationService.sendOrderStatusChangedNotification(order);
         return ResponseEntity.ok(null);
     }
 
+    @RequestMapping(value = "/freeOrders", method = RequestMethod.GET)
+    public List<Order> getFreeOrders(){
+        CustomAuthenticationToken customAuthenticationToken = (CustomAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+        User currentUser = customAuthenticationToken.getUser();
+        if (currentUser.getType() != User.Type.WORKER) {
+            return Collections.emptyList();
+        }
+        return orderDao.getFreeOrders(currentUser.getId());
+    }
+
+    @RequestMapping(value = "/workerOrders", method = RequestMethod.GET)
+    public List<Order> getWorkerOrders(){
+        CustomAuthenticationToken customAuthenticationToken = (CustomAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+        User currentUser = customAuthenticationToken.getUser();
+        if (currentUser.getType() != User.Type.WORKER) {
+            return Collections.emptyList();
+        }
+        return orderDao.getWorkerOrders(currentUser.getId());
+    }
 }

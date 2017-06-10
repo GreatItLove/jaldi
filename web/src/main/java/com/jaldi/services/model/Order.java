@@ -190,6 +190,10 @@ public class Order {
     }
 
     @JsonDeserialize(using = CommonDateTimeDeserializer.class)
+    public void setFormattedOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
+    }
+
     public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
     }

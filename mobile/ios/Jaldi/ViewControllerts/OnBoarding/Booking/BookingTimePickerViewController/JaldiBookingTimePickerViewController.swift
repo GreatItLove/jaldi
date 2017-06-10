@@ -29,6 +29,7 @@ class JaldiBookingTimePickerViewController: UIViewController,BookingNavigation {
    
     private func configureDateTimePicker() {
         dateTimePicker.backgroundColor = UIColor.white
+        dateTimePicker.minimumDate = Date(timeIntervalSinceNow: 3600+180)
         if let bookingDate = bookingObject?.bookingTime {
             dateTimePicker.date = bookingDate
         }else{
