@@ -23,7 +23,8 @@ public class LauncherActivity extends AppCompatActivity {
             // authorized
             intent = new Intent(this, MainActivity.class);
         }
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        this.overridePendingTransition(0, 0);
         startActivity(intent);
     }
 }

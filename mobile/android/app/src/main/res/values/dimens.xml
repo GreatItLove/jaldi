@@ -10,7 +10,9 @@
     <!-- Order Cell -->
     <dimen name="position_top_margin">6dp</dimen>
     <dimen name="take_order_button_top_margin">6dp</dimen>
-    <dimen name="cell_top_margin">5dp</dimen>
+    <dimen name="take_order_button_radius">10dp</dimen>
+    <dimen name="cell_top_margin">8dp</dimen>
+    <dimen name="cell_bottom_margin">8dp</dimen>
     <dimen name="cell_start_margin">8dp</dimen>
     <dimen name="cell_end_margin">8dp</dimen>
     <dimen name="order_control_right_margin">5dp</dimen>
