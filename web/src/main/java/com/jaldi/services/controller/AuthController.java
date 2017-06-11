@@ -1,6 +1,7 @@
 package com.jaldi.services.controller;
 
 import com.jaldi.services.common.MailSenderService;
+import com.jaldi.services.common.Util;
 import com.jaldi.services.dao.TokenDaoImpl;
 import com.jaldi.services.dao.UserDaoImpl;
 import com.jaldi.services.model.Token;
@@ -73,7 +74,7 @@ public class AuthController {
             user.setType(User.Type.CUSTOMER);
             user.setRole(User.Role.USER);
             user.setActive(true);
-            user.setPhone(user.getPhone().replaceAll("[^0-9]",""));
+            user.setPhone(Util.formatPhone(user.getPhone()));
             userDao.create(user);
             mailSender.sendWelcomeEmail(user);
             modelAndView.addObject("createdSuccessfully", "Registration complete. You will be redirected to the login page.");
