@@ -31,9 +31,13 @@
     <string name="order_details_separator">\u0020|\u0020</string>
     <string name="order_workers_left">%1$d of %2$d positions left</string>
     <string name="order_duration">%1$d hr</string>
+    <string name="order_distance">%1$d km</string>
     <string name="not_available">N/A</string>
     <string name="order_cost_title">Cost:\u0020</string>
     <string name="order_cost_metric">QAR</string>
+    <string name="order_distance_title">Distance:\u0020</string>
+    <string name="order_details_title">Details</string>
+    <string name="order_duration_title">Duration:\u0020</string>
     <string name="order_take_button">TAKE</string>
     <string name="order_taken_button">TAKEN</string>
 

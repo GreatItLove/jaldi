@@ -100,6 +100,15 @@ public class MyOrderRecyclerViewAdapter extends RecyclerView.Adapter<MyOrderRecy
         return duration;
     }
 
+    private String getDistance(OrderModel order) {
+        String distanceString = mContext.getString(R.string.not_available);
+        int distance = 10;
+        if (distance != 0) {
+            distanceString = mContext.getString(R.string.order_distance, distance);
+        }
+        return distanceString;
+    }
+
     private String getDate(OrderModel order) {
         String date = mContext.getString(R.string.not_available);
         if (order.creationDate != 0) {
@@ -117,7 +126,7 @@ public class MyOrderRecyclerViewAdapter extends RecyclerView.Adapter<MyOrderRecy
             String startTime = new SimpleDateFormat("hh:mm a").format(creationDate);
             Date endDate = new Date(order.orderDate + order.hours * HOUR);
             String endTime = new SimpleDateFormat("hh:mm a").format(endDate);
-            time = startTime + "-" + endTime;
+            time = startTime + " - " + endTime;
         }
         return time;
     }
@@ -141,7 +150,7 @@ public class MyOrderRecyclerViewAdapter extends RecyclerView.Adapter<MyOrderRecy
         orderViewHolder.orderDuration.setText(getDuration(order));
         orderViewHolder.orderDate.setText(getDate(order));
         orderViewHolder.orderTime.setText(getTime(order));
-
+        orderViewHolder.orderDistance.setText(getDistance(order));
         orderViewHolder.takeOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -177,6 +186,7 @@ public class MyOrderRecyclerViewAdapter extends RecyclerView.Adapter<MyOrderRecy
         public TextView orderAddress;
         public TextView orderCost;
         public TextView orderDuration;
+        public TextView orderDistance;
         public TextView orderDate;
         public TextView orderTime;
 
@@ -189,6 +199,7 @@ public class MyOrderRecyclerViewAdapter extends RecyclerView.Adapter<MyOrderRecy
             orderCost = (TextView) view.findViewById(R.id.orderCostValue);
             orderPositions = (TextView) view.findViewById(R.id.orderPositionLeft);
             orderDuration = (TextView) view.findViewById(R.id.orderDurationValue);
+            orderDistance = (TextView) view.findViewById(R.id.orderDistanceValue);
             orderDate = (TextView) view.findViewById(R.id.orderDate);
             orderTime = (TextView) view.findViewById(R.id.orderTime);
 

@@ -8,7 +8,7 @@
     android:paddingStart="@dimen/cell_start_margin">
 
 <LinearLayout
-    android:layout_width="135dp"
+    android:layout_width="120dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_centerVertical="true"
@@ -29,6 +29,8 @@
         android:maxLines="1"
         android:layout_marginTop="@dimen/workers_top_margin"
         android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/order_content_text_size"
+
         android:textColor="@android:color/black"
         android:id="@+id/orderPositionLeft"/>
     <Button
@@ -39,6 +41,7 @@
         android:id="@+id/takeOrderButton"
         android:background="@drawable/take_order_button_background"
         android:text="@string/order_take_button"
+        android:textSize="@dimen/order_content_text_size"
         android:textAllCaps="false"/>
 </LinearLayout>
 
@@ -59,7 +62,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:textColor="@android:color/black"
-        android:textSize="17sp"
+        android:textSize="@dimen/order_title_text_size"
         />
     <TextView
         android:layout_width="wrap_content"
@@ -69,7 +72,7 @@
         android:layout_below="@+id/orderType"
         android:layout_alignParentStart="true"
         android:textColor="@android:color/black"
-        android:textSize="12sp"
+        android:textSize="@dimen/order_content_text_size"
         />
 
     <TextView
@@ -81,8 +84,7 @@
         android:layout_below="@+id/orderType"
         android:layout_toEndOf="@id/orderDate"
         android:textColor="@android:color/black"
-        android:textSize="12sp"
-
+        android:textSize="@dimen/order_content_text_size"
         />
         <TextView
             android:layout_width="wrap_content"
@@ -92,8 +94,8 @@
             android:layout_below="@+id/orderDate"
             android:layout_marginTop="@dimen/order_details_top_margin"
             android:layout_alignParentStart="true"
-            android:text="Details"
-            android:textSize="12sp"
+            android:text="@string/order_details_title"
+            android:textSize="@dimen/order_content_text_size"
             />
         <LinearLayout
             android:layout_width="wrap_content"
@@ -107,18 +109,17 @@
                 android:layout_height="wrap_content"
                 android:maxLines="1"
                 android:id="@+id/orderDistanceTilte"
-                android:text="Distance: "
+                android:text="@string/order_distance_title"
                 android:textColor="@android:color/black"
-                android:textSize="12sp"
+                android:textSize="@dimen/order_content_text_size"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
                 android:id="@+id/orderDistanceValue"
-                android:text="100 km"
                 android:textColor="@android:color/black"
-                android:textSize="12sp"
+                android:textSize="@dimen/order_content_text_size"
                 />
 
             <TextView
@@ -127,7 +128,7 @@
                 android:maxLines="1"
                 android:text="@string/order_details_separator"
                 android:textColor="@android:color/black"
-                android:textSize="12sp"
+                android:textSize="@dimen/order_content_text_size"
                 />
 
             <TextView
@@ -136,8 +137,8 @@
                 android:maxLines="1"
                 android:textColor="@android:color/black"
                 android:id="@+id/orderDurationTitle"
-                android:text="Duration: "
-                android:textSize="12sp"
+                android:text="@string/order_duration_title"
+                android:textSize="@dimen/order_content_text_size"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -145,7 +146,7 @@
                 android:maxLines="1"
                 android:textColor="@android:color/black"
                 android:id="@+id/orderDurationValue"
-                android:textSize="12sp"
+                android:textSize="@dimen/order_content_text_size"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -153,7 +154,7 @@
                 android:maxLines="1"
                 android:text="@string/order_details_separator"
                 android:textColor="@android:color/black"
-                android:textSize="12sp"
+                android:textSize="@dimen/order_content_text_size"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -161,14 +162,15 @@
                 android:maxLines="1"
                 android:text="@string/order_cost_title"
                 android:textColor="@android:color/black"
-                android:textSize="12sp"/>
+                android:textSize="@dimen/order_content_text_size"
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
                 android:id="@+id/orderCostValue"
                 android:textColor="@android:color/black"
-                android:textSize="12sp"
+                android:textSize="@dimen/order_content_text_size"
                 />
         </LinearLayout>
         <TextView
@@ -179,7 +181,7 @@
             android:layout_marginTop="@dimen/order_details_top_margin"
             android:id="@+id/orderAddressTitle"
             android:layout_below="@+id/orderDetailsContainer"
-            android:textSize="12sp"
+            android:textSize="@dimen/order_content_text_size"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -187,7 +189,7 @@
             android:maxLines="1"
             android:id="@+id/orderAddressValue"
             android:layout_below="@+id/orderAddressTitle"
-            android:textSize="12sp"
+            android:textSize="@dimen/order_content_text_size"
             android:textColor="@android:color/black"
             />
 
