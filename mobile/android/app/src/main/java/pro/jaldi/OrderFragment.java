@@ -82,7 +82,7 @@ public class OrderFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            adapter = new MyOrderRecyclerViewAdapter(ordersArrayList, mListener);
+            adapter = new MyOrderRecyclerViewAdapter(getContext(), ordersArrayList, mListener);
             recyclerView.setAdapter(adapter);
         }
         getOrders();
@@ -163,7 +163,7 @@ public class OrderFragment extends Fragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            adapter.orderModels = ordersArrayList;
+                            adapter.mOrderModels = ordersArrayList;
                             adapter.notifyDataSetChanged();
                         }
                     });

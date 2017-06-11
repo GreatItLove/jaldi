@@ -16,10 +16,10 @@
     android:id="@+id/controlContainer"
     android:layout_alignParentStart="true"
     >
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+    <ImageView
+        android:id="@+id/orderIcon"
+        android:layout_width="@dimen/order_icon_size"
+        android:layout_height="@dimen/order_icon_size"
         android:src="@drawable/app_icon"
         android:layout_gravity="center_horizontal"
        />
@@ -27,10 +27,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:layout_marginTop="@dimen/position_top_margin"
+        android:layout_marginTop="@dimen/workers_top_margin"
         android:layout_gravity="center_horizontal"
         android:textColor="@android:color/black"
-        android:text="3 of 5 positions left"/>
+        android:id="@+id/orderPositionLeft"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="30dp"
@@ -38,7 +38,8 @@
         android:layout_marginTop="@dimen/take_order_button_top_margin"
         android:id="@+id/takeOrderButton"
         android:background="@drawable/take_order_button_background"
-        android:text="TAKE"/>
+        android:text="@string/order_take_button"
+        android:textAllCaps="false"/>
 </LinearLayout>
 
 
@@ -53,11 +54,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:id="@+id/orderTilte"
+        android:id="@+id/orderType"
         android:textStyle="bold"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:text="HOME CLEANING"
         android:textColor="@android:color/black"
         android:textSize="17sp"
         />
@@ -66,7 +66,7 @@
         android:layout_height="wrap_content"
         android:maxLines="1"
         android:id="@+id/orderDate"
-        android:layout_below="@+id/orderTilte"
+        android:layout_below="@+id/orderType"
         android:layout_alignParentStart="true"
         android:textColor="@android:color/black"
         android:text="20 May 2017"
@@ -79,7 +79,7 @@
         android:maxLines="1"
         android:id="@+id/orderTime"
         android:layout_marginStart="@dimen/order_time_margin"
-        android:layout_below="@+id/orderTilte"
+        android:layout_below="@+id/orderType"
         android:layout_toEndOf="@id/orderDate"
         android:text="01:23 AM - 09:17 PM"
         android:textColor="@android:color/black"
@@ -127,7 +127,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
-                android:text="  |  "
+                android:text="@string/order_details_separator"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
                 />
@@ -147,14 +147,13 @@
                 android:maxLines="1"
                 android:textColor="@android:color/black"
                 android:id="@+id/orderDurationValue"
-                android:text="4 hr"
                 android:textSize="12sp"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
-                android:text="  |  "
+                android:text="@string/order_details_separator"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
                 />
@@ -162,14 +161,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
-                android:text="Profit: "
+                android:text="@string/order_cost_title"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
-                android:text="80 QR"
+                android:id="@+id/orderCostValue"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
                 />
@@ -180,7 +179,7 @@
             android:maxLines="1"
             android:text="Address"
             android:layout_marginTop="@dimen/order_details_top_margin"
-            android:id="@+id/AddressTitle"
+            android:id="@+id/orderAddressTitle"
             android:layout_below="@+id/orderDetailsContainer"
             android:textSize="12sp"
             />
@@ -188,9 +187,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:text="Bol'shaya Dmitrovka ulitsa 5/6с8"
-            android:id="@+id/AddressValue"
-            android:layout_below="@+id/AddressTitle"
+            android:id="@+id/orderAddressValue"
+            android:layout_below="@+id/orderAddressTitle"
             android:textSize="12sp"
             android:textColor="@android:color/black"
             />
