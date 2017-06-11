@@ -87,11 +87,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void signOut() {
-        SharedPreferences userDetails = this.getSharedPreferences("userDetails", MODE_PRIVATE);
-        SharedPreferences.Editor edit = userDetails.edit();
-        edit.clear();
-        edit.putString("authToken", null);
-        edit.commit();
+        LoginActivity.signOut(this);
         Intent intent = new Intent(this, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);

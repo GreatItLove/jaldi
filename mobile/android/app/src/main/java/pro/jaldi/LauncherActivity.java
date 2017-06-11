@@ -12,11 +12,10 @@ public class LauncherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
 
-        SharedPreferences userDetails = getSharedPreferences("userDetails", MODE_PRIVATE);
-        String authToken = userDetails.getString("authToken","");
+        String authToken = LoginActivity.getAuthToken(this);
         Intent intent;
 
-        if (authToken.equals("")) {
+        if (authToken == null) {
             // unauthorized
             intent = new Intent(this, LoginActivity.class);
         } else {

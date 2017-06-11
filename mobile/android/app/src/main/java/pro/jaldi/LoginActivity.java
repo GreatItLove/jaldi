@@ -3,6 +3,7 @@ package pro.jaldi;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -61,6 +62,8 @@ import static android.Manifest.permission.READ_CONTACTS;
  * A login screen that offers login via email/password.
  */
 public class LoginActivity extends AppCompatActivity {
+
+    private static final String AUTH_TOKEN_KEY = "authToken";
 
     // UI references.
     private EditText mEmailView;
@@ -249,7 +252,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (response.statusCode == 200) {
                         String authToken = response.headers.get("Authorization");
                         if (authToken != null && !authToken.equals("")) {
-                            saveAuthToken(authToken);
+                            saveAuthToken(LoginActivity.this, authToken);
                             handleLoginSuccess();
                             return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
                         }
@@ -275,12 +278,21 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void saveAuthToken(String token) {
-        SharedPreferences userDetails = LoginActivity.this.getSharedPreferences("userDetails", MODE_PRIVATE);
+    private static void saveAuthToken(Context context, String token) {
+        SharedPreferences userDetails = context.getSharedPreferences("userDetails", MODE_PRIVATE);
         SharedPreferences.Editor edit = userDetails.edit();
         edit.clear();
-        edit.putString("authToken", token);
+        edit.putString(AUTH_TOKEN_KEY, token);
         edit.commit();
+    }
+
+    public static void signOut(Context context) {
+        saveAuthToken(context, null);
+    }
+
+    public static String getAuthToken(Context context) {
+        SharedPreferences userDetails = context.getSharedPreferences("userDetails", MODE_PRIVATE);
+        return userDetails.getString(AUTH_TOKEN_KEY,null);
     }
 }
 
