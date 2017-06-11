@@ -69,7 +69,6 @@
         android:layout_below="@+id/orderType"
         android:layout_alignParentStart="true"
         android:textColor="@android:color/black"
-        android:text="20 May 2017"
         android:textSize="12sp"
         />
 
@@ -81,7 +80,6 @@
         android:layout_marginStart="@dimen/order_time_margin"
         android:layout_below="@+id/orderType"
         android:layout_toEndOf="@id/orderDate"
-        android:text="01:23 AM - 09:17 PM"
         android:textColor="@android:color/black"
         android:textSize="12sp"
 

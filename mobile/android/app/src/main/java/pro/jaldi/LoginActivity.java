@@ -218,6 +218,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("VOLLEY", error.toString());
+                mEmailView.setError(getString(R.string.error_connection));
                 mPasswordView.setError(getString(R.string.error_connection));
                 showProgress(false);
             }
@@ -233,6 +234,7 @@ public class LoginActivity extends AppCompatActivity {
                     return requestBody == null ? null : requestBody.getBytes("utf-8");
                 } catch (UnsupportedEncodingException uee) {
                     VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", requestBody, "utf-8");
+                    mEmailView.setError(getString(R.string.error_connection));
                     mPasswordView.setError(getString(R.string.error_connection));
                     showProgress(false);
                     return null;
@@ -256,6 +258,7 @@ public class LoginActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        mEmailView.setError(getString(R.string.error_incorrect_password));
                         mPasswordView.setError(getString(R.string.error_incorrect_password));
                         showProgress(false);
                     }

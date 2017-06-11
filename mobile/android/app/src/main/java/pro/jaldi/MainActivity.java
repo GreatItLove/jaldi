@@ -1,5 +1,7 @@
 package pro.jaldi;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -57,6 +59,8 @@ public class MainActivity extends AppCompatActivity
             showAllOrders();
         } else if (id == R.id.myOrders) {
             showMyOrders();
+        } else if (id == R.id.signOut) {
+            signOut();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -80,6 +84,17 @@ public class MainActivity extends AppCompatActivity
         FragmentTransaction tr = fm.beginTransaction();
         tr.replace(R.id.ordersListContainer, orderFragment);
         tr.commit();
+    }
+
+    private void signOut() {
+        SharedPreferences userDetails = this.getSharedPreferences("userDetails", MODE_PRIVATE);
+        SharedPreferences.Editor edit = userDetails.edit();
+        edit.clear();
+        edit.putString("authToken", null);
+        edit.commit();
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
     private void showOrderDetails(OrderModel selectedOrder) {

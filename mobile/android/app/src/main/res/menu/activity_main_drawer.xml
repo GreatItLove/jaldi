@@ -10,6 +10,10 @@
             android:id="@+id/myOrders"
             android:icon="@drawable/ic_menu_gallery"
             android:title="My Orders" />
+        <item
+            android:id="@+id/signOut"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Sign Out" />
     </group>
 
 </menu>

@@ -2,6 +2,7 @@ package pro.jaldi;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import pro.jaldi.OrderFragment.OnListFragmentInteractionListener;
 import pro.jaldi.dummy.DummyContent.DummyItem;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -97,6 +100,28 @@ public class MyOrderRecyclerViewAdapter extends RecyclerView.Adapter<MyOrderRecy
         return duration;
     }
 
+    private String getDate(OrderModel order) {
+        String date = mContext.getString(R.string.not_available);
+        if (order.creationDate != 0) {
+            Date creationDate = new Date(order.orderDate);
+            date = new SimpleDateFormat("dd MMM yyyy").format(creationDate);
+        }
+        return date;
+    }
+
+    private String getTime(OrderModel order) {
+        String time = mContext.getString(R.string.not_available);
+        if (order.creationDate != 0) {
+            final long HOUR = 3600*1000;
+            Date creationDate = new Date(order.orderDate);
+            String startTime = new SimpleDateFormat("hh:mm a").format(creationDate);
+            Date endDate = new Date(order.orderDate + order.hours * HOUR);
+            String endTime = new SimpleDateFormat("hh:mm a").format(endDate);
+            time = startTime + "-" + endTime;
+        }
+        return time;
+    }
+
     @Override
     public OrderViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -114,7 +139,9 @@ public class MyOrderRecyclerViewAdapter extends RecyclerView.Adapter<MyOrderRecy
         orderViewHolder.orderPositions.setText(getLeftPositions(order));
         orderViewHolder.orderPositions.setText(getLeftPositions(order));
         orderViewHolder.orderDuration.setText(getDuration(order));
-        
+        orderViewHolder.orderDate.setText(getDate(order));
+        orderViewHolder.orderTime.setText(getTime(order));
+
         orderViewHolder.takeOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -150,6 +177,8 @@ public class MyOrderRecyclerViewAdapter extends RecyclerView.Adapter<MyOrderRecy
         public TextView orderAddress;
         public TextView orderCost;
         public TextView orderDuration;
+        public TextView orderDate;
+        public TextView orderTime;
 
         public OrderViewHolder(View view) {
             super(view);
@@ -160,6 +189,9 @@ public class MyOrderRecyclerViewAdapter extends RecyclerView.Adapter<MyOrderRecy
             orderCost = (TextView) view.findViewById(R.id.orderCostValue);
             orderPositions = (TextView) view.findViewById(R.id.orderPositionLeft);
             orderDuration = (TextView) view.findViewById(R.id.orderDurationValue);
+            orderDate = (TextView) view.findViewById(R.id.orderDate);
+            orderTime = (TextView) view.findViewById(R.id.orderTime);
+
             mView = view;
         }
 
