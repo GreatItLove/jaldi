@@ -1,5 +1,6 @@
 package com.jaldi.services.dao;
 
+import com.jaldi.services.common.Util;
 import com.jaldi.services.dao.mapper.UserMapper;
 import com.jaldi.services.model.DataStore;
 import com.jaldi.services.model.User;
@@ -85,7 +86,7 @@ public class UserDaoImpl {
         Map namedParameters = new HashMap();
         namedParameters.put("id", user.getId());
         namedParameters.put("name", user.getName());
-        namedParameters.put("phone", user.getPhone());
+        namedParameters.put("phone", Util.formatPhone(user.getPhone()));
         namedJdbc.update("update `user` set `name` = :name, phone = :phone where `id` = :id;", namedParameters);
         return user;
     }
@@ -119,7 +120,7 @@ public class UserDaoImpl {
                 PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
                 ps.setString(1, user.getEmail());
                 ps.setString(2, user.getName());
-                ps.setString(3, user.getPhone());
+                ps.setString(3, Util.formatPhone(user.getPhone()));
                 ps.setString(4, user.getPassword());
                 ps.setString(5, user.getRole().name());
                 ps.setString(6, user.getType().name());
