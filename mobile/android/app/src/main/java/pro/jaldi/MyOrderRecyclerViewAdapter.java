@@ -1,6 +1,8 @@
 package pro.jaldi;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
@@ -9,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import pro.jaldi.OrderFragment.OnListFragmentInteractionListener;
 import pro.jaldi.dummy.DummyContent.DummyItem;
 
@@ -131,6 +135,20 @@ public class MyOrderRecyclerViewAdapter extends RecyclerView.Adapter<MyOrderRecy
         return time;
     }
 
+    private void handleTakeOrderClicked(final Button source) {
+        new AlertDialog.Builder(mContext)
+                .setTitle(R.string.take_order_confirmation_title)
+                .setMessage(R.string.take_order_confirmation_message)
+                .setPositiveButton(R.string.alert_yes_button, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        source.setSelected(true);
+                        source.setText(R.string.order_taken_button);
+                    }})
+                .setNegativeButton(R.string.alert_no_button, null).show();
+
+    }
+
     @Override
     public OrderViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -154,8 +172,7 @@ public class MyOrderRecyclerViewAdapter extends RecyclerView.Adapter<MyOrderRecy
         orderViewHolder.takeOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.setSelected(true);
-                ((Button)v).setText(R.string.order_taken_button);
+                handleTakeOrderClicked((Button) v);
             }
         });
         orderViewHolder.mView.setOnClickListener(new View.OnClickListener() {
