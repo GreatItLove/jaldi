@@ -8,8 +8,12 @@
 
 import Foundation
 public struct Environment {
-//    static let baseUrl = "http://dev.jaldi.pro"
-    static let baseUrl = "http://dev.jaldi.pro"
+    
+    #if RELEASE_VERSION
+        static let baseUrl = "https://jaldi.pro"
+    #else
+        static let baseUrl = "http://dev.jaldi.pro"
+    #endif
     
     static let imageBaseUrl = baseUrl + "/getFile?id="
     

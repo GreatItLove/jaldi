@@ -46,6 +46,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification data: [AnyHashable : Any]) {
         // Print notification payload data
         let orderId = data["orderId"]
+        let orderStatus = data["orderStatus"]
+        if String(describing: orderStatus) == "FINISHED" {
+            self.showMyOrdersController()
+            return
+        }
         if ( application.applicationState == UIApplicationState.inactive || application.applicationState == UIApplicationState.background ){
             if let _ = orderId {
                 UIApplication.shared.keyWindow?.rootViewController?.showHudWithMsg(message: nil)
@@ -168,6 +173,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let topController = UIApplication.shared.keyWindow?.rootViewController {
             topController.dismiss(animated: false, completion: nil)
             topController.present(orderStateViewController!, animated: true, completion: nil)
+        }
+    }
+    
+    private func showMyOrdersController() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Order", bundle: nil)
+        let ordersViewController = storyboard.instantiateViewController(withIdentifier: "JaldiOrderListViewController") as? JaldiOrderListViewController
+        let navController = UINavigationController(rootViewController: ordersViewController!)
+        navController.isNavigationBarHidden = true
+        if let topController = UIApplication.shared.keyWindow?.rootViewController {
+            topController.dismiss(animated: false, completion: nil)
+            topController.present(navController, animated: true, completion: nil)
         }
     }
     
