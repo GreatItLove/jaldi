@@ -23,8 +23,13 @@ public class PushNotificationService {
     private TokenDaoImpl tokenDao;
 
     public void sendOrderStatusChangedNotification(Order order) {
-        String payload = APNS.newPayload().alertBody("Your order status has been changed.").
-                customField("orderId", order.getId()).sound("default").build();
+        String message = "Your order status has been changed.";
+        if(order.getStatus() == Order.Status.FINISHED) {
+            message = "Work finished! Please rate your experience to improve service quality.";
+        }
+        String payload = APNS.newPayload().alertBody(message).
+                customField("orderId", order.getId()).customField("orderStatus", order.getStatus().name())
+                .sound("default").build();
         Token token = tokenDao.getUserToken(order.getUser().getId(), Token.Type.APNS);
         if(token != null) {
             apnsService.push(token.getToken(), payload);
