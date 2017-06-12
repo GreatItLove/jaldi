@@ -1,5 +1,6 @@
 package com.jaldi.services.dao;
 
+import com.jaldi.services.common.Util;
 import com.jaldi.services.dao.mapper.WorkerMapper;
 import com.jaldi.services.model.Worker;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,7 +80,7 @@ public class WorkerDaoImpl {
         namedJdbc.update("UPDATE workerDetails SET isCleaner = :cleaner, isCarpenter = :carpenter, isElectrician = :electrician, " +
                 "isMason = :mason, isPainter = :painter, isPlumber = :plumber, isAcTechnical = :acTechnical WHERE userId = :id", namedParameters);
         namedParameters.put("name", worker.getUser().getName());
-        namedParameters.put("phone", worker.getUser().getPhone());
+        namedParameters.put("phone", Util.formatPhone(worker.getUser().getPhone()));
         namedParameters.put("email", worker.getUser().getEmail());
         namedParameters.put("isActive", worker.getUser().isActive());
         namedJdbc.update("UPDATE `user` SET `name` = :name, `phone` = :phone, `email` = :email, isActive = :isActive WHERE id = :id;", namedParameters);

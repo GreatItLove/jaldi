@@ -50,7 +50,9 @@ class JaldiOrderStateViewController: UIViewController {
         configureTimeLabel()
         configureTitleLabel()
         self.addOrderPin()
-        self.addWorkerPin()
+        if orderState == .enRoute || orderState == .working || orderState == .tidyingUp {
+            self.addWorkerPin()
+        }
     }
     //MARK: Configuration
     private func configureAppearance() {
@@ -140,23 +142,31 @@ class JaldiOrderStateViewController: UIViewController {
         guard let latitude = self.order?.latitude, let longitude = self.order?.longitude else {
             return
         }
-        let worker = self.order?.workersList?.first
-        let workerLatitude = worker?.user?.latitude
-        let workerLlongitude = worker?.user?.longitude
-        if workerLatitude == nil || workerLatitude == 0 || workerLlongitude == nil || workerLlongitude == 0 {
-            return
-        }
-        let workerCoordinate = CLLocation(latitude: workerLatitude!, longitude: workerLlongitude!)
         let orderLocation =  CLLocation(latitude: latitude, longitude: longitude)
-//        if let userLocation = mapView.userLocation.location {
-            let distance = orderLocation.distance(from: workerCoordinate)
-            let km = distance * self.meterToKm
-            if km > 1 {
-                milesAwayLabel.text = "\(String(format: "%.2f", km)) KM AWAY "
-            }else{
-                milesAwayLabel.text = "\(String(format: "%.f", distance)) METERS AWAY"
+        var distance: Double = 0
+        if orderState == .enRoute || orderState == .working || orderState == .tidyingUp {
+            let worker = self.order?.workersList?.first
+            let workerLatitude = worker?.user?.latitude
+            let workerLlongitude = worker?.user?.longitude
+            if workerLatitude == nil || workerLatitude == 0 || workerLlongitude == nil || workerLlongitude == 0 {
+                return
             }
-//        }
+            let workerCoordinate = CLLocation(latitude: workerLatitude!, longitude: workerLlongitude!)
+            distance = orderLocation.distance(from: workerCoordinate)
+            
+        } else {
+            if let userLocation = mapView.userLocation.location {
+                distance = orderLocation.distance(from: userLocation)
+            } else {
+                return
+            }
+        }
+        let km = distance * self.meterToKm
+        if km > 1 {
+            milesAwayLabel.text = "\(String(format: "%.2f", km)) KM AWAY "
+        } else {
+            milesAwayLabel.text = "\(String(format: "%.f", distance)) METERS AWAY"
+        }
     }
     //MARK: Actions
     @IBAction func closeAction(_ sender: Any) {

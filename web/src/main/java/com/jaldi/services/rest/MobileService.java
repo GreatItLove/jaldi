@@ -2,6 +2,7 @@ package com.jaldi.services.rest;
 
 import com.jaldi.services.common.MailSenderService;
 import com.jaldi.services.common.MessageService;
+import com.jaldi.services.common.Util;
 import com.jaldi.services.common.security.CustomAuthenticationToken;
 import com.jaldi.services.dao.TokenDaoImpl;
 import com.jaldi.services.dao.UserDaoImpl;
@@ -79,7 +80,7 @@ public class MobileService {
         user.setType(User.Type.CUSTOMER);
         user.setRole(User.Role.USER);
         user.setActive(true);
-        user.setPhone(user.getPhone().replaceAll("[^0-9]",""));
+        user.setPhone(Util.formatPhone(user.getPhone()));
         user = userDao.create(user);
         mailSender.sendWelcomeEmail(user);
         return ResponseEntity.ok(user);

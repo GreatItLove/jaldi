@@ -44,4 +44,9 @@ public class Util {
         }
         return false;
     }
+
+    public static String formatPhone(String phone) {
+        if(phone == null) return null;
+        return "+" + phone.replaceAll("[^0-9]","");
+    }
 }
