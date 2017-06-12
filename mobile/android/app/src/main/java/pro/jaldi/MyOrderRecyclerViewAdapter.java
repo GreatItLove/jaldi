@@ -4,21 +4,19 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
-import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import pro.jaldi.OrderFragment.OnListFragmentInteractionListener;
-import pro.jaldi.dummy.DummyContent.DummyItem;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+import pro.jaldi.OrderFragment.OnListFragmentInteractionListener;
+import pro.jaldi.dummy.DummyContent.DummyItem;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
