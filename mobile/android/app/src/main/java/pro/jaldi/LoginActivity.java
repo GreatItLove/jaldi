@@ -29,6 +29,7 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
@@ -41,7 +42,9 @@ import java.util.Map;
  */
 public class LoginActivity extends AppCompatActivity {
 
-    private static final String AUTH_TOKEN_KEY = "authToken";
+    public static final String SERVER_API_URL = "http://dev.jaldi.pro/";
+    private static final String AUTH_TOKEN_KEY = "authTokenKey";
+    private static final String PROFILE_IMAGE_ID_KEY = "profileIdKey";
 
     // UI references.
     private EditText mEmailView;
@@ -186,7 +189,7 @@ public class LoginActivity extends AppCompatActivity {
     private void login() {
 
         RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
-        String URL = "http://dev.jaldi.pro/loginjwt";
+        String URL = SERVER_API_URL + "loginjwt";
         JSONObject jsonBody = new JSONObject(getParams());
         final String requestBody = jsonBody.toString();
 
@@ -251,6 +254,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void handleLoginSuccess() {
+        requestProfileImage();
+    }
+
+    private void navigateToMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
@@ -264,6 +271,18 @@ public class LoginActivity extends AppCompatActivity {
         edit.commit();
     }
 
+    private static void saveProfileImageId(Context context, String imageId) {
+        SharedPreferences userDetails = context.getSharedPreferences("userDetails", MODE_PRIVATE);
+        SharedPreferences.Editor edit = userDetails.edit();
+        edit.putString(PROFILE_IMAGE_ID_KEY, imageId);
+        edit.commit();
+    }
+
+    public static String getProfileImageId(Context context) {
+        SharedPreferences userDetails = context.getSharedPreferences("userDetails", MODE_PRIVATE);
+        return userDetails.getString(PROFILE_IMAGE_ID_KEY,null);
+    }
+
     public static void signOut(Context context) {
         saveAuthToken(context, null);
     }
@@ -271,6 +290,52 @@ public class LoginActivity extends AppCompatActivity {
     public static String getAuthToken(Context context) {
         SharedPreferences userDetails = context.getSharedPreferences("userDetails", MODE_PRIVATE);
         return userDetails.getString(AUTH_TOKEN_KEY,null);
+    }
+
+    private void requestProfileImage() {
+        RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
+        String URL = SERVER_API_URL + "rest/profile/0";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.i("VOLLEY", response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("VOLLEY", error.toString());
+                showProgress(false);
+                navigateToMainActivity();
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("Authorization", getAuthToken(LoginActivity.this));
+                return params;
+            }
+
+            @Override
+            protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                String responseString = "";
+                if (response != null) {
+                    responseString = String.valueOf(response.statusCode);
+                    if (response.statusCode == 200) {
+                        String jsonResponse = new String(response.data);
+                        ProfileModel userProfile = new Gson().fromJson(jsonResponse, ProfileModel.class);
+                        saveProfileImageId(LoginActivity.this, userProfile.profileImageId);
+                    }
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        navigateToMainActivity();                    }
+                });
+                return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
+            }
+        };
+        requestQueue.add(stringRequest);
     }
 }
 

@@ -27,6 +27,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import static pro.jaldi.LoginActivity.SERVER_API_URL;
+
 /**
  * A fragment representing a list of Items.
  * <p/>
@@ -155,7 +157,6 @@ public class OrderFragment extends Fragment {
                 String responseString = "";
                 if (response != null) {
                     String json = new String (response.data);
-                    Gson gson = new Gson();
                     Type listType = new TypeToken<ArrayList<OrderModel>>(){}.getType();
 
                     ordersArrayList = new Gson().fromJson(json, listType);
@@ -176,7 +177,7 @@ public class OrderFragment extends Fragment {
     private void getOrder(int orderId) {
 
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        String URL = "http://dev.jaldi.pro/rest/order/" + orderId;
+        String URL = SERVER_API_URL + "rest/order/" + orderId;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override

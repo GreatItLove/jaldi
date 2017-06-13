@@ -1,6 +1,9 @@
 package pro.jaldi;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -12,6 +15,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import static pro.jaldi.LoginActivity.SERVER_API_URL;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OrderFragment.OnListFragmentInteractionListener {
@@ -32,10 +43,40 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         showMyOrders();
+        View header = navigationView.getHeaderView(0);
+        ImageView profileImageView = (ImageView) header.findViewById(R.id.profileImageView);
+        setProfileImageAsync(profileImageView);
+    }
+
+    private void setProfileImageAsync(final ImageView profileImageView) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    String imageId = LoginActivity.getProfileImageId(MainActivity.this);
+                    URL imageUrl = new URL(SERVER_API_URL + "getFile?id=" + imageId);
+                    final Bitmap mIcon_val = BitmapFactory.decodeStream(imageUrl.openConnection().getInputStream());
+                    if (mIcon_val != null) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                profileImageView.setImageBitmap(mIcon_val);
+                            }
+                        });
+                    }
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
     }
 
     @Override
     public void onBackPressed() {
+        ImageView profileImageView = (ImageView) findViewById(R.id.profileImageView);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
