@@ -34,5 +34,10 @@ angular.module('jaldi.services')
             method: 'GET',
             url:    '/rest/dashboard/overview'
         },
+        orderByCategory: {
+            method: 'GET',
+            url:    '/rest/dashboard/orderByCategory',
+            isArray: true
+        }
     });
 });

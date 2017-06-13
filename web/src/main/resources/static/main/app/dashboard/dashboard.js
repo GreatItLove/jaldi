@@ -4,27 +4,13 @@ angular.module('jaldi.controllers')
     function ($rootScope, $scope, $log, $filter, $state, utils, $uibModal, NgTableParams, Dashboard) {
 
         $scope.metadata = null;
+        $scope.orderByCategory = null;
+        $scope.countData = [0, 0, 0, 0, 0, 0, 0];
         $scope.Math = window.Math;
-        $scope.loadMetadata = function () {
-            Dashboard.overview(function(data) {
-                $scope.metadata = data;
-            });
-        };
 
-        $scope.loadMetadata();
-
-        var pieData = {
+        $scope.pieData = {
             datasets: [{
-                data: [
-                    210,
-                    20,
-                    17,
-                    15,
-                    12,
-                    10,
-                    9
-
-                ],
+                data: [],
                 backgroundColor: [
                     '#73d161',
                     '#006bb9',
@@ -45,13 +31,28 @@ angular.module('jaldi.controllers')
                 'AC Technical'
             ]
         };
-        var ctx = document.getElementById('ordersChartCanvas');
-        var chart = new Chart(ctx, {
-            type: 'pie',
-            data: pieData,
-            options: {
-                responsive: true
-            }
-        });
+
+        $scope.loadMetadata = function () {
+            Dashboard.overview(function(data) {
+                $scope.metadata = data;
+            });
+            Dashboard.orderByCategory(function(data) {
+                $scope.orderByCategory = data;
+                for (var i = 0; i < $scope.orderByCategory.length; ++i) {
+                    $scope.countData[i] = $scope.orderByCategory[i].count;
+                }
+                $scope.pieData.datasets[0].data = $scope.countData;
+                var ctx = document.getElementById('ordersChartCanvas');
+                var chart = new Chart(ctx, {
+                    type: 'pie',
+                    data: $scope.pieData,
+                    options: {
+                        responsive: true
+                    }
+                });
+            });
+        };
+
+        $scope.loadMetadata();
     }
 ]);
