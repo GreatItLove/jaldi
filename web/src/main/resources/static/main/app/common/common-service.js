@@ -25,6 +25,10 @@ angular.module('jaldi.services')
     return $resource("/rest/order/:id", {id: "@id"}, {
         update: {
             method: 'PUT'
+        },
+        updateStatus: {
+            url: '/rest/order/updateOrderStatus',
+            method: 'PUT'
         }
     });
 })
