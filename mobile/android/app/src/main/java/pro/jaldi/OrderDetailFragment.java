@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -37,6 +38,11 @@ public class OrderDetailFragment extends Fragment implements OnMapReadyCallback 
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
+        ImageView orderTypeIcon = (ImageView) view.findViewById(R.id.detailsOrderIcon);
+//        MyOrderRecyclerViewAdapter.OrderTypeModel orderTypeModel = selectedOrder.get
+//        orderTypeIcon.setImageResource(selectedOrder.orderIcon.image);
         return view;
     }
 

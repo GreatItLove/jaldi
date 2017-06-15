@@ -23,7 +23,7 @@ import pro.jaldi.dummy.DummyContent.DummyItem;
  * specified {@link OnListFragmentInteractionListener}.
  */
 public class MyOrderRecyclerViewAdapter extends RecyclerView.Adapter<MyOrderRecyclerViewAdapter.OrderViewHolder> {
-    public List<OrderModel> mOrderModels;
+    private List<OrderModel> mOrderModels;
     public Context mContext;
     private final OnListFragmentInteractionListener mListener;
     private final boolean mShouldShowMyOrders;
@@ -32,135 +32,18 @@ public class MyOrderRecyclerViewAdapter extends RecyclerView.Adapter<MyOrderRecy
         mContext = context;
         mShouldShowMyOrders = shouldShowMyOrders;
         mOrderModels = items;
+        for (OrderModel orderModel: mOrderModels) {
+            orderModel.mContext = context;
+        }
         mListener = listener;
     }
 
-    private void setupOrderType(OrderViewHolder orderHolder) {
-        switch (orderHolder.mOrder.type) {
-            case "CLEANER":
-                orderHolder.orderType.setText(mContext.getString(R.string.order_type_cleaner));
-                orderHolder.orderIcon.setImageResource(R.drawable.order_type_cleaner);
-                break;
-            case "CARPENTER":
-                orderHolder.orderType.setText(mContext.getString(R.string.order_type_carpenter));
-                orderHolder.orderIcon.setImageResource(R.drawable.order_type_carpenter);
-                break;
-            case "ELECTRICIAN":
-                orderHolder.orderType.setText(mContext.getString(R.string.order_type_electrician));
-                orderHolder.orderIcon.setImageResource(R.drawable.order_type_electrician);
-                break;
-            case "MASON":
-                orderHolder.orderType.setText(mContext.getString(R.string.order_type_mason));
-                orderHolder.orderIcon.setImageResource(R.drawable.order_type_mason);
-                break;
-            case "PAINTER":
-                orderHolder.orderType.setText(mContext.getString(R.string.order_type_painter));
-                orderHolder.orderIcon.setImageResource(R.drawable.order_type_painter);
-                break;
-            case "PLUMBER":
-                orderHolder.orderType.setText(mContext.getString(R.string.order_type_plumber));
-                orderHolder.orderIcon.setImageResource(R.drawable.order_type_plumber);
-                break;
-            case "AC_TECHNICAL":
-                orderHolder.orderType.setText(mContext.getString(R.string.order_type_ac_technical));
-                orderHolder.orderIcon.setImageResource(R.drawable.order_type_ac_technical);
-                break;
+    public void setOrdersList(List<OrderModel> orderModels) {
+        this.mOrderModels = orderModels;
+        for (OrderModel orderModel: this.mOrderModels) {
+            orderModel.mContext = this.mContext;
         }
-    }
-
-    private void setupOrderStatus(OrderViewHolder orderHolder) {
-        switch (orderHolder.mOrder.status) {
-            case "CREATED":
-                orderHolder.orderStatus.setText(mContext.getString(R.string.status_created));
-                break;
-            case "ASSIGNED":
-                orderHolder.orderStatus.setText(mContext.getString(R.string.status_assigned));
-                break;
-            case "EN_ROUTE":
-                orderHolder.orderStatus.setText(mContext.getString(R.string.status_en_route));
-                break;
-            case "WORKING":
-                orderHolder.orderStatus.setText(mContext.getString(R.string.status_working));
-                break;
-            case "TIDYING_UP":
-                orderHolder.orderStatus.setText(mContext.getString(R.string.status_tidying_up));
-                orderHolder.orderStatus.setBackgroundResource(R.color.status_tidying_up);
-                break;
-            case "FINISHED":
-                orderHolder.orderStatus.setText(mContext.getString(R.string.status_finished));
-                orderHolder.orderStatus.setBackgroundResource(R.color.status_finished);
-                break;
-            case "CANCELED":
-                orderHolder.orderStatus.setText(mContext.getString(R.string.status_canceled));
-                break;
-        }
-    }
-
-    private String getCost(OrderModel order) {
-        String orderCost = mContext.getString(R.string.not_available);
-        if (order.cost != 0) {
-            orderCost = order.cost + " " + mContext.getString(R.string.order_cost_metric);
-        }
-        return orderCost;
-    }
-
-    private String getAddress(OrderModel order) {
-        String orderAddress = mContext.getString(R.string.not_available);
-        if (order.address != null && !order.address.isEmpty()) {
-            orderAddress = order.address;
-            if (order.city != null && !order.city.isEmpty()) {
-                orderAddress += ", " + order.city;
-            }
-        }
-        return orderAddress;
-    }
-
-    private String getLeftPositions(OrderModel order) {
-        int positionsNeeded = order.workers;
-        int positionsLeft = positionsNeeded;
-        if (order.workersList != null) {
-            positionsLeft -= order.workersList.size();
-        }
-        return mContext.getString(R.string.order_workers_left, positionsLeft, positionsNeeded);
-    }
-
-    private String getDuration(OrderModel order) {
-        String duration = mContext.getString(R.string.not_available);
-        if (order.hours != 0) {
-            duration = mContext.getString(R.string.order_duration, order.hours);
-        }
-        return duration;
-    }
-
-    private String getDistance(OrderModel order) {
-        String distanceString = mContext.getString(R.string.not_available);
-        int distance = 10;
-        if (distance != 0) {
-            distanceString = mContext.getString(R.string.order_distance, distance);
-        }
-        return distanceString;
-    }
-
-    private String getDate(OrderModel order) {
-        String date = mContext.getString(R.string.not_available);
-        if (order.creationDate != 0) {
-            Date creationDate = new Date(order.orderDate);
-            date = new SimpleDateFormat("dd MMM yyyy").format(creationDate);
-        }
-        return date;
-    }
-
-    private String getTime(OrderModel order) {
-        String time = mContext.getString(R.string.not_available);
-        if (order.creationDate != 0) {
-            final long HOUR = 3600*1000;
-            Date creationDate = new Date(order.orderDate);
-            String startTime = new SimpleDateFormat("hh:mm a").format(creationDate);
-            Date endDate = new Date(order.orderDate + order.hours * HOUR);
-            String endTime = new SimpleDateFormat("hh:mm a").format(endDate);
-            time = startTime + " - " + endTime;
-        }
-        return time;
+        notifyDataSetChanged();
     }
 
     private void handleTakeOrderClicked(final Button source) {
@@ -188,22 +71,30 @@ public class MyOrderRecyclerViewAdapter extends RecyclerView.Adapter<MyOrderRecy
     public void onBindViewHolder(final OrderViewHolder orderViewHolder, int position) {
         OrderModel order = mOrderModels.get(position);
         orderViewHolder.mOrder = order;
-        setupOrderType(orderViewHolder);
-        orderViewHolder.orderAddress.setText(getAddress(order));
-        orderViewHolder.orderCost.setText(getCost(order));
-        orderViewHolder.orderDuration.setText(getDuration(order));
-        orderViewHolder.orderDate.setText(getDate(order));
-        orderViewHolder.orderTime.setText(getTime(order));
-        orderViewHolder.orderDistance.setText(getDistance(order));
+        OrderModel.OrderTypeModel orderTypeModel = order.getOrderTypeModel();
+        orderViewHolder.orderIcon.setImageResource(orderTypeModel.imageResId);
+        orderViewHolder.orderType.setText(mContext.getText(orderTypeModel.titleResId));
+        orderViewHolder.orderAddress.setText(order.getAddress());
+        orderViewHolder.orderCost.setText(order.getCost());
+        orderViewHolder.orderDuration.setText(order.getDuration());
+        orderViewHolder.orderDate.setText(order.getDate());
+        orderViewHolder.orderTime.setText(order.getTime());
+        orderViewHolder.orderDistance.setText(order.getDistance());
         if (mShouldShowMyOrders) {
             orderViewHolder.orderPositions.setVisibility(View.GONE);
             orderViewHolder.takeOrderBtn.setVisibility(View.GONE);
             orderViewHolder.orderStatus.setVisibility(View.VISIBLE);
-            setupOrderStatus(orderViewHolder);
+            OrderModel.OrderStatusModel orderStatusModel = order.getOrderStatus();
+            if (orderStatusModel.titleResId != 0) {
+                orderViewHolder.orderStatus.setText(orderStatusModel.titleResId);
+            }
+            if (orderStatusModel.backgroundColorResId != 0) {
+                orderViewHolder.orderStatus.setBackgroundResource(orderStatusModel.backgroundColorResId);
+            }
         } else {
             orderViewHolder.orderStatus.setVisibility(View.GONE);
             orderViewHolder.orderPositions.setVisibility(View.VISIBLE);
-            orderViewHolder.orderPositions.setText(getLeftPositions(order));
+            orderViewHolder.orderPositions.setText(order.getLeftPositions());
             orderViewHolder.takeOrderBtn.setVisibility(View.VISIBLE);
             orderViewHolder.takeOrderBtn.setOnClickListener(new View.OnClickListener() {
                 @Override

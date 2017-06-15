@@ -156,8 +156,7 @@ public class OrderFragment extends Fragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            adapter.mOrderModels = ordersArrayList;
-                            adapter.notifyDataSetChanged();
+                            adapter.setOrdersList(ordersArrayList);
                         }
                     });
                 }

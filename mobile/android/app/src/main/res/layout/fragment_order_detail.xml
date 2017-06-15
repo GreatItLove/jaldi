@@ -165,13 +165,13 @@
         android:layout_height="@dimen/details_address_container_height"
         android:id="@+id/detailsAddressContainer"
         android:paddingEnd="@dimen/details_address_container_padding_end"
+        android:paddingStart="@dimen/details_address_container_padding_start"
         android:layout_alignParentBottom="true">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:text="Bol'shaya Dmitrovka ulitsa 5/6с8, Moscow"
-            android:layout_marginStart="@dimen/details_address_start_margin"
             android:layout_toStartOf="@+id/detailsDistanceIcon"
             android:ellipsize="end"
             android:maxLines="1"
