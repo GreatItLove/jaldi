@@ -46,12 +46,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification data: [AnyHashable : Any]) {
         // Print notification payload data
         let orderId = data["orderId"]
-        let orderStatus = data["orderStatus"]
-        if String(describing: orderStatus) == "FINISHED" {
-            self.showMyOrdersController()
-            return
-        }
         if ( application.applicationState == UIApplicationState.inactive || application.applicationState == UIApplicationState.background ){
+            let orderStatus = data["orderStatus"]!
+            if String(describing: orderStatus) == "FINISHED" {
+                self.showMyOrdersController()
+                return
+            }
             if let _ = orderId {
                 UIApplication.shared.keyWindow?.rootViewController?.showHudWithMsg(message: nil)
                 let task  = JaldiOrderByIdTask(orderId: orderId as! Int)

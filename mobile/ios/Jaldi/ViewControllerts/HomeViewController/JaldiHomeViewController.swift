@@ -128,7 +128,7 @@ class JaldiHomeViewController: UIViewController {
     }
     
     private func callUs() {
-        let phone  = "+79150014148"
+        let phone  = "+(974)5556-8546"
         guard let url = NSURL(string: "tel://\(phone)") else{
             return
         }
@@ -136,7 +136,7 @@ class JaldiHomeViewController: UIViewController {
     }
     private func emailUs() {
          // the recipient email address
-        let email  = "support@jaldi.pro"
+        let email  = "contact@jaldi.pro"
         
         if MFMailComposeViewController.canSendMail() {
             let emailController = MFMailComposeViewController()
