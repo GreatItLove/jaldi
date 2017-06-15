@@ -165,46 +165,5 @@ public class OrderFragment extends Fragment {
         };
         requestQueue.add(stringRequest);
     }
-//    private void getOrder(int orderId) {
-//
-//        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-//        String URL = SERVER_API_URL + "rest/order/" + orderId;
-//
-//        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                Log.i("VOLLEY", response);
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Log.e("VOLLEY", error.toString());
-//            }
-//        }) {
-//            @Override
-//            public Map<String, String> getHeaders() throws AuthFailureError {
-//
-//                return getHeaderParams();
-//            }
-//
-//            protected Map<String, String> getHeaderParams()
-//            {
-//                Map<String, String>  params = new HashMap<String, String>();
-//                params.put("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0MUBnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImV4cCI6MTU4MjYzNTU5MX0.jUCrG5MfmheOprwBcBJUhCYvgaNGooZhm_I__RnzqlAldwJF3aEzJ28AaY121vggakMHmS8HdE6lX1MCOhW4fA"); // admin@jaldi.pro
-//                return params;
-//            }
-//            @Override
-//            protected Response<String> parseNetworkResponse(NetworkResponse response) {
-//                if (response != null) {
-//                    String json = new String (response.data);
-//                    Gson gson = new Gson();
-//                    OrderModel model = gson.fromJson(json, OrderModel.class);
-//                    int a = model.id;
-//                }
-//                return null;
-//            }
-//        };
-//        requestQueue.add(stringRequest);
-//    }
 }
 
