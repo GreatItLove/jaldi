@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -77,12 +78,12 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        ImageView profileImageView = (ImageView) findViewById(R.id.profileImageView);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+            updateActionBar(null);
         }
     }
 
@@ -114,7 +115,10 @@ public class MainActivity extends AppCompatActivity
         tr.replace(R.id.ordersListContainer, orderFragment);
         tr.commit();
         ActionBar ab = getSupportActionBar();
-        ab.setTitle("Find Works");
+        if (ab != null) {
+            ab.setTitle("Find Works");
+            ab.setSubtitle(null);
+        }
     }
 
     private void showMyOrders() {
@@ -126,7 +130,30 @@ public class MainActivity extends AppCompatActivity
         tr.replace(R.id.ordersListContainer, orderFragment);
         tr.commit();
         ActionBar ab = getSupportActionBar();
-        ab.setTitle("My Works");
+        if (ab != null) {
+            ab.setTitle("My Works");
+            ab.setSubtitle(null);
+        }
+    }
+
+    private void updateActionBar(MyOrderRecyclerViewAdapter.OrderViewHolder selectedOrder) {
+        ActionBar ab = getSupportActionBar();
+        if (ab == null) {
+            return;
+        }
+        Fragment activeFragment = getSupportFragmentManager().findFragmentById(R.id.ordersListContainer);
+        if (activeFragment instanceof OrderFragment) {
+            if (((OrderFragment)activeFragment).shouldShowMyOrders) {
+                ab.setTitle("My Works");
+                ab.setSubtitle(null);
+            } else {
+                ab.setTitle("Find Works");
+                ab.setSubtitle(null);
+            }
+        } else if (activeFragment instanceof OrderDetailFragment && selectedOrder != null) {
+            ab.setTitle(selectedOrder.orderType.getText());
+            ab.setSubtitle(selectedOrder.orderDate.getText() + " " + selectedOrder.orderTime.getText());
+        }
     }
 
     private void signOut() {
@@ -142,7 +169,10 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction tr = fm.beginTransaction();
         ActionBar ab = getSupportActionBar();
-        ab.setTitle(selectedOrder.orderType.getText());
+        if (ab != null) {
+            ab.setTitle(selectedOrder.orderType.getText());
+            ab.setSubtitle(selectedOrder.orderDate.getText() + " " + selectedOrder.orderTime.getText());
+        }
         tr.replace(R.id.ordersListContainer, orderDetailFragment).addToBackStack("");
         tr.commit();
     }
