@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity
 
     private void showOrderDetails(MyOrderRecyclerViewAdapter.OrderViewHolder selectedOrder) {
         OrderDetailFragment orderDetailFragment = new OrderDetailFragment();
-        orderDetailFragment.selectedOrder = selectedOrder;
+        orderDetailFragment.selectedOrder = selectedOrder.mOrder;
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction tr = fm.beginTransaction();
         ActionBar ab = getSupportActionBar();
