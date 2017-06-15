@@ -1,0 +1,11 @@
+<div class="modal-header">
+    <h4 class="modal-title">Confirm cancel</h4>
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">×</button>
+</div>
+<div class="modal-body">
+    <h5>Are you sure you want to cancel order at "{{order.address}}"?</h5>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="cancel()">Dismiss</button>
+    <button type="button" class="btn btn-danger" ng-click="cancelOrder()" loading-disabled>Cancel order</button>
+</div>

@@ -25,6 +25,10 @@ angular.module('jaldi.services')
     return $resource("/rest/order/:id", {id: "@id"}, {
         update: {
             method: 'PUT'
+        },
+        updateStatus: {
+            url: '/rest/order/updateOrderStatus',
+            method: 'PUT'
         }
     });
 })
@@ -34,5 +38,10 @@ angular.module('jaldi.services')
             method: 'GET',
             url:    '/rest/dashboard/overview'
         },
+        orderByCategory: {
+            method: 'GET',
+            url:    '/rest/dashboard/orderByCategory',
+            isArray: true
+        }
     });
 });

@@ -129,7 +129,8 @@ public class OrderService {
                 !Util.isAdmin(token) && !Util.isOperator(token)) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
-        if(updateOrderStatusRequest.getStatus().ordinal() < 2 || updateOrderStatusRequest.getStatus().ordinal() > 5){
+        if((updateOrderStatusRequest.getStatus().ordinal() < 2 || updateOrderStatusRequest.getStatus().ordinal() > 5)
+                && !Util.isAdmin(token) && !Util.isOperator(token)){
             return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
         }
         orderDao.updateOrderStatus(updateOrderStatusRequest.getStatus(),updateOrderStatusRequest.getOrderId());
