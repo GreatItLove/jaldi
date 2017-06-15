@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -106,20 +107,26 @@ public class MainActivity extends AppCompatActivity
 
     private void showAllOrders() {
         OrderFragment orderFragment = new OrderFragment();
+        orderFragment.shouldShowMyOrders = false;
         FragmentManager fm = getSupportFragmentManager();
         fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         FragmentTransaction tr = fm.beginTransaction();
         tr.replace(R.id.ordersListContainer, orderFragment);
         tr.commit();
+        ActionBar ab = getSupportActionBar();
+        ab.setTitle("Find Works");
     }
 
     private void showMyOrders() {
         OrderFragment orderFragment = new OrderFragment();
+        orderFragment.shouldShowMyOrders = true;
         FragmentManager fm = getSupportFragmentManager();
         fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         FragmentTransaction tr = fm.beginTransaction();
         tr.replace(R.id.ordersListContainer, orderFragment);
         tr.commit();
+        ActionBar ab = getSupportActionBar();
+        ab.setTitle("My Works");
     }
 
     private void signOut() {
@@ -129,18 +136,20 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    private void showOrderDetails(OrderModel selectedOrder) {
+    private void showOrderDetails(MyOrderRecyclerViewAdapter.OrderViewHolder selectedOrder) {
         OrderDetailFragment orderDetailFragment = new OrderDetailFragment();
         orderDetailFragment.selectedOrder = selectedOrder;
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction tr = fm.beginTransaction();
+        ActionBar ab = getSupportActionBar();
+        ab.setTitle(selectedOrder.orderType.getText());
         tr.replace(R.id.ordersListContainer, orderDetailFragment).addToBackStack("");
         tr.commit();
     }
 
     @Override
-    public void onListFragmentInteraction(OrderModel order) {
-        Log.d("MYTAG", "Oroder " + order.id + " clicked");
+    public void onListFragmentInteraction(MyOrderRecyclerViewAdapter.OrderViewHolder order) {
+        Log.d("MYTAG", "Oroder " + order.mOrder.id + " clicked");
         showOrderDetails(order);
     }
 }

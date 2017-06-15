@@ -12,6 +12,7 @@
     <dimen name="take_order_button_top_margin">9dp</dimen>
     <dimen name="take_order_button_radius">4dp</dimen>
     <dimen name="take_order_button_height">23dp</dimen>
+    <dimen name="order_status_height">17dp</dimen>
     <dimen name="cell_top_margin">25dp</dimen>
     <dimen name="cell_left_part_width">110dp</dimen>
     <dimen name="cell_bottom_margin">18dp</dimen>
@@ -21,11 +22,13 @@
     <dimen name="order_date_top_margin">5dp</dimen>
     <dimen name="order_icon_size">59dp</dimen>
     <dimen name="order_icon_bottom_margin">5dp</dimen>
+    <dimen name="order_icon_top_margin">20dp</dimen>
     <dimen name="order_time_margin">10dp</dimen>
     <dimen name="order_details_top_margin">11dp</dimen>
 
     <dimen name="order_content_text_size">10sp</dimen>
     <dimen name="order_title_text_size">17sp</dimen>
+    <dimen name="order_status_end_padding">12sp</dimen>
 
 
 

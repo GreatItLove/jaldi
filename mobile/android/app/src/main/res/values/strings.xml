@@ -42,10 +42,23 @@
     <string name="order_take_button">TAKE</string>
     <string name="order_taken_button">TAKEN</string>
 
+    <string name="status_created">Created</string>
+    <string name="status_assigned">Assigned</string>
+    <string name="status_en_route">En Route</string>
+    <string name="status_working">Working</string>
+    <string name="status_tidying_up">Tidying Up</string>
+    <string name="status_finished">Finished</string>
+    <string name="status_canceled">Canceled</string>
+
     <string name="take_order_confirmation_title">Please Confirm.</string>
     <string name="take_order_confirmation_message">Do you really want to take this order?</string>
     <string name="alert_yes_button">Yes</string>
     <string name="alert_no_button">No</string>
+
+    <string name="details_call_button">Call</string>
+    <string name="details_message_button">Message</string>
+    <string name="details_cancel_button">Cancel</string>
+
 
 
 </resources>

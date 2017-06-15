@@ -22,11 +22,10 @@ public class OrderModel {
     String paymentType;//": "CASH",
     float userRating;//: 5,
     String userFeedback;//": null,
-    UserModel user;//":{
-    List<UserModel> workersList;
+    ProfileModel user;//":{
+    List<ProfileModel> workersList;
     long orderDate;//": 1496253600000,
     long creationDate;//": 1496235815000,
-//            "workersList": null,
 //            "formattedOrderDate": "31/05/2017 18:00",
 //            "formattedCreationDate": "31/05/2017 13:03"
 }

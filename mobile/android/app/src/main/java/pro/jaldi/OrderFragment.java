@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static pro.jaldi.LoginActivity.SERVER_API_URL;
+import static pro.jaldi.LoginActivity.getAuthToken;
 
 /**
  * A fragment representing a list of Items.
@@ -37,6 +38,7 @@ import static pro.jaldi.LoginActivity.SERVER_API_URL;
  */
 public class OrderFragment extends Fragment {
 
+    public boolean shouldShowMyOrders = false;
     public ArrayList<OrderModel> ordersArrayList = new ArrayList<>();
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -50,15 +52,6 @@ public class OrderFragment extends Fragment {
      * fragment (e.g. upon screen orientation changes).
      */
     public OrderFragment() {
-    }
-
-    @SuppressWarnings("unused")
-    public static OrderFragment newInstance(int columnCount) {
-        OrderFragment fragment = new OrderFragment();
-        Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, columnCount);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
@@ -84,7 +77,7 @@ public class OrderFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            adapter = new MyOrderRecyclerViewAdapter(getContext(), ordersArrayList, mListener);
+            adapter = new MyOrderRecyclerViewAdapter(getContext(), ordersArrayList, shouldShowMyOrders, mListener);
             recyclerView.setAdapter(adapter);
         }
         getOrders();
@@ -120,13 +113,19 @@ public class OrderFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnListFragmentInteractionListener {
-        void onListFragmentInteraction(OrderModel order);
+        void onListFragmentInteraction(MyOrderRecyclerViewAdapter.OrderViewHolder order);
     }
 
 
     private  void getOrders() {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        String URL = "http://dev.jaldi.pro/rest/order/my";
+        String URL;
+        if (shouldShowMyOrders) {
+            URL = SERVER_API_URL + "rest/order/my";
+        } else {
+            //TODO need bo be changed.
+            URL = SERVER_API_URL + "rest/order/my";
+        }
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
@@ -141,20 +140,13 @@ public class OrderFragment extends Fragment {
         }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-
-                return getHeaderParams();
-            }
-
-            protected Map<String, String> getHeaderParams()
-            {
                 Map<String, String>  params = new HashMap<String, String>();
-                params.put("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0MUBnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImV4cCI6MTU4MjYzNTU5MX0.jUCrG5MfmheOprwBcBJUhCYvgaNGooZhm_I__RnzqlAldwJF3aEzJ28AaY121vggakMHmS8HdE6lX1MCOhW4fA"); // admin@jaldi.pro
+                params.put("Authorization", getAuthToken(getContext()));
                 return params;
             }
 
             @Override
             protected Response<String> parseNetworkResponse(NetworkResponse response) {
-                String responseString = "";
                 if (response != null) {
                     String json = new String (response.data);
                     Type listType = new TypeToken<ArrayList<OrderModel>>(){}.getType();
@@ -174,46 +166,46 @@ public class OrderFragment extends Fragment {
         };
         requestQueue.add(stringRequest);
     }
-    private void getOrder(int orderId) {
-
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        String URL = SERVER_API_URL + "rest/order/" + orderId;
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Log.i("VOLLEY", response);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("VOLLEY", error.toString());
-            }
-        }) {
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-
-                return getHeaderParams();
-            }
-
-            protected Map<String, String> getHeaderParams()
-            {
-                Map<String, String>  params = new HashMap<String, String>();
-                params.put("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0MUBnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImV4cCI6MTU4MjYzNTU5MX0.jUCrG5MfmheOprwBcBJUhCYvgaNGooZhm_I__RnzqlAldwJF3aEzJ28AaY121vggakMHmS8HdE6lX1MCOhW4fA"); // admin@jaldi.pro
-                return params;
-            }
-            @Override
-            protected Response<String> parseNetworkResponse(NetworkResponse response) {
-                if (response != null) {
-                    String json = new String (response.data);
-                    Gson gson = new Gson();
-                    OrderModel model = gson.fromJson(json, OrderModel.class);
-                    int a = model.id;
-                }
-                return null;
-            }
-        };
-        requestQueue.add(stringRequest);
-    }
+//    private void getOrder(int orderId) {
+//
+//        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+//        String URL = SERVER_API_URL + "rest/order/" + orderId;
+//
+//        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                Log.i("VOLLEY", response);
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                Log.e("VOLLEY", error.toString());
+//            }
+//        }) {
+//            @Override
+//            public Map<String, String> getHeaders() throws AuthFailureError {
+//
+//                return getHeaderParams();
+//            }
+//
+//            protected Map<String, String> getHeaderParams()
+//            {
+//                Map<String, String>  params = new HashMap<String, String>();
+//                params.put("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0MUBnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImV4cCI6MTU4MjYzNTU5MX0.jUCrG5MfmheOprwBcBJUhCYvgaNGooZhm_I__RnzqlAldwJF3aEzJ28AaY121vggakMHmS8HdE6lX1MCOhW4fA"); // admin@jaldi.pro
+//                return params;
+//            }
+//            @Override
+//            protected Response<String> parseNetworkResponse(NetworkResponse response) {
+//                if (response != null) {
+//                    String json = new String (response.data);
+//                    Gson gson = new Gson();
+//                    OrderModel model = gson.fromJson(json, OrderModel.class);
+//                    int a = model.id;
+//                }
+//                return null;
+//            }
+//        };
+//        requestQueue.add(stringRequest);
+//    }
 }
 

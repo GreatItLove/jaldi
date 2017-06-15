@@ -7,9 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
-public class OrderDetailFragment extends Fragment {
-    public OrderModel selectedOrder;
+
+public class OrderDetailFragment extends Fragment implements OnMapReadyCallback {
+    public MyOrderRecyclerViewAdapter.OrderViewHolder selectedOrder;
 
     public OrderDetailFragment() {
         // Required empty public constructor
@@ -26,8 +34,16 @@ public class OrderDetailFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_order_detail, container, false);
 
-        TextView textView = (TextView) view.findViewById(R.id.detailOrderId);
-        textView.setText("" + selectedOrder.id);
+        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
         return view;
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        LatLng sydney = new LatLng(selectedOrder.mOrder.latitude, selectedOrder.mOrder.longitude);
+        googleMap.addMarker(new MarkerOptions().position(sydney).title(selectedOrder.mOrder.address));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 15.0f));
     }
 }

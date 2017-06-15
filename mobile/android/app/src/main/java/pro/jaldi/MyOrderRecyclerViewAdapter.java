@@ -26,9 +26,11 @@ public class MyOrderRecyclerViewAdapter extends RecyclerView.Adapter<MyOrderRecy
     public List<OrderModel> mOrderModels;
     public Context mContext;
     private final OnListFragmentInteractionListener mListener;
+    private final boolean mShouldShowMyOrders;
 
-    public MyOrderRecyclerViewAdapter(Context context, List<OrderModel> items, OnListFragmentInteractionListener listener) {
+    public MyOrderRecyclerViewAdapter(Context context, List<OrderModel> items, boolean shouldShowMyOrders, OnListFragmentInteractionListener listener) {
         mContext = context;
+        mShouldShowMyOrders = shouldShowMyOrders;
         mOrderModels = items;
         mListener = listener;
     }
@@ -62,6 +64,34 @@ public class MyOrderRecyclerViewAdapter extends RecyclerView.Adapter<MyOrderRecy
             case "AC_TECHNICAL":
                 orderHolder.orderType.setText(mContext.getString(R.string.order_type_ac_technical));
                 orderHolder.orderIcon.setImageResource(R.drawable.order_type_ac_technical);
+                break;
+        }
+    }
+
+    private void setupOrderStatus(OrderViewHolder orderHolder) {
+        switch (orderHolder.mOrder.status) {
+            case "CREATED":
+                orderHolder.orderStatus.setText(mContext.getString(R.string.status_created));
+                break;
+            case "ASSIGNED":
+                orderHolder.orderStatus.setText(mContext.getString(R.string.status_assigned));
+                break;
+            case "EN_ROUTE":
+                orderHolder.orderStatus.setText(mContext.getString(R.string.status_en_route));
+                break;
+            case "WORKING":
+                orderHolder.orderStatus.setText(mContext.getString(R.string.status_working));
+                break;
+            case "TIDYING_UP":
+                orderHolder.orderStatus.setText(mContext.getString(R.string.status_tidying_up));
+                orderHolder.orderStatus.setBackgroundResource(R.color.status_tidying_up);
+                break;
+            case "FINISHED":
+                orderHolder.orderStatus.setText(mContext.getString(R.string.status_finished));
+                orderHolder.orderStatus.setBackgroundResource(R.color.status_finished);
+                break;
+            case "CANCELED":
+                orderHolder.orderStatus.setText(mContext.getString(R.string.status_canceled));
                 break;
         }
     }
@@ -161,25 +191,34 @@ public class MyOrderRecyclerViewAdapter extends RecyclerView.Adapter<MyOrderRecy
         setupOrderType(orderViewHolder);
         orderViewHolder.orderAddress.setText(getAddress(order));
         orderViewHolder.orderCost.setText(getCost(order));
-        orderViewHolder.orderPositions.setText(getLeftPositions(order));
-        orderViewHolder.orderPositions.setText(getLeftPositions(order));
         orderViewHolder.orderDuration.setText(getDuration(order));
         orderViewHolder.orderDate.setText(getDate(order));
         orderViewHolder.orderTime.setText(getTime(order));
         orderViewHolder.orderDistance.setText(getDistance(order));
-        orderViewHolder.takeOrderBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleTakeOrderClicked((Button) v);
-            }
-        });
+        if (mShouldShowMyOrders) {
+            orderViewHolder.orderPositions.setVisibility(View.GONE);
+            orderViewHolder.takeOrderBtn.setVisibility(View.GONE);
+            orderViewHolder.orderStatus.setVisibility(View.VISIBLE);
+            setupOrderStatus(orderViewHolder);
+        } else {
+            orderViewHolder.orderStatus.setVisibility(View.GONE);
+            orderViewHolder.orderPositions.setVisibility(View.VISIBLE);
+            orderViewHolder.orderPositions.setText(getLeftPositions(order));
+            orderViewHolder.takeOrderBtn.setVisibility(View.VISIBLE);
+            orderViewHolder.takeOrderBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    handleTakeOrderClicked((Button) v);
+                }
+            });
+        }
         orderViewHolder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (null != mListener) {
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(orderViewHolder.mOrder);
+                    mListener.onListFragmentInteraction(orderViewHolder);
                 }
             }
         });
@@ -196,6 +235,7 @@ public class MyOrderRecyclerViewAdapter extends RecyclerView.Adapter<MyOrderRecy
         public Button takeOrderBtn;
         public TextView orderType;
         public TextView orderPositions;
+        public TextView orderStatus;
         public ImageView orderIcon;
 
         public TextView orderAddress;
@@ -209,6 +249,7 @@ public class MyOrderRecyclerViewAdapter extends RecyclerView.Adapter<MyOrderRecy
             super(view);
             takeOrderBtn = (Button) view.findViewById(R.id.takeOrderButton);
             orderType = (TextView) view.findViewById(R.id.orderType);
+            orderStatus = (TextView) view.findViewById(R.id.orderStatus);
             orderIcon = (ImageView) view.findViewById(R.id.orderIcon);
             orderAddress = (TextView) view.findViewById(R.id.orderAddressValue);
             orderCost = (TextView) view.findViewById(R.id.orderCostValue);
