@@ -1,5 +1,6 @@
 package com.jaldi.services.dao.mapper;
 
+import com.jaldi.services.common.DaoUtils;
 import com.jaldi.services.model.Order;
 import com.jaldi.services.model.User;
 import org.springframework.jdbc.core.RowMapper;
@@ -44,6 +45,9 @@ public class OrderMapper implements RowMapper<Order> {
         order.setOrderDate(rs.getTimestamp("orderDate"));
         User user = new User();
         user.setId(rs.getLong("userId"));
+        if(DaoUtils.hasColumn(rs, "userPhone")) {
+            user.setPhone(rs.getString("userPhone"));
+        }
         order.setUser(user);
         order.setCreationDate(rs.getTimestamp("creationDate"));
         return order;

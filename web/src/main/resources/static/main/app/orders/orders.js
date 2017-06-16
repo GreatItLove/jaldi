@@ -11,11 +11,18 @@ angular.module('jaldi.controllers')
         };
         $scope.selectedItem = null;
 
+        $scope.init = function() {
+            setInterval(function(){
+                $scope.tableParams.reload();
+            }, 60000)
+        };
+        $scope.init();
+
         $scope.tableParams = new NgTableParams({
             page: 1,            // show first page
             count: $scope.resultPerPage, // count per page
             sorting: {
-                'creationDate': 'desc'     // initial sorting
+                'orderDate': 'asc'     // initial sorting
             }
         }, {
             counts: [],
@@ -30,6 +37,37 @@ angular.module('jaldi.controllers')
                 });
             }
         });
+
+        $scope.addEditWorker = function(selectedItem) {
+            var modalTemplate = './resources/main/app/orders/update-order.html?t=' + new Date();
+            $uibModal.open({
+                windowClass: 'modal',
+                templateUrl: modalTemplate,
+                backdrop: 'static',
+                controller: function($scope, $uibModalInstance) {
+                    $scope.orderData = {};
+                    var order = new Worker({id:selectedItem});
+                    order.$get({},function(data){
+                        $scope.orderData = data;
+                        console.log(data);
+                    }, function(failedResponse){
+                        //on failure
+                    });
+                    $scope.cancel = function() {
+                        $uibModalInstance.dismiss();
+                    };
+                    $scope.save = function() {
+
+                    };
+                }
+            }).result.then(function(result) {
+                if(result == 'success') {
+                    $scope.tableParams.reload();
+                }
+            }, function() {
+                console.log('Unable to create/update worker');
+            });
+        };
 
         $scope.cancelOrder = function(id) {
             var modalTemplate = './resources/main/app/orders/cancel-order.html?t=' + new Date();
@@ -77,5 +115,12 @@ angular.module('jaldi.controllers')
             $scope.tableParams.reload();
         };
 
+        $scope.showWarning = function(orderDate) {
+            return new Date().getTime() + 3600 * 1000 > orderDate;
+        };
+
+        $scope.showDanger = function(orderDate) {
+            return new Date().getTime() + 1800 * 1000 > orderDate;
+        }
     }
 ]);

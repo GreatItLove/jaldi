@@ -84,8 +84,8 @@ public class OrderDaoImpl {
             Map namedParameters = new HashMap();
             namedParameters.put("type", type);
             namedParameters.put("status", status);
-            return namedJdbc.query("SELECT `id`, `type`, `status`, `workers`, `hours`, `address`, `city`, `country`, `comment`, `latitude`, " +
-                    "`longitude`, `cost`, `paymentType`, `userRating`, `userFeedback`, `orderDate`, `userId`, `creationDate` FROM `order` WHERE (:type is null OR `type` = :type) AND (:status is null OR `status` = :status);", namedParameters, new OrderMapper());
+            return namedJdbc.query("SELECT o.`id`, o.`type`, o.`status`, o.`workers`, o.`hours`, o.`address`, o.`city`, o.`country`, o.`comment`, o.`latitude`, " +
+                    "o.`longitude`, o.`cost`, o.`paymentType`, o.`userRating`, o.`userFeedback`, o.`orderDate`, o.`userId`, u.phone userPhone, o.`creationDate` FROM `order` o left join user u on o.userId = u.id WHERE (:type is null OR o.`type` = :type) AND (:status is null OR o.`status` = :status);", namedParameters, new OrderMapper());
         } catch (DataAccessException e) {
             return Collections.emptyList();
         }
