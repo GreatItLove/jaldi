@@ -27,7 +27,7 @@
                 <div class="card-block p-1 clearfix">
                     <i class="fa fa-dollar bg-danger p-1 font-2xl mr-1 float-left"></i>
                     <div class="text-uppercase text-muted font-weight-bold font-xs mb-0 mt-h">Total amount</div>
-                    <div class="h5"><span ng-bind="metadata.totalAmount"></span> QAR</div>
+                    <div class="h5"><span ng-bind="metadata.totalAmount"></span> QR</div>
                 </div>
             </div>
         </div>
@@ -65,7 +65,7 @@
                                 <tr ng-repeat="item in orderByCategory">
                                     <td><span ng-bind="utils.getOrderTypeLabel(item.type)"></span></td>
                                     <td><span ng-bind="item.count"></span></td>
-                                    <td><span ng-bind="item.amount"></span> QAR</td>
+                                    <td><span ng-bind="item.amount"></span> QR</td>
                                 </tr>
                             </tbody>
                         </table>
