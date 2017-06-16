@@ -4,6 +4,7 @@ import com.jaldi.services.common.PushNotificationService;
 import com.jaldi.services.common.Util;
 import com.jaldi.services.common.security.CustomAuthenticationToken;
 import com.jaldi.services.dao.OrderDaoImpl;
+import com.jaldi.services.dao.UserDaoImpl;
 import com.jaldi.services.model.Order;
 import com.jaldi.services.model.User;
 import com.jaldi.services.model.Worker;
@@ -38,6 +39,9 @@ public class OrderService {
     private OrderDaoImpl orderDao;
 
     @Autowired
+    private UserDaoImpl userDao;
+
+    @Autowired
     private PushNotificationService pushNotificationService;
 
     @GetMapping
@@ -55,6 +59,7 @@ public class OrderService {
         if(result != null && (Util.isAdmin(token) || Util.isOperator(token) ||
                         result.getUser().getId() == currentUser.getId())) {
             result.setWorkersList(orderDao.getWorkers(id));
+            result.setUser(userDao.getById(result.getUser().getId()));
             return ResponseEntity.ok(result);
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
