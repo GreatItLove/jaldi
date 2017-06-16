@@ -101,6 +101,14 @@ public class OrderModel {
         return orderStatusModel;
     }
 
+    String getUserName() {
+        return user.name == null ? "" : user.name;
+    }
+
+    String getUserPhone() {
+        return user.phone == null ? "" : user.phone;
+    }
+
     String getCost() {
         String orderCost = mContext.getString(R.string.not_available);
         if (cost != 0) {

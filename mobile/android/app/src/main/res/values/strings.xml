@@ -58,7 +58,14 @@
     <string name="details_call_button">Call</string>
     <string name="details_message_button">Message</string>
     <string name="details_cancel_button">Cancel</string>
+    <string name="toast_details_no_phone_error">No phone number specified</string>
+    <string name="toast_details_error_on_cancel">Server connection error</string>
+    <string name="toast_details_cancel_successful">Order has been canceled successfully</string>
 
+    <string name="action_bar_title_find_work">Find Work</string>
+    <string name="action_bar_title_my_works">My Works</string>
+
+    My Works
 
 
 </resources>

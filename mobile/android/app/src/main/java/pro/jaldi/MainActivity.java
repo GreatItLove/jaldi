@@ -289,10 +289,10 @@ public class MainActivity extends AppCompatActivity
         Fragment activeFragment = getSupportFragmentManager().findFragmentById(R.id.ordersListContainer);
         if (activeFragment instanceof OrderFragment) {
             if (((OrderFragment)activeFragment).shouldShowMyOrders) {
-                ab.setTitle("My Works");
+                ab.setTitle(R.string.action_bar_title_my_works);
                 ab.setSubtitle(null);
             } else {
-                ab.setTitle("Find Works");
+                ab.setTitle(R.string.action_bar_title_find_work);
                 ab.setSubtitle(null);
             }
         } else if (activeFragment instanceof OrderDetailFragment && selectedOrder != null) {
@@ -325,6 +325,9 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onListFragmentInteraction(MyOrderRecyclerViewAdapter.OrderViewHolder order) {
         Log.d("MYTAG", "Oroder " + order.mOrder.id + " clicked");
-        showOrderDetails(order);
+        Fragment activeFragment = getSupportFragmentManager().findFragmentById(R.id.ordersListContainer);
+        if (activeFragment instanceof OrderFragment) {
+            showOrderDetails(order);
+        }
     }
 }

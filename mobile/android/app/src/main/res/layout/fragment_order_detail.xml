@@ -60,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="textStart"
-                android:id="@+id/detailsOrderName"
+                android:id="@+id/detailsOrderUserName"
                 android:maxLines="1"
                 android:text="John Smith"
                 android:textSize="@dimen/order_title_text_size"
@@ -72,12 +72,12 @@
                 android:maxLines="1"
                 android:text="+374 77 777 777"
                 android:layout_toEndOf="@+id/detailsOrderIcon"
-                android:layout_below="@+id/detailsOrderName"
+                android:layout_below="@+id/detailsOrderUserName"
                 android:textAlignment="textStart"
                 android:layout_marginTop="@dimen/details_order_phone_top_margin"
                 android:textSize="@dimen/order_content_text_size"
                 android:textColor="@color/colorBlack"
-                android:id="@+id/orderPositionLeft"/>
+                android:id="@+id/detailsOrderUserPhone"/>
         </LinearLayout>
 
         <LinearLayout
