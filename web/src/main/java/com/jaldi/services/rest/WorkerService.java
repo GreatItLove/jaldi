@@ -56,4 +56,8 @@ public class WorkerService {
         return workerDao.update(worker);
     }
 
+    @RequestMapping(value="/freeWorkers/{orderId}", method=RequestMethod.PUT)
+    public Worker getFreeWorkers(@PathVariable("orderId") long orderId) {
+        return workerDao.freeWorkers(orderId);
+    }
 }
