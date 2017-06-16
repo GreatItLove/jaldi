@@ -17,10 +17,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="@dimen/order_status_height"
-            android:textAlignment="textEnd"
             android:id="@+id/orderStatus"
             android:paddingEnd="@dimen/order_status_end_padding"
             android:textSize="@dimen/order_content_text_size"
+            android:gravity="center_vertical|end"
             android:textColor="@color/colorWhite"
             android:background="@android:color/holo_orange_light"/>
         <ImageView
