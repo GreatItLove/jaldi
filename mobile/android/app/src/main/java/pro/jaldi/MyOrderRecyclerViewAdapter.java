@@ -11,8 +11,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import pro.jaldi.OrderFragment.OnListFragmentInteractionListener;
