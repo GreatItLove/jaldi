@@ -23,6 +23,7 @@ public class OrderModel {
     double latitude;//: 55.759613484815,
     double longitude;//: 37.614441699156,
     int cost;//": 400,
+    double distance; //": 40,
     String paymentType;//": "CASH",
     float userRating;//: 5,
     String userFeedback;//": null,
@@ -147,9 +148,8 @@ public class OrderModel {
 
     String getDistance() {
         String distanceString = mContext.getString(R.string.not_available);
-        int distance = 10;
-        if (distance != 0) {
-            distanceString = mContext.getString(R.string.order_distance, distance);
+        if (distance > 0) {
+            distanceString = mContext.getString(R.string.order_distance, (int)distance);
         }
         return distanceString;
     }

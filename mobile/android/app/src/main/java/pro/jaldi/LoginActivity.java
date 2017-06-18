@@ -43,6 +43,7 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
 
     public static final String SERVER_API_URL = "http://dev.jaldi.pro/";
+    public static final String LOGIN_TOKEN_KEY = "Authorization";
     private static final String AUTH_TOKEN_KEY = "authTokenKey";
     private static final String PROFILE_IMAGE_ID_KEY = "profileIdKey";
 
@@ -221,7 +222,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (response != null) {
                     responseString = String.valueOf(response.statusCode);
                     if (response.statusCode == 200) {
-                        String authToken = response.headers.get("Authorization");
+                        String authToken = response.headers.get(LOGIN_TOKEN_KEY);
                         if (authToken != null && !authToken.equals("")) {
                             saveAuthToken(LoginActivity.this, authToken);
                             handleLoginSuccess();
@@ -302,7 +303,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String>  params = new HashMap<String, String>();
-                params.put("Authorization", getAuthToken(LoginActivity.this));
+                params.put(LOGIN_TOKEN_KEY, getAuthToken(LoginActivity.this));
                 return params;
             }
 

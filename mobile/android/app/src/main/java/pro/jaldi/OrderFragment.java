@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import static pro.jaldi.LoginActivity.LOGIN_TOKEN_KEY;
 import static pro.jaldi.LoginActivity.SERVER_API_URL;
 import static pro.jaldi.LoginActivity.getAuthToken;
 
@@ -121,10 +122,10 @@ public class OrderFragment extends Fragment {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         String URL;
         if (shouldShowMyOrders) {
-            URL = SERVER_API_URL + "rest/order/my";
+            URL = SERVER_API_URL + "rest/order/workerOrders";
         } else {
             //TODO need bo be changed.
-            URL = SERVER_API_URL + "rest/order/my";
+            URL = SERVER_API_URL + "rest/order/freeOrders";
         }
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
@@ -141,7 +142,7 @@ public class OrderFragment extends Fragment {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String>  params = new HashMap<String, String>();
-                params.put("Authorization", getAuthToken(getContext()));
+                params.put(LOGIN_TOKEN_KEY, getAuthToken(getContext()));
                 return params;
             }
 

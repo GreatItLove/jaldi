@@ -16,6 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
+            android:textAllCaps="false"
             android:id="@+id/detailsNextStatusButton"
             android:text="@string/status_en_route"/>
 
