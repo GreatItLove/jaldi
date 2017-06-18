@@ -164,7 +164,8 @@ public class OrderDetailFragment extends Fragment implements OnMapReadyCallback,
                         }
                     });
                 }
-                return null;
+                String jsonResponse = new String(response.data);
+                return Response.success(jsonResponse, HttpHeaderParser.parseCacheHeaders(response));
             }
         };
         requestQueue.add(stringRequest);
@@ -348,7 +349,8 @@ public class OrderDetailFragment extends Fragment implements OnMapReadyCallback,
                         }
                     });
                 }
-                return null;
+                String jsonResponse = new String(response.data);
+                return Response.success(jsonResponse, HttpHeaderParser.parseCacheHeaders(response));
             }
         };
         requestQueue.add(stringRequest);

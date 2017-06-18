@@ -17,6 +17,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
@@ -161,7 +162,8 @@ public class OrderFragment extends Fragment {
                         }
                     });
                 }
-                return null;
+                String jsonResponse = new String(response.data);
+                return Response.success(jsonResponse, HttpHeaderParser.parseCacheHeaders(response));
             }
         };
         requestQueue.add(stringRequest);
