@@ -56,9 +56,10 @@ public class OrderService {
         CustomAuthenticationToken token = (CustomAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
         User currentUser = token.getUser();
         Order result = orderDao.findOne(id);
+        result.setWorkersList(orderDao.getWorkers(id));
         if(result != null && (Util.isAdmin(token) || Util.isOperator(token) ||
-                        result.getUser().getId() == currentUser.getId())) {
-            result.setWorkersList(orderDao.getWorkers(id));
+                        result.getUser().getId() == currentUser.getId() ||
+                Util.containsWorker(result.getWorkersList(), currentUser.getId()))) {
             result.setUser(userDao.getById(result.getUser().getId()));
             return ResponseEntity.ok(result);
         }

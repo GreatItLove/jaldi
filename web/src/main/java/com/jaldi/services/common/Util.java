@@ -1,11 +1,13 @@
 package com.jaldi.services.common;
 
 import com.jaldi.services.common.security.CustomAuthenticationToken;
+import com.jaldi.services.model.Worker;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by: Sedrak Dalaloyan
@@ -48,5 +50,14 @@ public class Util {
     public static String formatPhone(String phone) {
         if(phone == null) return null;
         return "+" + phone.replaceAll("[^0-9]","");
+    }
+
+    public static boolean containsWorker(List<Worker> workers, long workerId) {
+        for (Worker worker : workers) {
+            if(worker.getUser().getId() == workerId) {
+                return true;
+            }
+        }
+        return false;
     }
 }
