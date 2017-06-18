@@ -46,6 +46,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
+import static pro.jaldi.LoginActivity.LOGIN_TOKEN_KEY;
 import static pro.jaldi.LoginActivity.SERVER_API_URL;
 import static pro.jaldi.LoginActivity.getAuthToken;
 
@@ -122,7 +123,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String>  params = new HashMap<String, String>();
-                params.put("Authorization", getAuthToken(MainActivity.this));
+                params.put(LOGIN_TOKEN_KEY, getAuthToken(MainActivity.this));
                 return params;
             }
 
@@ -324,9 +325,8 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onListFragmentInteraction(MyOrderRecyclerViewAdapter.OrderViewHolder order) {
-        Log.d("MYTAG", "Oroder " + order.mOrder.id + " clicked");
         Fragment activeFragment = getSupportFragmentManager().findFragmentById(R.id.ordersListContainer);
-        if (activeFragment instanceof OrderFragment) {
+        if (activeFragment instanceof OrderFragment && ((OrderFragment)activeFragment).shouldShowMyOrders) {
             showOrderDetails(order);
         }
     }

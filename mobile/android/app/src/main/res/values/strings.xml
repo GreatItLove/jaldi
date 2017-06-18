@@ -50,6 +50,8 @@
     <string name="status_finished">Finished</string>
     <string name="status_canceled">Canceled</string>
 
+    <string name="status_update_invalid">Invalid status.</string>
+
     <string name="take_order_confirmation_title">Please Confirm.</string>
     <string name="take_order_confirmation_message">Do you really want to take this order?</string>
     <string name="alert_yes_button">Yes</string>

@@ -20,6 +20,8 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -29,13 +31,14 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static pro.jaldi.LoginActivity.LOGIN_TOKEN_KEY;
 import static pro.jaldi.LoginActivity.SERVER_API_URL;
 import static pro.jaldi.LoginActivity.getAuthToken;
 
@@ -43,6 +46,9 @@ import static pro.jaldi.LoginActivity.getAuthToken;
 public class OrderDetailFragment extends Fragment implements OnMapReadyCallback, View.OnClickListener {
     public OrderModel selectedOrder;
     private View contentView;
+    private String orderCurrentStatus;
+    private Button nextStatusBtn;
+
     public OrderDetailFragment() {
         // Required empty public constructor
     }
@@ -95,7 +101,19 @@ public class OrderDetailFragment extends Fragment implements OnMapReadyCallback,
         AppCompatButton cancelBtn = (AppCompatButton) contentView.findViewById(R.id.detailsCancel);
         cancelBtn.setOnClickListener(this);
 
-        return contentView;
+        nextStatusBtn = (Button) contentView.findViewById(R.id.detailsNextStatusButton);
+        nextStatusBtn.setOnClickListener(this);
+        orderCurrentStatus = selectedOrder.status;
+        if (orderCurrentStatus.equals("CANCELED")) {
+            nextStatusBtn.setText(R.string.status_canceled);
+            nextStatusBtn.setEnabled(false);
+        } else {
+            nextStatusBtn.setText(getOrderStatus());
+        }
+        if (orderCurrentStatus.equals("FINISHED")) {
+            nextStatusBtn.setEnabled(false);
+        }
+            return contentView;
     }
 
     @Override
@@ -128,7 +146,7 @@ public class OrderDetailFragment extends Fragment implements OnMapReadyCallback,
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String>  params = new HashMap<String, String>();
-                params.put("Authorization", getAuthToken(getContext()));
+                params.put(LOGIN_TOKEN_KEY, getAuthToken(getContext()));
                 return params;
             }
 
@@ -163,6 +181,9 @@ public class OrderDetailFragment extends Fragment implements OnMapReadyCallback,
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.detailsNextStatusButton:
+               handleOrderNextStatusClicked();
+                break;
             case R.id.detailsCall:
                 callUser();
                 break;
@@ -173,6 +194,106 @@ public class OrderDetailFragment extends Fragment implements OnMapReadyCallback,
                 cancelOrder();
                 break;
         }
+    }
+
+    private void handleOrderNextStatusClicked() {
+        String [] statusVarians = {"EN_ROUTE", "WORKING", "TIDYING_UP", "FINISHED"};
+        int indexOfCurrentStatus = java.util.Arrays.asList(statusVarians).indexOf(orderCurrentStatus);
+        int indexOfNextStatus = indexOfCurrentStatus + 1;
+        if (indexOfNextStatus == statusVarians.length - 1) {
+            // the last status.
+            nextStatusBtn.setEnabled(false);
+        }
+        orderCurrentStatus = statusVarians[indexOfNextStatus];
+        nextStatusBtn.setText(getOrderStatus());
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        String URL = SERVER_API_URL + "rest/order/updateOrderStatus";
+        JSONObject jsonBody = new JSONObject(getParams());
+        final String requestBody = jsonBody.toString();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, URL, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                Log.i("VOLLEY", response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("VOLLEY", error.toString());
+                Toast.makeText(getContext(), R.string.toast_details_error_on_cancel, Toast.LENGTH_LONG).show();
+            }
+        }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                try {
+                    return requestBody == null ? null : requestBody.getBytes("utf-8");
+                } catch (UnsupportedEncodingException uee) {
+                    VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", requestBody, "utf-8");
+                    Toast.makeText(getContext(), R.string.status_update_invalid, Toast.LENGTH_LONG).show();
+                    return null;
+                }
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put(LOGIN_TOKEN_KEY, getAuthToken(getContext()));
+                return params;
+            }
+
+            @Override
+            protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                if (response != null) {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            handleOrderStatusChanged();
+                        }
+                    });
+                }
+                String jsonResponse = new String(response.data);
+                return Response.success(jsonResponse, HttpHeaderParser.parseCacheHeaders(response));
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+
+    private String getOrderStatus() {
+        int resId = R.string.status_en_route;
+        switch (orderCurrentStatus) {
+            case "EN_ROUTE":
+               resId = R.string.status_working;
+                break;
+            case "WORKING":
+                resId = R.string.status_tidying_up;
+                break;
+            case "TIDYING_UP":
+                resId = R.string.status_finished;
+                break;
+            case "FINISHED":
+                resId = R.string.status_finished;
+                break;
+        }
+        return getContext().getString(resId);
+    }
+
+    private Map<String, String> getParams()
+    {
+        Map<String, String>  params = new HashMap<String, String>();
+        params.put("orderId", selectedOrder.id + "");
+        params.put("status", orderCurrentStatus);
+        return params;
+    }
+
+    private void handleOrderStatusChanged() {
+
     }
 
     private void callUser() {
@@ -213,7 +334,7 @@ public class OrderDetailFragment extends Fragment implements OnMapReadyCallback,
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String>  params = new HashMap<String, String>();
-                params.put("Authorization", getAuthToken(getContext()));
+                params.put(LOGIN_TOKEN_KEY, getAuthToken(getContext()));
                 return params;
             }
 
