@@ -15,6 +15,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +26,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by: Sedrak Dalaloyan
@@ -94,6 +98,37 @@ public class OrderService {
         }
         orderDao.cancelOrder(currentUser.getId(), id);
         return ResponseEntity.ok(null);
+    }
+
+
+    @RequestMapping(value="/cancelWork/{id}", method=RequestMethod.PUT)
+    public ResponseEntity cancelWork(@PathVariable("id") long id) {
+        CustomAuthenticationToken token = (CustomAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+        User currentUser = token.getUser();
+        Order result = orderDao.findOne(id);
+        if(result != null) {
+            long minutes = TimeUnit.MILLISECONDS.toMinutes(result.getOrderDate().getTime() - new Date().getTime());
+            if(minutes < 60) {
+                return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(null);
+            }
+        }
+        orderDao.removeWorkerFromOrder(currentUser.getId(), id);
+        return ResponseEntity.ok(null);
+    }
+
+    @RequestMapping(value="/take/{id}", method=RequestMethod.POST)
+    @Transactional(isolation = Isolation.SERIALIZABLE)
+    public ResponseEntity takeOrder(@PathVariable("id") long id) {
+        CustomAuthenticationToken token = (CustomAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+        User currentUser = token.getUser();
+        Order result = orderDao.findOne(id);
+        result.setWorkersList(orderDao.getWorkers(id));
+        if(result.getWorkers() > result.getWorkersList().size() &&
+                !Util.containsWorker(result.getWorkersList(), currentUser.getId())) {
+            orderDao.addWorker(currentUser.getId(), id);
+            return ResponseEntity.ok(null);
+        }
+        return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(null);
     }
 
     @RequestMapping(value="/rate", method=RequestMethod.PUT)
