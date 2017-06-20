@@ -318,7 +318,7 @@ public class OrderDetailFragment extends Fragment implements OnMapReadyCallback,
 
     private void cancelOrder() {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        String URL = SERVER_API_URL + "rest/order/cancel/" + selectedOrder.id;
+        String URL = SERVER_API_URL + "rest/order/cancelWork/" + selectedOrder.id;
 
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, URL, new Response.Listener<String>() {
             @Override

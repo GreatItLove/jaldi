@@ -1,20 +1,40 @@
 package pro.jaldi;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import pro.jaldi.OrderFragment.OnListFragmentInteractionListener;
 import pro.jaldi.dummy.DummyContent.DummyItem;
+
+import static pro.jaldi.LoginActivity.LOGIN_TOKEN_KEY;
+import static pro.jaldi.LoginActivity.SERVER_API_URL;
+import static pro.jaldi.LoginActivity.getAuthToken;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
@@ -44,18 +64,59 @@ public class MyOrderRecyclerViewAdapter extends RecyclerView.Adapter<MyOrderRecy
         notifyDataSetChanged();
     }
 
-    private void handleTakeOrderClicked(final Button source) {
+    private void handleTakeOrderClicked(final Button source, final OrderModel order) {
         new AlertDialog.Builder(mContext)
                 .setTitle(R.string.take_order_confirmation_title)
                 .setMessage(R.string.take_order_confirmation_message)
                 .setPositiveButton(R.string.alert_yes_button, new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        source.setSelected(true);
-                        source.setText(R.string.order_taken_button);
+                        requestTakeOrder(source, order);
                     }})
                 .setNegativeButton(R.string.alert_no_button, null).show();
 
+    }
+
+    private void requestTakeOrder (final Button source, OrderModel order) {
+        RequestQueue requestQueue = Volley.newRequestQueue(mContext);
+        String URL = SERVER_API_URL + "rest/order/take/" + order.id;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.i("VOLLEY", response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("VOLLEY", error.toString());
+                Toast.makeText(mContext, R.string.toast_details_error_on_cancel, Toast.LENGTH_LONG).show();
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put(LOGIN_TOKEN_KEY, getAuthToken(mContext));
+                return params;
+            }
+
+            @Override
+            protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                if (response != null) {
+                    ((AppCompatActivity)mContext).runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            source.setSelected(true);
+                            source.setText(R.string.order_taken_button);
+                        }
+                    });
+
+                }
+                String jsonResponse = new String(response.data);
+                return Response.success(jsonResponse, HttpHeaderParser.parseCacheHeaders(response));
+            }
+        };
+        requestQueue.add(stringRequest);
     }
 
     @Override
@@ -67,7 +128,7 @@ public class MyOrderRecyclerViewAdapter extends RecyclerView.Adapter<MyOrderRecy
 
     @Override
     public void onBindViewHolder(final OrderViewHolder orderViewHolder, int position) {
-        OrderModel order = mOrderModels.get(position);
+        final OrderModel order = mOrderModels.get(position);
         orderViewHolder.mOrder = order;
         OrderModel.OrderTypeModel orderTypeModel = order.getOrderTypeModel();
         orderViewHolder.orderIcon.setImageResource(orderTypeModel.imageResId);
@@ -97,7 +158,7 @@ public class MyOrderRecyclerViewAdapter extends RecyclerView.Adapter<MyOrderRecy
             orderViewHolder.takeOrderBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    handleTakeOrderClicked((Button) v);
+                    handleTakeOrderClicked((Button) v, order);
                 }
             });
         }
