@@ -29,7 +29,7 @@
     <dimen name="details_contact_vertical_padding">10dp</dimen>
     <dimen name="details_contact_horizontal_padding">4dp</dimen>
     <dimen name="details_contact_separator_margin">2dp</dimen>
-    <dimen name="details_address_container_height">20dp</dimen>
+    <dimen name="details_address_container_height">40dp</dimen>
     <dimen name="details_address_container_padding_start">7dp</dimen>
     <dimen name="details_address_container_padding_end">6dp</dimen>
     <dimen name="details_address_icon_margin">0dp</dimen>
@@ -38,6 +38,8 @@
     <dimen name="order_icon_top_margin">20dp</dimen>
     <dimen name="order_time_margin">10dp</dimen>
     <dimen name="order_details_top_margin">11dp</dimen>
+    <dimen name="details_address_icon_size">26dp</dimen>
+    <dimen name="details_address_text_size">15sp</dimen>
     <dimen name="order_content_text_size">10sp</dimen>
     <dimen name="order_title_text_size">17sp</dimen>
     <dimen name="order_status_end_padding">12sp</dimen>

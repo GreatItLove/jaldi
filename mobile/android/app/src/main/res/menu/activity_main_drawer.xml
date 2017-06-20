@@ -5,15 +5,19 @@
         <item
             android:id="@+id/orders"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Orders" />
+            android:title="@string/action_bar_title_find_work" />
         <item
             android:id="@+id/myOrders"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="My Orders" />
+            android:title="@string/action_bar_title_my_works" />
         <item
-            android:id="@+id/signOut"
+            android:id="@+id/contactOperator"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Sign Out" />
+            android:title="@string/nav_drawer_contact_operator" />
+        <item
+        android:id="@+id/signOut"
+        android:icon="@drawable/ic_menu_gallery"
+        android:title="@string/nav_drawer_sign_out" />
     </group>
 
 </menu>

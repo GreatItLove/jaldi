@@ -1,8 +1,10 @@
 package pro.jaldi;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatButton;
 import android.util.Log;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +51,8 @@ public class OrderDetailFragment extends Fragment implements OnMapReadyCallback,
     private View contentView;
     private String orderCurrentStatus;
     private Button nextStatusBtn;
+    private static final float MAP_DEFAULT_LOCATION_ZOOM = 6.0f;
+    private static final float MAP_USER_LOCATION_ZOOM = 15.0f;
 
     public OrderDetailFragment() {
         // Required empty public constructor
@@ -76,6 +81,7 @@ public class OrderDetailFragment extends Fragment implements OnMapReadyCallback,
 
         TextView orderAddress = (TextView) contentView.findViewById(R.id.detailsAddressValue);
         orderAddress.setText(selectedOrder.getAddress());
+        orderAddress.setOnClickListener(this);
 
         TextView orderCost = (TextView) contentView.findViewById(R.id.detailsCostValue);
         orderCost.setText(selectedOrder.getCost());
@@ -98,9 +104,13 @@ public class OrderDetailFragment extends Fragment implements OnMapReadyCallback,
         AppCompatButton messageBtn = (AppCompatButton) contentView.findViewById(R.id.detailsMessage);
         messageBtn.setOnClickListener(this);
 
-        AppCompatButton cancelBtn = (AppCompatButton) contentView.findViewById(R.id.detailsCancel);
-        cancelBtn.setOnClickListener(this);
-
+        if (selectedOrder.status.equals("CREATED") || selectedOrder.status.equals("ASSIGNED")) {
+            AppCompatButton cancelBtn = (AppCompatButton) contentView.findViewById(R.id.detailsCancel);
+            cancelBtn.setOnClickListener(this);
+        } else {
+            LinearLayout cancelBtnContainer = (LinearLayout) contentView.findViewById(R.id.cancelBtnContainer);
+            cancelBtnContainer.setVisibility(View.GONE);
+        }
         nextStatusBtn = (Button) contentView.findViewById(R.id.detailsNextStatusButton);
         nextStatusBtn.setOnClickListener(this);
         orderCurrentStatus = selectedOrder.status;
@@ -113,18 +123,21 @@ public class OrderDetailFragment extends Fragment implements OnMapReadyCallback,
         if (orderCurrentStatus.equals("FINISHED")) {
             nextStatusBtn.setEnabled(false);
         }
-            return contentView;
+        return contentView;
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        if (ActivityCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            googleMap.setMyLocationEnabled(true);
+        }
         if (selectedOrder.latitude != 0 && selectedOrder.longitude != 0) {
             LatLng orderAddress = new LatLng(selectedOrder.latitude, selectedOrder.longitude);
             googleMap.addMarker(new MarkerOptions().position(orderAddress).title(selectedOrder.address));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(orderAddress, 15.0f));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(orderAddress, MAP_USER_LOCATION_ZOOM));
         } else {
             LatLng defaultAddress = new LatLng(55.7492899, 37.0720539);
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultAddress, 6.0f));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultAddress, MAP_DEFAULT_LOCATION_ZOOM));
         }
     }
 
@@ -194,6 +207,27 @@ public class OrderDetailFragment extends Fragment implements OnMapReadyCallback,
             case R.id.detailsCancel:
                 cancelOrder();
                 break;
+            case R.id.detailsAddressValue:
+                handleAddressClicked();
+                break;
+        }
+    }
+
+    private void handleAddressClicked() {
+        if (selectedOrder.latitude == 0 || selectedOrder.longitude == 0) {
+            return;
+        }
+        String label = getContext().getString(selectedOrder.getOrderTypeModel().titleResId);
+        String latLon =  selectedOrder.latitude + "," + selectedOrder.longitude;
+        String uriBegin = "geo:" + latLon;
+        String query = latLon + "(" + label + ")";
+        String encodedQuery = Uri.encode(query);
+        String uriString = uriBegin + "?q=" + encodedQuery;
+        Uri uri = Uri.parse(uriString);
+        Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri );
+        mapIntent.setPackage("com.google.android.apps.maps");
+        if (mapIntent.resolveActivity(getContext().getPackageManager()) != null) {
+            startActivity(mapIntent);
         }
     }
 

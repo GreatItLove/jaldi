@@ -47,7 +47,7 @@
     <string name="status_en_route">En Route</string>
     <string name="status_working">Working</string>
     <string name="status_tidying_up">Tidying Up</string>
-    <string name="status_finished">Finished</string>
+    <string name="status_finished">Finish</string>
     <string name="status_canceled">Canceled</string>
 
     <string name="status_update_invalid">Invalid status.</string>
@@ -65,6 +65,8 @@
     <string name="toast_details_cancel_successful">Order has been canceled successfully</string>
 
     <string name="action_bar_title_find_work">Find Work</string>
+    <string name="nav_drawer_sign_out">Sign Out</string>
+    <string name="nav_drawer_contact_operator">Contact Operator</string>
     <string name="action_bar_title_my_works">My Works</string>
 
     My Works

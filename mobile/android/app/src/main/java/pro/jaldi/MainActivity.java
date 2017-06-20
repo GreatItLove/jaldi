@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -26,6 +27,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
@@ -247,8 +249,10 @@ public class MainActivity extends AppCompatActivity
             showMyOrders();
         } else if (id == R.id.signOut) {
             signOut();
+        } else if (id == R.id.contactOperator) {
+            contactOperator();
+            return false;
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -284,6 +288,12 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    private void contactOperator() {
+        final String operatorPhone = "+97455568546";
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", operatorPhone, null));
+        startActivity(intent);
+    }
+
     private void updateActionBar(MyOrderRecyclerViewAdapter.OrderViewHolder selectedOrder) {
         ActionBar ab = getSupportActionBar();
         if (ab == null) {
@@ -299,7 +309,8 @@ public class MainActivity extends AppCompatActivity
                 ab.setSubtitle(null);
             }
         } else if (activeFragment instanceof OrderDetailFragment && selectedOrder != null) {
-            ab.setTitle(selectedOrder.orderType.getText());
+            String orderNumber = " (" + selectedOrder.mOrder.id + ")";
+            ab.setTitle(selectedOrder.orderType.getText() + orderNumber);
             ab.setSubtitle(selectedOrder.orderDate.getText() + " " + selectedOrder.orderTime.getText());
         }
     }
