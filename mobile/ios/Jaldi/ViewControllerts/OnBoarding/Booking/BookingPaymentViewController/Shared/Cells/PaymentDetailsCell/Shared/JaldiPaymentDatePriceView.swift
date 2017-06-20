@@ -20,7 +20,7 @@ class JaldiPaymentDatePriceView: UIView {
         let time  = dateTime.dateStringWith(format: AppDateFormats.timeFormat)
         let workers = bookingObject.bookingDetails.workers > 1 ? "\(bookingObject.bookingDetails.workers) workers" : ""
         timeAndDurationLabel.text = "\(time) (\(bookingObject.bookingDetails.hours) hours, \(workers))"
-        originalPriceLabel.text = "\(Int(bookingObject.cost)) QAR"
+        originalPriceLabel.text = "\(Int(bookingObject.cost)) QR"
     }
 
 

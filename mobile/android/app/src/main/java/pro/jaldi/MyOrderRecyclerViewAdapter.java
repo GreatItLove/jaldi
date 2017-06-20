@@ -211,7 +211,5 @@ public class MyOrderRecyclerViewAdapter extends RecyclerView.Adapter<MyOrderRecy
 
             mView = view;
         }
-
-
     }
 }

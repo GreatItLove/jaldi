@@ -243,4 +243,15 @@ public class OrderDaoImpl {
         }
         return false;
     }
+
+    public void removeWorkerFromOrder(long workerId, long orderId) {
+        Map namedParameters = new HashMap();
+        namedParameters.put("workerId", workerId);
+        namedParameters.put("orderId", orderId);
+        namedJdbc.update("DELETE from orderWorker WHERE workerId = :workerId AND orderId = :orderId;", namedParameters);
+    }
+
+    public void addWorker(long workerId, long orderId) {
+        jdbcTemplate.update("INSERT INTO `orderWorker` (`orderId`, `workerId`) VALUES (?, ?);", orderId, workerId);
+    }
 }
