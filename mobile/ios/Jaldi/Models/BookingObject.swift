@@ -52,9 +52,15 @@ class BookingObject {
         self.bookingDetails = bookingDetails
         self.bookingScreens = bookingScreens
         bookingPrice = BookingPrice()
-        bookingPrice?.serivcePrice = 100
-        bookingPrice?.fee = 0
-        bookingPrice?.coupon = 0
+        if service == .homeCleaning {
+            bookingPrice?.serivcePrice = 35
+            bookingPrice?.fee = 0
+            bookingPrice?.coupon = 10
+        } else {
+            bookingPrice?.serivcePrice = 99
+            bookingPrice?.fee = 0
+            bookingPrice?.coupon = 29
+        }
     }
 }
 

@@ -19,6 +19,7 @@ class JaldiBookingPaymentDetailsCell: UITableViewCell {
     @IBOutlet weak var peyamentDetailsStackView: UIStackView!
     
     @IBOutlet weak var peyamentDetailsPriceView: JaldiPaymentPriceDetailsView!
+    @IBOutlet weak var couponeView: JaldiPaymentPriceDetailsView!
     
     @IBOutlet weak var paymentDatePriceView: JaldiPaymentDatePriceView!
     @IBOutlet weak var totalPriceView: JaldiPaymentTotalPriceView!
