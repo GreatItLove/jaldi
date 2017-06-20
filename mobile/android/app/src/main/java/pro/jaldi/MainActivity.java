@@ -329,7 +329,8 @@ public class MainActivity extends AppCompatActivity
         FragmentTransaction tr = fm.beginTransaction();
         ActionBar ab = getSupportActionBar();
         if (ab != null) {
-            ab.setTitle(selectedOrder.orderType.getText());
+            String orderNumber = " (" + selectedOrder.mOrder.id + ")";
+            ab.setTitle(selectedOrder.orderType.getText() + orderNumber);
             ab.setSubtitle(selectedOrder.orderDate.getText() + " " + selectedOrder.orderTime.getText());
         }
         tr.replace(R.id.ordersListContainer, orderDetailFragment).addToBackStack("");
