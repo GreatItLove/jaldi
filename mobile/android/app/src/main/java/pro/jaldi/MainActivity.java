@@ -79,8 +79,6 @@ public class MainActivity extends AppCompatActivity
         View header = navigationView.getHeaderView(0);
         ImageView profileImageView = (ImageView) header.findViewById(R.id.profileImageView);
         setProfileImageAsync(profileImageView);
-
-
     }
 
     private void uploadLocation(Location location) {
@@ -149,17 +147,14 @@ public class MainActivity extends AppCompatActivity
 
             @Override
             public void onStatusChanged(String provider, int status, Bundle extras) {
-
             }
 
             @Override
             public void onProviderEnabled(String provider) {
-
             }
 
             @Override
             public void onProviderDisabled(String provider) {
-
             }
         };
         Criteria criteria = new Criteria();
@@ -173,7 +168,7 @@ public class MainActivity extends AppCompatActivity
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             requestLocationPermission();
         } else {
-            locationManager.requestLocationUpdates(provider, 2 * 60 * 1000, 200, locationListener);
+            locationManager.requestLocationUpdates(provider, 2 * 60 * 1000/*milliseconds*/, 200/*meters*/, locationListener);
         }
     }
 
@@ -268,7 +263,7 @@ public class MainActivity extends AppCompatActivity
         tr.commit();
         ActionBar ab = getSupportActionBar();
         if (ab != null) {
-            ab.setTitle("Find Works");
+            ab.setTitle(R.string.action_bar_title_find_work);
             ab.setSubtitle(null);
         }
     }
@@ -283,7 +278,7 @@ public class MainActivity extends AppCompatActivity
         tr.commit();
         ActionBar ab = getSupportActionBar();
         if (ab != null) {
-            ab.setTitle("My Works");
+            ab.setTitle(getText(R.string.action_bar_title_my_works));
             ab.setSubtitle(null);
         }
     }

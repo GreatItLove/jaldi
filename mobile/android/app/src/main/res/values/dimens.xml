@@ -43,5 +43,7 @@
     <dimen name="work_content_text_size">10sp</dimen>
     <dimen name="work_title_text_size">17sp</dimen>
     <dimen name="work_status_end_padding">12sp</dimen>
+    <dimen name="details_comment_max_height">170dp</dimen>
+    <dimen name="details_comment_vertical_margin">2dp</dimen>
 
 </resources>

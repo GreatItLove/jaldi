@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatButton;
+import android.text.TextUtils;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -54,6 +57,7 @@ public class WorkDetailFragment extends Fragment implements OnMapReadyCallback, 
     private static final float MAP_DEFAULT_LOCATION_ZOOM = 6.0f;
     private static final float MAP_USER_LOCATION_ZOOM = 15.0f;
 
+    private boolean isCommentTextScrolling = false;
     public WorkDetailFragment() {
         // Required empty public constructor
     }
@@ -123,6 +127,25 @@ public class WorkDetailFragment extends Fragment implements OnMapReadyCallback, 
         if (workCurrentStatus.equals("FINISHED")) {
             nextStatusBtn.setEnabled(false);
         }
+
+        TextView commentTextView = (TextView) contentView.findViewById(R.id.detailsComment);
+        commentTextView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    isCommentTextScrolling = false;
+                } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
+                    isCommentTextScrolling = true;
+                } else if (event.getAction() == MotionEvent.ACTION_UP &&
+                            isCommentTextScrolling &&
+                            ((TextView)v).getMaxLines() != 1) {
+                    return true;
+                }
+                return false;
+            }
+        });
+        commentTextView.setOnClickListener(this);
+
         return contentView;
     }
 
@@ -138,6 +161,23 @@ public class WorkDetailFragment extends Fragment implements OnMapReadyCallback, 
         } else {
             LatLng defaultAddress = new LatLng(55.7492899, 37.0720539);
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultAddress, MAP_DEFAULT_LOCATION_ZOOM));
+        }
+    }
+
+    private void toggleCommentTextView(TextView textView) {
+        if (textView.getMaxLines() == 1) {
+            //expand
+            textView.setMaxLines(Integer.MAX_VALUE);
+            textView.setEllipsize(null);
+            textView.setMaxHeight(getResources().getDimensionPixelSize(R.dimen.details_comment_max_height));
+            textView.setMovementMethod(new ScrollingMovementMethod());
+        } else {
+            //shrink
+            textView.setMaxLines(1);
+            textView.scrollTo(0, 0);
+            textView.setMovementMethod(null);
+            textView.setOnClickListener(this);
+            textView.setEllipsize(TextUtils.TruncateAt.END);
         }
     }
 
@@ -209,6 +249,9 @@ public class WorkDetailFragment extends Fragment implements OnMapReadyCallback, 
                 break;
             case R.id.detailsAddressValue:
                 handleAddressClicked();
+                break;
+            case R.id.detailsComment:
+                toggleCommentTextView((TextView) v);
                 break;
         }
     }

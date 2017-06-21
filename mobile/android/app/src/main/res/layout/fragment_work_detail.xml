@@ -63,7 +63,6 @@
                 android:textAlignment="textStart"
                 android:id="@+id/detailsWorksUserName"
                 android:maxLines="1"
-                android:text="John Smith"
                 android:textSize="@dimen/work_title_text_size"
                 android:textColor="@color/colorBlack"/>
 
@@ -71,9 +70,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
-                android:text="+374 77 777 777"
-                android:layout_toEndOf="@+id/detailsWorkIcon"
-                android:layout_below="@+id/detailsWorksUserName"
                 android:textAlignment="textStart"
                 android:layout_marginTop="@dimen/details_work_phone_top_margin"
                 android:textSize="@dimen/work_content_text_size"
@@ -155,8 +151,6 @@
 
         </LinearLayout>
 
-
-
     </RelativeLayout>
 
 
@@ -173,7 +167,7 @@
         android:id="@+id/detailsAddressContainer"
         android:paddingEnd="@dimen/details_address_container_padding_end"
         android:paddingStart="@dimen/details_address_container_padding_start"
-        android:layout_alignParentBottom="true">
+        android:layout_above="@+id/detailsCommentSeparator">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -243,6 +237,31 @@
             android:id="@+id/detailsCostValue"
             android:layout_alignParentEnd="true"/>
     </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/detailsCommentSeparator"
+        android:layout_above="@+id/detailsComment"
+        android:background="@color/contact_buttons_color"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/detailsComment"
+        android:maxLines="1"
+        android:text="@string/test"
+        android:textSize="@dimen/details_address_text_size"
+        android:paddingStart="@dimen/details_address_container_padding_start"
+        android:paddingEnd="@dimen/details_address_container_padding_end"
+        android:ellipsize="end"
+        android:scrollbars="vertical"
+        android:layout_marginBottom="@dimen/details_comment_vertical_margin"
+        android:layout_marginTop="@dimen/details_comment_vertical_margin"
+        android:textColor="@color/colorBlack"
+        android:maxHeight="@dimen/activity_vertical_margin"
+        android:layout_alignParentBottom="true"/>
 
 
 </RelativeLayout>
