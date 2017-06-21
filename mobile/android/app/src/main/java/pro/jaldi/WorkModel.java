@@ -77,15 +77,19 @@ public class WorkModel {
         switch (status) {
             case "CREATED":
                 workStatusModel.titleResId = R.string.status_created;
+                workStatusModel.backgroundColorResId = R.color.status_created;
                 break;
             case "ASSIGNED":
                 workStatusModel.titleResId = R.string.status_assigned;
+                workStatusModel.backgroundColorResId = R.color.status_assigned;
                 break;
             case "EN_ROUTE":
                 workStatusModel.titleResId = R.string.status_en_route;
+                workStatusModel.backgroundColorResId = R.color.status_en_route;
                 break;
             case "WORKING":
                 workStatusModel.titleResId = R.string.status_working;
+                workStatusModel.backgroundColorResId = R.color.status_working;
                 break;
             case "TIDYING_UP":
                 workStatusModel.titleResId = R.string.status_tidying_up;
@@ -97,6 +101,7 @@ public class WorkModel {
                 break;
             case "CANCELED":
                 workStatusModel.titleResId = R.string.status_canceled;
+                workStatusModel.backgroundColorResId = R.color.status_canceled;
                 break;
         }
         return workStatusModel;
