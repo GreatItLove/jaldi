@@ -21,6 +21,7 @@
     <dimen name="work_left_part_end_margin">5dp</dimen>
     <dimen name="work_date_top_margin">5dp</dimen>
     <dimen name="work_icon_size">59dp</dimen>
+    <dimen name="details_status_container_height">85dp</dimen>
     <dimen name="details_work_icon_size">37dp</dimen>
     <dimen name="details_work_icon_start_margin">13dp</dimen>
     <dimen name="details_work_icon_end_margin">8dp</dimen>

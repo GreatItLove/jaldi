@@ -6,7 +6,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="@dimen/details_status_container_height"
         android:layout_alignParentTop="true"
         android:background="@color/contact_buttons_color"
         android:id="@+id/workDetailsStatusContainer">
