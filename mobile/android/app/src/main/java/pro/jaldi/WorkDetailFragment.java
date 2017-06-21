@@ -129,23 +129,31 @@ public class WorkDetailFragment extends Fragment implements OnMapReadyCallback, 
         }
 
         TextView commentTextView = (TextView) contentView.findViewById(R.id.detailsComment);
-        commentTextView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    isCommentTextScrolling = false;
-                } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
-                    isCommentTextScrolling = true;
-                } else if (event.getAction() == MotionEvent.ACTION_UP &&
-                            isCommentTextScrolling &&
-                            ((TextView)v).getMaxLines() != 1) {
-                    return true;
-                }
-                return false;
-            }
-        });
-        commentTextView.setOnClickListener(this);
 
+        if (selectedWork.comment != null && !selectedWork.comment.trim().isEmpty()) {
+            commentTextView.setText(selectedWork.comment);
+            commentTextView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                        isCommentTextScrolling = false;
+                    } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
+                        isCommentTextScrolling = true;
+                    } else if (event.getAction() == MotionEvent.ACTION_UP &&
+                            isCommentTextScrolling &&
+                            ((TextView) v).getMaxLines() != 1) {
+                        return true;
+                    }
+                    return false;
+                }
+            });
+            commentTextView.setOnClickListener(this);
+        } else {
+            commentTextView.setHeight(0);
+            commentTextView.setEnabled(false);
+            View separator = contentView.findViewById(R.id.detailsCommentSeparator);
+            separator.setVisibility(View.INVISIBLE);
+        }
         return contentView;
     }
 

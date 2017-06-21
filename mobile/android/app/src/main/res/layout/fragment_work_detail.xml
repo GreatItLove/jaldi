@@ -251,7 +251,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/detailsComment"
         android:maxLines="1"
-        android:text="@string/test"
         android:textSize="@dimen/details_address_text_size"
         android:paddingStart="@dimen/details_address_container_padding_start"
         android:paddingEnd="@dimen/details_address_container_padding_end"
