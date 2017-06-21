@@ -19,28 +19,28 @@
         completions."
     </string>
 
-    <!-- Strings related to order -->
-    <string name="order_type_cleaner">Home Cleaning</string>
-    <string name="order_type_carpenter">Carpenter</string>
-    <string name="order_type_electrician">Electrician</string>
-    <string name="order_type_mason">Mason</string>
-    <string name="order_type_painter">Painter</string>
-    <string name="order_type_plumber">Plumber</string>
-    <string name="order_type_ac_technical">AC Technical</string>
+    <!-- Strings related to works -->
+    <string name="work_type_cleaner">Home Cleaning</string>
+    <string name="work_type_carpenter">Carpenter</string>
+    <string name="work_type_electrician">Electrician</string>
+    <string name="work_type_mason">Mason</string>
+    <string name="work_type_painter">Painter</string>
+    <string name="work_type_plumber">Plumber</string>
+    <string name="work_type_ac_technical">AC Technical</string>
 
-    <string name="order_details_separator">\u0020|\u0020</string>
-    <string name="order_workers_left">%1$d of %2$d positions left</string>
-    <string name="order_duration">%1$d hr</string>
-    <string name="order_distance">%1$d km</string>
-    <string name="order_address">Address</string>
+    <string name="work_details_separator">\u0020|\u0020</string>
+    <string name="work_workers_left">%1$d of %2$d positions left</string>
+    <string name="work_duration">%1$d hr</string>
+    <string name="work_distance">%1$d km</string>
+    <string name="work_address">Address</string>
     <string name="not_available">N/A</string>
-    <string name="order_cost_title">Cost:\u0020</string>
-    <string name="order_cost_metric">QAR</string>
-    <string name="order_distance_title">Distance:\u0020</string>
-    <string name="order_details_title">Details</string>
-    <string name="order_duration_title">Duration:\u0020</string>
-    <string name="order_take_button">TAKE</string>
-    <string name="order_taken_button">TAKEN</string>
+    <string name="work_cost_title">Cost:\u0020</string>
+    <string name="work_cost_metric">QAR</string>
+    <string name="work_distance_title">Distance:\u0020</string>
+    <string name="work_details_title">Details</string>
+    <string name="work_duration_title">Duration:\u0020</string>
+    <string name="work_take_button">TAKE</string>
+    <string name="work_taken_button">TAKEN</string>
 
     <string name="status_created">Created</string>
     <string name="status_assigned">Assigned</string>
@@ -52,8 +52,8 @@
 
     <string name="status_update_invalid">Invalid status.</string>
 
-    <string name="take_order_confirmation_title">Please Confirm.</string>
-    <string name="take_order_confirmation_message">Do you really want to take this order?</string>
+    <string name="take_work_confirmation_title">Please Confirm.</string>
+    <string name="take_work_confirmation_message">Do you really want to take this order?</string>
     <string name="alert_yes_button">Yes</string>
     <string name="alert_no_button">No</string>
 

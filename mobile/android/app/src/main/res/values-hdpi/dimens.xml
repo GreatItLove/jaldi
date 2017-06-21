@@ -7,29 +7,29 @@
     <dimen name="fab_margin">12dp</dimen>
     <dimen name="text_margin">12dp</dimen>
 
-    <!-- Order Cell -->
+    <!-- Work Cell -->
     <dimen name="workers_top_margin">2dp</dimen>
-    <dimen name="take_order_button_top_margin">7dp</dimen>
-    <dimen name="take_order_button_radius">3dp</dimen>
-    <dimen name="take_order_button_height">17dp</dimen>
-    <dimen name="order_status_height">13dp</dimen>
+    <dimen name="take_work_button_top_margin">7dp</dimen>
+    <dimen name="take_work_button_radius">3dp</dimen>
+    <dimen name="take_work_button_height">17dp</dimen>
+    <dimen name="work_status_height">13dp</dimen>
 
     <dimen name="cell_top_margin">14dp</dimen>
     <dimen name="cell_left_part_width">86dp</dimen>
     <dimen name="cell_bottom_margin">14dp</dimen>
     <dimen name="cell_start_margin">10dp</dimen>
     <dimen name="cell_end_margin">6dp</dimen>
-    <dimen name="order_left_part_end_margin">4dp</dimen>
-    <dimen name="order_date_top_margin">4dp</dimen>
-    <dimen name="order_icon_size">44dp</dimen>
-    <dimen name="order_icon_bottom_margin">4dp</dimen>
-    <dimen name="order_icon_top_margin">16dp</dimen>
-    <dimen name="order_time_margin">7dp</dimen>
-    <dimen name="order_details_top_margin">8dp</dimen>
+    <dimen name="work_left_part_end_margin">4dp</dimen>
+    <dimen name="work_date_top_margin">4dp</dimen>
+    <dimen name="work_icon_size">44dp</dimen>
+    <dimen name="work_icon_bottom_margin">4dp</dimen>
+    <dimen name="work_icon_top_margin">16dp</dimen>
+    <dimen name="work_time_margin">7dp</dimen>
+    <dimen name="work_details_top_margin">8dp</dimen>
 
-    <dimen name="order_content_text_size">8sp</dimen>
-    <dimen name="order_title_text_size">13sp</dimen>
-    <dimen name="order_status_end_padding">9sp</dimen>
+    <dimen name="work_content_text_size">8sp</dimen>
+    <dimen name="work_title_text_size">13sp</dimen>
+    <dimen name="work_status_end_padding">9sp</dimen>
 
 
 

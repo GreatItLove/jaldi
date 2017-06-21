@@ -27,7 +27,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
@@ -54,7 +53,7 @@ import static pro.jaldi.LoginActivity.SERVER_API_URL;
 import static pro.jaldi.LoginActivity.getAuthToken;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, OrderFragment.OnListFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, WorkFragment.OnListFragmentInteractionListener {
 
     private FusedLocationProviderClient mFusedLocationClient;
     private int MY_PERMISSIONS_REQUEST_LOCATION = 111;
@@ -75,7 +74,8 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        showMyOrders();
+        showMyWorks();
+        navigationView.setCheckedItem(R.id.myWorks);
         View header = navigationView.getHeaderView(0);
         ImageView profileImageView = (ImageView) header.findViewById(R.id.profileImageView);
         setProfileImageAsync(profileImageView);
@@ -243,10 +243,10 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.orders) {
-            showAllOrders();
-        } else if (id == R.id.myOrders) {
-            showMyOrders();
+        if (id == R.id.findWork) {
+            showFindWork();
+        } else if (id == R.id.myWorks) {
+            showMyWorks();
         } else if (id == R.id.signOut) {
             signOut();
         } else if (id == R.id.contactOperator) {
@@ -258,13 +258,13 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private void showAllOrders() {
-        OrderFragment orderFragment = new OrderFragment();
-        orderFragment.shouldShowMyOrders = false;
+    private void showFindWork() {
+        WorkFragment workFragment = new WorkFragment();
+        workFragment.shouldShowMyWorks = false;
         FragmentManager fm = getSupportFragmentManager();
         fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         FragmentTransaction tr = fm.beginTransaction();
-        tr.replace(R.id.ordersListContainer, orderFragment);
+        tr.replace(R.id.worksListContainer, workFragment);
         tr.commit();
         ActionBar ab = getSupportActionBar();
         if (ab != null) {
@@ -273,13 +273,13 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    private void showMyOrders() {
-        OrderFragment orderFragment = new OrderFragment();
-        orderFragment.shouldShowMyOrders = true;
+    private void showMyWorks() {
+        WorkFragment workFragment = new WorkFragment();
+        workFragment.shouldShowMyWorks = true;
         FragmentManager fm = getSupportFragmentManager();
         fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         FragmentTransaction tr = fm.beginTransaction();
-        tr.replace(R.id.ordersListContainer, orderFragment);
+        tr.replace(R.id.worksListContainer, workFragment);
         tr.commit();
         ActionBar ab = getSupportActionBar();
         if (ab != null) {
@@ -294,24 +294,24 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    private void updateActionBar(MyOrderRecyclerViewAdapter.OrderViewHolder selectedOrder) {
+    private void updateActionBar(MyWorkRecyclerViewAdapter.WorkViewHolder selectedWork) {
         ActionBar ab = getSupportActionBar();
         if (ab == null) {
             return;
         }
-        Fragment activeFragment = getSupportFragmentManager().findFragmentById(R.id.ordersListContainer);
-        if (activeFragment instanceof OrderFragment) {
-            if (((OrderFragment)activeFragment).shouldShowMyOrders) {
+        Fragment activeFragment = getSupportFragmentManager().findFragmentById(R.id.worksListContainer);
+        if (activeFragment instanceof WorkFragment) {
+            if (((WorkFragment)activeFragment).shouldShowMyWorks) {
                 ab.setTitle(R.string.action_bar_title_my_works);
                 ab.setSubtitle(null);
             } else {
                 ab.setTitle(R.string.action_bar_title_find_work);
                 ab.setSubtitle(null);
             }
-        } else if (activeFragment instanceof OrderDetailFragment && selectedOrder != null) {
-            String orderNumber = " (" + selectedOrder.mOrder.id + ")";
-            ab.setTitle(selectedOrder.orderType.getText() + orderNumber);
-            ab.setSubtitle(selectedOrder.orderDate.getText() + " " + selectedOrder.orderTime.getText());
+        } else if (activeFragment instanceof WorkDetailFragment && selectedWork != null) {
+            String workNumber = " (" + selectedWork.mWork.id + ")";
+            ab.setTitle(selectedWork.workType.getText() + workNumber);
+            ab.setSubtitle(selectedWork.workDate.getText() + " " + selectedWork.workTime.getText());
         }
     }
 
@@ -322,26 +322,26 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    private void showOrderDetails(MyOrderRecyclerViewAdapter.OrderViewHolder selectedOrder) {
-        OrderDetailFragment orderDetailFragment = new OrderDetailFragment();
-        orderDetailFragment.selectedOrder = selectedOrder.mOrder;
+    private void showWorkDetails(MyWorkRecyclerViewAdapter.WorkViewHolder selectedWork) {
+        WorkDetailFragment workDetailFragment = new WorkDetailFragment();
+        workDetailFragment.selectedWork = selectedWork.mWork;
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction tr = fm.beginTransaction();
         ActionBar ab = getSupportActionBar();
         if (ab != null) {
-            String orderNumber = " (" + selectedOrder.mOrder.id + ")";
-            ab.setTitle(selectedOrder.orderType.getText() + orderNumber);
-            ab.setSubtitle(selectedOrder.orderDate.getText() + " " + selectedOrder.orderTime.getText());
+            String workNumber = " (" + selectedWork.mWork.id + ")";
+            ab.setTitle(selectedWork.workType.getText() + workNumber);
+            ab.setSubtitle(selectedWork.workDate.getText() + " " + selectedWork.workTime.getText());
         }
-        tr.replace(R.id.ordersListContainer, orderDetailFragment).addToBackStack("");
+        tr.replace(R.id.worksListContainer, workDetailFragment).addToBackStack("");
         tr.commit();
     }
 
     @Override
-    public void onListFragmentInteraction(MyOrderRecyclerViewAdapter.OrderViewHolder order) {
-        Fragment activeFragment = getSupportFragmentManager().findFragmentById(R.id.ordersListContainer);
-        if (activeFragment instanceof OrderFragment && ((OrderFragment)activeFragment).shouldShowMyOrders) {
-            showOrderDetails(order);
+    public void onListFragmentInteraction(MyWorkRecyclerViewAdapter.WorkViewHolder work) {
+        Fragment activeFragment = getSupportFragmentManager().findFragmentById(R.id.worksListContainer);
+        if (activeFragment instanceof WorkFragment && ((WorkFragment)activeFragment).shouldShowMyWorks) {
+            showWorkDetails(work);
         }
     }
 }
