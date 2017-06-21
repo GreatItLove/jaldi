@@ -19,7 +19,7 @@
             android:textAllCaps="false"
             android:textSize="@dimen/details_status_text_size"
             android:textColor="@color/colorWhite"
-            android:background="@drawable/status_btn_bg"
+            android:background="@color/colorBlue"
             android:id="@+id/detailsNextStatusButton"
             android:text="@string/status_en_route"/>
 

@@ -5,6 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorBlue">#49b0ce</color>
+
     <color name="takeWorkBtnColor">#FFFAC81B</color>
     <color name="status_tidying_up">#49b0ce</color>
     <color name="status_finished">#76ce67</color>
