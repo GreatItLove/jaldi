@@ -23,6 +23,7 @@
     <dimen name="work_icon_size">59dp</dimen>
     <dimen name="details_status_container_height">75dp</dimen>
     <dimen name="details_status_text_size">20sp</dimen>
+    <dimen name="details_status_button_padding">10dp</dimen>
     <dimen name="details_work_icon_size">37dp</dimen>
     <dimen name="details_work_icon_start_margin">13dp</dimen>
     <dimen name="details_work_icon_end_margin">8dp</dimen>

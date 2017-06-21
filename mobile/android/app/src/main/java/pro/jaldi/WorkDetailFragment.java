@@ -121,11 +121,14 @@ public class WorkDetailFragment extends Fragment implements OnMapReadyCallback, 
         if (workCurrentStatus.equals("CANCELED")) {
             nextStatusBtn.setText(R.string.status_canceled);
             nextStatusBtn.setEnabled(false);
+            nextStatusBtn.setTextColor(getContext().getResources().getColor(R.color.colorBlack));
+        } else if (workCurrentStatus.equals("FINISHED")) {
+            nextStatusBtn.setText(R.string.status_finished);
+            nextStatusBtn.setEnabled(false);
+            nextStatusBtn.setTextColor(getContext().getResources().getColor(R.color.colorBlack));
         } else {
             nextStatusBtn.setText(getWorkStatus());
-        }
-        if (workCurrentStatus.equals("FINISHED")) {
-            nextStatusBtn.setEnabled(false);
+            nextStatusBtn.setTextColor(getContext().getResources().getColor(R.color.colorWhite));
         }
 
         TextView commentTextView = (TextView) contentView.findViewById(R.id.detailsComment);
@@ -287,6 +290,8 @@ public class WorkDetailFragment extends Fragment implements OnMapReadyCallback, 
         if (indexOfNextStatus == statusVarians.length - 1) {
             // the last status.
             nextStatusBtn.setEnabled(false);
+            nextStatusBtn.setText(R.string.status_finished);
+            nextStatusBtn.setTextColor(getContext().getResources().getColor(R.color.colorBlack));
         }
         workCurrentStatus = statusVarians[indexOfNextStatus];
         nextStatusBtn.setText(getWorkStatus());
@@ -359,7 +364,7 @@ public class WorkDetailFragment extends Fragment implements OnMapReadyCallback, 
                 resId = R.string.status_tidying_up;
                 break;
             case "TIDYING_UP":
-                resId = R.string.status_finished;
+                resId = R.string.status_finish;
                 break;
             case "FINISHED":
                 resId = R.string.status_finished;

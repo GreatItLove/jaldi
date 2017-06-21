@@ -47,7 +47,8 @@
     <string name="status_en_route">En Route</string>
     <string name="status_working">Working</string>
     <string name="status_tidying_up">Tidying Up</string>
-    <string name="status_finished">Finish</string>
+    <string name="status_finish">Finish</string>
+    <string name="status_finished">Finished</string>
     <string name="status_canceled">Canceled</string>
 
     <string name="status_update_invalid">Invalid status.</string>

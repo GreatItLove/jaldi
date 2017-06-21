@@ -18,8 +18,10 @@
             android:layout_centerHorizontal="true"
             android:textAllCaps="false"
             android:textSize="@dimen/details_status_text_size"
+            android:paddingStart="@dimen/details_status_button_padding"
+            android:paddingEnd="@dimen/details_status_button_padding"
             android:textColor="@color/colorWhite"
-            android:background="@color/colorBlue"
+            android:background="@drawable/status_button_bg_selector"
             android:id="@+id/detailsNextStatusButton"
             android:text="@string/status_en_route"/>
 
