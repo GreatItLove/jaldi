@@ -24,7 +24,7 @@ class JaldiOrderListCommentCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func configureWith(order:JaldiOrder) {
-       commentTextField.text = order.comment
+       commentTextField.text = ""
         self.configureBorder()
     }
     private func configureBorder() {

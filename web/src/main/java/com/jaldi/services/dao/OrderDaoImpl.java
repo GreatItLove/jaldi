@@ -128,6 +128,22 @@ public class OrderDaoImpl {
         }
     }
 
+    public Order update(Order order) {
+        Map namedParameters = new HashMap();
+        namedParameters.put("id", order.getId());
+        namedParameters.put("address", order.getAddress());
+        namedParameters.put("comment", order.getComment());
+        namedParameters.put("cost", order.getCost());
+        namedParameters.put("workers", order.getWorkers());
+        namedParameters.put("hours", order.getHours());
+        namedParameters.put("type", order.getType().name());
+        namedParameters.put("orderDate", order.getOrderDate());
+        namedJdbc.update("update `order` set `address` = :address, comment = :comment, cost = :cost, " +
+                "workers = :workers, hours = :hours, `type` = :type, orderDate = :orderDate " +
+                "where `id` = :id;", namedParameters);
+        return order;
+    }
+
     public void updateWorkerRating(long id, Order order) {
         Map namedParameters = new HashMap();
         namedParameters.put("userId", id);
@@ -211,9 +227,10 @@ public class OrderDaoImpl {
 
 
     public List<Order> getFreeOrders(long workerId){
-        String sql ="SELECT `id`, `type`, `status`, `workers`, `hours`, `address`, `city`, `country`, `comment`, `latitude`, `longitude`, `cost`, `paymentType`, `userRating`, `userFeedback`, `orderDate`, `userId`, `creationDate`, COUNT(`order`.`id`) as qt  FROM  `order` LEFT JOIN orderWorker ON `order`.id = orderWorker.orderId WHERE (`order`.status = 'CREATED' OR `order`.status = 'ASSIGNED') GROUP BY `order`.id HAVING `order`.workers > qt";
-        List<Order> list =   namedJdbc.query(sql, new OrderMapper());
-        return list.stream().filter(order -> checkWorkerType(order.getType(), workerId) && (order.getStatus().equals(Order.Status.CREATED) || getOrderWorkersById(order.getId(),workerId).size()== 0)).collect(Collectors.toList());
+        String sql ="SELECT `id`, `type`, `status`, `workers`, `hours`, `address`, `city`, `country`, `comment`, `latitude`, " +
+                "`longitude`, `cost`, `paymentType`, `userRating`, `userFeedback`, `orderDate`, `userId`, `creationDate`, " +
+                "(select count(workerId) from orderWorker where orderId = id) workersCount FROM `order` WHERE (`order`.status = 'CREATED' OR `order`.status = 'ASSIGNED') AND id not in (select orderId from orderWorker where workerId = 10) HAVING workersCount < workers;";
+        return namedJdbc.query(sql, new OrderMapper());
     }
 
     public List<Order> getWorkerOrders(long workerId) {

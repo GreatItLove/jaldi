@@ -219,7 +219,7 @@
             <div class="col-md-4 iphone">
             </div>
             <div class="col-md-12 text-center">
-                <a href="https://itunes.apple.com/us/app/jaldi-book-trusted-cleaners-handyman/id1247479855?ls=1&mt=8"><img class="" src="/resources/landing/img/app-store.png" height="60"></a>
+                <a href="https://itunes.apple.com/us/app/jaldi-book-trusted-cleaners-handyman/id1247479855?ls=1&mt=8" target="_blank"><img class="" src="/resources/landing/img/app-store.png" height="60"></a>
             </div>
         </div>
     </div>

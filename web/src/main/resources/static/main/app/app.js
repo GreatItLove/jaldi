@@ -69,8 +69,6 @@ var jaldi = angular
                 name: 'PLUMBER', label: 'Plumber'
             }, {
                 name: 'AC_TECHNICAL', label: 'AC Technical'
-            }, {
-                name: null, label: 'All'
             }]
         },
 
