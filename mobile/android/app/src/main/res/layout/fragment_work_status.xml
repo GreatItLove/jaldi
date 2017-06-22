@@ -1,0 +1,98 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="@dimen/work_status_circle_size"
+    tools:context="pro.jaldi.WorkStatusFragment">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/enRouteCircleLayout"
+        android:orientation="vertical"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:id="@+id/enRouteCircleContainer"
+            android:layout_gravity="center_horizontal"
+            android:text="1"
+            android:layout_width="@dimen/work_status_circle_size"
+            android:layout_height="@dimen/work_status_circle_size"
+            android:background="@drawable/status_circle_container"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/enRouteTitle"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/status_en_route"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/workingCircleLayout"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/work_status_circle_margin"
+        android:layout_toEndOf="@+id/enRouteCircleLayout">
+
+        <TextView
+            android:layout_width="@dimen/work_status_circle_size"
+            android:layout_height="@dimen/work_status_circle_size"
+            android:id="@+id/workingCircleContainer"
+            android:layout_gravity="center_horizontal"
+            android:text="2"
+            android:background="@drawable/status_circle_container"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/workingTitle"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/status_en_route"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tidyingUpCircleLayout"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/work_status_circle_margin"
+        android:layout_toEndOf="@+id/workingCircleLayout">
+        <TextView
+            android:layout_width="@dimen/work_status_circle_size"
+            android:layout_height="@dimen/work_status_circle_size"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/tidyingUpCircleContainer"
+            android:text="3"
+            android:background="@drawable/status_circle_container"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tidyingUpTitle"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/status_en_route"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/finishCircleLayout"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/work_status_circle_margin"
+        android:layout_toEndOf="@+id/tidyingUpCircleLayout">
+        <TextView
+            android:layout_width="@dimen/work_status_circle_size"
+            android:layout_height="@dimen/work_status_circle_size"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/finishCircleContainer"
+            android:text="4"
+            android:background="@drawable/status_circle_container"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/finishTitle"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/status_en_route"/>
+    </LinearLayout>
+
+</RelativeLayout>
