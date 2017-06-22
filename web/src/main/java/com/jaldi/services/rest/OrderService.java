@@ -5,6 +5,7 @@ import com.jaldi.services.common.Util;
 import com.jaldi.services.common.security.CustomAuthenticationToken;
 import com.jaldi.services.dao.OrderDaoImpl;
 import com.jaldi.services.dao.UserDaoImpl;
+import com.jaldi.services.dao.WorkerDaoImpl;
 import com.jaldi.services.model.Order;
 import com.jaldi.services.model.User;
 import com.jaldi.services.model.Worker;
@@ -44,6 +45,9 @@ public class OrderService {
 
     @Autowired
     private UserDaoImpl userDao;
+
+    @Autowired
+    private WorkerDaoImpl workerDao;
 
     @Autowired
     private PushNotificationService pushNotificationService;
@@ -193,6 +197,7 @@ public class OrderService {
         if (currentUser.getType() != User.Type.WORKER) {
             return Collections.emptyList();
         }
+        workerDao.findOne(currentUser.getId());
         return orderDao.getFreeOrders(currentUser.getId());
     }
 
