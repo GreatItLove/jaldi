@@ -106,6 +106,7 @@ public class MyWorkRecyclerViewAdapter extends RecyclerView.Adapter<MyWorkRecycl
                         @Override
                         public void run() {
                             source.setSelected(true);
+                            source.setEnabled(false);
                             source.setText(R.string.work_taken_button);
                         }
                     });

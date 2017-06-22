@@ -1,11 +1,13 @@
 package pro.jaldi;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.AppCompatButton;
 import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
@@ -256,7 +258,7 @@ public class WorkDetailFragment extends Fragment implements OnMapReadyCallback, 
                 messageUser();
                 break;
             case R.id.detailsCancel:
-                cancelWork();
+                handleCancelWorkClicked();
                 break;
             case R.id.detailsAddressValue:
                 handleAddressClicked();
@@ -404,6 +406,19 @@ public class WorkDetailFragment extends Fragment implements OnMapReadyCallback, 
         }
     }
 
+    private void handleCancelWorkClicked() {
+        new AlertDialog.Builder(getContext())
+                .setTitle(R.string.cancel_work_confirmation_title)
+                .setMessage(R.string.cancel_work_confirmation_message)
+                .setPositiveButton(R.string.alert_yes_button, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        cancelWork();
+                    }})
+                .setNegativeButton(R.string.alert_no_button, null).show();
+
+    }
+
     private void cancelWork() {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         String URL = SERVER_API_URL + "rest/order/cancelWork/" + selectedWork.id;
@@ -445,7 +460,7 @@ public class WorkDetailFragment extends Fragment implements OnMapReadyCallback, 
     }
 
     private void handleWorkCanceled() {
-        Log.d("MYLOG", "Order has been canceled successfuly.");
         Toast.makeText(getContext(), R.string.toast_details_cancel_successful, Toast.LENGTH_LONG).show();
+        getActivity().onBackPressed();
     }
 }

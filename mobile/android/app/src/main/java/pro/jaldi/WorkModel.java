@@ -29,10 +29,8 @@ public class WorkModel {
     String userFeedback;//": null,
     ProfileModel user;//":{
     List<ProfileModel> workersList;
-    long workDate;//": 1496253600000,
+    long orderDate;//": 1496253600000,
     long creationDate;//": 1496235815000,
-//            "formattedOrderDate": "31/05/2017 18:00",
-//            "formattedCreationDate": "31/05/2017 13:03"
 
 
     Context mContext;
@@ -162,7 +160,7 @@ public class WorkModel {
     String getDate() {
         String date = mContext.getString(R.string.not_available);
         if (creationDate != 0) {
-            Date creationDate = new Date(workDate);
+            Date creationDate = new Date(orderDate);
             date = new SimpleDateFormat("dd MMM yyyy").format(creationDate);
         }
         return date;
@@ -172,9 +170,9 @@ public class WorkModel {
         String time = mContext.getString(R.string.not_available);
         if (creationDate != 0) {
             final long HOUR = 3600*1000;
-            Date creationDate = new Date(workDate);
+            Date creationDate = new Date(orderDate);
             String startTime = new SimpleDateFormat("hh:mm a").format(creationDate);
-            Date endDate = new Date(workDate + hours * HOUR);
+            Date endDate = new Date(orderDate + hours * HOUR);
             String endTime = new SimpleDateFormat("hh:mm a").format(endDate);
             time = startTime + " - " + endTime;
         }

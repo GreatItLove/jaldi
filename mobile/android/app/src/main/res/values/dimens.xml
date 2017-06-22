@@ -49,4 +49,7 @@
     <dimen name="details_comment_max_height">170dp</dimen>
     <dimen name="details_comment_vertical_margin">2dp</dimen>
 
+    <dimen name="work_status_circle_size">35dp</dimen>
+    <dimen name="work_status_circle_margin">35dp</dimen>
+
 </resources>
