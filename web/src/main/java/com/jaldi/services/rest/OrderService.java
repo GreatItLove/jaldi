@@ -197,8 +197,8 @@ public class OrderService {
         if (currentUser.getType() != User.Type.WORKER) {
             return Collections.emptyList();
         }
-        workerDao.findOne(currentUser.getId());
-        return orderDao.getFreeOrders(currentUser.getId());
+        Worker worker = workerDao.findOne(currentUser.getId());
+        return orderDao.getFreeOrders(worker);
     }
 
     @RequestMapping(value = "/workerOrders", method = RequestMethod.GET)

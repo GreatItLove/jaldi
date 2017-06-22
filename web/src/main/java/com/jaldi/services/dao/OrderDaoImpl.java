@@ -226,12 +226,12 @@ public class OrderDaoImpl {
     }
 
 
-    public List<Order> getFreeOrders(long workerId){
+    public List<Order> getFreeOrders(Worker worker){
         String sql ="SELECT `id`, `type`, `status`, `workers`, `hours`, `address`, `city`, `country`, `comment`, `latitude`, " +
                 "`longitude`, `cost`, `paymentType`, `userRating`, `userFeedback`, `orderDate`, `userId`, `creationDate`, " +
-                "(select count(workerId) from orderWorker where orderId = id) workersCount FROM `order` WHERE (`order`.status = 'CREATED' OR `order`.status = 'ASSIGNED') AND id not in (select orderId from orderWorker where workerId = ?) HAVING workersCount < workers;";
+                "(select count(workerId) from orderWorker where orderId = id) workersCount FROM `order` WHERE (`order`.status = 'CREATED' OR `order`.status = 'ASSIGNED') AND id not in (select orderId from orderWorker where workerId = :workerId) HAVING workersCount < workers;";
         Map namedParameters = new HashMap();
-        namedParameters.put("workerId", workerId);
+        namedParameters.put("workerId", worker.getUser().getId());
         return namedJdbc.query(sql, namedParameters, new OrderMapper());
     }
 
