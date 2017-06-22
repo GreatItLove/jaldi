@@ -4,6 +4,10 @@ angular.module('jaldi.controllers')
     function ($rootScope, $scope, $log, $filter, $state, utils, $uibModal, Order, NgTableParams) {
 
         $scope.resultPerPage = 25;
+        $scope.orderTypes = angular.copy($rootScope.dictionaries.orderTypes);
+        $scope.orderTypes.push({
+            name: null, label: 'All'
+        });
         $scope.tableData = [];
         $scope.filterData = {
             status: 'CREATED',
@@ -11,8 +15,9 @@ angular.module('jaldi.controllers')
         };
         $scope.selectedItem = null;
 
+        $scope.intervalPromise;
         $scope.init = function() {
-            setInterval(function(){
+            $scope.intervalPromise = setInterval(function(){
                 $scope.tableParams.reload();
             }, 60000)
         };
@@ -38,7 +43,7 @@ angular.module('jaldi.controllers')
             }
         });
 
-        $scope.addEditWorker = function(selectedItem) {
+        $scope.updateOrder = function(selectedItem) {
             var modalTemplate = './resources/main/app/orders/update-order.html?t=' + new Date();
             $uibModal.open({
                 windowClass: 'modal',
@@ -46,10 +51,10 @@ angular.module('jaldi.controllers')
                 backdrop: 'static',
                 controller: function($scope, $uibModalInstance) {
                     $scope.orderData = {};
-                    var order = new Worker({id:selectedItem});
+                    var order = new Order({id:selectedItem});
                     order.$get({},function(data){
                         $scope.orderData = data;
-                        console.log(data);
+                        $scope.orderData.dateTimeLocal = new Date($scope.orderData.orderDate);
                     }, function(failedResponse){
                         //on failure
                     });
@@ -57,7 +62,20 @@ angular.module('jaldi.controllers')
                         $uibModalInstance.dismiss();
                     };
                     $scope.save = function() {
-
+                        if ($scope.orderForm.$invalid) {
+                            $scope.submitted = true;
+                            return;
+                        }
+                        var submitData = $scope.orderData;
+                        submitData.orderDate = new Date($scope.orderData.dateTimeLocal).getTime();
+                        submitData.formattedOrderDate = undefined;
+                        console.log(submitData);
+                        var order = new Order(submitData);
+                        order.$update({id:selectedItem}, function () {
+                            $uibModalInstance.close('success');
+                        }, function (failedResponse) {
+                            //on failure
+                        });
                     };
                 }
             }).result.then(function(result) {
@@ -115,12 +133,17 @@ angular.module('jaldi.controllers')
             $scope.tableParams.reload();
         };
 
-        $scope.showWarning = function(orderDate) {
-            return new Date().getTime() + 3600 * 1000 > orderDate;
+        $scope.showWarning = function(item) {
+            return new Date().getTime() + 3600 * 1000 > item.orderDate && item.status == 'CREATED';
         };
 
-        $scope.showDanger = function(orderDate) {
-            return new Date().getTime() + 1800 * 1000 > orderDate;
-        }
+        $scope.showDanger = function(item) {
+            return new Date().getTime() + 1800 * 1000 > item.orderDate && item.status == 'CREATED';
+        };
+
+        $scope.$on('$destroy',function(){
+            if($scope.intervalPromise)
+                $interval.cancel($scope.intervalPromise);
+        });
     }
 ]);

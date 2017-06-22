@@ -71,11 +71,10 @@ public class OrderService {
 
     }
 
-    @GetMapping("/my")
-    public List<Order> getMy() {
-        CustomAuthenticationToken token = (CustomAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
-        User currentUser = token.getUser();
-        return orderDao.findForUserPartial(currentUser.getId());
+    @RequestMapping(value="/{id}", method=RequestMethod.PUT)
+    @PreAuthorize("hasAnyAuthority('OPERATOR', 'ADMIN')")
+    public Order update(@RequestBody Order order) {
+        return orderDao.update(order);
     }
 
     @RequestMapping(method= RequestMethod.POST)
@@ -86,6 +85,13 @@ public class OrderService {
         order.setUser(currentUser);
         Order newolder = orderDao.create(order);
         return newolder;
+    }
+
+    @GetMapping("/my")
+    public List<Order> getMy() {
+        CustomAuthenticationToken token = (CustomAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+        User currentUser = token.getUser();
+        return orderDao.findForUserPartial(currentUser.getId());
     }
 
     @RequestMapping(value="/cancel/{id}", method=RequestMethod.PUT)

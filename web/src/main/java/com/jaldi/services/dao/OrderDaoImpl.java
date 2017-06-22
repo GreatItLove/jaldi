@@ -128,6 +128,22 @@ public class OrderDaoImpl {
         }
     }
 
+    public Order update(Order order) {
+        Map namedParameters = new HashMap();
+        namedParameters.put("id", order.getId());
+        namedParameters.put("address", order.getAddress());
+        namedParameters.put("comment", order.getComment());
+        namedParameters.put("cost", order.getCost());
+        namedParameters.put("workers", order.getWorkers());
+        namedParameters.put("hours", order.getHours());
+        namedParameters.put("type", order.getType().name());
+        namedParameters.put("orderDate", order.getOrderDate());
+        namedJdbc.update("update `order` set `address` = :address, comment = :comment, cost = :cost, " +
+                "workers = :workers, hours = :hours, `type` = :type, orderDate = :orderDate " +
+                "where `id` = :id;", namedParameters);
+        return order;
+    }
+
     public void updateWorkerRating(long id, Order order) {
         Map namedParameters = new HashMap();
         namedParameters.put("userId", id);

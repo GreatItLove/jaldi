@@ -12,7 +12,7 @@
                                 <label for="type" class="control-label">Type</label>
                                 <div class="">
                                     <select id="type" ng-model="filterData.type" ng-change="reload()" class="form-control" name="type"
-                                            ng-options="type.name as type.label for type in $root.dictionaries.orderTypes">
+                                            ng-options="type.name as type.label for type in orderTypes">
                                     </select>
                                 </div>
                             </div>
@@ -32,7 +32,7 @@
                 <div class="card-title">
                     <div class="row">
                         <div class="col-md-6">
-                            <button type="button" ng-show="selectedItem" class="btn btn-warning" ng-click="addEditWorker(selectedItem)">Update order</button>
+                            <button type="button" ng-show="selectedItem" class="btn btn-warning" ng-click="updateOrder(selectedItem)">Update order</button>
                             <button type="button" ng-show="selectedItem" class="btn btn-danger" ng-click="cancelOrder(selectedItem)">Cancel order</button>
                         </div>
                         <div class="col-md-6">
@@ -47,8 +47,8 @@
                     <table ng-table="tableParams" show-filter="false" class="table table-striped table-bordered table-hover">
                         <tbody>
                         <tr ng-repeat="item in $data | filter : filterInput" ng-click="selectItem(item.id)"
-                            ng-class="{'table-warning': showWarning(item.orderDate) && item.id != selectedItem,
-                                'table-danger': showDanger(item.orderDate) && item.id != selectedItem,
+                            ng-class="{'table-warning': showWarning(item) && item.id != selectedItem,
+                                'table-danger': showDanger(item) && item.id != selectedItem,
                                 'table-info': item.id == selectedItem}">
                             <td data-title="'Type'" sortable="'type'" class="text-center">
                                 <strong>
