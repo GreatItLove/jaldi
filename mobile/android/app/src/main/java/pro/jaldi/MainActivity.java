@@ -254,7 +254,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void showFindWork() {
-        WorkFragment workFragment = new WorkFragment();
+        WorkContainerFragment workFragment = new WorkContainerFragment();
         workFragment.shouldShowMyWorks = false;
         FragmentManager fm = getSupportFragmentManager();
         fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
@@ -269,7 +269,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void showMyWorks() {
-        WorkFragment workFragment = new WorkFragment();
+        WorkContainerFragment workFragment = new WorkContainerFragment();
         workFragment.shouldShowMyWorks = true;
         FragmentManager fm = getSupportFragmentManager();
         fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
@@ -295,8 +295,8 @@ public class MainActivity extends AppCompatActivity
             return;
         }
         Fragment activeFragment = getSupportFragmentManager().findFragmentById(R.id.worksListContainer);
-        if (activeFragment instanceof WorkFragment) {
-            if (((WorkFragment)activeFragment).shouldShowMyWorks) {
+        if (activeFragment instanceof WorkContainerFragment) {
+            if (((WorkContainerFragment)activeFragment).shouldShowMyWorks) {
                 ab.setTitle(R.string.action_bar_title_my_works);
                 ab.setSubtitle(null);
             } else {
@@ -335,7 +335,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onListFragmentInteraction(MyWorkRecyclerViewAdapter.WorkViewHolder work) {
         Fragment activeFragment = getSupportFragmentManager().findFragmentById(R.id.worksListContainer);
-        if (activeFragment instanceof WorkFragment && ((WorkFragment)activeFragment).shouldShowMyWorks) {
+        if (activeFragment instanceof WorkContainerFragment && ((WorkContainerFragment)activeFragment).shouldShowMyWorks) {
             showWorkDetails(work);
         }
     }

@@ -1,0 +1,32 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="pro.jaldi.WorkContainerFragment">
+
+    <!--<fragment xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--xmlns:tools="http://schemas.android.com/tools"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:id="@+id/workStatus"-->
+        <!--android:name="pro.jaldi.WorkFragment" />-->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listContainer">
+
+    </FrameLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/no_more_works"
+        android:id="@+id/placeholderView"
+        android:layout_marginStart="@dimen/empty_list_placeholder_margin_start"
+        android:layout_marginTop="@dimen/empty_list_placeholder_margin_top"
+        android:layout_marginEnd="@dimen/empty_list_placeholder_margin_end"
+        android:textSize="@dimen/empty_list_placeholder_text_size"
+        android:visibility="gone"
+        />
+
+</RelativeLayout>

@@ -55,7 +55,7 @@ public class MyWorkRecyclerViewAdapter extends RecyclerView.Adapter<MyWorkRecycl
         mListener = listener;
     }
 
-    public void setWorkssList(List<WorkModel> workModels) {
+    public void setWorksList(List<WorkModel> workModels) {
         this.mWorkModels = workModels;
         for (WorkModel workModel : this.mWorkModels) {
             workModel.mContext = this.mContext;
