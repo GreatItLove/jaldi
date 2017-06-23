@@ -80,6 +80,7 @@
                                 <strong>
                                     <span class="badge badge-info" ng-if="item.status == 'CREATED'">Created</span>
                                     <span class="badge badge-danger" ng-if="item.status == 'CANCELED'">Canceled</span>
+                                    <span class="badge badge-success" ng-if="item.status != 'CANCELED' && item.status != 'CREATED'"><span ng-bind="utils.getOrderStatusLabel(item.status)"></span></span>
                                 </strong>
                             </td>
                         </tr>

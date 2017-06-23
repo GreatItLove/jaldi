@@ -51,6 +51,16 @@ var jaldi = angular
             orderStatuses: [{
                 name: 'CREATED', label: 'Created'
             }, {
+                name: 'ASSIGNED', label: 'Assigned'
+            }, {
+                name: 'EN_ROUTE', label: 'En route'
+            }, {
+                name: 'WORKING', label: 'Working'
+            }, {
+                name: 'TIDYING_UP', label: 'Tidying up'
+            }, {
+                name: 'FINISHED', label: 'Finished'
+            }, {
                 name: 'CANCELED', label: 'Canceled'
             }, {
                 name: null, label: 'All'

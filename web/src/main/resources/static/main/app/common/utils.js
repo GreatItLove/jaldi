@@ -43,6 +43,20 @@ angular.module('jaldi.utils', [])
             }
             return result;
         },
+        getOrderStatusLabel: function(status) {
+            var result;
+            switch(status) {
+                case 'TIDYING_UP':
+                    result = 'Tidying up';
+                    break;
+                case 'EN_ROUTE':
+                    result = 'En route';
+                    break;
+                default:
+                    result = utils.capitalizeFirstLetter(status.toLowerCase());
+            }
+            return result;
+        },
         capitalizeFirstLetter: function (string) {
             return string.charAt(0).toUpperCase() + string.slice(1);
         }
