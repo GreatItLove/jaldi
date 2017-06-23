@@ -6,32 +6,34 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/details_status_container_height"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:background="@color/colorWhite"
         android:id="@+id/workDetailsStatusContainer">
 
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:id="@+id/workStatus"
+            android:name="pro.jaldi.WorkStatusFragment" />
+
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/work_status_button_height"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:textAllCaps="false"
             android:textSize="@dimen/details_status_text_size"
             android:paddingStart="@dimen/details_status_button_padding"
+            android:layout_below="@+id/workStatus"
+            android:layout_marginBottom="@dimen/work_status_button_bottom_margin"
             android:paddingEnd="@dimen/details_status_button_padding"
             android:textColor="@color/colorWhite"
             android:background="@drawable/status_button_bg_selector"
             android:id="@+id/detailsNextStatusButton"
             android:text="@string/status_en_route"/>
-
-        <!--<fragment xmlns:android="http://schemas.android.com/apk/res/android"-->
-            <!--xmlns:tools="http://schemas.android.com/tools"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:id="@+id/workStatus"-->
-            <!--android:name="pro.jaldi.WorkStatusFragment" />-->
-
 
     </RelativeLayout>
 

@@ -22,7 +22,7 @@
     <dimen name="work_date_top_margin">5dp</dimen>
     <dimen name="work_icon_size">59dp</dimen>
     <dimen name="details_status_container_height">75dp</dimen>
-    <dimen name="details_status_text_size">20sp</dimen>
+    <dimen name="details_status_text_size">17sp</dimen>
     <dimen name="details_status_button_padding">10dp</dimen>
     <dimen name="details_work_icon_size">37dp</dimen>
     <dimen name="details_work_icon_start_margin">13dp</dimen>
@@ -53,7 +53,16 @@
     <dimen name="details_comment_max_height">170dp</dimen>
     <dimen name="details_comment_vertical_margin">2dp</dimen>
 
-    <dimen name="work_status_circle_size">35dp</dimen>
-    <dimen name="work_status_circle_margin">35dp</dimen>
+    <dimen name="work_status_circle_size">36dp</dimen>
+    <dimen name="work_status_circle_half_size">18dp</dimen>
+    <dimen name="work_status_item_size">86dp</dimen>
+    <dimen name="work_status_item_half_size">43dp</dimen>
+    <dimen name="work_status_item_top_margin">11dp</dimen>
+    <dimen name="work_status_item_bottom_margin">15dp</dimen>
+    <dimen name="work_status_button_bottom_margin">13dp</dimen>
+    <dimen name="work_status_button_height">30dp</dimen>
+
+    <dimen name="work_status_circle_margin">1dp</dimen>
+    <dimen name="work_status_circle_stroke_padding">5dp</dimen>
 
 </resources>

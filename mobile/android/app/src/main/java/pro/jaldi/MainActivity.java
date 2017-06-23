@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        showFindWork();
+        showMyWorks();
         navigationView.setCheckedItem(R.id.findWork);
         View header = navigationView.getHeaderView(0);
         ImageView profileImageView = (ImageView) header.findViewById(R.id.profileImageView);

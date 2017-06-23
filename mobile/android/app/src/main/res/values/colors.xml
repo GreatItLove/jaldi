@@ -19,8 +19,9 @@
     <color name="status_canceled">#76ce67</color>
 
 
-    <color name="status_circle_container">#ececec</color>
+    <color name="status_circle_container">#b4b4b4</color>
     <color name="status_circle_passed">#76ce67</color>
+    <color name="status_button_pressed">#67a65c</color>
     <color name="status_circle_in_progress">#49b0ce</color>
     <color name="status_circle_pending">#b4b4b4</color>
 
