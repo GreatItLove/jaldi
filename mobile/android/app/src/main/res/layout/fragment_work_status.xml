@@ -34,11 +34,12 @@
                 android:layout_gravity="center_horizontal"
                 android:text="1"
                 android:textColor="@color/colorWhite"
+                android:enabled="false"
                 android:gravity="center"
                 android:textAlignment="center"
                 android:layout_width="@dimen/work_status_circle_size"
                 android:layout_height="@dimen/work_status_circle_size"
-                android:background="@drawable/status_circle_container"/>
+                android:background="@drawable/status_item_selector"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -64,8 +65,9 @@
                 android:text="2"
                 android:textColor="@color/colorWhite"
                 android:gravity="center"
+                android:enabled="false"
                 android:textAlignment="center"
-                android:background="@drawable/status_circle_container"/>
+                android:background="@drawable/status_item_selector"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -87,10 +89,11 @@
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/tidyingUpCircleContainer"
                 android:text="3"
+                android:enabled="false"
                 android:textColor="@color/colorWhite"
                 android:gravity="center"
                 android:textAlignment="center"
-                android:background="@drawable/status_circle_container"/>
+                android:background="@drawable/status_item_selector"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -112,10 +115,11 @@
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/finishCircleContainer"
                 android:text="4"
+                android:enabled="false"
                 android:textColor="@color/colorWhite"
                 android:gravity="center"
                 android:textAlignment="center"
-                android:background="@drawable/status_circle_container"/>
+                android:background="@drawable/status_item_selector"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

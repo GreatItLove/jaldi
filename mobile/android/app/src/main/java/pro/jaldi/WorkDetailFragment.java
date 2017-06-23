@@ -49,6 +49,11 @@ import java.util.Map;
 import static pro.jaldi.LoginActivity.LOGIN_TOKEN_KEY;
 import static pro.jaldi.LoginActivity.SERVER_API_URL;
 import static pro.jaldi.LoginActivity.getAuthToken;
+import static pro.jaldi.WorkStatusFragment.WorkStatus.STATUS_ASSIGNED;
+import static pro.jaldi.WorkStatusFragment.WorkStatus.STATUS_EN_ROUTE;
+import static pro.jaldi.WorkStatusFragment.WorkStatus.STATUS_FINISHED;
+import static pro.jaldi.WorkStatusFragment.WorkStatus.STATUS_TIDYING_UP;
+import static pro.jaldi.WorkStatusFragment.WorkStatus.STATUS_WORKING;
 
 
 public class WorkDetailFragment extends Fragment implements OnMapReadyCallback, View.OnClickListener {
@@ -58,7 +63,7 @@ public class WorkDetailFragment extends Fragment implements OnMapReadyCallback, 
     private Button nextStatusBtn;
     private static final float MAP_DEFAULT_LOCATION_ZOOM = 6.0f;
     private static final float MAP_USER_LOCATION_ZOOM = 15.0f;
-
+    private WorkStatusFragment statusFragment;
     private boolean isCommentTextScrolling = false;
     public WorkDetailFragment() {
         // Required empty public constructor
@@ -79,8 +84,7 @@ public class WorkDetailFragment extends Fragment implements OnMapReadyCallback, 
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-
+        statusFragment = (WorkStatusFragment) getChildFragmentManager().findFragmentById(R.id.workStatus);
         ImageView workTypeIcon = (ImageView) contentView.findViewById(R.id.detailsWorkIcon);
         WorkModel.WorkTypeModel workTypeModel = selectedWork.getWorkTypeModel();
         workTypeIcon.setImageResource(workTypeModel.imageResId);
@@ -127,6 +131,7 @@ public class WorkDetailFragment extends Fragment implements OnMapReadyCallback, 
         } else if (workCurrentStatus.equals("FINISHED")) {
             nextStatusBtn.setText(R.string.status_finished);
             nextStatusBtn.setEnabled(false);
+            statusFragment.setCurrentStatus(STATUS_FINISHED);
             nextStatusBtn.setTextColor(getContext().getResources().getColor(R.color.colorBlack));
         } else {
             nextStatusBtn.setText(getWorkStatus());
@@ -294,6 +299,7 @@ public class WorkDetailFragment extends Fragment implements OnMapReadyCallback, 
             nextStatusBtn.setEnabled(false);
             nextStatusBtn.setText(R.string.status_finished);
             nextStatusBtn.setTextColor(getContext().getResources().getColor(R.color.colorBlack));
+            statusFragment.setCurrentStatus(STATUS_FINISHED);
         }
         workCurrentStatus = statusVarians[indexOfNextStatus];
         nextStatusBtn.setText(getWorkStatus());
@@ -357,19 +363,27 @@ public class WorkDetailFragment extends Fragment implements OnMapReadyCallback, 
     }
 
     private String getWorkStatus() {
-        int resId = R.string.status_en_route;
+        int resId;
         switch (workCurrentStatus) {
             case "EN_ROUTE":
-               resId = R.string.status_working;
+                resId = R.string.status_working;
+                statusFragment.setCurrentStatus(STATUS_EN_ROUTE);
                 break;
             case "WORKING":
                 resId = R.string.status_tidying_up;
+                statusFragment.setCurrentStatus(STATUS_WORKING);
                 break;
             case "TIDYING_UP":
                 resId = R.string.status_finish;
+                statusFragment.setCurrentStatus(STATUS_TIDYING_UP);
                 break;
             case "FINISHED":
                 resId = R.string.status_finished;
+                statusFragment.setCurrentStatus(STATUS_FINISHED);
+                break;
+            default:
+                resId = R.string.status_en_route;
+                statusFragment.setCurrentStatus(STATUS_ASSIGNED);
                 break;
         }
         return getContext().getString(resId);
