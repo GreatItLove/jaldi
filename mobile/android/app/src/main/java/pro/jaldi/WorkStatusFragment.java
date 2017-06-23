@@ -106,7 +106,7 @@ public class WorkStatusFragment extends Fragment {
 
                 break;
             case STATUS_WORKING:
-                firstItem.setText("V");
+                firstItem.setText("✓");
                 secondItem.setText("2");
                 thirdItem.setText("3");
                 fourthItem.setText("4");
@@ -128,8 +128,8 @@ public class WorkStatusFragment extends Fragment {
 
                 break;
             case STATUS_TIDYING_UP:
-                firstItem.setText("V");
-                secondItem.setText("V");
+                firstItem.setText("✓");
+                secondItem.setText("✓");
                 thirdItem.setText("3");
                 fourthItem.setText("4");
 
@@ -150,10 +150,10 @@ public class WorkStatusFragment extends Fragment {
 
                 break;
             case STATUS_FINISHED:
-                firstItem.setText("V");
-                secondItem.setText("V");
-                thirdItem.setText("V");
-                fourthItem.setText("V");
+                firstItem.setText("✓");
+                secondItem.setText("✓");
+                thirdItem.setText("✓");
+                fourthItem.setText("✓");
 
                 firstItem.setEnabled(true);
                 secondItem.setEnabled(true);

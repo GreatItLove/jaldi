@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_selected="true"
+        android:drawable="@drawable/status_circle_selected" />
+    <item android:state_enabled="true"
+        android:drawable="@drawable/status_circle_enabled" />
+    <item android:drawable="@drawable/status_circle_normal"
+        />
+
+</selector>
