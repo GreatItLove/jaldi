@@ -229,9 +229,10 @@ public class OrderDaoImpl {
     public List<Order> getFreeOrders(Worker worker){
         String sql ="SELECT `id`, `type`, `status`, `workers`, `hours`, `address`, `city`, `country`, `comment`, `latitude`, " +
                 "`longitude`, `cost`, `paymentType`, `userRating`, `userFeedback`, `orderDate`, `userId`, `creationDate`, " +
-                "(select count(workerId) from orderWorker where orderId = id) workersCount FROM `order` WHERE (`order`.status = 'CREATED' OR `order`.status = 'ASSIGNED') AND id not in (select orderId from orderWorker where workerId = :workerId) HAVING workersCount < workers ORDER BY orderDate ASC;";
+                "(select count(workerId) from orderWorker where orderId = id) workersCount FROM `order` WHERE (`order`.status = 'CREATED' OR `order`.status = 'ASSIGNED') AND id not in (select orderId from orderWorker where workerId = :workerId) and `type` IN (:types) HAVING workersCount < workers ORDER BY orderDate ASC;";
         Map namedParameters = new HashMap();
         namedParameters.put("workerId", worker.getUser().getId());
+        namedParameters.put("types", getkWorkerOrderTypes(worker));
         return namedJdbc.query(sql, namedParameters, new OrderMapper());
     }
 
@@ -241,26 +242,16 @@ public class OrderDaoImpl {
         return namedJdbc.query("SELECT `id`, `type`, `status`, `workers`, `hours`, `address`, `city`, `country`, `comment`, `latitude`, `longitude`, `cost`, `paymentType`, `userRating`, `userFeedback`, `orderDate`, `userId`, `creationDate` FROM `order` INNER JOIN orderWorker ON `order`.id = orderWorker.orderId WHERE orderWorker.workerId  = :workerId;", namedParameters, new OrderMapper());
     }
 
-    public boolean checkWorkerType(Order.Type type, long workerId) {
-        Map namedParameters = new HashMap();
-        namedParameters.put("workerId", workerId);
-        switch (type.name()) {
-            case "CLEANER":
-                return namedJdbc.queryForObject("SELECT count(*) FROM workerDetails WHERE userId = :workerId AND isCleaner = 1", namedParameters, Integer.class) > 0;
-            case "CARPENTER":
-                return namedJdbc.queryForObject("SELECT count(*) FROM workerDetails WHERE userId = :workerId AND isCarpenter = 1", namedParameters, Integer.class) > 0;
-            case "ELECTRICIAN":
-                return namedJdbc.queryForObject("SELECT count(*) FROM workerDetails WHERE userId = :workerId AND isElectrician = 1", namedParameters, Integer.class) > 0;
-            case "MASON":
-                return namedJdbc.queryForObject("SELECT count(*) FROM workerDetails WHERE userId = :workerId AND isMason = 1", namedParameters, Integer.class) > 0;
-            case "PAINTER":
-                return namedJdbc.queryForObject("SELECT count(*) FROM workerDetails WHERE userId = :workerId AND isPainter = 1", namedParameters, Integer.class) > 0;
-            case "PLUMBER":
-                return namedJdbc.queryForObject("SELECT count(*) FROM workerDetails WHERE userId = :workerId AND isPlumber = 1", namedParameters, Integer.class) > 0;
-            case "AC_TECHNICAL":
-                return namedJdbc.queryForObject("SELECT count(*) FROM workerDetails WHERE userId = :workerId AND isAcTechnical = 1", namedParameters, Integer.class) > 0;
-        }
-        return false;
+    public Set<String> getkWorkerOrderTypes(Worker worker) {
+        Set<String> types = new HashSet<>();
+        if(worker.isCleaner()) types.add(Order.Type.CLEANER.name());
+        if(worker.isElectrician()) types.add(Order.Type.ELECTRICIAN.name());
+        if(worker.isPainter()) types.add(Order.Type.PAINTER.name());
+        if(worker.isCarpenter()) types.add(Order.Type.CARPENTER.name());
+        if(worker.isPlumber()) types.add(Order.Type.PLUMBER.name());
+        if(worker.isMason()) types.add(Order.Type.MASON.name());
+        if(worker.isAcTechnical()) types.add(Order.Type.AC_TECHNICAL.name());
+        return types;
     }
 
     public void removeWorkerFromOrder(long workerId, long orderId) {

@@ -134,16 +134,18 @@ angular.module('jaldi.controllers')
         };
 
         $scope.showWarning = function(item) {
+            //less than 1 hour left
             return new Date().getTime() + 3600 * 1000 > item.orderDate && item.status == 'CREATED';
         };
 
         $scope.showDanger = function(item) {
+            //less than 30 minutes left
             return new Date().getTime() + 1800 * 1000 > item.orderDate && item.status == 'CREATED';
         };
 
         $scope.$on('$destroy',function(){
             if($scope.intervalPromise)
-                $interval.cancel($scope.intervalPromise);
+                clearInterval($scope.intervalPromise);
         });
     }
 ]);
