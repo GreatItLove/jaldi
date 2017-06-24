@@ -173,8 +173,4 @@ public class WorkStatusFragment extends Fragment {
                 break;
         }
     }
-
-
-
-
 }

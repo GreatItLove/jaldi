@@ -30,6 +30,7 @@ class JaldiOrderStateViewController: UIViewController {
         formatter.dateStyle = DateFormatter.Style.short
         return formatter
     }()
+    var timer = Timer()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,6 +40,7 @@ class JaldiOrderStateViewController: UIViewController {
         displayOrder()
         configureAppearance()
         contactWorker.addTarget(self, action: #selector(showContactAlert))
+        scheduledTimerWithTimeInterval()
     }
 
     private func displayOrder() {
@@ -70,6 +72,17 @@ class JaldiOrderStateViewController: UIViewController {
 //        let region = MKCoordinateRegionMakeWithDistance(
 //            mapView.region.center, mapView.region.span.latitudeDelta, mapView.region.span.longitudeDelta)
 //        mapView.setRegion(region, animated: true)
+    }
+    
+    func scheduledTimerWithTimeInterval(){
+        timer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(self.timerUpdate), userInfo: nil, repeats: true)
+    }
+    
+    func timerUpdate() {
+        guard let orderId = order?.orderId else {
+            return
+        }
+        self.reloadOrderData(orderId: orderId)
     }
     
     private func addOrderPin() {
@@ -249,6 +262,10 @@ class JaldiOrderStateViewController: UIViewController {
             UIApplication.shared.keyWindow?.rootViewController?.hideHud()
             print("error")
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        timer.invalidate()
     }
     
     deinit {
