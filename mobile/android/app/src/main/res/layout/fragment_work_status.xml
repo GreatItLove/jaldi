@@ -45,6 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/enRouteTitle"
+                android:textSize="@dimen/work_status_title_size"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/status_en_route"/>
         </LinearLayout>
@@ -72,6 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/workingTitle"
+                android:textSize="@dimen/work_status_title_size"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/status_working"/>
         </LinearLayout>
@@ -98,6 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tidyingUpTitle"
+                android:textSize="@dimen/work_status_title_size"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/status_tidying_up"/>
         </LinearLayout>
@@ -124,6 +127,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/finishTitle"
+                android:textSize="@dimen/work_status_title_size"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/status_finished"/>
         </LinearLayout>
