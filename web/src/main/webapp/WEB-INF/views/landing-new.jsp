@@ -329,7 +329,7 @@
                         <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;West Bay, P.O. box 19573, Zone 61, Street 831, Building 262, Doha, Qatar </a>
                 </p>
                 <p>
-                    <a href="tel:555-555-5555"><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;+974 4483 4423</a>
+                    <a href="tel:+974 5556 8546"><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;+974 5556 8546</a>
                 </p>
                 <p>
                     <a href="mailto:contact@jaldi.pro"><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;contact@jaldi.pro</a>
