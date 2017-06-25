@@ -6,11 +6,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Cache-control" content="public">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <title>Jaldi - Book your local, trusted handyman</title>
     <jsp:include page="common/meta.jsp"/>
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link  href="/resources/landing/css/open-sans.css" rel="stylesheet" type="text/css"/>
+    <link href="/resources/landing/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="/resources/landing/fonts/linearicons/style.css" rel="stylesheet" type="text/css">
     <link href="/resources/landing/fonts/jaldi/jaldi-icons.css" rel="stylesheet" type="text/css">
 
