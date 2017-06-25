@@ -42,6 +42,7 @@ import java.util.Map;
  */
 public class LoginActivity extends AppCompatActivity {
 
+    //public static final String SERVER_API_URL = "https://jaldi.pro/";
     public static final String SERVER_API_URL = "http://dev.jaldi.pro/";
     public static final String LOGIN_TOKEN_KEY = "Authorization";
     private static final String AUTH_TOKEN_KEY = "authTokenKey";
