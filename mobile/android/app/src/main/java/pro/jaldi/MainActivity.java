@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             requestLocationPermission();
         } else {
-            locationManager.requestLocationUpdates(provider, 2 * 60 * 1000/*milliseconds*/, 200/*meters*/, locationListener);
+            locationManager.requestLocationUpdates(provider, 2 * 60 * 1000/*milliseconds*/, 50/*meters*/, locationListener);
         }
     }
 
