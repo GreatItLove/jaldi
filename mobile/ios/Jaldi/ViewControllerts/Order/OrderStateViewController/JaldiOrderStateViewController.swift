@@ -51,6 +51,7 @@ class JaldiOrderStateViewController: UIViewController {
         orderStateView.configureWith(orderState: orderState)
         configureTimeLabel()
         configureTitleLabel()
+        mapView.removeAnnotations(mapView.annotations)
         self.addOrderPin()
         if orderState == .enRoute || orderState == .working || orderState == .tidyingUp {
             self.addWorkerPin()

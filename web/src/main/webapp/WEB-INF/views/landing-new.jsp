@@ -6,11 +6,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Cache-control" content="public">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <title>Jaldi - Book your local, trusted handyman</title>
     <jsp:include page="common/meta.jsp"/>
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link  href="/resources/landing/css/open-sans.css" rel="stylesheet" type="text/css"/>
+    <link href="/resources/landing/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="/resources/landing/fonts/linearicons/style.css" rel="stylesheet" type="text/css">
     <link href="/resources/landing/fonts/jaldi/jaldi-icons.css" rel="stylesheet" type="text/css">
 
@@ -328,7 +329,7 @@
                         <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;West Bay, P.O. box 19573, Zone 61, Street 831, Building 262, Doha, Qatar </a>
                 </p>
                 <p>
-                    <a href="tel:555-555-5555"><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;+974 4483 4423</a>
+                    <a href="tel:+974 5556 8546"><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;+974 5556 8546</a>
                 </p>
                 <p>
                     <a href="mailto:contact@jaldi.pro"><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;contact@jaldi.pro</a>
