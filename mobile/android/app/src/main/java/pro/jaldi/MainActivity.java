@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        startLoacionUpdate();
+        startLocationUpdate();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity
         requestQueue.add(stringRequest);
     }
 
-    private void startLoacionUpdate() {
+    private void startLocationUpdate() {
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         android.location.LocationListener locationListener = new android.location.LocationListener() {
             @Override
@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             requestLocationPermission();
         } else {
-            locationManager.requestLocationUpdates(provider, 2 * 60 * 1000/*milliseconds*/, 50/*meters*/, locationListener);
+            locationManager.requestLocationUpdates(provider, 60 * 1000/*milliseconds*/, 0/*meters*/, locationListener);
         }
     }
 
@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity
         if (requestCode == MY_PERMISSIONS_REQUEST_LOCATION) {
             if (grantResults.length > 0
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                startLoacionUpdate();
+                startLocationUpdate();
             }
         }
     }
