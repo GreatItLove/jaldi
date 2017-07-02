@@ -319,7 +319,7 @@ public class WorkDetailFragment extends Fragment implements OnMapReadyCallback, 
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("VOLLEY", error.toString());
-                Toast.makeText(getContext(), R.string.toast_details_error_on_cancel, Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), getContext().getString(R.string.toast_details_error_on_cancel), Toast.LENGTH_LONG).show();
             }
         }) {
             @Override
