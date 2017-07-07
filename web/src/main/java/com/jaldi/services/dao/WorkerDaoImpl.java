@@ -86,9 +86,4 @@ public class WorkerDaoImpl {
         namedJdbc.update("UPDATE `user` SET `name` = :name, `phone` = :phone, `email` = :email, isActive = :isActive WHERE id = :id;", namedParameters);
         return worker;
     }
-
-    public Worker freeWorkers(long orderId) {
-
-        return null;
-    }
 }

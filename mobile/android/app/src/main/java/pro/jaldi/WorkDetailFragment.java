@@ -3,6 +3,7 @@ package pro.jaldi;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -46,6 +47,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
+import pro.jaldi.common.JaldiUtils;
+
 import static pro.jaldi.LoginActivity.LOGIN_TOKEN_KEY;
 import static pro.jaldi.LoginActivity.SERVER_API_URL;
 import static pro.jaldi.LoginActivity.getAuthToken;
@@ -65,6 +68,8 @@ public class WorkDetailFragment extends Fragment implements OnMapReadyCallback, 
     private static final float MAP_USER_LOCATION_ZOOM = 15.0f;
     private WorkStatusFragment statusFragment;
     private boolean isCommentTextScrolling = false;
+    private Location currentLocation = null;
+
     public WorkDetailFragment() {
         // Required empty public constructor
     }
@@ -164,6 +169,7 @@ public class WorkDetailFragment extends Fragment implements OnMapReadyCallback, 
             View separator = contentView.findViewById(R.id.detailsCommentSeparator);
             separator.setVisibility(View.INVISIBLE);
         }
+        currentLocation = JaldiUtils.getLastLocation(getActivity());
         return contentView;
     }
 
@@ -177,7 +183,7 @@ public class WorkDetailFragment extends Fragment implements OnMapReadyCallback, 
             googleMap.addMarker(new MarkerOptions().position(workAddress).title(selectedWork.address));
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(workAddress, MAP_USER_LOCATION_ZOOM));
         } else {
-            LatLng defaultAddress = new LatLng(55.7492899, 37.0720539);
+            LatLng defaultAddress = new LatLng(51.534817, 25.286106);
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultAddress, MAP_DEFAULT_LOCATION_ZOOM));
         }
     }
@@ -231,6 +237,8 @@ public class WorkDetailFragment extends Fragment implements OnMapReadyCallback, 
                         @Override
                         public void run() {
                             selectedWork = workModel;
+                            selectedWork.mContext = getContext();
+                            updateDistance();
                             updateUserData();
                         }
                     });
@@ -240,6 +248,16 @@ public class WorkDetailFragment extends Fragment implements OnMapReadyCallback, 
             }
         };
         requestQueue.add(stringRequest);
+    }
+
+    private void updateDistance() {
+        if(currentLocation != null) {
+            selectedWork.distance = JaldiUtils.distance(selectedWork.latitude,
+                    currentLocation.getLatitude(), selectedWork.longitude,
+                    currentLocation.getLongitude(), 0, 0)/1000;
+            TextView workDistance = (TextView) contentView.findViewById(R.id.detailsDistanceValue);
+            workDistance.setText(selectedWork.getDistance());
+        }
     }
 
     private void updateUserData() {

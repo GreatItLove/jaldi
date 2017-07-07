@@ -152,7 +152,7 @@ public class WorkModel {
     String getDistance() {
         String distanceString = mContext.getString(R.string.not_available);
         if (distance > 0) {
-            distanceString = mContext.getString(R.string.work_distance, (int)distance);
+            distanceString = mContext.getString(R.string.work_distance, (float)distance);
         }
         return distanceString;
     }

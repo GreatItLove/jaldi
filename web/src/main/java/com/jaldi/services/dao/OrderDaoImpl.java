@@ -239,7 +239,11 @@ public class OrderDaoImpl {
     public List<Order> getWorkerOrders(long workerId) {
         Map namedParameters = new HashMap();
         namedParameters.put("workerId", workerId);
-        return namedJdbc.query("SELECT `id`, `type`, `status`, `workers`, `hours`, `address`, `city`, `country`, `comment`, `latitude`, `longitude`, `cost`, `paymentType`, `userRating`, `userFeedback`, `orderDate`, `userId`, `creationDate` FROM `order` INNER JOIN orderWorker ON `order`.id = orderWorker.orderId WHERE orderWorker.workerId  = :workerId;", namedParameters, new OrderMapper());
+        return namedJdbc.query("SELECT * FROM (SELECT `id`, `type`, `status`, `workers`, `hours`, `address`, `city`, `country`, `comment`, `latitude`, `longitude`, `cost`, `paymentType`, `userRating`, `userFeedback`, `orderDate`, `userId`, `creationDate` FROM `order` " +
+                "INNER JOIN orderWorker ON `order`.id = orderWorker.orderId WHERE orderWorker.workerId  = :workerId AND status NOT IN ('FINISHED', 'CANCELED')  ORDER BY orderDate ASC) AS a " +
+                "UNION " +
+                "SELECT * FROM (SELECT `id`, `type`, `status`, `workers`, `hours`, `address`, `city`, `country`, `comment`, `latitude`, `longitude`, `cost`, `paymentType`, `userRating`, `userFeedback`, `orderDate`, `userId`, `creationDate` FROM `order` " +
+                "INNER JOIN orderWorker ON `order`.id = orderWorker.orderId WHERE orderWorker.workerId  = :workerId AND status IN ('FINISHED', 'CANCELED') ORDER BY orderDate DESC) AS b;", namedParameters, new OrderMapper());
     }
 
     public Set<String> getkWorkerOrderTypes(Worker worker) {

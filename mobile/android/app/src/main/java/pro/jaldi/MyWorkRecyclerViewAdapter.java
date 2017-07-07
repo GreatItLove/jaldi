@@ -2,6 +2,7 @@ package pro.jaldi;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.location.Location;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -29,6 +30,7 @@ import java.util.List;
 import java.util.Map;
 
 import pro.jaldi.WorkFragment.OnListFragmentInteractionListener;
+import pro.jaldi.common.JaldiUtils;
 import pro.jaldi.dummy.DummyContent.DummyItem;
 
 import static pro.jaldi.LoginActivity.LOGIN_TOKEN_KEY;
@@ -44,11 +46,13 @@ public class MyWorkRecyclerViewAdapter extends RecyclerView.Adapter<MyWorkRecycl
     public Context mContext;
     private final OnListFragmentInteractionListener mListener;
     private final boolean mShouldShowMyWorks;
+    private Location currentLocation = null;
 
-    public MyWorkRecyclerViewAdapter(Context context, List<WorkModel> items, boolean shouldShowMyWorks, OnListFragmentInteractionListener listener) {
+    public MyWorkRecyclerViewAdapter(Context context, List<WorkModel> items, Location lastLocation, boolean shouldShowMyWorks, OnListFragmentInteractionListener listener) {
         mContext = context;
         mShouldShowMyWorks = shouldShowMyWorks;
         mWorkModels = items;
+        currentLocation = lastLocation;
         for (WorkModel workModel : mWorkModels) {
             workModel.mContext = context;
         }
@@ -59,6 +63,11 @@ public class MyWorkRecyclerViewAdapter extends RecyclerView.Adapter<MyWorkRecycl
         this.mWorkModels = workModels;
         for (WorkModel workModel : this.mWorkModels) {
             workModel.mContext = this.mContext;
+            if(currentLocation != null) {
+                workModel.distance = JaldiUtils.distance(workModel.latitude,
+                        currentLocation.getLatitude(), workModel.longitude,
+                        currentLocation.getLongitude(), 0, 0)/1000;
+            }
         }
         notifyDataSetChanged();
     }
