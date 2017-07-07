@@ -3,34 +3,15 @@ package pro.jaldi;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.NetworkResponse;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.HttpHeaderParser;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
-import static pro.jaldi.LoginActivity.LOGIN_TOKEN_KEY;
-import static pro.jaldi.LoginActivity.SERVER_API_URL;
-import static pro.jaldi.LoginActivity.getAuthToken;
+import pro.jaldi.common.JaldiUtils;
 
 /**
  * A fragment representing a list of Items.
@@ -65,10 +46,9 @@ public class WorkFragment extends Fragment {
             Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            adapter = new MyWorkRecyclerViewAdapter(getContext(), worksArrayList, shouldShowMyWorks, mListener);
+            adapter = new MyWorkRecyclerViewAdapter(getContext(), worksArrayList, JaldiUtils.getLastLocation(getActivity()), shouldShowMyWorks, mListener);
             recyclerView.setAdapter(adapter);
         }
-
         return view;
     }
 

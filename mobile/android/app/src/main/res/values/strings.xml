@@ -31,7 +31,7 @@
     <string name="work_details_separator">\u0020|\u0020</string>
     <string name="work_workers_left">%1$d of %2$d positions left</string>
     <string name="work_duration">%1$d hr</string>
-    <string name="work_distance">%1$d km</string>
+    <string name="work_distance">%1$.1f km</string>
     <string name="work_address">Address</string>
     <string name="not_available">N/A</string>
     <string name="work_cost_title">Cost:\u0020</string>
