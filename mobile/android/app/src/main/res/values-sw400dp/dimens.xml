@@ -12,7 +12,7 @@
     <dimen name="workers_top_margin">2dp</dimen>
     <dimen name="take_work_button_top_margin">8dp</dimen>
     <dimen name="take_work_button_radius">4dp</dimen>
-    <dimen name="take_work_button_height">20dp</dimen>
+    <dimen name="take_work_button_height">25dp</dimen>
     <dimen name="cell_top_margin">25dp</dimen>
     <dimen name="cell_left_part_width">98dp</dimen>
     <dimen name="cell_bottom_margin">17dp</dimen>
@@ -20,7 +20,7 @@
     <dimen name="cell_end_margin">8dp</dimen>
     <dimen name="work_status_height">17dp</dimen>
     <dimen name="work_left_part_end_margin">5dp</dimen>
-    <dimen name="work_date_top_margin">5dp</dimen>
+    <dimen name="work_date_top_margin">1dp</dimen>
     <dimen name="work_icon_size">58dp</dimen>
     <dimen name="details_status_container_height">80dp</dimen>
     <dimen name="details_status_text_size">16sp</dimen>
@@ -41,13 +41,13 @@
     <dimen name="work_icon_bottom_margin">5dp</dimen>
     <dimen name="work_icon_top_margin">19dp</dimen>
     <dimen name="work_time_margin">10dp</dimen>
-    <dimen name="work_details_top_margin">11dp</dimen>
+    <dimen name="work_details_top_margin">4dp</dimen>
     <dimen name="details_address_icon_size">24dp</dimen>
-    <dimen name="details_address_text_size">13sp</dimen>
-    <dimen name="work_content_text_size">11sp</dimen>
-    <dimen name="work_title_text_size">15sp</dimen>
+    <dimen name="details_address_text_size">14sp</dimen>
+    <dimen name="work_content_text_size">12sp</dimen>
+    <dimen name="work_title_text_size">16sp</dimen>
     <dimen name="work_status_end_padding">12dp</dimen>
-    <dimen name="empty_list_placeholder_text_size">19sp</dimen>
+    <dimen name="empty_list_placeholder_text_size">21sp</dimen>
     <dimen name="empty_list_placeholder_margin_end">6dp</dimen>
     <dimen name="empty_list_placeholder_margin_start">14dp</dimen>
     <dimen name="empty_list_placeholder_margin_top">20dp</dimen>
@@ -64,7 +64,7 @@
     <dimen name="work_status_item_bottom_margin">18dp</dimen>
     <dimen name="work_status_button_bottom_margin">14dp</dimen>
     <dimen name="work_status_button_height">29dp</dimen>
-    <dimen name="work_status_title_size">12sp</dimen>
+    <dimen name="work_status_title_size">13sp</dimen>
     <dimen name="work_status_circle_margin">1dp</dimen>
     <dimen name="work_status_circle_stroke_padding">5dp</dimen>
 
