@@ -35,7 +35,7 @@
     <div class="container">
         <div class="navbar-header">
             <a href="#home" class="scroll-to navbar-brand landing-logo">
-                <img src="/resources/main/img/jaldi-logo.png" height="30">
+                <img src="/resources/main/img/new-logo.png" height="40">
             </a>
         </div>
 
