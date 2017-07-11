@@ -10,7 +10,7 @@
 
     <!-- Work Cell -->
     <dimen name="workers_top_margin">2dp</dimen>
-    <dimen name="take_work_button_top_margin">7dp</dimen>
+    <dimen name="take_work_button_top_margin">3dp</dimen>
     <dimen name="take_work_button_radius">4dp</dimen>
     <dimen name="take_work_button_height">23dp</dimen>
     <dimen name="cell_top_margin">19dp</dimen>

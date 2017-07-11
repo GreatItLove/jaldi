@@ -8,8 +8,8 @@
     <dimen name="text_margin">16dp</dimen>
 
     <!-- Work Cell -->
-    <dimen name="workers_top_margin">3dp</dimen>
-    <dimen name="take_work_button_top_margin">9dp</dimen>
+    <dimen name="workers_top_margin">1dp</dimen>
+    <dimen name="take_work_button_top_margin">2dp</dimen>
     <dimen name="take_work_button_radius">4dp</dimen>
     <dimen name="take_work_button_height">27dp</dimen>
     <dimen name="cell_top_margin">23dp</dimen>
