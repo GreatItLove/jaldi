@@ -29,7 +29,7 @@ struct JaldiOrderStateHeleper {
         static let assigned = "Assigned"
         static let enRoute = "En route"
         static let working = "Working"
-        static let tidyingUp = "Tidyng Up"
+        static let tidyingUp = "Tidying Up"
         static let finished = "Finshed"
         static let canceled = "Canceled"
     }

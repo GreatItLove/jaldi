@@ -70,6 +70,9 @@ class JaldiOrderStateViewController: UIViewController {
             cloasButton.isHidden = true
         }
         mapView.showAnnotations(mapView.annotations, animated: true)
+        mapView.setVisibleMapRect(mapView.visibleMapRect,
+                                  edgePadding: UIEdgeInsetsMake(10, 10, 40, 10)
+, animated: true)
 //        let region = MKCoordinateRegionMakeWithDistance(
 //            mapView.region.center, mapView.region.span.latitudeDelta, mapView.region.span.longitudeDelta)
 //        mapView.setRegion(region, animated: true)
