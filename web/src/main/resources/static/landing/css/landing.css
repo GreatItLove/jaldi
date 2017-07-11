@@ -78,7 +78,7 @@ img.lazyloaded { opacity: 1; }
 
 @media (min-width: 768px) {
   .px-navbar .container { padding: 0 50px; }
-  .px-navbar .navbar-brand { margin: 0 -20px !important; }
+  .px-navbar .navbar-brand { margin: -5px -20px !important; }
   .px-navbar .navbar-nav { padding: 0 !important; }
 
   .px-navbar a {

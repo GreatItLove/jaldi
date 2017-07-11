@@ -36,14 +36,15 @@ import static pro.jaldi.LoginActivity.getAuthToken;
 
 public class WorkContainerFragment extends Fragment {
 
+    private final int UPDATE_INTERVAL = 60 * 1000;
+    private final String REQUEST_TAG = "requestListTag";
+
     public boolean shouldShowMyWorks = false;
     private ArrayList<WorkModel> worksArrayList = new ArrayList<>();
     private WorkFragment.OnListFragmentInteractionListener mListener;
     private WorkFragment workFragment;
     private Timer listUpdateTimer;
     private RequestQueue requestQueue;
-    private final int updateInterval = 60 * 1000;
-    private final String requestTag = "requestListTag";
 
     public WorkContainerFragment() {
         // Required empty public constructor
@@ -82,12 +83,12 @@ public class WorkContainerFragment extends Fragment {
                 getWorks();
             }
         };
-        listUpdateTimer.schedule(timerTask, 0, updateInterval);
+        listUpdateTimer.schedule(timerTask, 0, UPDATE_INTERVAL);
     }
 
     @Override
     public void onPause() {
-        requestQueue.cancelAll(requestTag);
+        requestQueue.cancelAll(REQUEST_TAG);
         listUpdateTimer.cancel();
         listUpdateTimer.purge();
         super.onPause();
