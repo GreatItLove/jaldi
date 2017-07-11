@@ -26,6 +26,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static pro.jaldi.LoginActivity.LOGIN_TOKEN_KEY;
 import static pro.jaldi.LoginActivity.SERVER_API_URL;
@@ -38,6 +40,10 @@ public class WorkContainerFragment extends Fragment {
     private ArrayList<WorkModel> worksArrayList = new ArrayList<>();
     private WorkFragment.OnListFragmentInteractionListener mListener;
     private WorkFragment workFragment;
+    private Timer listUpdateTimer;
+    private RequestQueue requestQueue;
+    private final int updateInterval = 60 * 1000;
+    private final String requestTag = "requestListTag";
 
     public WorkContainerFragment() {
         // Required empty public constructor
@@ -47,6 +53,8 @@ public class WorkContainerFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
+        requestQueue = Volley.newRequestQueue(getContext());
+
     }
 
     @Override
@@ -60,12 +68,35 @@ public class WorkContainerFragment extends Fragment {
         FragmentTransaction ft = fm.beginTransaction();
         ft.replace(R.id.listContainer, workFragment);
         ft.commit();
-        getWorks();
         return contentView;
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        listUpdateTimer = new Timer();
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                getWorks();
+            }
+        };
+        listUpdateTimer.schedule(timerTask, 0, updateInterval);
+    }
+
+    @Override
+    public void onPause() {
+        requestQueue.cancelAll(requestTag);
+        listUpdateTimer.cancel();
+        listUpdateTimer.purge();
+        super.onPause();
+    }
+
     private void showPlaceHolderViewIfNeeded() {
+        if (getView() == null) {
+            return;
+        }
         TextView textView = (TextView) getView().findViewById(R.id.placeholderView);
         View listFragmentContainer = getView().findViewById(R.id.listContainer);
         if (worksArrayList.isEmpty()) {
@@ -84,7 +115,9 @@ public class WorkContainerFragment extends Fragment {
 
 
     private void getWorks() {
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        if (getContext() == null) {
+            return;
+        }
         String URL;
         if (shouldShowMyWorks) {
             URL = SERVER_API_URL + "rest/order/workerOrders";
@@ -106,7 +139,9 @@ public class WorkContainerFragment extends Fragment {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put(LOGIN_TOKEN_KEY, getAuthToken(getContext()));
+                if (getContext() != null) {
+                    params.put(LOGIN_TOKEN_KEY, getAuthToken(getContext()));
+                }
                 return params;
             }
 
@@ -118,19 +153,21 @@ public class WorkContainerFragment extends Fragment {
                     }.getType();
 
                     worksArrayList = new Gson().fromJson(json, listType);
-
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            workFragment.setListData(worksArrayList);
-                            showPlaceHolderViewIfNeeded();
-                        }
-                    });
+                    if (getActivity() != null) {
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                workFragment.setListData(worksArrayList);
+                                showPlaceHolderViewIfNeeded();
+                            }
+                        });
+                    }
                 }
                 String jsonResponse = new String(response.data);
                 return Response.success(jsonResponse, HttpHeaderParser.parseCacheHeaders(response));
             }
         };
+        stringRequest.setTag(stringRequest);
         requestQueue.add(stringRequest);
     }
 }
