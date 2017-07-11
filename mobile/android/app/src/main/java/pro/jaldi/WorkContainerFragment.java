@@ -1,6 +1,7 @@
 package pro.jaldi;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -38,6 +39,7 @@ public class WorkContainerFragment extends Fragment {
     private ArrayList<WorkModel> worksArrayList = new ArrayList<>();
     private WorkFragment.OnListFragmentInteractionListener mListener;
     private WorkFragment workFragment;
+    private final Handler handler = new Handler();
 
     public WorkContainerFragment() {
         // Required empty public constructor
@@ -61,6 +63,13 @@ public class WorkContainerFragment extends Fragment {
         ft.replace(R.id.listContainer, workFragment);
         ft.commit();
         getWorks();
+        handler.postDelayed( new Runnable() {
+            @Override
+            public void run() {
+                getWorks();
+                handler.postDelayed( this, 60 * 1000 );
+            }
+        }, 60 * 1000 );
         return contentView;
 
     }
