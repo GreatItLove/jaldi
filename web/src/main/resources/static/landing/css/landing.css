@@ -263,6 +263,10 @@ img.lazyloaded { opacity: 1; }
 
 @media (max-width: 767px) {
   .landing-features .image { max-width: 100%; }
+
+  .landing-logo {
+    padding: 10px !important;
+  }
 }
 
 /* Grid */

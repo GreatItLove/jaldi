@@ -56,7 +56,7 @@ $(function() {
 
 $(function() {
   $('#landing-hero').pxResponsiveBg({
-    backgroundImage:    'resources/landing/img/pipe-connecting.jpg',
+    backgroundImage:    'resources/landing/img/mainspot.jpg',
     backgroundPosition: 'center bottom',
     overlay:            '<div class="bg-primary darken"><div style="background:rgba(0,0,0,1.25);position:absolute;top:0;right:0;bottom:0;left:0;"></div></div>',
     overlayOpacity:     0.5
