@@ -46,9 +46,9 @@ public class WorkerDaoImpl {
     public Worker create(Worker worker) {
         worker.setUser(userDao.create(worker.getUser()));
         jdbc.update("INSERT INTO `workerDetails` (userId, isCleaner, isCarpenter, " +
-                "isElectrician, isMason, isPainter, isPlumber, isAcTechnical) VALUES (?, ?, ?, ?, ?, ?, ?, ?);",
+                "isElectrician, isMason, isPainter, isPlumber, isAcTechnical, `rating`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);",
                 worker.getUser().getId(), worker.isCleaner(), worker.isCarpenter(), worker.isElectrician(),
-                worker.isMason(), worker.isPainter(), worker.isPlumber(), worker.isAcTechnical());
+                worker.isMason(), worker.isPainter(), worker.isPlumber(), worker.isAcTechnical(), worker.getRating());
         return worker;
     }
 

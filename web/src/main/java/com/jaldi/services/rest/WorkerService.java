@@ -42,6 +42,7 @@ public class WorkerService {
     public Worker create(@RequestBody Worker worker) {
         worker.getUser().setRole(User.Role.USER);
         worker.getUser().setType(User.Type.WORKER);
+        worker.setRating(5);
         return workerDao.create(worker);
     }
 
