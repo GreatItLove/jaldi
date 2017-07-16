@@ -44,8 +44,8 @@
     <dimen name="work_time_margin">10dp</dimen>
     <dimen name="work_details_top_margin">4dp</dimen>
     <dimen name="details_address_icon_size">24dp</dimen>
-    <dimen name="details_address_text_size">14sp</dimen>
-    <dimen name="work_content_text_size">12sp</dimen>
+    <dimen name="details_address_text_size">15sp</dimen>
+    <dimen name="work_content_text_size">14sp</dimen>
     <dimen name="work_title_text_size">16sp</dimen>
     <dimen name="work_status_end_padding">9dp</dimen>
     <dimen name="empty_list_placeholder_text_size">21sp</dimen>
