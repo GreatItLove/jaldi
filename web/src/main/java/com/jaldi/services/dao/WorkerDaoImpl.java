@@ -77,8 +77,9 @@ public class WorkerDaoImpl {
         namedParameters.put("painter", worker.isPainter());
         namedParameters.put("plumber", worker.isPlumber());
         namedParameters.put("acTechnical", worker.isAcTechnical());
+        namedParameters.put("rating", worker.getRating());
         namedJdbc.update("UPDATE workerDetails SET isCleaner = :cleaner, isCarpenter = :carpenter, isElectrician = :electrician, " +
-                "isMason = :mason, isPainter = :painter, isPlumber = :plumber, isAcTechnical = :acTechnical WHERE userId = :id", namedParameters);
+                "isMason = :mason, isPainter = :painter, isPlumber = :plumber, isAcTechnical = :acTechnical, rating = :rating WHERE userId = :id", namedParameters);
         namedParameters.put("name", worker.getUser().getName());
         namedParameters.put("phone", Util.formatPhone(worker.getUser().getPhone()));
         namedParameters.put("email", worker.getUser().getEmail());
