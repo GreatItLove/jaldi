@@ -25,8 +25,6 @@ import java.util.List;
 @EnableScheduling
 public class RatingBackgroundTask {
 
-    private final Logger log = LoggerFactory.getLogger(RatingBackgroundTask.class);
-
     @Autowired
     private WorkerDaoImpl workerDao;
 
@@ -38,7 +36,7 @@ public class RatingBackgroundTask {
     public void everyMinuteTrigger(){
         List<Worker> workers = workerDao.findAll();
         for (Worker worker : workers) {
-            List<Order> orders = orderDao.findForUser(worker.getUser().getId());
+            List<Order> orders = orderDao.ordersByWorkerId(worker.getUser().getId());
             if(!orders.isEmpty()){
                 worker.setRating(orders.stream().mapToInt(Order::getUserRating).sum()/orders.size());
                 workerDao.update(worker);

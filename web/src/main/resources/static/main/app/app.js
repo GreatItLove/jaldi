@@ -36,6 +36,7 @@ var jaldi = angular
     .constant('appConfig', {
         app: {
             commonDateFormat: 'dd.MM.yyyy',
+            commonDateFormatSql: 'yyyy.MM.dd',
             commonDateTimeFormat: 'dd.MM.yyyy HH:mm',
             commonMomentTimeFormat: 'YYYY-MM-DD HH:mm:ss',
             commonTimeFormat: 'HH:mm'

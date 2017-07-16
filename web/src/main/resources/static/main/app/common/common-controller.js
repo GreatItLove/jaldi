@@ -19,6 +19,11 @@ angular.module('jaldi.controllers')
                 templateUrl: './resources/main/app/profile/profile.html',
                 controller: 'profileController'
             })
+            .state('report', {
+                url: '/report',
+                templateUrl: './resources/main/app/report/report.html',
+                controller: 'reportController'
+            })
             .state('dashboard', {
                 url: '/dashboard',
                 templateUrl: './resources/main/app/dashboard/dashboard.html',

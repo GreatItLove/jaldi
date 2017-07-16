@@ -32,6 +32,15 @@ angular.module('jaldi.services')
         }
     });
 })
+.factory("Report", function ($resource) {
+    return $resource("/rest/report/:id", {id: "@id"}, {
+        workersReport: {
+            url: '/rest/report/workersReport',
+            method: 'GET',
+            isArray: true
+        }
+    });
+})
 .factory("Dashboard", function ($resource) {
     return $resource("/rest/dashboard/:id", {id: "@id"}, {
         overview: {

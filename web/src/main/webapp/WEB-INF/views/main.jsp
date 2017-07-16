@@ -82,6 +82,9 @@
                 <li ng-if="utils.isOperator() || utils.isAdmin()" class="nav-item">
                     <a class="nav-link" ui-sref="workers" ui-sref-active="active"><i class="icon-user-follow"></i> Workers</a>
                 </li>
+                <li ng-if="utils.isOperator() || utils.isAdmin()" class="nav-item">
+                    <a class="nav-link" ui-sref="report" ui-sref-active="active"><i class="icon-user-follow"></i> Report</a>
+                </li>
                 <li class="nav-item nav-dropdown" ng-class="{'open':$state.is('profile')}">
                     <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-settings"></i> Settings</a>
                     <ul class="nav-dropdown-items">
@@ -138,6 +141,7 @@
 <script src="/resources/main/app/workers/workers.js"></script>
 <script src="/resources/main/app/profile/profile.js"></script>
 <script src="/resources/main/app/orders/orders.js"></script>
+<script src="/resources/main/app/report/report.js"></script>
 <script src="/resources/main/app/dashboard/dashboard.js"></script>
 
 </body>
