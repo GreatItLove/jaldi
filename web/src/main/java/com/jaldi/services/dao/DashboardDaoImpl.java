@@ -19,7 +19,7 @@ import java.util.List;
  */
 
 @Repository
-public class DashboardDaoImpl {
+public class  DashboardDaoImpl {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
