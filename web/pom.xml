@@ -76,6 +76,11 @@
 		</dependency>
 		<!--Email-->
 		<dependency>
+			<groupId>it.ozimov</groupId>
+			<artifactId>spring-boot-freemarker-email</artifactId>
+			<version>0.5.1</version>
+		</dependency>
+		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>javax.mail-api</artifactId>
 		</dependency>
@@ -86,17 +91,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.sun.mail</groupId>
-			<artifactId>smtp</artifactId>
-			<version>1.4.5</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.mail</groupId>
 			<artifactId>javax.mail</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>it.ozimov</groupId>
-			<artifactId>spring-boot-freemarker-email</artifactId>
-			<version>0.6.2</version>
 		</dependency>
 		<!--APNS-->
 		<dependency>
