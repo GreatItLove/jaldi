@@ -269,13 +269,13 @@ public class OrderDaoImpl {
         jdbcTemplate.update("INSERT INTO `orderWorker` (`orderId`, `workerId`) VALUES (?, ?);", orderId, workerId);
     }
 
-    public List<Order> ordersByWorkerId(long workerId) {
+    public List<Order> finishedWorksWithRating(long workerId) {
         try {
             Map namedParameters = new HashMap();
             namedParameters.put("workerId", workerId);
             return namedJdbc.query("SELECT `id`, `type`, `status`, `workers`, `hours`, `address`, `city`, `country`, `comment`, " +
                     "`latitude`, `longitude`, `cost`, `paymentType`, `userRating`, `userFeedback`, `orderDate`, `userId`, `creationDate`" +
-                    " FROM orderWorker LEFT JOIN `order` ON orderWorker.orderId = `order`.id WHERE orderWorker.workerId = :workerId", namedParameters, new OrderMapper());
+                    " FROM orderWorker INNER JOIN `order` ON orderWorker.orderId = `order`.id WHERE orderWorker.workerId = :workerId AND `order`.status = 'FINISHED' AND `order`.userRating IS NOT NULL", namedParameters, new OrderMapper());
         } catch (DataAccessException e) {
             return Collections.emptyList();
         }

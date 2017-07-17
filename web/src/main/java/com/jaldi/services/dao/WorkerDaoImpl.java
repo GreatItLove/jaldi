@@ -34,7 +34,7 @@ public class WorkerDaoImpl {
 
     public List<Worker> findAll() {
         try {
-            String sql = "SELECT `id`, `email`, `name`, `phone`, `role`, `type`, `profileImageId`, `latitude`, `longitude`, `isActive`, `isDeleted`, `creationDate`, `isCleaner`, `isCarpenter`, `isElectrician`, `isMason`, `isPainter`, `isPlumber`, `isAcTechnical`, `rating` FROM `user` inner join workerDetails on `user`.id = workerDetails.userId where `type` = 'WORKER' AND isDeleted = 0;";
+            String sql = "SELECT `id`, `email`, `name`, `phone`, `role`, `type`, `profileImageId`, `latitude`, `longitude`, `isActive`, `isDeleted`, `creationDate`, `isCleaner`, `isCarpenter`, `isElectrician`, `isMason`, `isPainter`, `isPlumber`, `isAcTechnical`, `rating`, `totalOrders` FROM `user` inner join workerDetails on `user`.id = workerDetails.userId where `type` = 'WORKER' AND isDeleted = 0;";
             return jdbc.query(
                     sql, new WorkerMapper());
         } catch (EmptyResultDataAccessException e) {
@@ -54,7 +54,7 @@ public class WorkerDaoImpl {
 
     public Worker findOne(long id) {
         try {
-            String sql = "SELECT `id`, `email`, `name`, `phone`, `role`, `type`, `profileImageId`, `latitude`, `longitude`, `isActive`, `isDeleted`, `creationDate`, `isCleaner`, `isCarpenter`, `isElectrician`, `isMason`, `isPainter`, `isPlumber`, `isAcTechnical`, `rating` FROM `user` inner join workerDetails on `user`.id = workerDetails.userId where `type` = 'WORKER' AND `user`.id = ?;";
+            String sql = "SELECT `id`, `email`, `name`, `phone`, `role`, `type`, `profileImageId`, `latitude`, `longitude`, `isActive`, `isDeleted`, `creationDate`, `isCleaner`, `isCarpenter`, `isElectrician`, `isMason`, `isPainter`, `isPlumber`, `isAcTechnical`, `rating`, `totalOrders` FROM `user` inner join workerDetails on `user`.id = workerDetails.userId where `type` = 'WORKER' AND `user`.id = ?;";
             return jdbc.queryForObject(
                     sql, new WorkerMapper(), id);
         } catch (EmptyResultDataAccessException e) {
@@ -85,6 +85,15 @@ public class WorkerDaoImpl {
         namedParameters.put("email", worker.getUser().getEmail());
         namedParameters.put("isActive", worker.getUser().isActive());
         namedJdbc.update("UPDATE `user` SET `name` = :name, `phone` = :phone, `email` = :email, isActive = :isActive WHERE id = :id;", namedParameters);
+        return worker;
+    }
+
+    public Worker updateRating(Worker worker) {
+        Map namedParameters = new HashMap();
+        namedParameters.put("id", worker.getUser().getId());
+        namedParameters.put("rating", worker.getRating());
+        namedParameters.put("totalOrders", worker.getTotalOrders());
+        namedJdbc.update("UPDATE workerDetails SET rating = :rating, totalOrders = :totalOrders WHERE userId = :id", namedParameters);
         return worker;
     }
 }

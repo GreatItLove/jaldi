@@ -31,6 +31,7 @@ public class WorkerMapper implements RowMapper<Worker> {
         if (!rs.wasNull()) {
             worker.setRating(rating);
         }
+        worker.setTotalOrders(rs.getInt("totalOrders"));
         return worker;
     }
 }

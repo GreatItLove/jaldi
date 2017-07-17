@@ -32,14 +32,15 @@ public class RatingBackgroundTask {
     private OrderDaoImpl orderDao;
 
     @Async
-    @Scheduled(fixedDelay=60000)
-    public void everyMinuteTrigger(){
+    @Scheduled(fixedDelay=3600000)
+    public void hourlyTask(){
         List<Worker> workers = workerDao.findAll();
         for (Worker worker : workers) {
-            List<Order> orders = orderDao.ordersByWorkerId(worker.getUser().getId());
+            List<Order> orders = orderDao.finishedWorksWithRating(worker.getUser().getId());
             if(!orders.isEmpty()){
-                worker.setRating(orders.stream().mapToInt(Order::getUserRating).sum()/orders.size());
-                workerDao.update(worker);
+                worker.setRating(orders.stream().mapToInt(Order::getUserRating).sum()*1.0f/orders.size());
+                worker.setTotalOrders(orders.size());
+                workerDao.updateRating(worker);
             }
         }
     }

@@ -16,6 +16,7 @@ public class Worker {
     private boolean plumber;
     private boolean acTechnical;
     private float rating;
+    private int totalOrders;
 
     public User getUser() {
         return user;
@@ -87,5 +88,13 @@ public class Worker {
 
     public void setRating(float rating) {
         this.rating = rating;
+    }
+
+    public int getTotalOrders() {
+        return totalOrders;
+    }
+
+    public void setTotalOrders(int totalOrders) {
+        this.totalOrders = totalOrders;
     }
 }
