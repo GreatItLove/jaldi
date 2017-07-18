@@ -62,7 +62,7 @@ class JaldiSignInViewController: UIViewController {
     }
 
     private func getProfile() {
-        let task  = JaldGetProfileTask()
+        let task  = JaldiGetProfileTask()
         task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: { (user) in
             guard let user = user else{
               return

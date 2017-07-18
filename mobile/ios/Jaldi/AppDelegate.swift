@@ -130,7 +130,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setGuestViewController() {
         let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
         
-        let onboardingViewControllerViewController = storyboard.instantiateViewController(withIdentifier: "JaldiRegistrationViewController") as? JaldiRegistrationViewController
+        let onboardingViewControllerViewController = storyboard.instantiateViewController(withIdentifier: "JaldiRegistrationNewViewController") as? JaldiRegistrationNewViewController
         self.loginNaveController  = UINavigationController(rootViewController: onboardingViewControllerViewController!)
         self.loginNaveController?.isNavigationBarHidden = true
         self.window?.rootViewController = self.loginNaveController

@@ -69,8 +69,8 @@ class JaldiHomeViewController: UIViewController {
     private func configureCollectionView() {
         let collectionViewLayout = theCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         let gab =  (self.view.frame.size.width - 2 * 130) / 3
-        collectionViewLayout.sectionInset = UIEdgeInsetsMake(gab, gab, 0, gab)
-        collectionViewLayout.minimumLineSpacing = 20
+        collectionViewLayout.sectionInset = UIEdgeInsetsMake(10, gab, 0, gab)
+        collectionViewLayout.minimumLineSpacing = 15
     }
 
     //MARK: Actions

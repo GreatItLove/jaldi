@@ -102,7 +102,7 @@ class UserProfile {
     }
     
     private func getProfile(completion: @escaping ((_ success:Bool)->Void)) {
-        let task  = JaldGetProfileTask()
+        let task  = JaldiGetProfileTask()
         task.execute(in: NetworkDispatcher.defaultDispatcher(), taskCompletion: { (user) in
             guard let user = user else{
                 self.clearToken()
