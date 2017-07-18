@@ -8,7 +8,7 @@
 
 import Foundation
 import ObjectMapper
-class JaldGetProfileTask: JaldiOperation {
+class JaldiGetProfileTask: JaldiOperation {
     typealias Output = JaldiUser
     var request: JaldiRequest {
         return UserRequests.profile
