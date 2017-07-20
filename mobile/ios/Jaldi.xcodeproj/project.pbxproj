@@ -104,6 +104,7 @@
 		4CED68711EB90CED001A7CC5 /* JaldiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED68701EB90CED001A7CC5 /* JaldiService.swift */; };
 		4CF754151ED86B7D00107540 /* JaldiSplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF754141ED86B7D00107540 /* JaldiSplashScreenViewController.swift */; };
 		4CF754181ED891EA00107540 /* UIDatePicker+ClampedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF754171ED891EA00107540 /* UIDatePicker+ClampedDate.swift */; };
+		840916581F20C63500A00FE8 /* JaldiPayByCardTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840916571F20C63500A00FE8 /* JaldiPayByCardTask.swift */; };
 		842DB8431F1D50670065BCA3 /* JaldiSignInNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DB8421F1D50670065BCA3 /* JaldiSignInNewViewController.swift */; };
 		8432DDF71F1CEB21002E49A8 /* JaldiConfirmationNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432DDF61F1CEB21002E49A8 /* JaldiConfirmationNewViewController.swift */; };
 		8432DDF91F1CEBEA002E49A8 /* JaldiRegistrationNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432DDF81F1CEBEA002E49A8 /* JaldiRegistrationNewViewController.swift */; };
@@ -229,6 +230,7 @@
 		4CED68701EB90CED001A7CC5 /* JaldiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiService.swift; sourceTree = "<group>"; };
 		4CF754141ED86B7D00107540 /* JaldiSplashScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiSplashScreenViewController.swift; sourceTree = "<group>"; };
 		4CF754171ED891EA00107540 /* UIDatePicker+ClampedDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDatePicker+ClampedDate.swift"; sourceTree = "<group>"; };
+		840916571F20C63500A00FE8 /* JaldiPayByCardTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiPayByCardTask.swift; sourceTree = "<group>"; };
 		842DB8421F1D50670065BCA3 /* JaldiSignInNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiSignInNewViewController.swift; sourceTree = "<group>"; };
 		8432DDF61F1CEB21002E49A8 /* JaldiConfirmationNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiConfirmationNewViewController.swift; sourceTree = "<group>"; };
 		8432DDF81F1CEBEA002E49A8 /* JaldiRegistrationNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JaldiRegistrationNewViewController.swift; sourceTree = "<group>"; };
@@ -782,6 +784,7 @@
 				4C24339C1EDF0F9200129BBC /* JaldiOrderRateTask.swift */,
 				4C24339E1EDF253A00129BBC /* JaldiOrderFeedbackTask.swift */,
 				D15A83491EE8050D00CE048B /* JaldiUpdateTokenTask.swift */,
+				840916571F20C63500A00FE8 /* JaldiPayByCardTask.swift */,
 			);
 			path = OrderTasks;
 			sourceTree = "<group>";
@@ -1023,7 +1026,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		29C76E52B5E15D3EDA1D3619 /* [CP] Embed Pods Frameworks */ = {
@@ -1104,6 +1107,7 @@
 				4C3162AC1EDDBDC600ACE29A /* JaldiOrderListRatingCell.swift in Sources */,
 				4C3162A71EDDB94F00ACE29A /* JladiOrder+Helper.swift in Sources */,
 				4C382F201ED97DFC0052734E /* JaldiRegistrationViewController.swift in Sources */,
+				840916581F20C63500A00FE8 /* JaldiPayByCardTask.swift in Sources */,
 				4C382F151ED97D930052734E /* JaldiOrderStateSeparatorView.swift in Sources */,
 				4CCBD3AD1EBCB598009D5408 /* BookingNavigation.swift in Sources */,
 				4C382F161ED97D930052734E /* JaldiOrderStateView.swift in Sources */,

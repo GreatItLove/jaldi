@@ -52,4 +52,11 @@ struct AppDateFormats {
 }
 struct AppImages {
     static let dumy_profile_pic = UIImage(named:"dummy_user_pic1")!
+    
+    static let holder_pic = UIImage(named: "Holder")!
+    static let holder_active_pic = UIImage(named: "Holder__active")!
+}
+
+struct AppStripeKeys {
+    static let publishableKey = "pk_test_LfXffUmYUPJB6QuWYUFIUj4Q"
 }

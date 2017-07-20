@@ -28,7 +28,7 @@ class JaldiOrderListWorkersView: UIView {
         } else {
             avatarImageView.image = AppImages.dumy_profile_pic
         }
-        rateLabel.text = worker?.rating != nil ? String(format: "%.1f", (worker?.rating)!) : ""
+       // rateLabel.text = worker?.rating != nil ? String(format: "%.1f", (worker?.rating)!) : ""
     }
     
     private func configureAvaterFor(user:JaldiUser) {

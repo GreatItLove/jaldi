@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Stripe
+import Alamofire
 
 class JaldiBookingPaymentViewController: UIViewController ,BookingNavigation {
     fileprivate enum PaymentCellType: Int {
@@ -63,7 +65,44 @@ class JaldiBookingPaymentViewController: UIViewController ,BookingNavigation {
         }
     }
     
+    fileprivate func getStripeCard(){
+        // Initiate the card
+        let stripCard = STPCard()
+        stripCard.number = "4242424242424242"
+        stripCard.cvc = "123"
+        stripCard.expMonth = 12
+        stripCard.expYear = 18
+        
+        // Split the expiration date to extract Month & Year
+        STPAPIClient.shared().createToken(with: stripCard) { (token, error) in
+            if error != nil {
+                return
+            }
+            
+            self.postStripeToken(token: token!)
+        }
+    }
+    
+    func postStripeToken(token: STPToken){
+        let url = "http://192.168.1.161/donate/payment.php"
+        var parameters : Parameters = [:]
+        parameters["stripeToken"] = token.tokenId
+        parameters["amount"] = 1000
+        parameters["currency"] = "usd"
+        parameters["description"] = "faridkamil.it@gmail.com"
+        
+        Alamofire.request(url, method: .post, parameters: parameters).responseJSON { (response) in
+            print(response)
+        }
+        
+    }
+    
+    
+    
     fileprivate func ordderBooking() {
+        getStripeCard()
+        return
+        
         guard let bookingObject = bookingObject , let task = JaldiOrderTask.init(bookingObject: bookingObject) else{
             return
         }
@@ -262,7 +301,7 @@ extension JaldiBookingPaymentViewController: UITableViewDelegate,UITableViewData
         }
         switch cellType {
         case PaymentCellType.payentMethod:
-            return 50
+            return 130
 //        case PaymentCellType.card:
 //            return 152
         case PaymentCellType.details:

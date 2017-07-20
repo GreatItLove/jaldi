@@ -7,5 +7,5 @@ target 'Jaldi' do
   pod 'Alamofire'
   pod 'AlamofireObjectMapper'
   pod 'MBProgressHUD'
-
+  pod 'Stripe', '~> 4.0'
 end

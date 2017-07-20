@@ -8,6 +8,8 @@
 
 import Foundation
 import Alamofire
+import Stripe
+
 public enum OrderRequest: JaldiRequest {
     
     case order(orderDict:[String:Any])
@@ -16,6 +18,7 @@ public enum OrderRequest: JaldiRequest {
     case orderFeedback(orderId:Int, userFeedback:String)
     case orderById(orderId:Int)
     case cancel(orderId:Int)
+    case payByCard(token:STPToken,amount:Int)
     
     public var path: String {
         switch self {
@@ -31,6 +34,8 @@ public enum OrderRequest: JaldiRequest {
             return "rest/order/\(orderId)"
         case .cancel(let orderId):
             return "rest/order/cancel/\(orderId)"
+        case .payByCard(_, _):
+            return ""
         }
     }
     
@@ -48,6 +53,8 @@ public enum OrderRequest: JaldiRequest {
             return .get
         case .cancel(_):
             return .put
+        case .payByCard(_, _):
+            return .post
         }
     }
     
@@ -65,6 +72,9 @@ public enum OrderRequest: JaldiRequest {
             return .body(nil)
         case .cancel(_):
             return .body(nil)
+        case .payByCard(let token, let amount):
+            return .body(["stripeToken" : token, "amount" : amount])
+            
         }
     }
 

@@ -9,6 +9,8 @@
 import UIKit
 import CoreLocation
 import UserNotifications
+import Stripe
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -21,6 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.registerNotofications()
         self.autoLogin()
         self.registerForPushNotifications(application: application)
+        
+        //Stripe Configuration
+        Stripe.setDefaultPublishableKey(AppStripeKeys.publishableKey)
+        
         return true
     }
     
